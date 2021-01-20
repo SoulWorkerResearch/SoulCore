@@ -40,7 +40,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'NuGetPackage'
     publishLocation: 'Container'
 
 # - task: PowerShell@2
