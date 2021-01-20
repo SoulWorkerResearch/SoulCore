@@ -42,5 +42,5 @@ steps:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
-    externalFeedCredentials: 'SoulCore.Datas.Bin.Table'
-    externalEndpoint: 'SoulCore.Datas.Bin.Table'
+    externalFeedCredentials: 'SoulCore'
+    # externalEndpoint: 'SoulCore'
