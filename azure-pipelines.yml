@@ -27,12 +27,14 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
+    msbuildArchitecture: 'x64'
 
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byBuildNumber'
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
   
 - task: NuGetCommand@2
