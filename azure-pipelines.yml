@@ -15,11 +15,12 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
 - task: VSBuild@1
   inputs:
@@ -28,6 +29,7 @@ steps:
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
     msbuildArchitecture: 'x64'
+    msbuildArgs: '/p:PackageVersion=$(Build.BuildNumber) /p:AssemblyFileVersion=$(Build.BuildNumber) /p:ContinuousIntegrationBuild=true'
 
 - task: NuGetCommand@2
   inputs:
@@ -36,10 +38,11 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
-  
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: '652d4585-c2f4-4a25-be17-9ccec4e282b9'
+    publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
+    allowPackageConflicts: true
