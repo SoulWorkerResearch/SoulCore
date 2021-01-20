@@ -84,13 +84,14 @@ steps:
     itemPattern: '**'
     downloadPath: '$(Pipeline.Workspace)'
 
-# - task: NuGetCommand@2
-#   inputs:
-#     command: 'push'
-#     packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
-#     nuGetFeedType: 'internal'
-#     publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
-#     allowPackageConflicts: true
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+    nuGetFeedType: 'external'
+    publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
+    externalFeedCredentials: 'SoulCore'
+    allowPackageConflicts: true
 
 # - task: PowerShell@2
 #   inputs:
