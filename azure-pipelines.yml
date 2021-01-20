@@ -21,11 +21,11 @@ steps:
 #   inputs:
 #     restoreSolution: '$(solution)'
 
-- task: GitVersion@4
+- task: UseGitVersion@5
   displayName: 'GitVersion'
   inputs:
     updateAssemblyInfo: true
-    preferBundledVersion: false
+    versionSpec: '5.x'
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
