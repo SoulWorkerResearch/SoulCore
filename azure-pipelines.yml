@@ -37,9 +37,11 @@ steps:
     versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
   
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '652d4585-c2f4-4a25-be17-9ccec4e282b9'
+    nuGetFeedType: 'external'
+    externalFeedCredentials: $(myNuGetApiKey)
+    externalEndpoint: 'https://api.nuget.org/v3/index.json'
