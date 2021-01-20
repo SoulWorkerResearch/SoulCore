@@ -28,6 +28,7 @@ steps:
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
     msbuildArchitecture: 'x64'
+    msbuildArgs: '/p:Version=$(BUILD_BUILDNUMBER)'
 
 - task: NuGetCommand@2
   inputs:
@@ -36,6 +37,12 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
 # - task: PowerShell@2
 #   inputs:
@@ -51,10 +58,10 @@ steps:
 #     script: 'nuget push ${Build.ArtifactStagingDirectory}/${Build.DefinitionName}.${Year:yyyy}.${Month}.${DayOfMonth}.${Rev:.r}.symbols.nupkg -ApiKey ${myNuGetApiKey} -Source https://api.nuget.org/v3/index.json'
 #     pwsh: true
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'external'
-    externalFeedCredentials: 'SoulCore'
-    externalEndpoint: 'SoulCore'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'external'
+#     externalFeedCredentials: 'SoulCore'
+#     externalEndpoint: 'SoulCore'
