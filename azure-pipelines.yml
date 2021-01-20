@@ -25,7 +25,8 @@ steps:
 - task: PowerShell@2
   displayName: 'BUILD_BUILDNUMBER:'
   inputs:
-    script: echo $(BUILD_BUILDNUMBER)
+    targetType: 'inline'
+    script: 'echo $(BUILD_BUILDNUMBER)'
 
 - task: VSBuild@1
   inputs:
