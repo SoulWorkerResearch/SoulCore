@@ -15,16 +15,59 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
+# - task: NuGetToolInstaller@1
 
-# - task: UseDotNet@2
+# - task: NuGetCommand@2
 #   inputs:
-#     version: '5.0.x'
-#     includePreviewVersions: true # Required for preview versions
+#     restoreSolution: '$(solution)'
 
-- task: NuGetCommand@2
+- task: GitVersion@4
+  displayName: 'GitVersion'
   inputs:
-    restoreSolution: '$(solution)'
+    updateAssemblyInfo: true
+    preferBundledVersion: false
+
+- script: echo %Action%%BuildVersion%
+  displayName: 'Set build version'
+  env:
+    Action: '##vso[build.updatebuildnumber]'
+    BuildVersion: $(GitVersion.SemVer)
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build $(buildConfiguration)'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test $(buildConfiguration)'
+  inputs:
+    command: 'test'
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish $(buildConfiguration)'
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
+    zipAfterPublish: True
+
+- task: CopyPublishBuildArtifacts@1
+  inputs:
+    Contents: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    ArtifactType: Container
+
+# ---
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -33,6 +76,7 @@ steps:
 #     arguments: '--configuration $(buildConfiguration)' 
 #     publishWebProjects: false
 
+# ---
 
 # - task: DotNetCoreCLI@2
 #   inputs:
@@ -54,63 +98,54 @@ steps:
 #     pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
 #     artifactName: 'NuGetPackage'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    maximumCpuCount: true
-    msbuildArchitecture: 'x64'
+# ---
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'BUILD_BUILDNUMBER'
-    includeSymbols: false
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'NuGetPackage'
-    publishLocation: 'Container'
-
-- task: DownloadBuildArtifacts@0
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'NuGetPackage'
-    itemPattern: '**'
-    downloadPath: '$(Pipeline.Workspace)'
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
-    nuGetFeedType: 'external'
-    publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
-    externalFeedCredentials: 'SoulCore'
-    allowPackageConflicts: true
-
-# - task: PowerShell@2
+# - task: DotNetCoreCLI@2
+#   displayName: 'Install gitversion'
 #   inputs:
-#     targetType: 'inline'
-#     script: |
-#       ls $(Build.ArtifactStagingDirectory)
-#       'nuget push ${Build.ArtifactStagingDirectory}/${Build.DefinitionName}.${Year:yyyy}.${Month}.${DayOfMonth}.${Rev:.r}.nupkg -ApiKey ${myNuGetApiKey} -Source https://api.nuget.org/v3/index.json'
-#     pwsh: true
+#     command: 'custom'
+#     custom: 'tool'
+#     arguments: 'install -g gitversion.tool'
 
-# - task: PowerShell@2
+# - task: DotNetCoreCLI@2
+#   displayName: 'Gitversion setup'
 #   inputs:
-#     targetType: 'inline'
-#     script: 'nuget push ${Build.ArtifactStagingDirectory}/${Build.DefinitionName}.${Year:yyyy}.${Month}.${DayOfMonth}.${Rev:.r}.symbols.nupkg -ApiKey ${myNuGetApiKey} -Source https://api.nuget.org/v3/index.json'
-#     pwsh: true
+#     command: 'custom'
+#     custom: 'gitversion'
+#     arguments: '/output buildserver'
+
+# - task: GitVersion@5
+#   inputs:
+#     preferBundledVersion: false
+#     updateAssemblyInfo: true
+
+
+# - script: echo %Action%%BuildVersion%
+#   displayName: 'Set build version'
+#   env:
+#     Action: '##vso[build.updatebuildnumber]'
+#     BuildVersion: $(GitVersion.SemVer)
+
+# - task: VSBuild@1
+#   inputs:
+#     solution: '$(solution)'
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
+#     maximumCpuCount: true
+#     msbuildArchitecture: 'x64'
+
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: '**/*.csproj'
+#     versioningScheme: 'byEnvVar'
+#     versionEnvVar: 'BUILD_BUILDNUMBER'
+#     includeSymbols: false
 
 # - task: NuGetCommand@2
 #   inputs:
 #     command: 'push'
 #     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#     nuGetFeedType: 'external'
-#     externalFeedCredentials: 'SoulCore'
-#     externalEndpoint: 'SoulCore'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
+#     allowPackageConflicts: true
