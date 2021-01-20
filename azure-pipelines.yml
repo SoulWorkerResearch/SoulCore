@@ -30,7 +30,7 @@ steps:
   displayName: 'GitVersion'
   inputs:
     updateAssemblyInfo: true
-    additionalArguments: '/updateAssemblyInfo'
+    updateAssemblyInfoFilename: '**/AssemblyInfo.cs' 
 
 - script: echo %Action%%BuildVersion%
   displayName: 'Set build version'
