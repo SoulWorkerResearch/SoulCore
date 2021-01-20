@@ -13,6 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  BUILD_BUILDNUMBER: ${{ '{replace(variables["BuildDefinitionName"], ".", "-")}_{Year:yyyy}.{Month}.{DayOfMonth}.{Rev:.r}' }}
+  # x: $(BuildDefinitionName)_$(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:.r)
 
 steps:
 - task: NuGetToolInstaller@1
