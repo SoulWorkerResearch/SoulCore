@@ -43,5 +43,4 @@ steps:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
-    externalFeedCredentials: $(myNuGetApiKey)
-    externalEndpoint: 'nuget.org'
+    externalFeedCredentials: 'SoulCore'
