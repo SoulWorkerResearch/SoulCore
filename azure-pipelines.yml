@@ -38,12 +38,11 @@ steps:
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
-  
 
 - task: NuGetCommand@2
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
     nuGetFeedType: 'external'
-    externalFeedCredentials: 'SoulCore'
-    externalEndpoint: 'SoulCore'
+    externalFeedCredentials: 'SoulCore.Datas.Bin.Table'
+    externalEndpoint: 'SoulCore.Datas.Bin.Table'
