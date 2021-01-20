@@ -28,7 +28,6 @@ steps:
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
     msbuildArchitecture: 'x64'
-    msbuildArgs: '/p:Version=${BUILD_BUILDNUMBER}'
 
 - task: NuGetCommand@2
   inputs:
