@@ -26,7 +26,7 @@ steps:
   displayName: 'BUILD_BUILDNUMBER:'
   inputs:
     targetType: 'inline'
-    script: 'echo ${BUILD_BUILDNUMBER}'
+    script: 'echo ${env:BUILD_BUILDNUMBER}'
 
 - task: VSBuild@1
   inputs:
