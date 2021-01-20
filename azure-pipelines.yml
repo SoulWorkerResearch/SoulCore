@@ -26,6 +26,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    maximumCpuCount: true
 
 - task: NuGetCommand@2
   inputs:
