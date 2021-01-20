@@ -42,7 +42,7 @@ steps:
     targetType: 'inline'
     script: |
       ls $(Build.ArtifactStagingDirectory)
-      nuget push $(Build.ArtifactStagingDirectory)/$(BuildDefinitionName).$(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:.r).nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json
+      'nuget push $(Build.ArtifactStagingDirectory)/$(BuildDefinitionName).$(Year:yyyy).$(Month).$(DayOfMonth).$(Rev:.r).nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'
     pwsh: true
 
 - task: PowerShell@2
