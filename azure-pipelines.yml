@@ -22,12 +22,6 @@ steps:
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
-- task: PowerShell@2
-  displayName: 'BUILD_BUILDNUMBER:'
-  inputs:
-    targetType: 'inline'
-    script: 'echo ${env:BUILD_BUILDNUMBER}'
-
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
@@ -35,7 +29,7 @@ steps:
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
     msbuildArchitecture: 'x64'
-    msbuildArgs: '/p:Version=$(BUILD_BUILDNUMBER)'
+    msbuildArgs: '/p:PackageVersion=$(Build.BuildNumber) /p:AssemblyFileVersion=$(Build.BuildNumber) /p:ContinuousIntegrationBuild=true'
 
 - task: NuGetCommand@2
   inputs:
