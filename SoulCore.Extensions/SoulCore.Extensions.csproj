@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>sawich</Authors>
+    <Company />
+    <Product>SoulCore</Product>
+    <PackageLicenseExpression>WTFNMFPL</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoulCore.Type\SoulCore.Type.csproj" />
+  </ItemGroup>
+</Project>

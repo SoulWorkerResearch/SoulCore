@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Authors>sawich</Authors>
+    <Company />
+    <Product>SoulCore</Product>
+    <PackageLicenseExpression>WTFNMFPL</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoulCore.Extensions\SoulCore.Extensions.csproj" />
+    <ProjectReference Include="..\SoulCore.Type\SoulCore.Type.csproj" />
+    <ProjectReference Include="..\SoulCore\SoulCore.csproj" />
+  </ItemGroup>
+</Project>
