@@ -27,6 +27,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     maximumCpuCount: true
+    msbuildArchitecture: 'x64'
 
 - task: NuGetCommand@2
   inputs:
