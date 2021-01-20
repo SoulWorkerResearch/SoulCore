@@ -43,6 +43,5 @@ steps:
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'fbe1e4df-4cdb-4b29-8ffd-d68560e51313/d2d3e915-1761-4239-8f24-f57ef541e6f7'
-    allowPackageConflicts: true
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'SoulCore'
