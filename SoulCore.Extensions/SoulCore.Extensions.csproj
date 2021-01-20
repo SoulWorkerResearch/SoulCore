@@ -6,10 +6,22 @@
     <Authors>sawich</Authors>
     <Company />
     <Product>SoulCore</Product>
-    <PackageLicenseExpression>WTFNMFPL</PackageLicenseExpression>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>soulworker</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SoulCore.Type\SoulCore.Type.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
