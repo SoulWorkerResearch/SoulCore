@@ -36,9 +36,15 @@ steps:
     versionEnvVar: 'BUILD_BUILDNUMBER'
     includeSymbols: true
   
-- task: NuGetCommand@2
+
+- task: PowerShell@2
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '652d4585-c2f4-4a25-be17-9ccec4e282b9'
+    targetType: 'inline'
+    script: 'nuget push $(Build.ArtifactStagingDirectory)\*.nupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'
+    pwsh: true
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: 'nuget push $(Build.ArtifactStagingDirectory)\*.snupkg -ApiKey $(myNuGetApiKey) -Source https://api.nuget.org/v3/index.json'
+    pwsh: true
