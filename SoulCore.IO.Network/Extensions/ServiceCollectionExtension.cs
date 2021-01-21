@@ -10,7 +10,7 @@ namespace SoulCore.IO.Network.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddHandlers(this IServiceCollection services)
+        public static IServiceCollection AddNetworkHandlers(this IServiceCollection services)
         {
             foreach (Type type in GetSyncHandlers())
                 services.AddTransient(type);
