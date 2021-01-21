@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30803.129
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Type", "SoulCore.Type\SoulCore.Type.csproj", "{D4F4CD98-ABDE-4BC8-BA4B-827822C4F79A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Datas.Bin.Table", "SoulCore.Datas.Table\SoulCore.Datas.Bin.Table.csproj", "{70657DF0-B26A-4A9D-8E6E-CFED8B0F73BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore.Extensions", "SoulCore.Extensions\SoulCore.Extensions.csproj", "{E7C9831B-203A-4B83-9A52-7768E3397501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Extensions", "SoulCore.Extensions\SoulCore.Extensions.csproj", "{E7C9831B-203A-4B83-9A52-7768E3397501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore", "SoulCore\SoulCore.csproj", "{EA03F8D8-1155-4015-A108-74A425D50689}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore", "SoulCore\SoulCore.csproj", "{EA03F8D8-1155-4015-A108-74A425D50689}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.IO.Network", "SoulCore.IO.Network\SoulCore.IO.Network.csproj", "{F7F572B2-D439-4914-961C-1779C238FB8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore.Utils", "SoulCore.Utils\SoulCore.Utils.csproj", "{9063041E-DC5F-482B-81E4-9D8C6EE0B5E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D4F4CD98-ABDE-4BC8-BA4B-827822C4F79A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4F4CD98-ABDE-4BC8-BA4B-827822C4F79A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4F4CD98-ABDE-4BC8-BA4B-827822C4F79A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4F4CD98-ABDE-4BC8-BA4B-827822C4F79A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{70657DF0-B26A-4A9D-8E6E-CFED8B0F73BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{70657DF0-B26A-4A9D-8E6E-CFED8B0F73BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70657DF0-B26A-4A9D-8E6E-CFED8B0F73BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +31,14 @@ Global
 		{EA03F8D8-1155-4015-A108-74A425D50689}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA03F8D8-1155-4015-A108-74A425D50689}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA03F8D8-1155-4015-A108-74A425D50689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7F572B2-D439-4914-961C-1779C238FB8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F572B2-D439-4914-961C-1779C238FB8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F572B2-D439-4914-961C-1779C238FB8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F572B2-D439-4914-961C-1779C238FB8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9063041E-DC5F-482B-81E4-9D8C6EE0B5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9063041E-DC5F-482B-81E4-9D8C6EE0B5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9063041E-DC5F-482B-81E4-9D8C6EE0B5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9063041E-DC5F-482B-81E4-9D8C6EE0B5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

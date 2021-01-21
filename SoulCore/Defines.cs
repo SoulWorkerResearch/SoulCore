@@ -1,4 +1,6 @@
-﻿namespace SoulCore
+﻿using System;
+
+namespace SoulCore
 {
     public static class Defines
     {
@@ -20,5 +22,8 @@
         public const byte EquipableGearStorageMaxCapacity = 10;
 
         public const byte PacketHeaderSize = 5;
+
+        public static Type PacketOpcodeType { get; } = typeof(ushort);
+        public const byte PacketOpcodeSize = sizeof(ushort);
     }
 }

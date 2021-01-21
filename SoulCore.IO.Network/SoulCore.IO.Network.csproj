@@ -1,0 +1,129 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Authors>sawich</Authors>
+    <Company />
+    <PackageTags>soulworker</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Deterministic>False</Deterministic>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Requests\Booster\" />
+    <Folder Include="Requests\Channel\" />
+    <Folder Include="Requests\Chat\" />
+    <Folder Include="Requests\DailyMission\" />
+    <Folder Include="Requests\Drop\" />
+    <Folder Include="Requests\Event\" />
+    <Folder Include="Requests\Exchange\" />
+    <Folder Include="Requests\Friend\" />
+    <Folder Include="Requests\Gesture\" />
+    <Folder Include="Requests\GmAgent\" />
+    <Folder Include="Requests\Helper\" />
+    <Folder Include="Requests\InfiniteTower\" />
+    <Folder Include="Requests\ItemSetup\" />
+    <Folder Include="Requests\ItemUpgrade\" />
+    <Folder Include="Requests\League\" />
+    <Folder Include="Requests\Login\" />
+    <Folder Include="Requests\Maze\" />
+    <Folder Include="Requests\ModeMaze\" />
+    <Folder Include="Requests\Monitor\" />
+    <Folder Include="Requests\Monster\" />
+    <Folder Include="Requests\MyRoom\" />
+    <Folder Include="Requests\Party\" />
+    <Folder Include="Requests\Post\" />
+    <Folder Include="Requests\Quest\" />
+    <Folder Include="Requests\Ranking\" />
+    <Folder Include="Requests\Restart\" />
+    <Folder Include="Requests\ServerForce\" />
+    <Folder Include="Requests\ServerFriend\" />
+    <Folder Include="Requests\ServerLeague\" />
+    <Folder Include="Requests\ServerModeMaze\" />
+    <Folder Include="Requests\ServerParty\" />
+    <Folder Include="Requests\ServerUser\" />
+    <Folder Include="Requests\ServerWorldMode\" />
+    <Folder Include="Requests\Server\" />
+    <Folder Include="Requests\Shop\" />
+    <Folder Include="Requests\Skill\" />
+    <Folder Include="Requests\SocialItem\" />
+    <Folder Include="Requests\SoulMetry\" />
+    <Folder Include="Requests\System\" />
+    <Folder Include="Requests\Tool\" />
+    <Folder Include="Requests\Trade\" />
+    <Folder Include="Requests\Vaccum\" />
+    <Folder Include="Requests\WeeklyMission\" />
+    <Folder Include="Requests\WorldMode\" />
+    <Folder Include="Requests\World\" />
+    <Folder Include="Responses\Booster\" />
+    <Folder Include="Responses\Channel\" />
+    <Folder Include="Responses\Chat\" />
+    <Folder Include="Responses\DailyMission\" />
+    <Folder Include="Responses\Drop\" />
+    <Folder Include="Responses\Event\" />
+    <Folder Include="Responses\Exchange\" />
+    <Folder Include="Responses\Force\" />
+    <Folder Include="Responses\Friend\" />
+    <Folder Include="Responses\Gesture\" />
+    <Folder Include="Responses\GmAgent\" />
+    <Folder Include="Responses\Helper\" />
+    <Folder Include="Responses\InfiniteTower\" />
+    <Folder Include="Responses\ItemSetup\" />
+    <Folder Include="Responses\ItemUpgrade\" />
+    <Folder Include="Responses\Item\" />
+    <Folder Include="Responses\League\" />
+    <Folder Include="Responses\Maze\" />
+    <Folder Include="Responses\Monitor\" />
+    <Folder Include="Responses\Monster\" />
+    <Folder Include="Responses\Move\" />
+    <Folder Include="Responses\MyRoom\" />
+    <Folder Include="Responses\Party\" />
+    <Folder Include="Responses\Post\" />
+    <Folder Include="Responses\Quest\" />
+    <Folder Include="Responses\Ranking\" />
+    <Folder Include="Responses\Restart\" />
+    <Folder Include="Responses\ServerForce\" />
+    <Folder Include="Responses\ServerFriend\" />
+    <Folder Include="Responses\ServerLeague\" />
+    <Folder Include="Responses\ServerModeMaze\" />
+    <Folder Include="Responses\ServerParty\" />
+    <Folder Include="Responses\ServerUser\" />
+    <Folder Include="Responses\ServerWorldMode\" />
+    <Folder Include="Responses\Server\" />
+    <Folder Include="Responses\Shop\" />
+    <Folder Include="Responses\Skill\" />
+    <Folder Include="Responses\SocialItem\" />
+    <Folder Include="Responses\SoulMetry\" />
+    <Folder Include="Responses\System\" />
+    <Folder Include="Responses\Tool\" />
+    <Folder Include="Responses\Trade\" />
+    <Folder Include="Responses\Vaccum\" />
+    <Folder Include="Responses\WeeklyMission\" />
+    <Folder Include="Responses\WorldMode\" />
+    <Folder Include="Responses\World\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
+    <PackageReference Include="NetCoreServer" Version="5.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoulCore.Extensions\SoulCore.Extensions.csproj" />
+    <ProjectReference Include="..\SoulCore.Utils\SoulCore.Utils.csproj" />
+    <ProjectReference Include="..\SoulCore\SoulCore.csproj" />
+  </ItemGroup>
+</Project>

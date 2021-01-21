@@ -4,19 +4,19 @@
     <Nullable>enable</Nullable>
     <Authors>sawich</Authors>
     <Company />
-    <Product>SoulCore</Product>
-    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageTags>soulworker</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl></PackageProjectUrl>
-    <PackageTags>soulworker</PackageTags>
     <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
+    <Deterministic>False</Deterministic>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SoulCore.Extensions\SoulCore.Extensions.csproj" />
-    <ProjectReference Include="..\SoulCore.Type\SoulCore.Type.csproj" />
     <ProjectReference Include="..\SoulCore\SoulCore.csproj" />
   </ItemGroup>
 
