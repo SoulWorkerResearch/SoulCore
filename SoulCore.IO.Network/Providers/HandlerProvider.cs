@@ -36,7 +36,7 @@ namespace SoulCore.IO.Network.Providers
         private static void Dummy(SessionBase session, BinaryReader _)
         {
 #if !DEBUG
-            session.Disconnect();
+            session.InternalSession.Disconnect();
 #endif // !DEBUG
         }
 
