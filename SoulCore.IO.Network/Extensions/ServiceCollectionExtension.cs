@@ -10,12 +10,17 @@ namespace SoulCore.IO.Network.Extensions
 {
     public static class ServiceCollectionExtension
     {
-        public static IServiceCollection AddNetworkHandlers(this IServiceCollection services)
+        public static IServiceCollection AddNetwork<TServer, TSession>(this IServiceCollection services)
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
         {
             foreach (Type type in GetSyncHandlers())
                 services.AddTransient(type);
 
-            return services.AddSingleton<HandlerProvider>();
+            return services
+                .AddSingleton<HandlerProvider<TServer, TSession>>()
+                .AddSingleton<TServer>()
+                .AddTransient<TSession>();
         }
 
         private static IEnumerable<Type> GetSyncHandlers() => AppDomain.CurrentDomain.GetAssemblies()

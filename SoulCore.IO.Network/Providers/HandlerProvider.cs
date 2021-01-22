@@ -13,11 +13,13 @@ using System.Reflection;
 
 namespace SoulCore.IO.Network.Providers
 {
-    public class HandlerProvider : List<HandlerProvider.Entity>
+    public class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Entity>
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
         public sealed record Entity
         {
-            public delegate void MethodInfo(SessionBase session, BinaryReader br);
+            public delegate void MethodInfo(SessionBase<TServer, TSession> session, BinaryReader br);
 
             public HandlerPermission Permission { get; }
             public MethodInfo Method { get; }
@@ -29,18 +31,19 @@ namespace SoulCore.IO.Network.Providers
             }
         }
 
-        public HandlerProvider(IServiceProvider service, ILogger<HandlerProvider> logger) : base(GetHandlers(service, logger))
+        public HandlerProvider(IServiceProvider service, ILogger<HandlerProvider<TServer, TSession>> logger) :
+            base(GetHandlers(service, logger))
         {
         }
 
-        private static void Dummy(SessionBase session, BinaryReader _)
+        private static void Dummy(SessionBase<TServer, TSession> session, BinaryReader _)
         {
 #if !DEBUG
             session.InternalSession.Disconnect();
 #endif // !DEBUG
         }
 
-        private static List<Entity> GetHandlers(IServiceProvider service, ILogger<HandlerProvider> logger)
+        private static List<Entity> GetHandlers(IServiceProvider service, ILogger logger)
         {
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
@@ -84,7 +87,7 @@ namespace SoulCore.IO.Network.Providers
 
         private static Entity.MethodInfo CreateHandlerMethod(object? instance, IServiceProvider service, MethodInfo method)
         {
-            ParameterExpression session = Expression.Parameter(typeof(SessionBase), "Session");
+            ParameterExpression session = Expression.Parameter(typeof(TSession), "Session");
             ParameterExpression br = Expression.Parameter(typeof(BinaryReader), "BinaryReader");
 
             Expression[] arguments = method.GetParameters().Select(param =>
@@ -96,7 +99,7 @@ namespace SoulCore.IO.Network.Providers
                     throw new NetworkException("ParameterType is null");
 
                 // Session typed parameter
-                if (param.ParameterType == typeof(SessionBase) || param.ParameterType.BaseType == typeof(SessionBase))
+                if (param.ParameterType == typeof(TSession) || param.ParameterType.BaseType == typeof(TSession))
                     return Expression.Convert(session, param.ParameterType) as Expression;
 
                 // Packet structure parameter

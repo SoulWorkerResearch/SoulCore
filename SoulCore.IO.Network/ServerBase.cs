@@ -7,10 +7,14 @@ using System.Net;
 
 namespace SoulCore.IO.Network
 {
-    internal sealed class InternalServer<TSession> : TcpServer where TSession : SessionBase
+    internal sealed class InternalServer<TServer, TSession> : TcpServer
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
-        private readonly ILogger<InternalServer<TSession>> _logger;
+        private readonly ILogger<InternalServer<TServer, TSession>> _logger;
         private readonly IServiceProvider _services;
+
+        internal TServer BaseServer { get; }
 
         public override bool Start()
         {
@@ -19,25 +23,28 @@ namespace SoulCore.IO.Network
             return base.Start();
         }
 
-        internal InternalServer(IServiceProvider services, IPEndPoint endpont) : base(endpont)
+        internal InternalServer(TServer baseServer, IServiceProvider services, IPEndPoint endpont) : base(endpont)
         {
-            _logger = services.GetRequiredService<ILogger<InternalServer<TSession>>>();
+            BaseServer = baseServer;
+            _logger = services.GetRequiredService<ILogger<InternalServer<TServer, TSession>>>();
             _services = services;
         }
 
         protected override TcpSession CreateSession() => _services.GetRequiredService<TSession>().InternalSession;
     }
 
-    public abstract class ServerBase<TSession> where TSession : SessionBase
+    public abstract class ServerBase<TServer, TSession>
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
-        internal InternalServer<TSession> InternalServer { get; }
+        internal InternalServer<TServer, TSession> InternalServer { get; }
 
         public bool Start() => InternalServer.Start();
 
         public bool Stop() => InternalServer.Stop();
 
         protected ServerBase(IServiceProvider services, IConfiguration configuration) =>
-            InternalServer = new(services, GetIPEndPoint(configuration));
+            InternalServer = new((TServer)this, services, GetIPEndPoint(configuration));
 
         private static IPEndPoint GetIPEndPoint(IConfiguration configuration) =>
             IPEndPoint.Parse($"{configuration["Ip"]}:{configuration["Port"]}");

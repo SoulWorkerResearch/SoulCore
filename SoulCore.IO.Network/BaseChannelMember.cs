@@ -5,9 +5,10 @@ using System.Linq;
 
 namespace SoulCore.IO.Network
 {
-    public abstract class BaseChannelMember<TChannel, TSession>
-        where TChannel : BaseChannel<TSession>
-        where TSession : SessionBase
+    public abstract class BaseChannelMember<TChannel, TServer, TSession>
+        where TChannel : BaseChannel<TServer, TSession>
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
         protected readonly TChannel Channel;
         protected readonly TSession Session;

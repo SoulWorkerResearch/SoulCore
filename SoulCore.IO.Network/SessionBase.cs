@@ -19,7 +19,9 @@ using System.Text;
 
 namespace SoulCore.IO.Network
 {
-    internal sealed class InternalSession<TSession> : TcpSession where TSession : SessionBase
+    internal sealed class InternalSession<TServer, TSession> : TcpSession
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
         internal TSession Session { get; }
 
@@ -62,15 +64,19 @@ namespace SoulCore.IO.Network
             }
         }
 
-        internal InternalSession(InternalServer<TSession> server, TSession session, ILogger logger) : base(server) =>
+        internal InternalSession(InternalServer<TServer, TSession> server, TSession session, ILogger logger) : base(server) =>
             (Session, Logger) = (session, logger);
     }
 
-    public abstract class SessionBase
+    public abstract class SessionBase<TServer, TSession>
+        where TServer : ServerBase<TServer, TSession>
+        where TSession : SessionBase<TServer, TSession>
     {
-        private readonly HandlerProvider _provider;
+        private readonly HandlerProvider<TServer, TSession> _provider;
 
-        internal InternalSession<SessionBase> InternalSession { get; }
+        public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).BaseServer;
+
+        internal InternalSession<TServer, TSession> InternalSession { get; }
 
         //public SSessionBase SendAsync(BattlePassLoadResponse value) =>
         //    SendAsync(SCCategory.InfiniteTower, SCInfiniteTower.LoadInfo, (SPacketWriter writer) =>
@@ -84,7 +90,7 @@ namespace SoulCore.IO.Network
         //        writer.Write(byte.MinValue);
         //    });
 
-        public SessionBase SendDeferred(BattlePassLoadResponse value) =>
+        public TSession SendDeferred(BattlePassLoadResponse value) =>
             SendDeferred(CategoryCommand.Event, EventCommand.BattlePassLoad, (PacketWriter writer) =>
             {
                 writer.Write(value.Id);
@@ -95,19 +101,19 @@ namespace SoulCore.IO.Network
                 writer.Write(value.IsPremium);
             });
 
-        public SessionBase SendDeferred(InfiniteTowerLoadInfoResponse value) =>
+        public TSession SendDeferred(InfiniteTowerLoadInfoResponse value) =>
             SendDeferred(CategoryCommand.InfiniteTower, InfiniteTowerCommand.LoadInfo, (PacketWriter writer) =>
             {
                 writer.Write(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 });
             });
 
-        public SessionBase SendDeferred(CharacterSkillInfoResponse value) =>
+        public TSession SendDeferred(CharacterSkillInfoResponse value) =>
             SendDeferred(CategoryCommand.Skill, SkillCommand.SkillLoadInfo, (PacketWriter writer) =>
             {
                 writer.Write(new byte[] { 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x01, 0x00, 0x08, 0x00, 0x08, 0x00, 0x03, 0x00, 0x0E, 0x00, 0x3B, 0xB9, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x0D, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0xEF, 0x14, 0xEF, 0x03, 0x00, 0x00, 0x00, 0x00, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xB8, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0xCB, 0xA7, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0xFB, 0x1C, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x53, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x92, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0xAF, 0x3A, 0xA5, 0x03, 0x00, 0x00, 0x00, 0x00, 0xF1, 0x0B, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x1A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1B, 0x6B, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x44, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x3B, 0xB9, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0xB7, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xCB, 0xA7, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0xFB, 0x1C, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x53, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x2B, 0x92, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0xAF, 0x3A, 0xA5, 0x03, 0x00, 0x00, 0x00, 0x00, 0xEF, 0x0B, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x1B, 0x6B, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x0B, 0x44, 0xB3, 0x03, 0x00, 0x00, 0x00, 0x00, 0x0C, 0x00, 0x00, 0xF1, 0x0B, 0xB2, 0x03, 0x53, 0x0C, 0xB2, 0x03, 0xB8, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x53, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0xB8, 0x0C, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x05, 0x00, 0x1C, 0x0D, 0xB2, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x0B, 0x00, 0x15, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x01, 0x00, 0x0B, 0x00, 0x15, 0x00, 0x00, 0x00 });
             });
 
-        public SessionBase SendDeferred(ChannelInfoResponse value) =>
+        public TSession SendDeferred(ChannelInfoResponse value) =>
             SendDeferred(CategoryCommand.Channel, ChannelCommand.Info, (PacketWriter writer) =>
             {
                 writer.Write(value.Location);
@@ -119,14 +125,14 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        public SessionBase SendDeferred(PostInfoResponse value) =>
+        public TSession SendDeferred(PostInfoResponse value) =>
             SendDeferred(CategoryCommand.Post, PostCommand.Info, (PacketWriter writer) =>
             {
                 writer.Write(ushort.MinValue);
                 writer.Write(value.Count);
             });
 
-        public SessionBase SendDeferred(SPartyInviteResponse value) =>
+        public TSession SendDeferred(SPartyInviteResponse value) =>
             SendDeferred(CategoryCommand.Party, PartyCommand.Invite, (PacketWriter writer) =>
             {
                 writer.WriteByteLengthUnicodeString(value.Member.Name);
@@ -140,16 +146,16 @@ namespace SoulCore.IO.Network
                 writer.Write(byte.MinValue);
             });
 
-        public SessionBase SendDeferred(PartyDeleteResponse value) =>
+        public TSession SendDeferred(PartyDeleteResponse value) =>
             SendDeferred(CategoryCommand.Party, PartyCommand.Delete, (PacketWriter writer) =>
             {
                 writer.Write(value.Id);
             });
 
-        public SessionBase SendCharacterDbLoadDeferred() =>
+        public TSession SendCharacterDbLoadDeferred() =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.DbLoadSync);
 
-        public SessionBase SendDeferred(NpcOthersInfosResponse value) =>
+        public TSession SendDeferred(NpcOthersInfosResponse value) =>
             SendDeferred(CategoryCommand.World, WorldCommand.OtherInfosNpc, (PacketWriter writer) =>
             {
                 writer.Write((ushort)value.Values.Count());
@@ -166,7 +172,7 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        public SessionBase SendDeferred(CharacterInfoResponse value) =>
+        public TSession SendDeferred(CharacterInfoResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.InfoRes, (PacketWriter writer) =>
             {
                 writer.WriteCharacter(value.Character);
@@ -197,7 +203,7 @@ namespace SoulCore.IO.Network
                 writer.WriteCharacterInfoResult(value.Result);
             });
 
-        public SessionBase SendDeferred(CharacterStatsUpdateResponse value) =>
+        public TSession SendDeferred(CharacterStatsUpdateResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.UpdateStatList, (PacketWriter writer) =>
             {
                 writer.Write((byte)0);
@@ -212,7 +218,7 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        public SessionBase SendDeferred(CharacterProfileResponse value) =>
+        public TSession SendDeferred(CharacterProfileResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.Community, (PacketWriter writer) =>
             {
                 writer.WriteProfileStatus(value.Status);
@@ -220,21 +226,21 @@ namespace SoulCore.IO.Network
                 writer.WriteByteLengthUnicodeString(value.Note);
             });
 
-        public SessionBase SendDeferred(CharacterPostInfoResponse value) =>
+        public TSession SendDeferred(CharacterPostInfoResponse value) =>
             SendDeferred(CategoryCommand.Post, PostCommand.Info, (PacketWriter writer) =>
             {
                 writer.Write(ushort.MinValue);
                 writer.Write((ushort)value.Values.Count());
             });
 
-        public SessionBase SendDeferred(CharacterGestureLoadResponse value) =>
+        public TSession SendDeferred(CharacterGestureLoadResponse value) =>
             SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotLoad, (PacketWriter writer) =>
             {
                 foreach (uint gesture in value.Values)
                     writer.Write(gesture);
             });
 
-        public SessionBase SendDeferred(ChatMessageResponse value) =>
+        public TSession SendDeferred(ChatMessageResponse value) =>
             SendDeferred(CategoryCommand.Chat, ChatCommand.Normal, (PacketWriter writer) =>
             {
                 writer.Write(value.Character);
@@ -242,7 +248,7 @@ namespace SoulCore.IO.Network
                 writer.WriteByteLengthUnicodeString(value.Message);
             });
 
-        public SessionBase SendDeferred(DayEventBoosterResponse value) =>
+        public TSession SendDeferred(DayEventBoosterResponse value) =>
             SendDeferred(CategoryCommand.Event, EventCommand.DayEventBoosterList, (PacketWriter writer) =>
             {
                 writer.Write((ushort)value.Values.Count);
@@ -253,13 +259,13 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        public SessionBase SendDeferred(ServiceHeartbeatRequest value) =>
+        public TSession SendDeferred(ServiceHeartbeatRequest value) =>
             SendDeferred(CategoryCommand.System, SystemCommand.Ping, (PacketWriter writer) =>
             {
                 writer.Write(value.Tick);
             });
 
-        public SessionBase SendDeferred(DistrictLogOutResponse value) =>
+        public TSession SendDeferred(DistrictLogOutResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.GobackLobby, (PacketWriter writer) =>
             {
                 writer.Write(value.Account);
@@ -270,7 +276,7 @@ namespace SoulCore.IO.Network
                 writer.WriteDistrictLogOutStatus(DistrictLogOutStatus.Success);
             });
 
-        public SessionBase SendDeferred(DistrictEnterResponse value) =>
+        public TSession SendDeferred(DistrictEnterResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.EnterGameServerRes, (PacketWriter writer) =>
             {
                 writer.Write(uint.MinValue);
@@ -279,7 +285,7 @@ namespace SoulCore.IO.Network
                 writer.Write(byte.MinValue);
             });
 
-        public SessionBase SendDeferred(WorldVersionResponse value) =>
+        public TSession SendDeferred(WorldVersionResponse value) =>
             SendDeferred(CategoryCommand.World, WorldCommand.Version, (PacketWriter writer) =>
             {
                 writer.Write(value.Id);
@@ -288,13 +294,13 @@ namespace SoulCore.IO.Network
                 writer.Write(value.Data);
             });
 
-        public SessionBase SendDeferred(BoosterRemoveResponse value) =>
+        public TSession SendDeferred(BoosterRemoveResponse value) =>
             SendDeferred(CategoryCommand.Booster, BoosterCommand.Remove, (PacketWriter writer) =>
             {
                 writer.Write(value.Id);
             });
 
-        public SessionBase SendDeferred(BoosterAddResponse value) =>
+        public TSession SendDeferred(BoosterAddResponse value) =>
             SendDeferred(CategoryCommand.Booster, BoosterCommand.Add, (PacketWriter writer) =>
             {
                 writer.Write(value.Id);
@@ -302,21 +308,21 @@ namespace SoulCore.IO.Network
                 writer.Write(value.Duration);
             });
 
-        public SessionBase SendDeferred(CharacterGestureUpdateSlotsResponse value) =>
+        public TSession SendDeferred(CharacterGestureUpdateSlotsResponse value) =>
             SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotUpdate, (PacketWriter writer) =>
             {
                 foreach (uint id in value.Values)
                     writer.Write(id);
             });
 
-        public SessionBase SendDeferred(GateEnterResponse value) =>
+        public TSession SendDeferred(GateEnterResponse value) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.EnterServerRes, (PacketWriter writer) =>
             {
                 writer.WriteGateEnterResult(value.Result);
                 writer.Write(value.AccountId);
             });
 
-        public SessionBase SendDeferred(GateCharacterMarkAsFavoriteResponse value) =>
+        public TSession SendDeferred(GateCharacterMarkAsFavoriteResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.RepresentativeChange, (PacketWriter writer) =>
             {
                 writer.Write(value.AccountId);
@@ -329,7 +335,7 @@ namespace SoulCore.IO.Network
                 writer.Write(value.Error);
             });
 
-        public SessionBase SendDeferred(GateCharacterListResponse value) =>
+        public TSession SendDeferred(GateCharacterListResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.ListRes, (PacketWriter writer) =>
             {
                 writer.Write((byte)value.Characters.Count);
@@ -348,7 +354,7 @@ namespace SoulCore.IO.Network
                 writer.Write(byte.MinValue);
             });
 
-        public SessionBase SendDeferred(GateCharacterChangeBackgroundResponse value) =>
+        public TSession SendDeferred(GateCharacterChangeBackgroundResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.ChangeBackground, (PacketWriter writer) =>
             {
                 writer.Write(value.AccountId);
@@ -356,7 +362,7 @@ namespace SoulCore.IO.Network
                 writer.Write(uint.MinValue);
             });
 
-        public SessionBase SendDeferred(EnterMapResponse value) =>
+        public TSession SendDeferred(EnterMapResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.SelectRes, (PacketWriter writer) =>
             {
                 writer.Write(value.CharacterId);
@@ -380,14 +386,14 @@ namespace SoulCore.IO.Network
                 writer.Write(value.PartyInfo.Id);
             });
 
-        public SessionBase SendDeferred(AuthGateConnectionEndPointResponse endPoint) =>
+        public TSession SendDeferred(AuthGateConnectionEndPointResponse endPoint) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.EnterServer, (PacketWriter writer) =>
             {
                 writer.WriteNumberLengthUtf8String(endPoint.Ip);
                 writer.Write(endPoint.Port);
             });
 
-        public SessionBase SendDeferred(UserCharacterForServerResponse gates) =>
+        public TSession SendDeferred(UserCharacterForServerResponse gates) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.ServerList, (PacketWriter writer) =>
             {
                 writer.Write(gates.LastSelectedId);
@@ -405,7 +411,7 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        public SessionBase SendDeferred(ContentsInfoResponse value) =>
+        public TSession SendDeferred(ContentsInfoResponse value) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.OptionLoad, (PacketWriter writer) =>
             {
                 writer.Write(value.OptionBit);
@@ -414,7 +420,7 @@ namespace SoulCore.IO.Network
                 writer.Write(value.KeyOption);
             });
 
-        public SessionBase SendDeferred(SAuthLoginResponse value) =>
+        public TSession SendDeferred(SAuthLoginResponse value) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.Result, (PacketWriter writer) =>
             {
                 writer.Write(value.AccountId);
@@ -435,7 +441,7 @@ namespace SoulCore.IO.Network
                 writer.Write(value.BrithDay);
             });
 
-        public SessionBase SendDeferred(SWorldCurrentDataResponse value) =>
+        public TSession SendDeferred(SWorldCurrentDataResponse value) =>
             SendDeferred(CategoryCommand.World, WorldCommand.CurDate, (PacketWriter writer) =>
             {
                 writer.Write(value.UnixTimeSeconds);
@@ -450,7 +456,7 @@ namespace SoulCore.IO.Network
 
         public HandlerPermission Permission { get; set; } = HandlerPermission.Anonymous;
 
-        public SessionBase SendDeferred(CategoryCommand category, object command, Action<PacketWriter> func)
+        public TSession SendDeferred(CategoryCommand category, object command, Action<PacketWriter> func)
         {
             using PacketWriter writer = new(category, command);
             func(writer);
@@ -458,7 +464,7 @@ namespace SoulCore.IO.Network
             return SendDeferred(writer);
         }
 
-        public SessionBase SendDeferred(CategoryCommand category, object command)
+        public TSession SendDeferred(CategoryCommand category, object command)
         {
             using PacketWriter writer = new(category, command);
             return SendDeferred(writer);
@@ -474,7 +480,7 @@ namespace SoulCore.IO.Network
             ushort opcode = br.ReadUInt16();
             DebugLogOpcode(opcode);
 
-            HandlerProvider.Entity handler = _provider[opcode];
+            HandlerProvider<TServer, TSession>.Entity handler = _provider[opcode];
             if (handler.Permission == Permission)
             {
                 handler.Method.Invoke(this, br);
@@ -482,15 +488,15 @@ namespace SoulCore.IO.Network
             }
         }
 
-        protected SessionBase(ServerBase<SessionBase> server, HandlerProvider provider, ILogger logger) =>
-            (_provider, InternalSession) = (provider, new(server.InternalServer, this, logger));
+        protected SessionBase(ServerBase<TServer, TSession> server, HandlerProvider<TServer, TSession> provider, ILogger logger) =>
+            (_provider, InternalSession) = (provider, new(server.InternalServer, (TSession)this, logger));
 
-        private SessionBase SendDeferred(PacketWriter writer)
+        private TSession SendDeferred(PacketWriter writer)
         {
             if (!InternalSession.SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
                 NetworkUtils.DropNetwork();
 
-            return this;
+            return (TSession)this;
         }
 
         [Conditional("DEBUG")]
