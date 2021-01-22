@@ -13,7 +13,7 @@ namespace SoulCore.IO.Network
 {
     public sealed class PacketWriter : BinaryWriter
     {
-        internal void WriteOptionStatus(OptionStatus value) => Write((ushort)value);
+        internal void WriteOptionStatus(UserOptionStatus value) => Write((ushort)value);
 
         internal void WriteGateEnterResult(GateEnterResult value) => Write((byte)value);
 

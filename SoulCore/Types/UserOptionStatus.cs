@@ -1,6 +1,6 @@
 ﻿namespace SoulCore.Types
 {
-    public enum OptionStatus : ushort
+    public enum UserOptionStatus : ushort
     {
         Disabled = 0,
         Enabled = 1

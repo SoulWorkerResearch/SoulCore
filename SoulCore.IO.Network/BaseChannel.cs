@@ -21,10 +21,10 @@ namespace SoulCore.IO.Network
             Id = id;
 
         protected bool TryAdd(TSession session) =>
-            _internalSessions.TryAdd(session.Id, session);
+            _internalSessions.TryAdd(session.InternalSession.Id, session);
 
         protected bool TryRemove(TSession session, out TSession? @out) =>
-            _internalSessions.TryRemove(session.Id, out @out);
+            _internalSessions.TryRemove(session.InternalSession.Id, out @out);
 
         #region Broadcast World
 
@@ -57,7 +57,7 @@ namespace SoulCore.IO.Network
             using PacketWriter writer = new(category, command);
             func(writer);
 
-            BroadcastDeferred(_internalSessions.Where(pair => except.Id != pair.Key), writer);
+            BroadcastDeferred(_internalSessions.Where(pair => except.InternalSession.Id != pair.Key), writer);
         }
 
         private static void BroadcastDeferred(IEnumerable<KeyValuePair<Guid, TSession>> sessions, PacketWriter writer)
@@ -68,7 +68,7 @@ namespace SoulCore.IO.Network
         }
 
         private static void SendDeferred(TSession session, byte[] packet, PacketWriter writer) =>
-            session.SendAsync(packet, 0, writer.BaseStream.Length);
+            session.InternalSession.SendAsync(packet, 0, writer.BaseStream.Length);
 
         private static byte[] GetRawPacket(PacketWriter writer) => PacketUtils.Pack(writer);
     }

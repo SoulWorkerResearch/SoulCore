@@ -5,6 +5,7 @@ using SoulCore.IO.Network.Permissions;
 using SoulCore.IO.Network.Providers;
 using SoulCore.IO.Network.Requests;
 using SoulCore.IO.Network.Responses;
+using SoulCore.IO.Network.Responses.Login;
 using SoulCore.IO.Network.Responses.Shared;
 using SoulCore.IO.Network.Utils;
 using SoulCore.Types;
@@ -18,8 +19,59 @@ using System.Text;
 
 namespace SoulCore.IO.Network
 {
-    public abstract class SessionBase : TcpSession
+    internal sealed class InternalSession<TSession> : TcpSession where TSession : SessionBase
     {
+        internal TSession Session { get; }
+
+        internal ILogger Logger { get; }
+
+        protected override void OnDisconnected() => Logger.LogDebug($"{Id} disconnected");
+
+        protected override void OnConnected() => Logger.LogDebug($"{Id} connected");
+
+        protected override void OnError(SocketError error) => Logger.LogError($"{error}");
+
+        protected override void OnReceived(byte[] buffer, long offset, long size)
+        {
+            using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
+            using BinaryReader br = new(ms);
+
+            try
+            {
+                do
+                {
+                    // SoulWorker Magic
+                    ms.Position += sizeof(ushort);
+
+                    // Packet Length
+                    int length = br.ReadUInt16() - (Defines.PacketHeaderSize + Defines.PacketOpcodeSize);
+
+                    // ???
+                    ms.Position += sizeof(byte);
+
+                    Session.ProcessPacket(br.ReadBytes(length));
+                } while (br.BaseStream.Position < br.BaseStream.Length);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Shit happened");
+#if !DEBUG
+                Disconnect();
+#endif
+                return;
+            }
+        }
+
+        internal InternalSession(InternalServer<TSession> server, TSession session, ILogger logger) : base(server) =>
+            (Session, Logger) = (session, logger);
+    }
+
+    public abstract class SessionBase
+    {
+        private readonly HandlerProvider _provider;
+
+        internal InternalSession<SessionBase> InternalSession { get; }
+
         //public SSessionBase SendAsync(BattlePassLoadResponse value) =>
         //    SendAsync(SCCategory.InfiniteTower, SCInfiniteTower.LoadInfo, (SPacketWriter writer) =>
         //    {
@@ -353,14 +405,14 @@ namespace SoulCore.IO.Network
                 }
             });
 
-        //public SSessionBase SendDeferred(Options value) =>
-        //    SendDeferred(CategoryCommand.Login, LoginCommand.OptionLoad, (PacketWriter writer) =>
-        //    {
-        //        writer.Write(new byte[64]);
-
-        //        foreach (OptionStatus option in value)
-        //            writer.WriteOptionStatus(option);
-        //    });
+        public SessionBase SendDeferred(ContentsInfoResponse value) =>
+            SendDeferred(CategoryCommand.Login, LoginCommand.OptionLoad, (PacketWriter writer) =>
+            {
+                writer.Write(value.OptionBit);
+                writer.Write(value.Content);
+                writer.Write(value.AccountId);
+                writer.Write(value.KeyOption);
+            });
 
         public SessionBase SendDeferred(SAuthLoginResponse value) =>
             SendDeferred(CategoryCommand.Login, LoginCommand.Result, (PacketWriter writer) =>
@@ -412,58 +464,7 @@ namespace SoulCore.IO.Network
             return SendDeferred(writer);
         }
 
-        private SessionBase SendDeferred(PacketWriter writer)
-        {
-            if (!SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
-                NetworkUtils.DropNetwork();
-
-            return this;
-        }
-
-        protected SessionBase(ServerBase server, HandlerProvider provider, ILogger logger) : base(server) =>
-            (_provider, _logger) = (provider, logger);
-
-        protected override void OnDisconnected() =>
-            _logger.LogDebug($"{Id} disconnected");
-
-        protected override void OnConnected() =>
-            _logger.LogDebug($"{Id} connected");
-
-        protected override void OnError(SocketError error) =>
-            _logger.LogError($"{error}");
-
-        protected override void OnReceived(byte[] buffer, long offset, long size)
-        {
-            using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
-            using BinaryReader br = new(ms);
-
-            try
-            {
-                do
-                {
-                    // SoulWorker Magic
-                    ms.Position += sizeof(ushort);
-
-                    // Packet Length
-                    int length = br.ReadUInt16() - (Defines.PacketHeaderSize + Defines.PacketOpcodeSize);
-
-                    // ???
-                    ms.Position += sizeof(byte);
-
-                    ProcessPacket(br.ReadBytes(length));
-                } while (br.BaseStream.Position < br.BaseStream.Length);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Shit happened");
-#if !DEBUG
-                Disconnect();
-#endif
-                return;
-            }
-        }
-
-        private void ProcessPacket(byte[] raw)
+        internal void ProcessPacket(byte[] raw)
         {
             PacketUtils.Exchange(ref raw);
 
@@ -481,12 +482,20 @@ namespace SoulCore.IO.Network
             }
         }
 
+        protected SessionBase(ServerBase<SessionBase> server, HandlerProvider provider, ILogger logger) =>
+            (_provider, InternalSession) = (provider, new(server.InternalServer, this, logger));
+
+        private SessionBase SendDeferred(PacketWriter writer)
+        {
+            if (!InternalSession.SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
+                NetworkUtils.DropNetwork();
+
+            return this;
+        }
+
         [Conditional("DEBUG")]
         private void DebugLogOpcode(ushort opcode) =>
-            _logger.LogDebug($"@event [0x{ConvertUtils.LeToBeUInt16(opcode):X4}]");
-
-        private readonly HandlerProvider _provider;
-        private readonly ILogger _logger;
+            InternalSession.Logger.LogDebug($"@event [0x{ConvertUtils.LeToBeUInt16(opcode):X4}]");
     }
 }
 
