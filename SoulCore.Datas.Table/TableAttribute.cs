@@ -3,11 +3,10 @@
 namespace SoulCore.Data.Bin.Table
 {
     [AttributeUsage(AttributeTargets.Class)]
-    internal class TableAttribute : Attribute
+    public class TableAttribute : Attribute
     {
-        internal string Name { get; }
+        public string Name { get; }
 
-        internal TableAttribute(string name) =>
-            Name = name;
+        internal TableAttribute(string name) => Name = name;
     }
 }
