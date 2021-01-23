@@ -10,8 +10,8 @@ namespace SoulCore.IO.Network.Responses
         public uint JumpId { get; init; }
         public uint PortalId { get; init; }
         public SEndPointSharedResponse EndPoint { get; init; } = SEndPointSharedResponse.Empty;
-        public SMapInfoSharedResponse Map { get; init; }
-        public SMapInfoSharedResponse ParentMap { get; init; }
+        public MapIdPacketSharedStructure Map { get; init; }
+        public MapIdPacketSharedStructure ParentMap { get; init; }
         public SPosInfoSharedResponse Pos { get; init; } = SPosInfoSharedResponse.Empty;
         public byte Type { get; init; }
     }

@@ -168,7 +168,7 @@ namespace SoulCore.IO.Network
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void Write(SMapInfoSharedResponse value) => Write(value.Seq);
+        internal void Write(MapIdPacketSharedStructure value) => Write(value.Seq);
 
         internal void Write(SPosInfoSharedResponse value)
         {

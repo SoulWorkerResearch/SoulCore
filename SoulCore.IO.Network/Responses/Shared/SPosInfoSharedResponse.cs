@@ -5,7 +5,7 @@ namespace SoulCore.IO.Network.Responses.Shared
     public sealed record SPosInfoSharedResponse
     {
         public ushort LocationId { get; init; }
-        public SMapInfoSharedResponse Map { get; init; }
+        public MapIdPacketSharedStructure Map { get; init; }
         public Vector3 Pos { get; init; }
         public float Rot { get; init; }
 
