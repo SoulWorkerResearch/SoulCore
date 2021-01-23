@@ -104,7 +104,6 @@
     <Folder Include="Responses\ServerWorldMode\" />
     <Folder Include="Responses\Server\" />
     <Folder Include="Responses\Shop\" />
-    <Folder Include="Responses\Skill\" />
     <Folder Include="Responses\SocialItem\" />
     <Folder Include="Responses\SoulMetry\" />
     <Folder Include="Responses\System\" />
