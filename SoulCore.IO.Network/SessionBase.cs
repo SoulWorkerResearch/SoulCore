@@ -78,6 +78,8 @@ namespace SoulCore.IO.Network
 
         internal InternalSession<TServer, TSession> InternalSession { get; }
 
+        public void Disconnect() => InternalSession.Disconnect();
+
         //public SSessionBase SendAsync(BattlePassLoadResponse value) =>
         //    SendAsync(SCCategory.InfiniteTower, SCInfiniteTower.LoadInfo, (SPacketWriter writer) =>
         //    {
