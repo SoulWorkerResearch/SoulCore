@@ -27,7 +27,11 @@ namespace SoulCore.IO.Network
 
         internal ILogger Logger { get; }
 
-        protected override void OnDisconnected() => Logger.LogDebug($"{Id} disconnected");
+        protected override void OnDisconnected()
+        {
+            Logger.LogDebug($"{Id} disconnected");
+            Session.OnDisconnected();
+        }
 
         protected override void OnConnected() => Logger.LogDebug($"{Id} connected");
 
@@ -488,6 +492,10 @@ namespace SoulCore.IO.Network
                 handler.Method.Invoke(this, br);
                 Debug.Assert(br.BaseStream.Position == br.BaseStream.Length, "Packet not fully read");
             }
+        }
+
+        protected internal virtual void OnDisconnected()
+        {
         }
 
         protected SessionBase(ServerBase<TServer, TSession> server, HandlerProvider<TServer, TSession> provider, ILogger logger) =>
