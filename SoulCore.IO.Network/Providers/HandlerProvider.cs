@@ -43,14 +43,14 @@ namespace SoulCore.IO.Network.Providers
 #endif // !DEBUG
         }
 
-        private static List<Entity> GetHandlers(IServiceProvider service, ILogger logger)
+        private static IEnumerable<Entity> GetHandlers(IServiceProvider service, ILogger logger)
         {
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance))
                 .Where(type => type.IsDefined(typeof(HandlerAttribute)));
 
-            List<Entity> handlers = Enumerable.Repeat(new Entity(HandlerPermission.None, Dummy), GetMaxHandlersCount()).ToList();
+            Entity[] handlers = Enumerable.Repeat(new Entity(HandlerPermission.None, Dummy), GetMaxHandlersCount()).ToArray();
 
             Dictionary<Type, object?> instances = new(methods.Count());
 
@@ -79,7 +79,7 @@ namespace SoulCore.IO.Network.Providers
                 Entity.MethodInfo handlerMethod = CreateHandlerMethod(instance, service, method);
                 handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(attribute.Permission, handlerMethod);
 
-                logger.LogDebug($"Used SoulWorker EVENT [{attribute.Category:X2}:0x{attribute.Command:X2}] invoker on {method.DeclaringType!.FullName}.{method.Name}.");
+                logger.LogDebug($"Used SoulWorker EVENT [{(byte)attribute.Category:X2}:{attribute.Command:X2}] invoker on {method.DeclaringType!.FullName}.{method.Name}.");
             }
 
             return handlers;
