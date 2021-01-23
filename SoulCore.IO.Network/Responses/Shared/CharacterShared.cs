@@ -32,8 +32,10 @@ namespace SoulCore.IO.Network.Responses.Shared
             public ushort EquippedSkinColor { get; init; }
         }
 
-        public sealed record EquippedGearInfo
+        public sealed record GearInfo
         {
+            public static GearInfo Empty { get; } = new();
+
             public byte UpgradeLevel { get; init; }
             public int PrototypeId { get; init; } = -1;
         }
@@ -42,6 +44,8 @@ namespace SoulCore.IO.Network.Responses.Shared
         {
             public sealed record CostumeInfo
             {
+                public static CostumeInfo Empty { get; } = new();
+
                 public int PrototypeId { get; init; }
                 public uint Color { get; init; }
             }
@@ -59,7 +63,7 @@ namespace SoulCore.IO.Network.Responses.Shared
         public string Name { get; init; } = default!;
         public AppearanceInfo Appearance { get; init; }
         public StatsInfo Stats { get; init; }
-        public EquippedGearInfo WeaponItem { get; init; } = default!;
+        public GearInfo WeaponItem { get; init; } = default!;
         public EquippedCostumeInfos EquippedItems { get; init; }
     }
 }
