@@ -490,7 +490,7 @@ namespace SoulCore.IO.Network
             HandlerProvider<TServer, TSession>.Entity handler = _provider[opcode];
             if (handler.Permission == Permission)
             {
-                handler.Method.Invoke(this, br);
+                handler.Method.Invoke((TSession)this, br);
                 Debug.Assert(br.BaseStream.Position == br.BaseStream.Length, "Packet not fully read");
             }
         }

@@ -19,7 +19,7 @@ namespace SoulCore.IO.Network.Providers
     {
         public sealed record Entity
         {
-            public delegate void MethodInfo(SessionBase<TServer, TSession> session, BinaryReader br);
+            public delegate void MethodInfo(TSession session, BinaryReader br);
 
             public HandlerPermission Permission { get; }
             public MethodInfo Method { get; }
