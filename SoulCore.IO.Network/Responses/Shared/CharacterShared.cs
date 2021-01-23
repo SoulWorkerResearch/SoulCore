@@ -32,22 +32,22 @@ namespace SoulCore.IO.Network.Responses.Shared
             public ushort EquippedSkinColor { get; init; }
         }
 
-        public sealed record GearItemInfo
+        public sealed record EquippedGearInfo
         {
             public byte UpgradeLevel { get; init; }
             public int PrototypeId { get; init; } = -1;
         }
 
-        public readonly struct EquippedItemsInfo
+        public readonly struct EquippedCostumeInfos
         {
-            public sealed record FashionItemInfo
+            public sealed record CostumeInfo
             {
                 public int PrototypeId { get; init; }
                 public uint Color { get; init; }
             }
 
-            public IEnumerable<FashionItemInfo?> View { get; init; }
-            public IEnumerable<FashionItemInfo?> Battle { get; init; }
+            public IEnumerable<CostumeInfo?> View { get; init; }
+            public IEnumerable<CostumeInfo?> Battle { get; init; }
         }
 
         public int Id { get; init; }
@@ -59,7 +59,7 @@ namespace SoulCore.IO.Network.Responses.Shared
         public string Name { get; init; } = default!;
         public AppearanceInfo Appearance { get; init; }
         public StatsInfo Stats { get; init; }
-        public GearItemInfo WeaponItem { get; init; } = default!;
-        public EquippedItemsInfo EquippedItems { get; init; }
+        public EquippedGearInfo WeaponItem { get; init; } = default!;
+        public EquippedCostumeInfos EquippedItems { get; init; }
     }
 }

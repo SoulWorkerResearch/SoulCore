@@ -72,7 +72,7 @@ namespace SoulCore.IO.Network
                 writer.Write(uint.MinValue);
             }
 
-            foreach ((CharacterShared.EquippedItemsInfo.FashionItemInfo? view, CharacterShared.EquippedItemsInfo.FashionItemInfo? battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
+            foreach ((CharacterShared.EquippedCostumeInfos.CostumeInfo? view, CharacterShared.EquippedCostumeInfos.CostumeInfo? battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
             {
                 if (view is not null)
                 {
