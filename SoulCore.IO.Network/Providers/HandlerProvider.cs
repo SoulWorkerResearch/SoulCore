@@ -92,7 +92,7 @@ namespace SoulCore.IO.Network.Providers
 
             Expression[] arguments = method.GetParameters().Select(param =>
             {
-                if (!param.IsIn)
+                if (param.IsIn)
                     throw new NetworkException("In arguments not supported");
 
                 if (param.ParameterType is null)
