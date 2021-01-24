@@ -31,7 +31,7 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (!layers.TryGetProperty("frame", out JsonElement frame))
                         throw new ReaderException();
 
-                    if (!frame.TryGetProperty("frame.number", out JsonElement frameNumber))
+                    if (!frame.TryGetProperty("frame.number", out JsonElement jsonFrameNumber))
                         throw new ReaderException();
 
                     if (!layers.TryGetProperty("ip", out JsonElement ip))
@@ -49,13 +49,33 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (!tcp.TryGetProperty("tcp.payload", out JsonElement payload))
                         return null;
 
+                    string? frameNumber = jsonFrameNumber.GetString();
+                    if (frameNumber is null)
+                        return null;
+
+                    string? frameDstIp = dstHost.GetString();
+                    if (frameDstIp is null)
+                        return null;
+
+                    string? frameSrcIp = srcHost.GetString();
+                    if (frameSrcIp is null)
+                        return null;
+
+                    string? frameRelativeTime = timeRelativeElement.GetString();
+                    if (frameRelativeTime is null)
+                        return null;
+
+                    string? framePayload = payload.GetString();
+                    if (framePayload is null)
+                        return null;
+
                     return new RawPacket()
                     {
-                        Frame = frameNumber.GetString() ?? "",
-                        DstIp = dstHost.GetString() ?? "",
-                        SrcIp = srcHost.GetString() ?? "",
-                        RelativeTime = timeRelativeElement.GetString() ?? "",
-                        Payload = Convert.FromHexString(payload.GetString()?.Where(s => s != ':').ToArray() ?? Array.Empty<char>())
+                        Frame = frameNumber,
+                        DstIp = frameDstIp,
+                        SrcIp = frameSrcIp,
+                        RelativeTime = frameRelativeTime,
+                        Payload = Convert.FromHexString(framePayload.Where(s => s != ':').ToArray())
                     };
                 })
                 .Where(s => s is not null)
