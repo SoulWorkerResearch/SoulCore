@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SoulCore.Tools.Wireshark.DumpPacket": {
+      "commandName": "Project",
+      "workingDirectory": "$(SolutionDir)\\SoulCore.IO.Network.Test\\data"
+    }
+  }
+}

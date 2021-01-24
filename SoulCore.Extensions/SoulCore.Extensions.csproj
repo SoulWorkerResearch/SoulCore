@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl></PackageProjectUrl>
+    <PackageProjectUrl />
     <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <Deterministic>False</Deterministic>

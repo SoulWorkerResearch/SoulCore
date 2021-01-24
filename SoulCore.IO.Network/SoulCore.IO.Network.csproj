@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl></PackageProjectUrl>
+    <PackageProjectUrl />
     <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <Deterministic>False</Deterministic>
@@ -38,7 +38,6 @@
     <Folder Include="Requests\ItemSetup\" />
     <Folder Include="Requests\ItemUpgrade\" />
     <Folder Include="Requests\League\" />
-    <Folder Include="Requests\Login\" />
     <Folder Include="Requests\Maze\" />
     <Folder Include="Requests\ModeMaze\" />
     <Folder Include="Requests\Monitor\" />

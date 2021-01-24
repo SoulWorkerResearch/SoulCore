@@ -51,7 +51,7 @@ namespace SoulCore.IO.Network
                     ms.Position += sizeof(ushort);
 
                     // Packet Length
-                    int length = br.ReadUInt16() - (Defines.PacketHeaderSize + Defines.PacketOpcodeSize);
+                    int length = br.ReadUInt16() - Defines.PacketHeaderSize;
 
                     // ???
                     ms.Position += sizeof(byte);

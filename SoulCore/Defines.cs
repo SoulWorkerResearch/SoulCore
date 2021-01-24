@@ -4,6 +4,9 @@ namespace SoulCore
 {
     public static class Defines
     {
+        public const byte PacketHeaderMagic1 = 0x2;
+        public const byte PacketHeaderMagic2 = 0x0;
+
         public const byte ClothesWithBoochesCount = 5;
         public const byte PerItemBoochesCount = 3;
         public const byte PerItemStatsCount = 5;
