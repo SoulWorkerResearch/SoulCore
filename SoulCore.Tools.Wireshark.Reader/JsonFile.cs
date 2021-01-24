@@ -49,6 +49,9 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (!tcp.TryGetProperty("tcp.payload", out JsonElement payload))
                         return null;
 
+                    if (!tcp.TryGetProperty("tcp.stream", out JsonElement jsonTcpStream))
+                        return null;
+
                     string? frameNumber = jsonFrameNumber.GetString();
                     if (frameNumber is null)
                         return null;
@@ -69,8 +72,13 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (framePayload is null)
                         return null;
 
+                    string? tcpStream = jsonTcpStream.GetString();
+                    if (tcpStream is null)
+                        return null;
+
                     return new RawPacket()
                     {
+                        StreamId = ulong.Parse(tcpStream),
                         Frame = frameNumber,
                         DstIp = frameDstIp,
                         SrcIp = frameSrcIp,
@@ -82,13 +90,7 @@ namespace SoulCore.Tools.Wireshark.Reader
                 .Cast<RawPacket>()
                 .ToArray();
 
-            IEnumerable<string> keys = rawPackets.Select(s => $"{s.DstIp}-{s.SrcIp}").Distinct();
-
-            return keys.Select(k =>
-            {
-                string[] ips = k.Split('-');
-                return rawPackets.Where(s => s.DstIp == ips[0] && s.SrcIp == ips[1]);
-            });
+            return rawPackets.Select(s => s.StreamId).Distinct().Select(k => rawPackets.Where(s => s.StreamId == k));
         }
     }
 }

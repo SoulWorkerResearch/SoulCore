@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "SoulCore.Tools.Wireshark.DumpPacket": {
-      "commandName": "Project",
-      "commandLineArgs": "\"Y:\\soulworker-dev\\swSniffer\\wireshark\\1\\json.json\"",
-      "workingDirectory": "$(SolutionDir)\\SoulCore.IO.Network.Test\\data"
-    }
-  }
-}
