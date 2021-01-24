@@ -1,6 +1,7 @@
 using ow.Framework.Tests;
 using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.Requests;
+using SoulCore.IO.Network.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,8 +30,6 @@ namespace SoulCore.IO.Network.Test
                 // Packet Length
                 int length = br.ReadUInt16() - Defines.PacketHeaderSize;
 
-                long need = fs.Position + length;
-
                 // ???
                 fs.Position += sizeof(byte);
 
@@ -40,6 +39,8 @@ namespace SoulCore.IO.Network.Test
 
         private void RequestTest(byte[] raw)
         {
+            PacketUtils.Exchange(ref raw);
+
             using MemoryStream ms = new(raw, false);
             using BinaryReader br = new(ms);
 
@@ -56,7 +57,7 @@ namespace SoulCore.IO.Network.Test
             // category = 0x04
             // command = 0x01
             // index = 0x0401
-            ushort index = (ushort)((byte)category + (((byte)command) << 8));
+            ushort index = (ushort)((byte)command + (((byte)category) << 8));
             _requests[index] = typeof(T);
         }
     }
