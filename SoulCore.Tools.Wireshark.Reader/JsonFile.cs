@@ -53,27 +53,27 @@ namespace SoulCore.Tools.Wireshark.Reader
                         return null;
 
                     string? frameNumber = jsonFrameNumber.GetString();
-                    if (frameNumber is null)
+                    if (string.IsNullOrEmpty(frameNumber))
                         return null;
 
                     string? frameDstIp = dstHost.GetString();
-                    if (frameDstIp is null)
+                    if (string.IsNullOrEmpty(frameDstIp))
                         return null;
 
                     string? frameSrcIp = srcHost.GetString();
-                    if (frameSrcIp is null)
+                    if (string.IsNullOrEmpty(frameSrcIp))
                         return null;
 
                     string? frameRelativeTime = timeRelativeElement.GetString();
-                    if (frameRelativeTime is null)
+                    if (string.IsNullOrEmpty(frameRelativeTime))
                         return null;
 
                     string? framePayload = payload.GetString();
-                    if (framePayload is null)
+                    if (string.IsNullOrEmpty(framePayload))
                         return null;
 
                     string? tcpStream = jsonTcpStream.GetString();
-                    if (tcpStream is null)
+                    if (string.IsNullOrEmpty(tcpStream))
                         return null;
 
                     return new RawPacket()
