@@ -19,11 +19,9 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
             string outputFilePath = args[1];
             string clientIp = args[2];
 
-            var justPackets = await WriteSequenceAsync(inputFilePath).ConfigureAwait(false);
-            justPackets.Sort((a, b) => a.Frame.CompareTo(b.Frame));
-
             await using FileStream fs = File.Open(outputFilePath, FileMode.Create, FileAccess.Write);
 
+            var justPackets = await WriteSequenceAsync(inputFilePath).ConfigureAwait(false);
             foreach (var packet in justPackets)
             {
                 await using MemoryStream ms = new(packet.Body);
