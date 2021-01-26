@@ -15,13 +15,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Utils", "SoulCore.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{9AB08B13-C2B5-4CC2-94B5-59038A761F60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore.IO.Network.Test", "SoulCore.IO.Network.Test\SoulCore.IO.Network.Test.csproj", "{4FD16270-3938-442D-9E90-3A9C229B2FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.IO.Network.Test", "SoulCore.IO.Network.Test\SoulCore.IO.Network.Test.csproj", "{4FD16270-3938-442D-9E90-3A9C229B2FBB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{078CFE03-5B3E-490C-A086-FDBFA10E6061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore.Tools.Wireshark.DumpPacket", "SoulCore.Tools.Wireshark.DumpPacket\SoulCore.Tools.Wireshark.DumpPacket.csproj", "{A010AA36-7864-4F0F-AE6E-EA6AFE7DA9D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Tools.Wireshark.DumpPacket", "SoulCore.Tools.Wireshark.DumpPacket\SoulCore.Tools.Wireshark.DumpPacket.csproj", "{A010AA36-7864-4F0F-AE6E-EA6AFE7DA9D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulCore.Tools.Wireshark.Reader", "SoulCore.Tools.Wireshark.Reader\SoulCore.Tools.Wireshark.Reader.csproj", "{8A8D1144-17E7-42BE-A305-BD1CC49180B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Tools.Wireshark.Reader", "SoulCore.Tools.Wireshark.Reader\SoulCore.Tools.Wireshark.Reader.csproj", "{8A8D1144-17E7-42BE-A305-BD1CC49180B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulCore.Tools.Wireshark.JsonDumpDecode", "SoulCore.Tools.Wireshark.JsonDumpDecode\SoulCore.Tools.Wireshark.JsonDumpDecode.csproj", "{DA3ED637-C0DF-4B87-A259-EF494AA1CC47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{8A8D1144-17E7-42BE-A305-BD1CC49180B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A8D1144-17E7-42BE-A305-BD1CC49180B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A8D1144-17E7-42BE-A305-BD1CC49180B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3ED637-C0DF-4B87-A259-EF494AA1CC47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3ED637-C0DF-4B87-A259-EF494AA1CC47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3ED637-C0DF-4B87-A259-EF494AA1CC47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3ED637-C0DF-4B87-A259-EF494AA1CC47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{4FD16270-3938-442D-9E90-3A9C229B2FBB} = {9AB08B13-C2B5-4CC2-94B5-59038A761F60}
 		{A010AA36-7864-4F0F-AE6E-EA6AFE7DA9D2} = {078CFE03-5B3E-490C-A086-FDBFA10E6061}
 		{8A8D1144-17E7-42BE-A305-BD1CC49180B4} = {078CFE03-5B3E-490C-A086-FDBFA10E6061}
+		{DA3ED637-C0DF-4B87-A259-EF494AA1CC47} = {078CFE03-5B3E-490C-A086-FDBFA10E6061}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F8C13B2-A1E3-48D9-99D8-7EB45F359142}
