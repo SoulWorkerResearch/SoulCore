@@ -4,8 +4,10 @@ namespace SoulCore.Tools.Wireshark.Reader
 {
     public sealed record RawPacket
     {
+        public ulong StreamSeqId { get; init; }
+        public ulong StreamNextSeqId { get; init; }
         public ulong StreamId { get; init; }
-        public string Frame { get; init; } = string.Empty;
+        public ulong Frame { get; init; }
         public string RelativeTime { get; init; } = string.Empty;
         public string SrcIp { get; init; } = string.Empty;
         public string DstIp { get; init; } = string.Empty;

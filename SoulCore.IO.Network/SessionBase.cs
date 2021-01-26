@@ -47,16 +47,10 @@ namespace SoulCore.IO.Network
             {
                 do
                 {
-                    // SoulWorker Magic
-                    ms.Position += sizeof(ushort);
+                    var packet = new PacketHeader(br);
+                    PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + Defines.PacketHeaderSize));
 
-                    // Packet Length
-                    int length = br.ReadUInt16() - Defines.PacketHeaderSize;
-
-                    // ???
-                    ms.Position += sizeof(byte);
-
-                    Session.ProcessPacket(br.ReadBytes(length));
+                    Session.ProcessPacket(br);
                 } while (br.BaseStream.Position < br.BaseStream.Length);
             }
             catch (Exception ex)
@@ -96,6 +90,8 @@ namespace SoulCore.IO.Network
         //        writer.Write(value.HavePoint);
         //        writer.Write(byte.MinValue);
         //    });
+
+        #region Send
 
         public TSession SendDeferred(BattlePassLoadResponse value) =>
             SendDeferred(CategoryCommand.Event, EventCommand.BattlePassLoad, (PacketWriter writer) =>
@@ -477,21 +473,17 @@ namespace SoulCore.IO.Network
             return SendDeferred(writer);
         }
 
-        internal void ProcessPacket(byte[] raw)
+        #endregion Send
+
+        internal void ProcessPacket(BinaryReader br)
         {
-            PacketUtils.Exchange(ref raw);
-
-            using MemoryStream ms = new(raw, false);
-            using BinaryReader br = new(ms);
-
-            ushort opcode = br.ReadUInt16();
+            var opcode = br.ReadUInt16();
             DebugLogOpcode(opcode);
 
-            HandlerProvider<TServer, TSession>.Entity handler = _provider[opcode];
+            var handler = _provider[opcode];
             if (handler.Permission == Permission)
             {
                 handler.Method.Invoke((TSession)this, br);
-                Debug.Assert(br.BaseStream.Position == br.BaseStream.Length, "Packet not fully read");
             }
         }
 

@@ -52,6 +52,12 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (!tcp.TryGetProperty("tcp.stream", out JsonElement jsonTcpStream))
                         return null;
 
+                    if (!tcp.TryGetProperty("tcp.seq", out JsonElement jsonTcpSeq))
+                        return null;
+
+                    if (!tcp.TryGetProperty("tcp.seq", out JsonElement jsonTcpNxtseq))
+                        return null;
+
                     string? frameNumber = jsonFrameNumber.GetString();
                     if (string.IsNullOrEmpty(frameNumber))
                         return null;
@@ -76,10 +82,20 @@ namespace SoulCore.Tools.Wireshark.Reader
                     if (string.IsNullOrEmpty(tcpStream))
                         return null;
 
+                    string? tcpSeq = jsonTcpSeq.GetString();
+                    if (string.IsNullOrEmpty(tcpSeq))
+                        return null;
+
+                    string? tcpNextSeq = jsonTcpNxtseq.GetString();
+                    if (string.IsNullOrEmpty(tcpNextSeq))
+                        return null;
+
                     return new RawPacket()
                     {
+                        StreamNextSeqId = ulong.Parse(tcpNextSeq),
+                        StreamSeqId = ulong.Parse(tcpSeq),
                         StreamId = ulong.Parse(tcpStream),
-                        Frame = frameNumber,
+                        Frame = ulong.Parse(frameNumber),
                         DstIp = frameDstIp,
                         SrcIp = frameSrcIp,
                         RelativeTime = frameRelativeTime,

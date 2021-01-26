@@ -23,17 +23,14 @@ namespace SoulCore.IO.Network.Test
 
             while (fs.Position != fs.Length)
             {
+                var packet = new PacketHeader(br);
+
                 // SoulWorker Magic
-                Assert.Equal(Defines.PacketHeaderMagic1, br.ReadByte());
-                Assert.Equal(Defines.PacketHeaderMagic2, br.ReadByte());
+                Assert.Equal(Defines.PacketHeaderMagic1, packet.Magic0);
+                Assert.Equal(Defines.PacketHeaderMagic2, packet.Magic1);
+                Assert.True(packet.usTos == 1 || packet.usTos == 2);
 
-                // Packet Length
-                int length = br.ReadUInt16() - Defines.PacketHeaderSize;
-
-                // ???
-                fs.Position += sizeof(byte);
-
-                RequestTest(br.ReadBytes(length));
+                RequestTest(br.ReadBytes(packet.Size - Defines.PacketHeaderSize));
             }
         }
 
