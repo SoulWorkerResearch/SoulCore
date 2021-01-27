@@ -1,10 +1,12 @@
 using ow.Framework.Tests;
 using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.Requests;
+using SoulCore.IO.Network.Requests.System;
 using SoulCore.IO.Network.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using Xunit;
 
 namespace SoulCore.IO.Network.Test
@@ -17,6 +19,7 @@ namespace SoulCore.IO.Network.Test
         public void StructureTest()
         {
             AddRequest<SRMMoveRequest>(CategoryCommand.Move, MoveCommand.Move);
+            AddRequest<SgTokenUpdateRequest>(CategoryCommand.System, SystemCommand.SgTokenUpdate);
 
             using FileStream fs = File.OpenRead(@"data\packet.bin");
             using BinaryReader br = new(fs);
@@ -45,7 +48,8 @@ namespace SoulCore.IO.Network.Test
             ushort command = br.ReadUInt16();
             if (_requests.TryGetValue(command, out Type request))
             {
-                _ = Activator.CreateInstance(request, new object[] { br });
+                var flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+                _ = Activator.CreateInstance(request, flags, null, new object[] { br }, null, null);
                 Assert.Equal(ms.Length, ms.Position);
             }
         }

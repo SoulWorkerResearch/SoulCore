@@ -1,10 +1,8 @@
-using SoulCore.IO.Network.Attributes;
+﻿using System.IO;
 using SoulCore.IO.Network.Responses.Shared;
-using System.IO;
 
-namespace SoulCore.IO.Network.Requests
+namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request]
     public readonly struct CharacterEnterGameServerRequest
     {
         public int Account { get; }
@@ -13,7 +11,7 @@ namespace SoulCore.IO.Network.Requests
         public byte FirstConnect { get; }
         public ulong SessionKey { get; }
 
-        public CharacterEnterGameServerRequest(BinaryReader br)
+        internal CharacterEnterGameServerRequest(BinaryReader br)
         {
             Account = br.ReadInt32();
             Character = br.ReadInt32();

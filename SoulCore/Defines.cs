@@ -4,6 +4,7 @@ namespace SoulCore
 {
     public static class Defines
     {
+        public const ushort TokenSize = 1025;
         public const byte PacketHeaderMagic1 = 0x3;
         public const byte PacketHeaderMagic2 = 0x0;
 

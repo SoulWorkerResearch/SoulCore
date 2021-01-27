@@ -42,9 +42,6 @@ namespace SoulCore.Extensions
         public static float[] ReadSingleArray(this BinaryReader br, byte count) =>
             Enumerable.Repeat(0, count).Select(_ => br.ReadSingle()).ToArray();
 
-        public static byte[] ReadByteArray(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadByte()).ToArray();
-
         #endregion Arrays
 
         #region Enums

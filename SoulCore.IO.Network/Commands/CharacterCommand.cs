@@ -13,7 +13,7 @@
         ProfilePhotoLoad = 0x9,
         ProfilePhotoUpdate = 0xA,
         ProfilePhotoFavorite = 0xb,
-        ProfilePhotoCahnge = 0xC,
+        ProfilePhotoChange = 0xC,
         RepresentativeCheck = 0xD,
         RepresentativeChange = 0xF,
         ListReq = 0x11,
@@ -84,6 +84,6 @@
         LeagueWithdrawPenalty = 0x78,
         LeagueDeletePenalty = 0x79,
         EqualizerUpdate = 0x7A,
-        CashMileage = 0x7B,
+        CashMileageInfo = 0x7B,
     }
 }

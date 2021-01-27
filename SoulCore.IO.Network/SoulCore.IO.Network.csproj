@@ -14,6 +14,11 @@
     <Deterministic>False</Deterministic>
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Requests\Character\old\**" />
+    <EmbeddedResource Remove="Requests\Character\old\**" />
+    <None Remove="Requests\Character\old\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE">
@@ -23,11 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\Booster\" />
-    <Folder Include="Requests\Channel\" />
     <Folder Include="Requests\Chat\" />
     <Folder Include="Requests\DailyMission\" />
-    <Folder Include="Requests\Drop\" />
     <Folder Include="Requests\Event\" />
     <Folder Include="Requests\Exchange\" />
     <Folder Include="Requests\Friend\" />
@@ -60,14 +62,12 @@
     <Folder Include="Requests\Skill\" />
     <Folder Include="Requests\SocialItem\" />
     <Folder Include="Requests\SoulMetry\" />
-    <Folder Include="Requests\System\" />
     <Folder Include="Requests\Tool\" />
     <Folder Include="Requests\Trade\" />
     <Folder Include="Requests\Vaccum\" />
     <Folder Include="Requests\WeeklyMission\" />
     <Folder Include="Requests\WorldMode\" />
     <Folder Include="Requests\World\" />
-    <Folder Include="Responses\Booster\" />
     <Folder Include="Responses\Channel\" />
     <Folder Include="Responses\Chat\" />
     <Folder Include="Responses\DailyMission\" />

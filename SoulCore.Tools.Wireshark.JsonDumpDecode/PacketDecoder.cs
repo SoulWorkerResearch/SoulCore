@@ -44,13 +44,13 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
             if (clientIp == packet.Receiver)
             {
-                await fs.WriteAsync(Encoding.ASCII.GetBytes($"{packet.Frame,4}   | [Client -> {opcodes.Item1}::{opcodes.Item2}] {packet.Time}: ")).ConfigureAwait(false);
+                await fs.WriteAsync(Encoding.ASCII.GetBytes($"{packet.Frame,4}   | [Server -> {opcodes.Item1}::{opcodes.Item2}] {packet.Time}: ")).ConfigureAwait(false);
                 await fs.WriteAsync(Encoding.ASCII.GetBytes($"[{packet.Sender}] ---> [{packet.Receiver}]\n")).ConfigureAwait(false);
             }
             else
             {
-                await fs.WriteAsync(Encoding.ASCII.GetBytes($"{packet.Frame,4}   | [Server -> {opcodes.Item1}::{opcodes.Item2}] {packet.Time}: ")).ConfigureAwait(false);
-                await fs.WriteAsync(Encoding.ASCII.GetBytes($"[{packet.Receiver}] <--- [ {packet.Sender}]\n")).ConfigureAwait(false);
+                await fs.WriteAsync(Encoding.ASCII.GetBytes($"{packet.Frame,4}   | [Client -> {opcodes.Item1}::{opcodes.Item2}] {packet.Time}: ")).ConfigureAwait(false);
+                await fs.WriteAsync(Encoding.ASCII.GetBytes($"[{packet.Receiver}] <--- [{packet.Sender}]\n")).ConfigureAwait(false);
             }
         }
 
@@ -81,51 +81,44 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
             List<Packet> justPackets = new(splitteds.Select(s => s.Count()).Sum());
 
+            var written = new HashSet<ulong>();
+
             foreach (var rawPackets in splitteds)
             {
-                string tempName = Path.GetTempFileName();
-                Console.WriteLine($"Temp file: {tempName}");
-
-                await using FileStream fs = File.Open(tempName, FileMode.Create, FileAccess.ReadWrite);
-
-                {
-                    var written = new HashSet<ulong>();
-
-                    foreach (var packet in rawPackets)
-                    {
-                        await HierarchyWrite(packet, rawPackets, written, fs).ConfigureAwait(false);
-                    }
-
-                    fs.Position = 0;
-                }
-
-                using BinaryReader br = new(fs);
-
                 foreach (var rawPacket in rawPackets)
                 {
-                    while (fs.Position != fs.Length)
+                    await using MemoryStream ms = new(ushort.MaxValue);
+
+                    await HierarchyWrite(rawPacket, rawPackets, written, ms).ConfigureAwait(false);
+
+                    if (ms.Length <= 0)
                     {
-                        var packet = new PacketHeader(br);
-
-                        byte[] buffer = br.ReadBytes(packet.Size - Defines.PacketHeaderSize);
-                        PacketUtils.Exchange(ref buffer);
-
-                        justPackets.Add(new Packet()
-                        {
-                            Frame = rawPacket.Frame,
-                            Receiver = rawPacket.DstIp,
-                            Sender = rawPacket.SrcIp,
-                            Time = rawPacket.RelativeTime,
-                            Body = buffer
-                        });
+                        continue;
                     }
+
+                    ms.Position = 0;
+                    using BinaryReader br = new(ms);
+
+                    var packet = new PacketHeader(br);
+
+                    byte[] buffer = br.ReadBytes(packet.Size - Defines.PacketHeaderSize);
+                    PacketUtils.Exchange(ref buffer);
+
+                    justPackets.Add(new Packet()
+                    {
+                        Frame = rawPacket.Frame,
+                        Receiver = rawPacket.DstIp,
+                        Sender = rawPacket.SrcIp,
+                        Time = rawPacket.RelativeTime,
+                        Body = buffer
+                    });
                 }
             }
 
             return justPackets;
         }
 
-        private static async Task HierarchyWrite(RawPacket packet, IEnumerable<RawPacket> packets, HashSet<ulong> written, FileStream fs)
+        private static async Task HierarchyWrite(RawPacket packet, IEnumerable<RawPacket> packets, HashSet<ulong> written, MemoryStream fs)
         {
             if (!written.Add(packet.Frame))
             {
