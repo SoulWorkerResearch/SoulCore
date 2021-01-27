@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.Chat)]
     public enum ChatCommand : byte
     {
         Normal = 0x1,

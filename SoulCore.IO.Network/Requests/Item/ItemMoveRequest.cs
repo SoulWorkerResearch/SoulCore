@@ -1,11 +1,12 @@
 using SoulCore.Extensions;
 using SoulCore.IO.Network.Attributes;
+using SoulCore.IO.Network.Commands;
 using SoulCore.Types;
 using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Item
 {
-    [Request]
+    [Request(CategoryCommand.Item, ItemCommand.Move)]
     public readonly struct ItemMoveRequest
     {
         public readonly struct ItemInfo
@@ -14,7 +15,12 @@ namespace SoulCore.IO.Network.Requests.Item
             public int Item { get; }
             public ushort Slot { get; }
 
-            public ItemInfo(BinaryReader br) => (Storage, Item, Slot) = (br.ReadStorageType(), br.ReadInt32(), br.ReadUInt16());
+            public ItemInfo(BinaryReader br)
+            {
+                Storage = br.ReadStorageType();
+                Item = br.ReadInt32();
+                Slot = br.ReadUInt16();
+            }
         }
 
         public ItemInfo Source { get; }

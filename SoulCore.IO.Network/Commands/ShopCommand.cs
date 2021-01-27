@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.Shop)]
     public enum ShopCommand : byte
     {
         Buy = 0x1,

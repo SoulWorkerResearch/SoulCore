@@ -1,6 +1,6 @@
 ﻿using SoulCore.Types;
 
-namespace SoulCore.IO.Network.Requests.Force
+namespace SoulCore.IO.Network.PacketSharedStructure
 {
     public abstract record SRFMember
     {

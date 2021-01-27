@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.ServerUser)]
     public enum ServerUserCommand : byte
     {
         SelectCharacter = 0x1,

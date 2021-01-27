@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.ServerLeague)]
     public enum ServerLeagueCommand : byte
     {
         Create = 0x1,

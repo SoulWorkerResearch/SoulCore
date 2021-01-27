@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.SoulMetry)]
     public enum SoulMetryCommand : byte
     {
         List = 0x1,

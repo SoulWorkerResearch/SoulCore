@@ -1,5 +1,8 @@
-﻿namespace SoulCore.IO.Network.Commands
+﻿using SoulCore.IO.Network.Attributes;
+
+namespace SoulCore.IO.Network.Commands
 {
+    [CategoryCommand(CategoryCommand.Event)]
     public enum EventCommand : byte
     {
         AttendanceLoad = 0x1,
@@ -20,9 +23,9 @@
         RouletteInfo = 0x27,
         RouletteMyInfo = 0x28,
         RouletteUse = 0x29,
-        BattlePassLoad  = 0x30,
-        BattlePassUpdate  = 0x31,
+        BattlePassLoad = 0x30,
+        BattlePassUpdate = 0x31,
         BattlePassReward = 0x32,
-        BattlePassUpgrade  = 0x33,
+        BattlePassUpgrade = 0x33,
     }
 }

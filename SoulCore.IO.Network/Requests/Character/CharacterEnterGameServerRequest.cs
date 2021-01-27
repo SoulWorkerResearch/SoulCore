@@ -1,8 +1,11 @@
 ﻿using System.IO;
 using SoulCore.IO.Network.Responses.Shared;
+using SoulCore.IO.Network.Attributes;
+using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
+    [Request(CategoryCommand.Character, CharacterCommand.EnterGameServer)]
     public readonly struct CharacterEnterGameServerRequest
     {
         public int Account { get; }

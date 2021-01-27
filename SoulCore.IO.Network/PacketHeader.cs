@@ -7,14 +7,14 @@ namespace SoulCore.IO.Network
         public byte Magic0 { get; }
         public byte Magic1 { get; }
         public ushort Size { get; }
-        public byte usTos { get; }
+        public byte UsTos { get; }
 
         public PacketHeader(BinaryReader br)
         {
             Magic0 = br.ReadByte();
             Magic1 = br.ReadByte();
             Size = br.ReadUInt16();
-            usTos = br.ReadByte();
+            UsTos = br.ReadByte();
         }
     }
 }
