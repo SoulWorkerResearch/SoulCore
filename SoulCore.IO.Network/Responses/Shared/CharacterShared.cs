@@ -7,11 +7,12 @@ namespace SoulCore.IO.Network.Responses.Shared
     {
         public readonly struct StatsInfo
         {
-            public uint MaxStamina { get; init; }
             public uint CurrentHp { get; init; }
             public uint MaxHp { get; init; }
             public uint CurrentSg { get; init; }
             public uint MaxSg { get; init; }
+            public uint Stamina { get; init; }
+            public uint MaxStamina { get; init; }
             public float AttackSpeed { get; init; }
             public float MoveSpeed { get; init; }
         }
@@ -34,24 +35,20 @@ namespace SoulCore.IO.Network.Responses.Shared
 
         public sealed record GearInfo
         {
-            public static GearInfo Empty { get; } = new();
-
             public byte UpgradeLevel { get; init; }
-            public int PrototypeId { get; init; } = -1;
+            public int PrototypeId { get; init; }
         }
 
-        public readonly struct EquippedCostumeInfos
+        public readonly struct CostumeInfos
         {
             public sealed record CostumeInfo
             {
-                public static CostumeInfo Empty { get; } = new();
-
                 public int PrototypeId { get; init; }
                 public uint Color { get; init; }
             }
 
-            public IEnumerable<CostumeInfo?> View { get; init; }
-            public IEnumerable<CostumeInfo?> Battle { get; init; }
+            public IEnumerable<CostumeInfo> View { get; init; }
+            public IEnumerable<CostumeInfo> Battle { get; init; }
         }
 
         public int Id { get; init; }
@@ -64,6 +61,6 @@ namespace SoulCore.IO.Network.Responses.Shared
         public AppearanceInfo Appearance { get; init; }
         public StatsInfo Stats { get; init; }
         public GearInfo WeaponItem { get; init; } = default!;
-        public EquippedCostumeInfos EquippedItems { get; init; }
+        public CostumeInfos EquippedItems { get; init; }
     }
 }

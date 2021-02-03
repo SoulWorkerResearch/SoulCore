@@ -59,72 +59,71 @@ namespace SoulCore.IO.Network
 
         private void WriteCharacterFashion(CharacterShared value)
         {
-            static void WriteFashionEntry(PacketWriter writer, int prototypeId = -1, uint color = uint.MinValue)
+            foreach ((CharacterShared.CostumeInfos.CostumeInfo view, CharacterShared.CostumeInfos.CostumeInfo battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
             {
-                writer.Write(-1);
-                writer.Write(-1);
-                writer.Write(prototypeId);
-                writer.Write(color);
+                Write(-1);
+                Write(-1);
+                Write(battle.PrototypeId);
+                Write(battle.Color);
 
-                writer.Write(-1);
-                writer.Write(-1);
-                writer.Write(-1);
-                writer.Write(uint.MinValue);
-            }
-
-            foreach ((CharacterShared.EquippedCostumeInfos.CostumeInfo? view, CharacterShared.EquippedCostumeInfos.CostumeInfo? battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
-            {
-                if (view is not null)
-                {
-                    WriteFashionEntry(this, view.PrototypeId, view.Color);
-                    continue;
-                }
-
-                if (battle is not null)
-                {
-                    WriteFashionEntry(this, battle.PrototypeId, battle.Color);
-                    continue;
-                }
-
-                WriteFashionEntry(this);
+                Write(-1);
+                Write(-1);
+                Write(view.PrototypeId);
+                Write(view.Color);
             }
         }
 
         private void WriteCharacterMeta(CharacterShared value)
         {
+            const uint activeBroachEffect = 0;
+
             const ushort primaryEnergy = 0;
             const ushort extraEnergy = 0;
+            const ushort pcExtraEnergy = 0;
+
             const uint titlePrimary = 0;
             const uint titleSecondary = 0;
-            const uint guildId = 0;
-            const string guildName = "";
 
-            Write(uint.MinValue); // Unknown3
+            const uint leagueId = 0;
+            const string leagueName = "";
+            const ushort leagueDesign = 0;
+            const ushort leagueBackDesign = 0;
+
+            const uint unknownStat = 0;
+            const uint unknownMaxStat = 0;
+
+            const byte privateShopType = 0;
+            const string privateShopName = "";
+
+            const byte echelonLevel = 0;
+            const int echelonExp = 0;
+
+            Write(activeBroachEffect);
             Write(titlePrimary);
             Write(titleSecondary);
-            Write(guildId);
-            WriteByteLengthUnicodeString(guildName);
-            Write(uint.MinValue); // 1 Unknown4
-            Write(value.Stats.CurrentHp); // 2
-            Write(value.Stats.MaxHp); // 3
-            Write(value.Stats.CurrentSg); // 4
-            Write(value.Stats.MaxSg); // 5
-            Write(uint.MinValue); // 6
-            Write(uint.MinValue); // 7
-            Write(uint.MinValue); // 8 Stamina???
-            Write(value.Stats.MaxStamina); // 9 Max Stamina
-            Write(uint.MinValue); // 10
-            Write(uint.MinValue); // 11
+            Write(leagueId);
+            WriteByteLengthUnicodeString(leagueName);
+            Write(leagueDesign);
+            Write(leagueBackDesign);
+            Write(value.Stats.CurrentHp);
+            Write(value.Stats.MaxHp);
+            Write(value.Stats.CurrentSg);
+            Write(value.Stats.MaxSg);
+            Write(unknownStat);
+            Write(unknownMaxStat);
+            Write(value.Stats.Stamina);
+            Write(value.Stats.MaxStamina);
+            Write(unknownStat);
+            Write(unknownMaxStat);
             Write(value.Stats.MoveSpeed);
             Write(value.Stats.AttackSpeed);
-            Write(ushort.MinValue);
-            Write(byte.MinValue);
+            Write(privateShopType);
+            Write(privateShopName);
             Write(primaryEnergy);
             Write(extraEnergy);
-            Write(byte.MinValue);
-            Write(byte.MinValue); // 00
-            Write(byte.MinValue); // 08
-            Write(uint.MinValue); // 95 36 68 3B
+            Write(pcExtraEnergy);
+            Write(echelonLevel);
+            Write(echelonExp);
             Write(ushort.MinValue); // 00 00
             Write(uint.MinValue); // 00 00 00 00
             Write(uint.MinValue); // 00 00 00 00
