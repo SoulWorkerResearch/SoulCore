@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct SkillUpgradeRequest
     {
         public uint Id { get; }

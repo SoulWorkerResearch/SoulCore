@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.Create)]
+    [Request(CategoryCommand.Character, CharacterCommand.CreateReq)]
     public readonly struct CharacterCreateRequest
     {
         internal CharacterCreateRequest(BinaryReader br)

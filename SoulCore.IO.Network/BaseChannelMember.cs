@@ -111,54 +111,52 @@ namespace SoulCore.IO.Network
 
         #region Broadcast Movement Packet
 
-        public void BroadcastDeferred(CharacterToggleWeaponRequest request) =>
-            Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.BattleBt, (writer) =>
-            {
-                writer.Write(request.Character);
-                writer.Write(request.Position);
-                writer.Write(request.Rotation);
-                writer.Write(request.Toggle);
-                writer.Write(request.Unknown1);
-            });
+        //public void BroadcastDeferred(CharacterToggleWeaponRequest request) =>
+        //    Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.BattleBt, (writer) =>
+        //    {
+        //        writer.Write(request.Character);
+        //        writer.Write(request.Position);
+        //        writer.Write(request.Rotation);
+        //        writer.Write(request.Toggle);
+        //        writer.Write(request.Unknown1);
+        //    });
 
-        public void BroadcastDeferred(SRMMoveRequest request) =>
+        public void BroadcastDeferred(MoveMoveRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.MoveBt, (writer) =>
             {
-                writer.Write(request.Character);
-                writer.Write(request.Unknown1);
+                writer.Write(request.CharacterId);
+                writer.Write(request.MapId);
                 writer.Write(request.Position);
-                writer.Write(request.Rotation);
-                writer.Write(request.InterpolatedPosition);
-                writer.Write(request.Unknown5);
-                writer.Write(request.Unknown6);
-                writer.Write(request.Unknown7);
-                writer.Write(request.Unknown8);
+                writer.Write(request.Yaw);
+                writer.Write(request.TargetPosition);
+                writer.Write(request.RunBit);
+                writer.Write(request.Pitch);
+                writer.Write(request.ChangeMotion);
+                writer.Write(request.ShouldUpdatePos);
             });
 
-        public void BroadcastDeferred(SRMStopRequest request) =>
+        public void BroadcastDeferred(MoveStopRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.StopBt, (writer) =>
             {
-                writer.Write(request.Character);
-                writer.Write(request.Unknown1);
+                writer.Write(request.CharacterId);
+                writer.Write(request.MapId);
                 writer.Write(request.Position);
-                writer.Write(request.Rotation);
-                writer.Write(request.Unknown4);
-                writer.Write(request.Unknown5);
+                writer.Write(request.Yaw);
+                writer.Write(request.Pitch);
+                writer.Write(request.CheckCanMove);
             });
 
-        public void BroadcastDeferred(SRMJumpRequest request) =>
+        public void BroadcastDeferred(MoveJumpRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.JumpBt, (writer) =>
             {
-                writer.Write(request.Character);
-                writer.Write(request.Unknown1);
-                writer.Write(request.Unknown2);
-                writer.Write(request.Location);
-                writer.Write(request.Unknown3);
-                writer.Write(request.Position);
-                writer.Write(request.Rotation);
-                writer.Write(request.InterpolatedPosition);
-                writer.Write(request.Unknown5);
-                writer.Write(request.Unknown6);
+                writer.Write(request.CharacterId);
+                writer.Write(request.MapId);
+                writer.Write(request.Pos);
+                writer.Write(request.Yaw);
+                writer.Write(request.TargetPos);
+                writer.Write(request.JumpingMove);
+                writer.Write(request.JumpDrop);
+                writer.Write(request.BonusJump);
             });
 
         public void BroadcastDeferred(CharacterLoopMotionEndResponse value) =>

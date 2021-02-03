@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public sealed record ChatReceiveRequest
     {
         public ChatType Type { get; }

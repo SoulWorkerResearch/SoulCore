@@ -3,7 +3,7 @@ using SoulCore.IO.Network.Attributes;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct FriendRecruitListRequest
     {
         public ushort Unknown1 { get; }

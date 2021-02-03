@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using SoulCore.IO.Network.Attributes;
+using SoulCore.IO.Network.Commands;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
@@ -6,6 +8,7 @@ namespace SoulCore.IO.Network.Requests.Character
     /// This packet no have content.
     /// Use handler without packet.
     /// </summary>
+    [Request(CategoryCommand.Character, CharacterCommand.SaveReq)]
     public readonly struct CharacterSaveRequest
     {
         internal CharacterSaveRequest(BinaryReader _)

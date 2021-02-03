@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct StorageInventoryOpenSlotInfoRequest
     {
         public IReadOnlyList<StorageType> Values { get; }

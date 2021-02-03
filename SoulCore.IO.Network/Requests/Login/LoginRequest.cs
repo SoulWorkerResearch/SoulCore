@@ -1,10 +1,11 @@
 ﻿using SoulCore.Extensions;
 using SoulCore.IO.Network.Attributes;
+using SoulCore.IO.Network.Commands;
 using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Login
 {
-    [Request]
+    [Request(CategoryCommand.Login, LoginCommand.Req)]
     public readonly struct LoginRequest
     {
         public string Nickname { get; }

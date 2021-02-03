@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Xunit;
+using Xunit.Sdk;
 
 namespace SoulCore.IO.Network.Test
 {
@@ -62,38 +63,45 @@ namespace SoulCore.IO.Network.Test
 
             foreach (var categoryValue in Enum.GetValues<CategoryCommand>())
             {
-                var category = categoryTypes[categoryValue];
-
-                foreach (byte commandValue in Enum.GetValues(category))
+                if (categoryTypes.TryGetValue(categoryValue, out var category))
                 {
-                    var request = Array.Find(requests, t =>
+                    foreach (object commandValue in Enum.GetValues(category))
                     {
-                        var a = t.GetCustomAttribute<RequestAttribute>()!;
-                        return a.Category == categoryValue && a.Command == commandValue;
-                    });
+                        var request = Array.Find(requests, t =>
+                        {
+                            var a = t.GetCustomAttribute<RequestAttribute>()!;
+                            return a.Category == categoryValue && a.Command == (byte)commandValue;
+                        });
 
-                    if (request is not null)
-                    {
-                        // category = 0x04
-                        // command = 0x01
-                        // index = 0x0401
-                        ushort index = (ushort)((byte)categoryValue + (((byte)commandValue) << 8));
-                        response[index] = request;
+                        if (request is not null)
+                        {
+                            // category = 0x04
+                            // command = 0x01
+                            // index = 0x0401
+                            ushort index = (ushort)((byte)categoryValue + (((byte)commandValue) << 8));
+                            response[index] = request;
+                        }
                     }
+                }
+                else
+                {
+                    throw new XunitException("Category not found");
                 }
             }
 
             return response;
         }
 
-        private static IEnumerable<Type> GetRequests() => Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => t.GetCustomAttribute<RequestAttribute>() is not null);
+        private static IEnumerable<Type> GetRequests() => AppDomain.CurrentDomain
+            .GetAssemblies()
+            .Where(a => a.FullName.Contains("SoulCore"))
+            .SelectMany(a => a.GetTypes())
+            .Where(t => t.GetCustomAttribute<RequestAttribute>() is not null);
 
-        private static IEnumerable<Type> GetCategoryTypes() => Assembly
-                .GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => t.GetCustomAttribute<CategoryCommandAttribute>() is not null);
+        private static IEnumerable<Type> GetCategoryTypes() => AppDomain.CurrentDomain
+            .GetAssemblies()
+            .Where(a => a.FullName.Contains("SoulCore"))
+            .SelectMany(a => a.GetTypes())
+            .Where(t => t.GetCustomAttribute<CategoryCommandAttribute>() is not null);
     }
 }

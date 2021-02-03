@@ -32,6 +32,7 @@
     <Folder Include="Requests\DailyMission\" />
     <Folder Include="Requests\Event\" />
     <Folder Include="Requests\Exchange\" />
+    <Folder Include="Requests\Force\" />
     <Folder Include="Requests\Friend\" />
     <Folder Include="Requests\Gesture\" />
     <Folder Include="Requests\GmAgent\" />
@@ -45,7 +46,6 @@
     <Folder Include="Requests\Monitor\" />
     <Folder Include="Requests\Monster\" />
     <Folder Include="Requests\MyRoom\" />
-    <Folder Include="Requests\Party\" />
     <Folder Include="Requests\Post\" />
     <Folder Include="Requests\Quest\" />
     <Folder Include="Requests\Ranking\" />

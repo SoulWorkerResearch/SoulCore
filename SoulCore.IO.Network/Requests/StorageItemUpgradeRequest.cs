@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct StorageItemUpgradeRequest
     {
         public StorageType StorageType { get; }

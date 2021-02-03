@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.ReserveRevive)]
+    [Request(CategoryCommand.Character, CharacterCommand.ReserveReviveReq)]
     public readonly struct CharacterReserveReviveRequest
     {
         internal CharacterReserveReviveRequest(BinaryReader br)

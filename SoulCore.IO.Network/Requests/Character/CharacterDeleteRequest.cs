@@ -1,16 +1,17 @@
-﻿using System;
-using System.IO;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.Delete)]
+    [Request(CategoryCommand.Character, CharacterCommand.DeleteReq)]
     public readonly struct CharacterDeleteRequest
     {
+        public readonly int CharacterId;
+
         internal CharacterDeleteRequest(BinaryReader br)
         {
-            throw new NotImplementedException();
+            CharacterId = br.ReadInt32();
         }
     }
 }

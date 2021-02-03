@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct SkillQuickSlotsUpdateRequest
     {
         public readonly struct ColumnInfo

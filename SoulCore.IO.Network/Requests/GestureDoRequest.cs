@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public sealed record GestureDoRequest
     {
         public uint Gesture { get; }

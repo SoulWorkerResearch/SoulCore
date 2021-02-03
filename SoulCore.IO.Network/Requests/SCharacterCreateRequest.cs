@@ -7,7 +7,135 @@ using System.Linq;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+    public abstract record CharacterInfoSharedPacket
+    {
+        public readonly struct AppearanceInfo
+        {
+            public readonly struct HairInfo
+            {
+                public readonly ushort Style;
+                public readonly ushort Color;
+
+                public HairInfo(BinaryReader br)
+                {
+                    Style = br.ReadUInt16();
+                    Color = br.ReadUInt16();
+                }
+            }
+
+            public readonly ushort Unknown1;
+            public readonly ushort Unknown2;
+            public readonly HairInfo Hair;
+            public readonly ushort EyesColor;
+            public readonly ushort SkinColor;
+            public readonly HairInfo EquippedHair;
+            public readonly ushort EquippedEyesColor;
+            public readonly ushort EquippedSkinColor;
+
+            public AppearanceInfo(BinaryReader br)
+            {
+                Unknown1 = br.ReadUInt16();
+                Unknown2 = br.ReadUInt16();
+                Hair = new HairInfo(br);
+                EyesColor = br.ReadUInt16();
+                SkinColor = br.ReadUInt16();
+                EquippedHair = new HairInfo(br);
+                EquippedEyesColor = br.ReadUInt16();
+                EquippedSkinColor = br.ReadUInt16();
+            }
+        }
+
+        public readonly struct TitleInfo
+        {
+            public readonly uint Suffix;
+            public readonly uint Prefix;
+
+            public TitleInfo(BinaryReader br)
+            {
+                Suffix = br.ReadUInt32();
+                Prefix = br.ReadUInt32();
+            }
+        }
+
+        public readonly struct EquippedWeaponInfo
+        {
+            public readonly byte Upgrade;
+            public readonly int ItemId;
+
+            public EquippedWeaponInfo(BinaryReader br)
+            {
+                Upgrade = br.ReadByte();
+                ItemId = br.ReadInt32();
+            }
+        }
+
+        public readonly struct EquippedFashionInfo
+        {
+            public readonly FashionInfo Battle;
+            public readonly FashionInfo View;
+
+            public EquippedFashionInfo(BinaryReader br)
+            {
+                Battle = new(br);
+                View = new(br);
+            }
+        }
+
+        public readonly struct FashionInfo
+        {
+            public readonly int Id;
+            public readonly uint Color;
+            public readonly long Serial;
+
+            public FashionInfo(BinaryReader br)
+            {
+                Serial = br.ReadInt64();
+                Id = br.ReadInt32();
+                Color = br.ReadUInt32();
+            }
+        }
+
+        public readonly int Id;
+        public readonly string Name;
+        public readonly Class Class;
+        public readonly ClassAdvancement Advancement;
+        public readonly uint ProfilePhotoId;
+        public readonly AppearanceInfo Appearance;
+        public readonly ushort Unknown1;
+        public readonly byte Level;
+        public readonly byte Faction;
+        public readonly int AccountId;
+        public readonly byte GameMasterLevel;
+        public readonly uint PvPKillCount;
+        public readonly EquippedWeaponInfo SoulWeapon;
+        public readonly EquippedWeaponInfo SubWeapon;
+        public readonly EquippedFashionInfo EquippedFashion;
+        public readonly uint ActiveBroachEffect;
+        public readonly TitleInfo Title;
+
+        public CharacterInfoSharedPacket(BinaryReader br)
+        {
+            Id = br.ReadInt32();
+            Name = br.ReadByteLengthUnicodeString();
+            Class = br.ReadClass();
+            Advancement = br.ReadClassAdvancement();
+            ProfilePhotoId = br.ReadUInt32();
+            Unknown1 = br.ReadUInt16();
+            Appearance = new(br);
+            Level = br.ReadByte();
+            Faction = br.ReadByte();
+            AccountId = br.ReadInt32();
+            GameMasterLevel = br.ReadByte();
+            PvPKillCount = br.ReadUInt32();
+            SoulWeapon = new(br);
+            SubWeapon = new(br);
+            EquippedFashion = new(br);
+            ActiveBroachEffect = br.ReadUInt32();
+            Title = new(br);
+        }
+    }
+
+
     public readonly struct SCharacterCreateRequest
     {
         public readonly struct HairInfo

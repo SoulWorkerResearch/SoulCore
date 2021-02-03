@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.EnterGameServer)]
+    [Request(CategoryCommand.Character, CharacterCommand.EnterGameServerReq)]
     public readonly struct CharacterEnterGameServerRequest
     {
         public int Account { get; }

@@ -5,7 +5,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct GateEnterRequest
     {
         public int Account { get; }

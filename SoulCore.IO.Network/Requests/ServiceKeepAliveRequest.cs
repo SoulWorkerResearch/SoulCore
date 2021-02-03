@@ -4,7 +4,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct ServiceKeepAliveRequest
     {
         public uint Seed { get; }

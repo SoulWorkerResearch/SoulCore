@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.List)]
+    [Request(CategoryCommand.Character, CharacterCommand.ListReq)]
     public readonly struct CharacterListRequest
     {
         public readonly long SessionKey;

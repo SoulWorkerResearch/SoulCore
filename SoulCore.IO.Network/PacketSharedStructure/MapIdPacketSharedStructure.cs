@@ -34,8 +34,6 @@ namespace SoulCore.IO.Network.Responses.Shared
             Seq = br.ReadUInt64();
         }
 
-        public static MapIdPacketSharedStructure Empty => _empty;
-
-        private static readonly MapIdPacketSharedStructure _empty = new();
+        public static MapIdPacketSharedStructure Empty { get; } = new();
     }
 }

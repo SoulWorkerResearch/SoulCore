@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public readonly struct CubeQuickSlotsUpdateRequest
     {
         public IReadOnlyList<int> Values { get; }

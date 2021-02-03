@@ -2,16 +2,16 @@
 using SoulCore.IO.Network.Commands;
 using System.IO;
 
-namespace SoulCore.IO.Network.Requests.Character
+namespace SoulCore.IO.Network.Requests.Party
 {
     /// <summary>
     /// This packet no have content.
     /// Use handler without packet.
     /// </summary>
-    [Request(CategoryCommand.Character, CharacterCommand.LoadTitle)]
-    public readonly struct CharacterLoadTitleRequest
+    [Request(CategoryCommand.Party, PartyCommand.Leave)]
+    public readonly struct PartyLeaveRequest
     {
-        internal CharacterLoadTitleRequest(BinaryReader _)
+        internal PartyLeaveRequest(BinaryReader _)
         {
         }
     }

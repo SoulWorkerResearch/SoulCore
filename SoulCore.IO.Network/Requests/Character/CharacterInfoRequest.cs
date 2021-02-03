@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Commands;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
-    [Request(CategoryCommand.Character, CharacterCommand.Info)]
+    [Request(CategoryCommand.Character, CharacterCommand.InfoReq)]
     public readonly struct CharacterInfoRequest
     {
         public int CharacterId { get; }

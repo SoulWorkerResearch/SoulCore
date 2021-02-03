@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request]
+
     public sealed record ServiceHeartbeatRequest
     {
         public ulong Tick { get; }
