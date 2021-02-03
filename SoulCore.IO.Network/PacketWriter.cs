@@ -53,8 +53,8 @@ namespace SoulCore.IO.Network
         {
             Write(value.WeaponItem.UpgradeLevel);
             Write(value.WeaponItem.PrototypeId);
-            Write(byte.MinValue);
-            Write(-1);
+            Write(value.SubWeaponItem.UpgradeLevel);
+            Write(value.SubWeaponItem.PrototypeId);
         }
 
         private void WriteCharacterFashion(CharacterShared value)

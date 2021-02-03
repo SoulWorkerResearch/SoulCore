@@ -62,6 +62,7 @@ namespace SoulCore.IO.Network.Responses.Shared
         public AppearanceInfo Appearance { get; init; }
         public StatsInfo Stats { get; init; }
         public GearInfo WeaponItem { get; init; } = default!;
+        public GearInfo SubWeaponItem { get; init; } = default!;
         public CostumeInfos EquippedItems { get; init; }
     }
 }
