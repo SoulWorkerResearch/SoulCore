@@ -8,10 +8,10 @@ namespace SoulCore.IO.Network.Requests.Login
     [Request(CategoryCommand.Login, LoginCommand.Req)]
     public readonly struct LoginRequest
     {
-        public string Nickname { get; }
-        public string Password { get; }
-        public string Mac { get; }
-        public uint Version { get; }
+        public readonly string Nickname;
+        public readonly string Password;
+        public readonly string Mac;
+        public readonly int Version;
 
         public LoginRequest(BinaryReader br)
         {
