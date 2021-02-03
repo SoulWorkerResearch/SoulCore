@@ -61,13 +61,11 @@ namespace SoulCore.IO.Network
         {
             foreach ((CharacterShared.CostumeInfos.CostumeInfo view, CharacterShared.CostumeInfos.CostumeInfo battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
             {
-                Write(-1);
-                Write(-1);
+                Write(battle.Serial);
                 Write(battle.PrototypeId);
                 Write(battle.Color);
 
-                Write(-1);
-                Write(-1);
+                Write(view.Serial);
                 Write(view.PrototypeId);
                 Write(view.Color);
             }

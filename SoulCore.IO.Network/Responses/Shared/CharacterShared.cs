@@ -43,6 +43,7 @@ namespace SoulCore.IO.Network.Responses.Shared
         {
             public sealed record CostumeInfo
             {
+                public long Serial { get; init; } = -1;
                 public int PrototypeId { get; init; }
                 public uint Color { get; init; }
             }
