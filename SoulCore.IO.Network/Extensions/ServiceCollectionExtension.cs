@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SoulCore.IO.Network.Attributes;
-using SoulCore.IO.Network.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +14,11 @@ namespace SoulCore.IO.Network.Extensions
         where TSession : SessionBase<TServer, TSession>
         {
             foreach (Type type in GetSyncHandlers())
+            {
                 services.AddTransient(type);
+            }
 
             return services
-                .AddSingleton<HandlerProvider<TServer, TSession>>()
                 .AddSingleton<TServer>()
                 .AddTransient<TSession>();
         }
