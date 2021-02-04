@@ -8,7 +8,7 @@ using System.Numerics;
 namespace SoulCore.IO.Network.Requests
 {
     [Request(CategoryCommand.Move, MoveCommand.Move)]
-    public sealed record MoveMoveRequest
+    public readonly struct MoveMoveRequest
     {
         public readonly int CharacterId;
         public readonly MapIdPacketSharedStructure MapId;

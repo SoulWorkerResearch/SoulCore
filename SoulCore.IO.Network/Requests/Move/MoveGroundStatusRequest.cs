@@ -4,7 +4,7 @@ using System.IO;
 
 namespace SoulCore.IO.Network.Requests
 {
-    [Request(CategoryCommand.Move, MoveCommand.LoopMotionEnd)]
+    [Request(CategoryCommand.Move, MoveCommand.GroundStatus)]
     public readonly struct MoveGroundStatusRequest
     {
         public readonly int CharacterId;
