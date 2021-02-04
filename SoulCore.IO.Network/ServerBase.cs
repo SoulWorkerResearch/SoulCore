@@ -46,7 +46,7 @@ namespace SoulCore.IO.Network
         protected ServerBase(IServiceProvider services, IConfiguration configuration) =>
             InternalServer = new((TServer)this, services, GetIPEndPoint(configuration));
 
-        private static IPEndPoint GetIPEndPoint(IConfiguration configuration) =>
-            IPEndPoint.Parse($"{configuration["Ip"]}:{configuration["Port"]}");
+        private static IPEndPoint GetIPEndPoint(IConfiguration configuration) => IPEndPoint
+            .Parse($"{configuration["Ip"]}:{configuration["Port"]}");
     }
 }

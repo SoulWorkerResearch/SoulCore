@@ -1,6 +1,5 @@
 ﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
-using System;
 using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Friend
@@ -8,9 +7,13 @@ namespace SoulCore.IO.Network.Requests.Friend
     [Request(CategoryCommand.Friend, FriendCommand.Delete)]
     public readonly struct FriendDeleteRequest
     {
-        public FriendDeleteRequest(BinaryReader br)
+        public readonly int CharacterId;
+        public readonly bool OnMessage;
+
+        internal FriendDeleteRequest(BinaryReader br)
         {
-            throw new NotImplementedException();
+            CharacterId = br.ReadInt32();
+            OnMessage = br.ReadBoolean();
         }
     }
 }

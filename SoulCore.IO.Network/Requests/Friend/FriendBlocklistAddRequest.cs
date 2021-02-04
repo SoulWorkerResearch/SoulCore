@@ -1,6 +1,6 @@
-﻿using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.Extensions;
+using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
-using System;
 using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Friend
@@ -8,9 +8,11 @@ namespace SoulCore.IO.Network.Requests.Friend
     [Request(CategoryCommand.Friend, FriendCommand.BlocklistAdd)]
     public readonly struct FriendBlocklistAddRequest
     {
-        public FriendBlocklistAddRequest(BinaryReader br)
+        public readonly string CharacterName;
+
+        internal FriendBlocklistAddRequest(BinaryReader br)
         {
-            throw new NotImplementedException();
+            CharacterName = br.ReadByteLengthUnicodeString();
         }
     }
 }

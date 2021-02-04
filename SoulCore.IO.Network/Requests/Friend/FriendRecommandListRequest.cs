@@ -1,16 +1,18 @@
 ﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
-using System;
 using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Friend
 {
+    /// <summary>
+    /// This packet no have content.
+    /// Use handler without packet.
+    /// </summary>
     [Request(CategoryCommand.Friend, FriendCommand.RecommandList)]
     public readonly struct FriendRecommandListRequest
     {
-        public FriendRecommandListRequest(BinaryReader br)
+        internal FriendRecommandListRequest(BinaryReader _)
         {
-            throw new NotImplementedException();
         }
     }
 }
