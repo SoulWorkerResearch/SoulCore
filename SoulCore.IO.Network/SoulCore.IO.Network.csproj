@@ -33,7 +33,6 @@
     <Folder Include="Requests\Event\" />
     <Folder Include="Requests\Exchange\" />
     <Folder Include="Requests\Force\" />
-    <Folder Include="Requests\Friend\" />
     <Folder Include="Requests\Gesture\" />
     <Folder Include="Requests\GmAgent\" />
     <Folder Include="Requests\Helper\" />
