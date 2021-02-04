@@ -1,11 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Exceptions;
 using SoulCore.IO.Network.Permissions;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,32 +10,25 @@ using System.Reflection;
 
 namespace SoulCore.IO.Network.Providers
 {
-    public class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
+    internal class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
         where TServer : ServerBase<TServer, TSession>
         where TSession : SessionBase<TServer, TSession>
     {
-        public sealed record Handler
+        internal sealed record Handler
         {
-            public delegate void MethodInfo(TSession session, BinaryReader br);
+            internal delegate void MethodInfo(TSession session, BinaryReader br);
 
-            public HandlerPermission Permission { get; }
-            public MethodInfo Method { get; }
+            internal HandlerPermission Permission { get; }
+            internal MethodInfo Method { get; }
 
-            public Handler(HandlerPermission permission, MethodInfo method)
+            internal Handler(HandlerPermission permission, MethodInfo method)
             {
                 Permission = permission;
                 Method = method;
             }
         }
 
-        public static readonly HandlerProvider<TServer, TSession> Empty = new();
-
-        public HandlerProvider(IServiceProvider service, ILogger<HandlerProvider<TServer, TSession>> logger) :
-            base(GetHandlers(service, logger))
-        {
-        }
-
-        private HandlerProvider() : base(Array.Empty<HandlerProvider<TServer, TSession>.Handler>())
+        internal HandlerProvider() : base(GetHandlers())
         {
         }
 
@@ -49,7 +39,7 @@ namespace SoulCore.IO.Network.Providers
 #endif // !DEBUG
         }
 
-        private static IEnumerable<Handler> GetHandlers(IServiceProvider service, ILogger logger)
+        private static IEnumerable<Handler> GetHandlers()
         {
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
@@ -62,36 +52,20 @@ namespace SoulCore.IO.Network.Providers
 
             foreach (MethodInfo method in methods)
             {
-                object? instance = null;
-                if (!method.IsStatic)
-                {
-                    if (method.DeclaringType is null)
-                        throw new NetworkException("Cannot determe class type");
-
-                    if (!instances.TryGetValue(method.DeclaringType, out instance))
-                    {
-                        if (method.DeclaringType.IsAbstract && method.DeclaringType.IsSealed)
-                            throw new NetworkException();
-
-                        instance = service.GetRequiredService(method.DeclaringType);
-                        instances.Add(method.DeclaringType, instance);
-                    }
-                }
-
                 HandlerAttribute? attribute = method.GetCustomAttribute<HandlerAttribute>();
                 if (attribute is null)
+                {
                     throw new NetworkException("Handler attribute not found");
+                }
 
-                Handler.MethodInfo handlerMethod = CreateHandlerMethod(instance, service, method);
+                Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
                 handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(attribute.Permission, handlerMethod);
-
-                logger.LogDebug($"Used SoulWorker EVENT [{(byte)attribute.Category:X2}:{attribute.Command:X2}] invoker on {method.DeclaringType!.FullName}.{method.Name}.");
             }
 
             return handlers;
         }
 
-        private static Handler.MethodInfo CreateHandlerMethod(object? instance, IServiceProvider service, MethodInfo method)
+        private static Handler.MethodInfo CreateHandlerMethod(MethodInfo method)
         {
             ParameterExpression session = Expression.Parameter(typeof(TSession), "Session");
             ParameterExpression br = Expression.Parameter(typeof(BinaryReader), "BinaryReader");
@@ -99,36 +73,37 @@ namespace SoulCore.IO.Network.Providers
             Expression[] arguments = method.GetParameters().Select(param =>
             {
                 if (param.IsIn)
+                {
                     throw new NetworkException("In arguments not supported");
+                }
 
                 if (param.ParameterType is null)
+                {
                     throw new NetworkException("ParameterType is null");
+                }
 
                 // Session typed parameter
                 if (param.ParameterType == typeof(TSession) || param.ParameterType.BaseType == typeof(TSession))
+                {
                     return Expression.Convert(session, param.ParameterType) as Expression;
+                }
 
                 // Packet structure parameter
                 if (param.ParameterType.IsDefined(typeof(RequestAttribute)))
                 {
                     ConstructorInfo? constructor = param.ParameterType.GetConstructor(new[] { typeof(BinaryReader) });
                     if (constructor is null)
-                        throw new NetworkException("constructor is null");
+                    {
+                        throw new NetworkException("Constructor is null");
+                    }
 
                     return Expression.New(constructor, br);
                 }
 
-                // Otherwise, get parameter from service collection
-                ConstantExpression innerService = Expression.Constant(service);
-
-                MethodInfo? methodGetRequiredService = typeof(ServiceProviderServiceExtensions).GetMethod("GetRequiredService", new[] { typeof(IServiceProvider), typeof(Type) });
-                Debug.Assert(methodGetRequiredService is not null);
-
-                MethodCallExpression call = Expression.Call(methodGetRequiredService, innerService, Expression.Constant(param.ParameterType));
-                return Expression.Convert(call, param.ParameterType);
+                throw new NetworkException("Bad argument type");
             }).ToArray();
 
-            MethodCallExpression caller = Expression.Call(instance is null ? null : Expression.Constant(instance), method, arguments);
+            MethodCallExpression caller = Expression.Call(null, method, arguments);
             return Expression.Lambda<Handler.MethodInfo>(caller, session, br).Compile();
         }
 

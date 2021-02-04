@@ -47,7 +47,7 @@ namespace SoulCore.IO.Network
             {
                 do
                 {
-                    var packet = new PacketHeader(br);
+                    PacketHeader packet = new(br);
                     PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + Defines.PacketHeaderSize));
 
                     Session.ProcessPacket(br);
@@ -63,15 +63,18 @@ namespace SoulCore.IO.Network
             }
         }
 
-        internal InternalSession(InternalServer<TServer, TSession> server, TSession session, ILogger logger) : base(server) =>
-            (Session, Logger) = (session, logger);
+        internal InternalSession(InternalServer<TServer, TSession> server, TSession session, ILogger logger) : base(server)
+        {
+            Session = session;
+            Logger = logger;
+        }
     }
 
     public abstract class SessionBase<TServer, TSession>
         where TServer : ServerBase<TServer, TSession>
         where TSession : SessionBase<TServer, TSession>
     {
-        private readonly HandlerProvider<TServer, TSession> _provider;
+        private static readonly HandlerProvider<TServer, TSession> _handlers = new();
 
         public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).BaseServer;
 
@@ -477,10 +480,10 @@ namespace SoulCore.IO.Network
 
         internal void ProcessPacket(BinaryReader br)
         {
-            var opcode = br.ReadUInt16();
+            ushort opcode = br.ReadUInt16();
             DebugLogOpcode(opcode);
 
-            var handler = _provider[opcode];
+            HandlerProvider<TServer, TSession>.Handler handler = _handlers[opcode];
             if (handler.Permission == Permission)
             {
                 handler.Method.Invoke((TSession)this, br);
@@ -491,20 +494,20 @@ namespace SoulCore.IO.Network
         {
         }
 
-        protected SessionBase(ServerBase<TServer, TSession> server, HandlerProvider<TServer, TSession> provider, ILogger logger) =>
-            (_provider, InternalSession) = (provider, new(server.InternalServer, (TSession)this, logger));
+        protected SessionBase(ServerBase<TServer, TSession> server, ILogger logger) => InternalSession = new(server.InternalServer, (TSession)this, logger);
 
         private TSession SendDeferred(PacketWriter writer)
         {
             if (!InternalSession.SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
+            {
                 NetworkUtils.DropNetwork();
+            }
 
             return (TSession)this;
         }
 
         [Conditional("DEBUG")]
-        private void DebugLogOpcode(ushort opcode) =>
-            InternalSession.Logger.LogDebug($"@event [0x{ConvertUtils.LeToBeUInt16(opcode):X4}]");
+        private void DebugLogOpcode(ushort opcode) => InternalSession.Logger.LogDebug($"@event [0x{ConvertUtils.LeToBeUInt16(opcode):X4}]");
     }
 }
 
