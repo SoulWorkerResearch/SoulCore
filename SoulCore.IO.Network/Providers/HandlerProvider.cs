@@ -13,26 +13,32 @@ using System.Reflection;
 
 namespace SoulCore.IO.Network.Providers
 {
-    public class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Entity>
+    public class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
         where TServer : ServerBase<TServer, TSession>
         where TSession : SessionBase<TServer, TSession>
     {
-        public sealed record Entity
+        public sealed record Handler
         {
             public delegate void MethodInfo(TSession session, BinaryReader br);
 
             public HandlerPermission Permission { get; }
             public MethodInfo Method { get; }
 
-            public Entity(HandlerPermission permission, MethodInfo method)
+            public Handler(HandlerPermission permission, MethodInfo method)
             {
                 Permission = permission;
                 Method = method;
             }
         }
 
+        public static readonly HandlerProvider<TServer, TSession> Empty = new();
+
         public HandlerProvider(IServiceProvider service, ILogger<HandlerProvider<TServer, TSession>> logger) :
             base(GetHandlers(service, logger))
+        {
+        }
+
+        private HandlerProvider() : base(Array.Empty<HandlerProvider<TServer, TSession>.Handler>())
         {
         }
 
@@ -43,14 +49,14 @@ namespace SoulCore.IO.Network.Providers
 #endif // !DEBUG
         }
 
-        private static IEnumerable<Entity> GetHandlers(IServiceProvider service, ILogger logger)
+        private static IEnumerable<Handler> GetHandlers(IServiceProvider service, ILogger logger)
         {
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance))
                 .Where(type => type.IsDefined(typeof(HandlerAttribute)));
 
-            Entity[] handlers = Enumerable.Repeat(new Entity(HandlerPermission.None, Dummy), GetMaxHandlersCount()).ToArray();
+            Handler[] handlers = Enumerable.Repeat(new Handler(HandlerPermission.None, Dummy), GetMaxHandlersCount()).ToArray();
 
             Dictionary<Type, object?> instances = new(methods.Count());
 
@@ -76,7 +82,7 @@ namespace SoulCore.IO.Network.Providers
                 if (attribute is null)
                     throw new NetworkException("Handler attribute not found");
 
-                Entity.MethodInfo handlerMethod = CreateHandlerMethod(instance, service, method);
+                Handler.MethodInfo handlerMethod = CreateHandlerMethod(instance, service, method);
                 handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(attribute.Permission, handlerMethod);
 
                 logger.LogDebug($"Used SoulWorker EVENT [{(byte)attribute.Category:X2}:{attribute.Command:X2}] invoker on {method.DeclaringType!.FullName}.{method.Name}.");
@@ -85,7 +91,7 @@ namespace SoulCore.IO.Network.Providers
             return handlers;
         }
 
-        private static Entity.MethodInfo CreateHandlerMethod(object? instance, IServiceProvider service, MethodInfo method)
+        private static Handler.MethodInfo CreateHandlerMethod(object? instance, IServiceProvider service, MethodInfo method)
         {
             ParameterExpression session = Expression.Parameter(typeof(TSession), "Session");
             ParameterExpression br = Expression.Parameter(typeof(BinaryReader), "BinaryReader");
@@ -123,7 +129,7 @@ namespace SoulCore.IO.Network.Providers
             }).ToArray();
 
             MethodCallExpression caller = Expression.Call(instance is null ? null : Expression.Constant(instance), method, arguments);
-            return Expression.Lambda<Entity.MethodInfo>(caller, session, br).Compile();
+            return Expression.Lambda<Handler.MethodInfo>(caller, session, br).Compile();
         }
 
         private static int GetMaxHandlersCount() => Convert.ToInt32(Defines.PacketOpcodeType
