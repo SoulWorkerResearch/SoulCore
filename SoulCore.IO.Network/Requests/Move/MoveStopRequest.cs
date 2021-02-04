@@ -5,7 +5,7 @@ using SoulCore.IO.Network.Responses.Shared;
 using System.IO;
 using System.Numerics;
 
-namespace SoulCore.IO.Network.Requests
+namespace SoulCore.IO.Network.Requests.Move
 {
     [Request(CategoryCommand.Move, MoveCommand.Stop)]
     public readonly struct MoveStopRequest

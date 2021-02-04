@@ -2,7 +2,7 @@
 using SoulCore.IO.Network.Commands;
 using System.IO;
 
-namespace SoulCore.IO.Network.Requests
+namespace SoulCore.IO.Network.Requests.Move
 {
     [Request(CategoryCommand.Move, MoveCommand.GroundStatus)]
     public readonly struct MoveGroundStatusRequest

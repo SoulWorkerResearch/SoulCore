@@ -1,5 +1,5 @@
 ﻿using SoulCore.IO.Network.Commands;
-using SoulCore.IO.Network.Requests;
+using SoulCore.IO.Network.Requests.Move;
 using SoulCore.IO.Network.Responses;
 using System.Linq;
 
