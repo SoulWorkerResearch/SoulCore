@@ -10,8 +10,8 @@ namespace SoulCore.IO.Network.Requests
     public readonly struct MoveLoopMotionStartRequest
     {
         public readonly int CharacterId;
-        public readonly Vector3 Pos;
-        public readonly float fYaw;
+        public readonly Vector3 Position;
+        public readonly float Yaw;
         public readonly uint StartAniId;
         public readonly uint LoopAniId;
         public readonly uint EndAniId;
@@ -20,8 +20,8 @@ namespace SoulCore.IO.Network.Requests
         public MoveLoopMotionStartRequest(BinaryReader br)
         {
             CharacterId = br.ReadInt32();
-            Pos = br.ReadVector3();
-            fYaw = br.ReadSingle();
+            Position = br.ReadVector3();
+            Yaw = br.ReadSingle();
             StartAniId = br.ReadUInt32();
             LoopAniId = br.ReadUInt32();
             EndAniId = br.ReadUInt32();

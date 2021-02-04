@@ -12,9 +12,9 @@ namespace SoulCore.IO.Network.Requests
     {
         public readonly int CharacterId;
         public readonly MapIdPacketSharedStructure MapId;
-        public readonly Vector3 Pos;
+        public readonly Vector3 Position;
         public readonly float Yaw;
-        public readonly Vector2 TargetPos;
+        public readonly Vector2 TargetPosition;
         public readonly int JumpingMove;
         public readonly int JumpDrop;
         public readonly int BonusJump;
@@ -23,9 +23,9 @@ namespace SoulCore.IO.Network.Requests
         {
             CharacterId = br.ReadInt32();
             MapId = new(br);
-            Pos = br.ReadVector3();
+            Position = br.ReadVector3();
             Yaw = br.ReadSingle();
-            TargetPos = br.ReadVector2();
+            TargetPosition = br.ReadVector2();
             JumpingMove = br.ReadInt32();
             JumpDrop = br.ReadInt32();
             BonusJump = br.ReadInt32();

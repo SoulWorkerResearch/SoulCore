@@ -151,9 +151,9 @@ namespace SoulCore.IO.Network
             {
                 writer.Write(request.CharacterId);
                 writer.Write(request.MapId);
-                writer.Write(request.Pos);
+                writer.Write(request.Position);
                 writer.Write(request.Yaw);
-                writer.Write(request.TargetPos);
+                writer.Write(request.TargetPosition);
                 writer.Write(request.JumpingMove);
                 writer.Write(request.JumpDrop);
                 writer.Write(request.BonusJump);

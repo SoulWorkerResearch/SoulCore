@@ -9,13 +9,13 @@ namespace SoulCore.IO.Network.Requests
     {
         public readonly int CharacterId;
         public readonly int OnGround;
-        public readonly float fPosZ;
+        public readonly float PosZ;
 
         public MoveGroundStatusRequest(BinaryReader br)
         {
             CharacterId = br.ReadInt32();
             OnGround = br.ReadInt32();
-            fPosZ = br.ReadSingle();
+            PosZ = br.ReadSingle();
         }
     }
 }
