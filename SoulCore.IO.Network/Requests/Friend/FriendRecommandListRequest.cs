@@ -6,9 +6,9 @@ using System.IO;
 namespace SoulCore.IO.Network.Requests.Friend
 {
     [Request(CategoryCommand.Friend, FriendCommand.RecommandList)]
-    public readonly struct FriendRecommandFriendListRequest
+    public readonly struct FriendRecommandListRequest
     {
-        public FriendRecommandFriendListRequest(BinaryReader br)
+        public FriendRecommandListRequest(BinaryReader br)
         {
             throw new NotImplementedException();
         }
