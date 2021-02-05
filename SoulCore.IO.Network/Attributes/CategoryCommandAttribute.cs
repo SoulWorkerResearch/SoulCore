@@ -6,7 +6,7 @@ namespace SoulCore.IO.Network.Attributes
     [AttributeUsage(AttributeTargets.Enum)]
     public sealed class CategoryCommandAttribute : Attribute
     {
-        public CategoryCommand Category { get; }
+        public readonly CategoryCommand Category;
 
         public CategoryCommandAttribute(CategoryCommand category)
         {

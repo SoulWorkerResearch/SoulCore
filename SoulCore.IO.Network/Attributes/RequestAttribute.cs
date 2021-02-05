@@ -3,11 +3,11 @@ using System;
 
 namespace SoulCore.IO.Network.Attributes
 {
-    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class)]
+    [AttributeUsage(AttributeTargets.Struct)]
     public sealed class RequestAttribute : Attribute
     {
-        public CategoryCommand Category { get; }
-        public byte Command { get; }
+        public readonly CategoryCommand Category;
+        public readonly byte Command;
 
         internal RequestAttribute(CategoryCommand category, SystemCommand command) : this(category, (byte)command)
         { }

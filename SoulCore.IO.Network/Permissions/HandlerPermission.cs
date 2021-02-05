@@ -2,8 +2,7 @@
 {
     public enum HandlerPermission
     {
-        None,
         Anonymous,
-        Authorized
+        Authorized,
     }
 }
