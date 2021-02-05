@@ -182,31 +182,26 @@ namespace SoulCore.IO.Network
             SendDeferred(CategoryCommand.Character, CharacterCommand.InfoRes, (PacketWriter writer) =>
             {
                 writer.Write(value.Character);
-                writer.WritePlace(value.Place);
-
-                writer.Write(ulong.MinValue); // Exp
-                writer.Write(ulong.MinValue); // Zenny
-
-                writer.Write(uint.MinValue); // 1
-                writer.Write(uint.MinValue); // 2
-                writer.Write(uint.MinValue); // 3
-                writer.Write(uint.MinValue); // 4
-                writer.Write(uint.MinValue); // 5
-
-                writer.Write(ulong.MinValue); // Aether
-                writer.Write(ulong.MinValue);
-
-                byte[] hz = new byte[9] { (byte)'1', (byte)'3', (byte)'4', (byte)'0', (byte)'0', (byte)'6', (byte)'8', (byte)'9', (byte)'3' }; // maybe privacy
-                writer.Write((ushort)hz.Length);
-                writer.Write(hz);
-
-                writer.Write(ulong.MinValue);
-                writer.Write(ulong.MinValue);
-                writer.Write(uint.MinValue);
-                writer.Write(ushort.MinValue);
-
-                writer.Write(byte.MinValue);
-                writer.WriteCharacterInfoResult(value.Result);
+                writer.Write(value.Exp);
+                writer.Write(value.Money);
+                writer.Write(value.CommonStep);
+                writer.Write(value.ConsumeStep);
+                writer.Write(value.CostumeStep);
+                writer.Write(value.CardStep);
+                writer.WriteUserFlags(value.UserFlags);
+                writer.WriteSyncUserFlags(value.SyncUserFlags);
+                writer.Write(value.BattlePoint);
+                writer.Write(value.Ether);
+                writer.Write(value.FriendPoint);
+                writer.Write(value.AccountId);
+                writer.Write(value.NetCafe);
+                writer.Write(value.Recycle);
+                writer.Write(value.DyePoint);
+                writer.Write(value.RenovatePoint);
+                writer.Write(value.RefinePoint);
+                writer.Write(value._1);
+                writer.Write(value.WorldIdGreaterThan20000);
+                writer.Write(value.PvPEnabled);
             });
 
         public TSession SendDeferred(CharacterStatsUpdateResponse value) =>
@@ -287,8 +282,9 @@ namespace SoulCore.IO.Network
             {
                 writer.Write(uint.MinValue);
                 writer.WriteDistrictConnectResult(value.Result);
-                writer.WritePlace(value.Place);
-                writer.Write(byte.MinValue);
+                writer.Write(value.MapId);
+                writer.Write(byte.MinValue); // echelon lvl???
+                writer.Write(uint.MinValue); // echelon  exp???
             });
 
         public TSession SendDeferred(WorldVersionResponse value) =>

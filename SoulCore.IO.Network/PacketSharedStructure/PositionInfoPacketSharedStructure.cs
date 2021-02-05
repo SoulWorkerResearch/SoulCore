@@ -7,14 +7,16 @@ namespace SoulCore.IO.Network.PacketSharedStructure
 {
     public readonly struct PositionInfoPacketSharedStructure
     {
-        public ushort WorldId { get; init; }
+        internal static readonly PositionInfoPacketSharedStructure Empty = new();
+
+        public ushort LocationId { get; init; }
         public MapIdPacketSharedStructure MapId { get; init; }
         public Vector3 Position { get; init; }
         public float Rotation { get; init; }
 
         internal PositionInfoPacketSharedStructure(BinaryReader br)
         {
-            WorldId = br.ReadUInt16();
+            LocationId = br.ReadUInt16();
             MapId = new(br);
             Position = br.ReadVector3();
             Rotation = br.ReadSingle();

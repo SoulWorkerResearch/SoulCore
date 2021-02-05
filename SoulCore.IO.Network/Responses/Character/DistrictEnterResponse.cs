@@ -1,11 +1,11 @@
-﻿using SoulCore.Types;
-using SoulCore.IO.Network.Responses.Shared;
+﻿using SoulCore.IO.Network.Responses.Shared;
+using SoulCore.Types;
 
 namespace SoulCore.IO.Network.Responses
 {
-    public sealed record DistrictEnterResponse
+    public readonly struct DistrictEnterResponse
     {
-        public DistrictConnectResult Result { get; init; } = DistrictConnectResult.Yes;
-        public PlaceShared Place { get; init; } = default!;
+        public DistrictConnectResult Result { get; init; }
+        public MapIdPacketSharedStructure MapId { get; init; }
     }
 }

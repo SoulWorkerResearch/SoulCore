@@ -31,6 +31,10 @@ namespace SoulCore.IO.Network
 
         internal void WriteCharacterInfoResult(CharacterInfoResult value) => Write((byte)value);
 
+        internal void WriteSyncUserFlags(SyncUserFlags value) => Write((int)value);
+
+        internal void WriteUserFlags(UserFlags value) => Write((int)value);
+
         internal void Write(CharacterExPacketSharedStructure value)
         {
             Write(value.Character);
@@ -38,9 +42,9 @@ namespace SoulCore.IO.Network
             Write(value.SuperArmorGage);
         }
 
-        private void Write(PositionInfoPacketSharedStructure value)
+        internal void Write(PositionInfoPacketSharedStructure value)
         {
-            Write(value.WorldId);
+            Write(value.LocationId);
             Write(value.MapId);
             Write(value.Position);
             Write(value.Rotation);
@@ -212,24 +216,6 @@ namespace SoulCore.IO.Network
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void Write(MapIdPacketSharedStructure value) => Write(value.Seq);
-
-        internal void Write(SPosInfoSharedResponse value)
-        {
-            Write(value.LocationId);
-            Write(value.Map);
-            Write(value.Pos);
-            Write(value.Rot);
-        }
-
-        internal void WritePlace(PlaceShared value)
-        {
-            Write(value.Location);
-            Write((ulong)0);
-            Write(value.Position);
-            Write(value.Rotation);
-            Write(value.SuperArmourGage.Current);
-            Write(value.SuperArmourGage.Max);
-        }
 
         internal void WriteNumberLengthUtf8String(string str)
         {

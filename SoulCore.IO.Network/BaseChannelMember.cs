@@ -1,4 +1,5 @@
 ﻿using SoulCore.IO.Network.Commands;
+using SoulCore.IO.Network.PacketSharedStructure;
 using SoulCore.IO.Network.Requests.Move;
 using SoulCore.IO.Network.Responses;
 using System.Linq;
@@ -48,10 +49,9 @@ namespace SoulCore.IO.Network
             Session.SendDeferred(CategoryCommand.World, WorldCommand.OtherInfosPc, (PacketWriter writer) =>
             {
                 writer.Write((short)value.Values.Count());
-                foreach (CharacterOthersResponse.Entity entity in value.Values)
+                foreach (CharacterExPacketSharedStructure entity in value.Values)
                 {
-                    writer.Write(entity.Character);
-                    writer.WritePlace(entity.Place);
+                    writer.Write(entity);
                 }
             });
 

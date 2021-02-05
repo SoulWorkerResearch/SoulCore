@@ -1,4 +1,5 @@
-﻿using SoulCore.IO.Network.Responses.Shared;
+﻿using SoulCore.IO.Network.PacketSharedStructure;
+using SoulCore.IO.Network.Responses.Shared;
 
 namespace SoulCore.IO.Network.Responses
 {
@@ -12,7 +13,7 @@ namespace SoulCore.IO.Network.Responses
         public SEndPointSharedResponse EndPoint { get; init; } = SEndPointSharedResponse.Empty;
         public MapIdPacketSharedStructure Map { get; init; }
         public MapIdPacketSharedStructure ParentMap { get; init; }
-        public SPosInfoSharedResponse Pos { get; init; } = SPosInfoSharedResponse.Empty;
+        public PositionInfoPacketSharedStructure Pos { get; init; } = PositionInfoPacketSharedStructure.Empty;
         public byte Type { get; init; }
     }
 }

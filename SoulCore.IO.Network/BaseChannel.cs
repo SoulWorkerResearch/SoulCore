@@ -28,11 +28,7 @@ namespace SoulCore.IO.Network
         #region Broadcast World
 
         protected void BroadcastDeferred(TSession session, WorldInInfoPcResponse value) =>
-            BroadcastExceptDeferred(CategoryCommand.World, WorldCommand.InInfoPc, session, (writer) =>
-            {
-                writer.Write(value.Character);
-                writer.WritePlace(value.Place);
-            });
+            BroadcastExceptDeferred(CategoryCommand.World, WorldCommand.InInfoPc, session, (writer) => writer.Write(value.Character));
 
         protected void BroadcastDeferred(TSession session, WorldOutInfoPcResponse value) =>
             BroadcastExceptDeferred(CategoryCommand.World, WorldCommand.OutInfoPc, session, (writer) =>
