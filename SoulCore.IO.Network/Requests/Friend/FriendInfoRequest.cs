@@ -9,9 +9,6 @@ namespace SoulCore.IO.Network.Requests.Friend
     {
         public readonly int CharacterId;
 
-        internal FriendInfoRequest(BinaryReader br)
-        {
-            CharacterId = br.ReadInt32();
-        }
+        internal FriendInfoRequest(BinaryReader br) => CharacterId = br.ReadInt32();
     }
 }

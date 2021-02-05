@@ -1,23 +1,23 @@
-﻿using System.IO;
-using SoulCore.IO.Network.Responses.Shared;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
+using SoulCore.IO.Network.Responses.Shared;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
     [Request(CategoryCommand.Character, CharacterCommand.EnterGameServerReq)]
     public readonly struct CharacterEnterGameServerRequest
     {
-        public int Account { get; }
-        public int Character { get; }
-        public MapIdPacketSharedStructure MapId { get; }
-        public byte FirstConnect { get; }
-        public ulong SessionKey { get; }
+        public readonly int AccountId;
+        public readonly int CharacterId;
+        public readonly MapIdPacketSharedStructure MapId;
+        public readonly byte FirstConnect;
+        public readonly ulong SessionKey;
 
         internal CharacterEnterGameServerRequest(BinaryReader br)
         {
-            Account = br.ReadInt32();
-            Character = br.ReadInt32();
+            AccountId = br.ReadInt32();
+            CharacterId = br.ReadInt32();
             MapId = new(br);
             FirstConnect = br.ReadByte();
             SessionKey = br.ReadUInt64();

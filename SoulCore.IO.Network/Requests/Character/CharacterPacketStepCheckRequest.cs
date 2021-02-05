@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
@@ -10,9 +9,6 @@ namespace SoulCore.IO.Network.Requests.Character
     {
         public readonly int CharacterId;
 
-        internal CharacterPacketStepCheckRequest(BinaryReader br)
-        {
-            CharacterId = br.ReadInt32();
-        }
+        internal CharacterPacketStepCheckRequest(BinaryReader br) => CharacterId = br.ReadInt32();
     }
 }

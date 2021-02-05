@@ -1,8 +1,10 @@
 ﻿using SoulCore.IO.Network.Commands;
+using SoulCore.IO.Network.PacketSharedStructure;
 using SoulCore.IO.Network.Responses;
 using SoulCore.IO.Network.Responses.Shared;
 using SoulCore.Types;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -29,15 +31,28 @@ namespace SoulCore.IO.Network
 
         internal void WriteCharacterInfoResult(CharacterInfoResult value) => Write((byte)value);
 
-        internal void WriteCharacter(CharacterShared character)
+        internal void Write(CharacterExPacketSharedStructure value)
         {
-            WriteCharacterMain(character);
-            WriteCharacterWeapon(character);
-            WriteCharacterFashion(character);
-            WriteCharacterMeta(character);
+            Write(value.Character);
+            Write(value.Position);
+            Write(value.SuperArmorGage);
         }
 
-        private void WriteCharacterMain(CharacterShared value)
+        private void Write(PositionInfoPacketSharedStructure value)
+        {
+            Write(value.WorldId);
+            Write(value.MapId);
+            Write(value.Position);
+            Write(value.Rotation);
+        }
+
+        private void Write(SuperArmorGagePacketSharedStructure value)
+        {
+            Write(value.Current);
+            Write(value.Max);
+        }
+
+        internal void Write(CharacterPacketSharedStructure value)
         {
             Write(value.Id);
             WriteByteLengthUnicodeString(value.Name);
@@ -46,20 +61,56 @@ namespace SoulCore.IO.Network
             Write(value.Photo);
             Write(value.Appearance);
             Write(value.Level);
-            Write(new byte[10]);
+            Write(value.Faction);
+            Write(value.AccountId);
+            Write(value.GameMasterPower);
+            Write(value.PvPKillCount);
+            Write(value.WeaponItem);
+            Write(value.SubWeaponItem);
+            Write(value.CostumesItems);
+            Write(value.ActiveBroachEffect);
+            Write(value.Title);
+            Write(value.League);
+            Write(value.Stats);
+            Write(value.Shop);
+            Write(value.Fp);
+            Write(value.Echelon);
+            Write(value.BattlePose);
+            Write(value.Stats);
+            Write(value.Buffs);
+            Write(value.Slot);
+            Write(value.EqualizerId);
+            Write(value._1);
+            Write(value._2);
+            Write(value._3);
         }
 
-        private void WriteCharacterWeapon(CharacterShared value)
+        private void Write(CharacterPacketSharedStructure.AppearanceInfo.HairInfo value)
         {
-            Write(value.WeaponItem.UpgradeLevel);
-            Write(value.WeaponItem.PrototypeId);
-            Write(value.SubWeaponItem.UpgradeLevel);
-            Write(value.SubWeaponItem.PrototypeId);
+            Write(value.Style);
+            Write(value.Color);
         }
 
-        private void WriteCharacterFashion(CharacterShared value)
+        private void Write(CharacterPacketSharedStructure.AppearanceInfo value)
         {
-            foreach ((CharacterShared.CostumeInfos.CostumeInfo view, CharacterShared.CostumeInfos.CostumeInfo battle) in value.EquippedItems.View.Zip(value.EquippedItems.Battle, Tuple.Create))
+            Write(value._1);
+            Write(value.Hair);
+            Write(value.EyeColor);
+            Write(value.SkinColor);
+            Write(value.EquippedHair);
+            Write(value.EquippedEyeColor);
+            Write(value.EquippedSkinColor);
+        }
+
+        private void Write(CharacterPacketSharedStructure.GearInfo value)
+        {
+            Write(value.UpgradeLevel);
+            Write(value.PrototypeId);
+        }
+
+        private void Write(CharacterPacketSharedStructure.CostumeInfos value)
+        {
+            foreach ((CharacterPacketSharedStructure.CostumeInfos.CostumeInfo view, CharacterPacketSharedStructure.CostumeInfos.CostumeInfo battle) in value.View.Zip(value.Battle, Tuple.Create))
             {
                 Write(battle.Serial);
                 Write(battle.PrototypeId);
@@ -71,82 +122,77 @@ namespace SoulCore.IO.Network
             }
         }
 
-        private void WriteCharacterMeta(CharacterShared value)
+        private void Write(CharacterPacketSharedStructure.TitleInfo value)
         {
-            const uint activeBroachEffect = 0;
-
-            const ushort primaryEnergy = 0;
-            const ushort extraEnergy = 0;
-            const ushort pcExtraEnergy = 0;
-
-            const uint titlePrimary = 0;
-            const uint titleSecondary = 0;
-
-            const uint leagueId = 0;
-            const string leagueName = "";
-            const ushort leagueDesign = 0;
-            const ushort leagueBackDesign = 0;
-
-            const uint unknownStat = 0;
-            const uint unknownMaxStat = 0;
-
-            const byte privateShopType = 0;
-            const string privateShopName = "";
-
-            const byte echelonLevel = 0;
-            const int echelonExp = 0;
-
-            Write(activeBroachEffect);
-            Write(titlePrimary);
-            Write(titleSecondary);
-            Write(leagueId);
-            WriteByteLengthUnicodeString(leagueName);
-            Write(leagueDesign);
-            Write(leagueBackDesign);
-            Write(value.Stats.CurrentHp);
-            Write(value.Stats.MaxHp);
-            Write(value.Stats.CurrentSg);
-            Write(value.Stats.MaxSg);
-            Write(unknownStat);
-            Write(unknownMaxStat);
-            Write(value.Stats.Stamina);
-            Write(value.Stats.MaxStamina);
-            Write(unknownStat);
-            Write(unknownMaxStat);
-            Write(value.Stats.MoveSpeed);
-            Write(value.Stats.AttackSpeed);
-            Write(privateShopType);
-            Write(privateShopName);
-            Write(primaryEnergy);
-            Write(extraEnergy);
-            Write(pcExtraEnergy);
-            Write(echelonLevel);
-            Write(echelonExp);
-            Write(ushort.MinValue); // 00 00
-            Write(uint.MinValue); // 00 00 00 00
-            Write(uint.MinValue); // 00 00 00 00
-            Write(value.Slot);
-            Write(uint.MinValue); // 00 00 00 00
-            Write((byte)1); // 00
-            Write(uint.MinValue); // 00 00 00 00
+            Write(value.Prefix);
+            Write(value.Suffix);
         }
 
-        private void Write(CharacterShared.AppearanceInfo.HairInfo value)
+        private void Write(CharacterPacketSharedStructure.LeagueInfo value)
         {
-            Write(value.Style);
-            Write(value.Color);
+            Write(value.Id);
+            WriteByteLengthUnicodeString(value.Name);
+            Write(value.Card);
         }
 
-        private void Write(CharacterShared.AppearanceInfo value)
+        private void Write(CharacterPacketSharedStructure.LeagueInfo.CardInfo value)
         {
-            Write(ushort.MinValue);
-            Write(ushort.MinValue);
-            Write(value.Hair);
-            Write(value.EyeColor);
-            Write(value.SkinColor);
-            Write(value.EquippedHair);
-            Write(value.EquippedEyeColor);
-            Write(value.EquippedSkinColor);
+            Write(value.Design);
+            Write(value.BackDesign);
+        }
+
+        private void Write(CharacterPacketSharedStructure.StatsInfo value)
+        {
+            Write(value.Hp);
+            Write(value.Sg);
+            Write(value._1);
+            Write(value.Stamina);
+            Write(value._2);
+            Write(value.AttackSpeed);
+            Write(value.MoveSpeed);
+        }
+
+        private void Write(CharacterPacketSharedStructure.StatsInfo.StatInfo value)
+        {
+            Write(value.Current);
+            Write(value.Max);
+        }
+
+        private void Write(CharacterPacketSharedStructure.PrivateShopInfo value)
+        {
+            Write(value.Type);
+            WriteByteLengthUnicodeString(value.Title);
+        }
+
+        private void Write(CharacterPacketSharedStructure.FpInfo value)
+        {
+            Write(value.Fp);
+            Write(value.BonusFp);
+            Write(value.PcBangFp);
+        }
+
+        private void Write(CharacterPacketSharedStructure.EchelonInfo value)
+        {
+            Write(value.Level);
+            Write(value.Exp);
+        }
+
+        private void Write(CharacterPacketSharedStructure.BuffInfo value)
+        {
+            Write(value.Id);
+            Write(value.Time);
+            Write(value.Count);
+            Write(value.OwnerId);
+            Write(value.Show);
+        }
+
+        private void Write(IEnumerable<CharacterPacketSharedStructure.BuffInfo> values)
+        {
+            Write((byte)values.Count());
+            foreach (CharacterPacketSharedStructure.BuffInfo value in values)
+            {
+                Write(value);
+            }
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -209,8 +255,7 @@ namespace SoulCore.IO.Network
             Write(Encoding.Unicode.GetBytes(str));
         }
 
-        internal void WriteDistrictConnectResult(DistrictConnectResult value) =>
-            Write((byte)value);
+        internal void WriteDistrictConnectResult(DistrictConnectResult value) => Write((byte)value);
 
         internal void WriteByteLengthUnicodeString(string str)
         {
@@ -218,8 +263,7 @@ namespace SoulCore.IO.Network
             Write(Encoding.Unicode.GetBytes(str));
         }
 
-        internal void WriteNpcVisability(NpcVisablity value) =>
-            Write((byte)value);
+        internal void WriteNpcVisability(NpcVisablity value) => Write((byte)value);
 
         internal void WriteAuthLoginErrorMessageCode(AuthLoginErrorMessageCode value) => Write((int)value);
 
@@ -236,8 +280,8 @@ namespace SoulCore.IO.Network
         public PacketWriter(CategoryCommand category, object command) : base(new MemoryStream(ushort.MaxValue), Encoding.ASCII, false)
         {
             /// Write SoulWorker magic bytes
-            Write((byte)0x03);
-            Write((byte)0x00);
+            Write(Defines.PacketHeaderMagic1);
+            Write(Defines.PacketHeaderMagic2);
 
             /// Write packet size (just reserve space, overwritten in GetBuffer)
             Write(ushort.MaxValue);

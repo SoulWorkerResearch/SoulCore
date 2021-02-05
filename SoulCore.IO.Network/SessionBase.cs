@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using NetCoreServer;
 using SoulCore.IO.Network.Commands;
+using SoulCore.IO.Network.PacketSharedStructure;
 using SoulCore.IO.Network.Permissions;
 using SoulCore.IO.Network.Providers;
 using SoulCore.IO.Network.Requests;
 using SoulCore.IO.Network.Responses;
 using SoulCore.IO.Network.Responses.Login;
-using SoulCore.IO.Network.Responses.Shared;
 using SoulCore.IO.Network.Responses.Skill;
 using SoulCore.IO.Network.Utils;
 using SoulCore.Types;
@@ -181,7 +181,7 @@ namespace SoulCore.IO.Network
         public TSession SendDeferred(CharacterInfoResponse value) =>
             SendDeferred(CategoryCommand.Character, CharacterCommand.InfoRes, (PacketWriter writer) =>
             {
-                writer.WriteCharacter(value.Character);
+                writer.Write(value.Character);
                 writer.WritePlace(value.Place);
 
                 writer.Write(ulong.MinValue); // Exp
@@ -345,8 +345,8 @@ namespace SoulCore.IO.Network
             SendDeferred(CategoryCommand.Character, CharacterCommand.ListRes, (PacketWriter writer) =>
             {
                 writer.Write((byte)value.Characters.Count);
-                foreach (CharacterShared character in value.Characters)
-                    writer.WriteCharacter(character);
+                foreach (CharacterPacketSharedStructure character in value.Characters)
+                    writer.Write(character);
 
                 writer.Write(value.LastSelected);
                 writer.Write(byte.MinValue);

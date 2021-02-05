@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
@@ -10,9 +9,6 @@ namespace SoulCore.IO.Network.Requests.Character
     {
         public readonly long SessionKey;
 
-        internal CharacterListRequest(BinaryReader br)
-        {
-            SessionKey = br.ReadInt64();
-        }
+        internal CharacterListRequest(BinaryReader br) => SessionKey = br.ReadInt64();
     }
 }

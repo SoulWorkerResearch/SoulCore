@@ -8,10 +8,10 @@ namespace SoulCore.IO.Network.Requests.Party
     /// This packet no have content.
     /// Use handler without packet.
     /// </summary>
-    [Request(CategoryCommand.Party, PartyCommand.MatchingExit)]
-    public readonly struct PartyMatchinExitRequest
+    [Request(CategoryCommand.Party, PartyCommand.RecruitList)]
+    public readonly struct PartyRecruitListRequest
     {
-        internal PartyMatchinExitRequest(BinaryReader _)
+        internal PartyRecruitListRequest(BinaryReader _)
         {
         }
     }

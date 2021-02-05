@@ -9,9 +9,6 @@ namespace SoulCore.IO.Network.Requests.Channel
     {
         public readonly ushort ChannelId;
 
-        internal ChannelChangeRequest(BinaryReader br)
-        {
-            ChannelId = br.ReadUInt16();
-        }
+        internal ChannelChangeRequest(BinaryReader br) => ChannelId = br.ReadUInt16();
     }
 }

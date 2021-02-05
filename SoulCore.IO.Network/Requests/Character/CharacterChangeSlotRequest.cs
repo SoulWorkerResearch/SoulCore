@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
-using SoulCore.IO.Network.Attributes;
+﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
+using System.IO;
 
 namespace SoulCore.IO.Network.Requests.Character
 {
@@ -28,11 +27,14 @@ namespace SoulCore.IO.Network.Requests.Character
         internal CharacterChangeSlotRequest(BinaryReader br)
         {
             AccountId = br.ReadInt32();
-            var srcCharacterId = br.ReadInt32();
-            var dstCharacterId = br.ReadInt32();
+
+            int srcCharacterId = br.ReadInt32();
+            int dstCharacterId = br.ReadInt32();
+
             ErrorCode = br.ReadInt32();
-            var srcSlotId = br.ReadByte();
-            var dstSlotId = br.ReadByte();
+
+            byte srcSlotId = br.ReadByte();
+            byte dstSlotId = br.ReadByte();
 
             Src = new(srcCharacterId, srcSlotId);
             Dst = new(dstCharacterId, dstSlotId);

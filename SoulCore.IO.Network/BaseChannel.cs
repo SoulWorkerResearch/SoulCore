@@ -12,35 +12,33 @@ namespace SoulCore.IO.Network
         where TServer : ServerBase<TServer, TSession>
         where TSession : SessionBase<TServer, TSession>
     {
-        public ushort Id { get; }
+        public readonly ushort Id;
 
         public IReadOnlyDictionary<Guid, TSession> Sessions => _internalSessions;
 
         private readonly ConcurrentDictionary<Guid, TSession> _internalSessions = new();
 
-        protected BaseChannel(ushort id) =>
-            Id = id;
+        protected BaseChannel(ushort id) => Id = id;
 
         protected bool TryAdd(TSession session) =>
             _internalSessions.TryAdd(session.InternalSession.Id, session);
 
-        protected bool TryRemove(TSession session, out TSession? @out) =>
-            _internalSessions.TryRemove(session.InternalSession.Id, out @out);
+        protected bool TryRemove(TSession session, out TSession? @out) => _internalSessions.TryRemove(session.InternalSession.Id, out @out);
 
         #region Broadcast World
 
-        protected void BroadcastDeferred(TSession session, SChannelBroadcastCharacterInResponse value) =>
+        protected void BroadcastDeferred(TSession session, WorldInInfoPcResponse value) =>
             BroadcastExceptDeferred(CategoryCommand.World, WorldCommand.InInfoPc, session, (writer) =>
             {
-                writer.WriteCharacter(value.Character);
+                writer.Write(value.Character);
                 writer.WritePlace(value.Place);
             });
 
-        protected void BroadcastDeferred(TSession session, SChannelBroadcastCharacterOutResponse value) =>
+        protected void BroadcastDeferred(TSession session, WorldOutInfoPcResponse value) =>
             BroadcastExceptDeferred(CategoryCommand.World, WorldCommand.OutInfoPc, session, (writer) =>
             {
                 writer.Write((byte)1); // count
-                writer.Write(value.Id);
+                writer.Write(value.CharacterId);
             });
 
         #endregion Broadcast World
@@ -63,15 +61,17 @@ namespace SoulCore.IO.Network
 
         private static void BroadcastDeferred(IEnumerable<KeyValuePair<Guid, TSession>> sessions, PacketWriter writer)
         {
-            byte[] packet = GetRawPacket(writer);
+            byte[] packet = PackPacket(writer);
             foreach ((Guid _, TSession session) in sessions)
+            {
                 SendDeferred(session, packet, writer);
+            }
         }
 
         private static void SendDeferred(TSession session, byte[] packet, PacketWriter writer) =>
             session.InternalSession.SendAsync(packet, 0, writer.BaseStream.Length);
 
-        private static byte[] GetRawPacket(PacketWriter writer) => PacketUtils.Pack(writer);
+        private static byte[] PackPacket(PacketWriter writer) => PacketUtils.Pack(writer);
     }
 }
 

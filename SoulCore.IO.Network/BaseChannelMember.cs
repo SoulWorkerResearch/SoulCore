@@ -50,7 +50,7 @@ namespace SoulCore.IO.Network
                 writer.Write((short)value.Values.Count());
                 foreach (CharacterOthersResponse.Entity entity in value.Values)
                 {
-                    writer.WriteCharacter(entity.Character);
+                    writer.Write(entity.Character);
                     writer.WritePlace(entity.Place);
                 }
             });

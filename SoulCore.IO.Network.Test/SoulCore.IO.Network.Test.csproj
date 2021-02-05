@@ -8,13 +8,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="config\appsettings.json" />
-    <None Remove="data\packet.bin" />
+    <None Remove="data\requests.bin" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="config\appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="data\packet.bin">
+    <Content Include="data\requests.bin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

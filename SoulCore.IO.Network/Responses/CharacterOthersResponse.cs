@@ -1,4 +1,5 @@
-﻿using SoulCore.IO.Network.Responses.Shared;
+﻿using SoulCore.IO.Network.PacketSharedStructure;
+using SoulCore.IO.Network.Responses.Shared;
 using System.Collections.Generic;
 
 namespace SoulCore.IO.Network.Responses
@@ -7,7 +8,7 @@ namespace SoulCore.IO.Network.Responses
     {
         public readonly struct Entity
         {
-            public CharacterShared Character { get; init; }
+            public CharacterPacketSharedStructure Character { get; init; }
             public PlaceShared Place { get; init; }
         }
 

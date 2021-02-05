@@ -10,16 +10,16 @@ namespace SoulCore.IO.Network.Requests.Character
         public readonly int CharacterId;
         public readonly int AccountId;
         public readonly bool ClearTutorial;
-        public readonly int PrevMapID;
-        public readonly int PrevRevivePoint;
+        public readonly int PreviousMapId;
+        public readonly int PreviousRevivePoint;
 
         internal CharacterSelectRequest(BinaryReader br)
         {
             CharacterId = br.ReadInt32();
             AccountId = br.ReadInt32();
             ClearTutorial = br.ReadBoolean();
-            PrevMapID = br.ReadInt32();
-            PrevRevivePoint = br.ReadInt32();
+            PreviousMapId = br.ReadInt32();
+            PreviousRevivePoint = br.ReadInt32();
         }
     }
 }

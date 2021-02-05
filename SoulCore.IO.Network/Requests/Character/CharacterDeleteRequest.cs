@@ -9,9 +9,6 @@ namespace SoulCore.IO.Network.Requests.Character
     {
         public readonly int CharacterId;
 
-        internal CharacterDeleteRequest(BinaryReader br)
-        {
-            CharacterId = br.ReadInt32();
-        }
+        internal CharacterDeleteRequest(BinaryReader br) => CharacterId = br.ReadInt32();
     }
 }

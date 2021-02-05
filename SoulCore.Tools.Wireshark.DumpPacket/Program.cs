@@ -12,19 +12,26 @@ namespace SoulCore.Tools.Wireshark.DumpPacket
         private static async Task Main(string[] args)
         {
             IEnumerable<IEnumerable<RawPacket>> splitteds = await JsonFile.Read(args[0]).ConfigureAwait(false);
+            string clientIp = args[1];
 
-            await using FileStream fs = File.Open("packet.bin", FileMode.Create, FileAccess.Write);
+            await Write("requests.bin", splitteds.Select(s => s.Where(s => s.SrcIp == clientIp))).ConfigureAwait(false);
+            await Write("responses.bin", splitteds.Select(s => s.Where(s => s.SrcIp != clientIp))).ConfigureAwait(false);
+
+            Console.WriteLine("Hello World!");
+        }
+
+        private static async Task Write(string filepath, IEnumerable<IEnumerable<RawPacket>> splitteds)
+        {
+            await using FileStream requests = File.Open(filepath, FileMode.Create, FileAccess.Write);
             foreach (IEnumerable<RawPacket> packets in splitteds)
             {
                 HashSet<ulong> written = new();
 
                 foreach (RawPacket packet in packets)
                 {
-                    await HierarchyWrite(packet, packets, written, fs).ConfigureAwait(false);
+                    await HierarchyWrite(packet, packets, written, requests).ConfigureAwait(false);
                 }
             }
-
-            Console.WriteLine("Hello World!");
         }
 
         private static async Task HierarchyWrite(RawPacket packet, IEnumerable<RawPacket> packets, HashSet<ulong> written, FileStream fs)
