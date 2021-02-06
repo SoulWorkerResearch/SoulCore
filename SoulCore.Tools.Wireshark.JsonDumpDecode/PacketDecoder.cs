@@ -21,7 +21,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
             await using FileStream fs = File.Open(outputFilePath, FileMode.Create, FileAccess.Write);
 
-            var justPackets = await WriteSequenceAsync(inputFilePath).ConfigureAwait(false);
+            List<Packet>? justPackets = await WriteSequenceAsync(inputFilePath).ConfigureAwait(false);
             foreach (var packet in justPackets)
             {
                 await using MemoryStream ms = new(packet.Body);
@@ -40,7 +40,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
         private static async Task DumpRow(byte category, byte command, FileStream fs, Packet packet, string clientIp)
         {
-            var opcodes = DumpOpcode(category, command);
+            (object, object) opcodes = DumpOpcode(category, command);
 
             if (clientIp == packet.Receiver)
             {
@@ -81,7 +81,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
             List<Packet> justPackets = new(splitteds.Select(s => s.Count()).Sum());
 
-            var written = new HashSet<ulong>();
+            HashSet<ulong> written = new();
 
             foreach (var rawPackets in splitteds)
             {
@@ -99,12 +99,12 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
                     ms.Position = 0;
                     using BinaryReader br = new(ms);
 
-                    var packet = new PacketHeader(br);
+                    PacketHeader packet = new(br);
 
                     byte[] buffer = br.ReadBytes(packet.Size - Defines.PacketHeaderSize);
                     PacketUtils.Exchange(ref buffer);
 
-                    justPackets.Add(new Packet()
+                    justPackets.Add(new()
                     {
                         Frame = rawPacket.Frame,
                         Receiver = rawPacket.DstIp,

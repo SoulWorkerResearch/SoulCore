@@ -78,6 +78,8 @@ namespace SoulCore.IO.Network.PacketSharedStructure
 
         public readonly struct GearInfo
         {
+            public static readonly GearInfo Empty = new() { PrototypeId = -1 };
+
             public byte UpgradeLevel { get; init; }
             public int PrototypeId { get; init; }
 
@@ -92,6 +94,8 @@ namespace SoulCore.IO.Network.PacketSharedStructure
         {
             public readonly struct CostumeInfo
             {
+                public static readonly CostumeInfo Empty = new() { Serial = -1, PrototypeId = -1 };
+
                 public long Serial { get; init; }
                 public int PrototypeId { get; init; }
                 public uint Color { get; init; }
