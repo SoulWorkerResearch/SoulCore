@@ -10,8 +10,8 @@ namespace SoulCore.IO.Network.Extensions
     public static class ServiceCollectionExtension
     {
         public static IServiceCollection AddNetwork<TServer, TSession>(this IServiceCollection services)
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
         {
             foreach (Type type in GetSyncHandlers())
             {

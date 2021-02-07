@@ -5,8 +5,8 @@ using System.IO;
 namespace SoulCore.IO.Network
 {
     internal sealed class InternalSession<TServer, TSession> : TcpSession
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         internal TSession Session { get; }
 

@@ -15,9 +15,14 @@ using System.Text;
 
 namespace SoulCore.IO.Network
 {
-    public abstract class SessionBase<TServer, TSession>
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+    internal interface IBaseSession
+    {
+        void Disconnect();
+    }
+
+    public abstract class BaseSession<TServer, TSession> : IBaseSession
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         private static readonly HandlerProvider<TServer, TSession> _handlers = new();
 
@@ -432,7 +437,7 @@ namespace SoulCore.IO.Network
         {
         }
 
-        protected SessionBase(ServerBase<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
+        protected BaseSession(BaseServer<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
 
         private TSession SendDeferred(PacketWriter writer)
         {

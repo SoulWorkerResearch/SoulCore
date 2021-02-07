@@ -11,15 +11,15 @@ using System.Reflection;
 namespace SoulCore.IO.Network.Providers
 {
     internal class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         internal sealed record Handler
         {
             internal delegate void MethodInfo(TSession session, BinaryReader br);
 
-            internal HandlerPermission Permission { get; }
-            internal MethodInfo Method { get; }
+            internal readonly HandlerPermission Permission;
+            internal readonly MethodInfo Method;
 
             internal Handler(HandlerPermission permission, MethodInfo method)
             {
@@ -32,11 +32,8 @@ namespace SoulCore.IO.Network.Providers
         {
         }
 
-        private static void Dummy(SessionBase<TServer, TSession> session, BinaryReader _)
+        private static void Dummy(BaseSession<TServer, TSession> _1, BinaryReader _2)
         {
-#if !DEBUG
-            session.InternalSession.Disconnect();
-#endif // !DEBUG
         }
 
         private static IEnumerable<Handler> GetHandlers()

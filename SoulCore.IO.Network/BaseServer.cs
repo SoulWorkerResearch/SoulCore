@@ -3,9 +3,9 @@ using System.Net;
 
 namespace SoulCore.IO.Network
 {
-    public abstract class ServerBase<TServer, TSession>
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+    public abstract class BaseServer<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         internal readonly InternalServer<TServer, TSession> InternalServer;
 
@@ -13,7 +13,7 @@ namespace SoulCore.IO.Network
 
         public bool Stop() => InternalServer.Stop();
 
-        protected ServerBase(IServiceProvider services, string ip, ushort port) =>
+        protected BaseServer(IServiceProvider services, string ip, ushort port) =>
             InternalServer = new((TServer)this, services, new(IPAddress.Parse(ip), port));
     }
 }

@@ -9,8 +9,8 @@ using System.Linq;
 namespace SoulCore.IO.Network
 {
     public abstract class BaseChannel<TServer, TSession>
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         public readonly ushort Id;
 

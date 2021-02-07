@@ -6,8 +6,8 @@ using System.Net;
 namespace SoulCore.IO.Network
 {
     internal sealed class InternalServer<TServer, TSession> : TcpServer
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
+        where TServer : BaseServer<TServer, TSession>
+        where TSession : BaseSession<TServer, TSession>
     {
         internal readonly IServiceProvider Services;
         internal readonly TServer Server;
