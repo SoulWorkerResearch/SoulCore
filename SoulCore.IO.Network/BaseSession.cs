@@ -179,7 +179,7 @@ namespace SoulCore.IO.Network
                 writer.Write((ushort)value.Values.Count());
             });
 
-        public TSession SendDeferred(CharacterGestureLoadResponse value) =>
+        public TSession SendDeferred(GestureSlotResponse value) =>
             SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotLoad, (PacketWriter writer) =>
             {
                 foreach (uint gesture in value.Values)

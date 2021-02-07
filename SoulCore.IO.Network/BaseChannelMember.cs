@@ -2,6 +2,7 @@
 using SoulCore.IO.Network.PacketSharedStructure;
 using SoulCore.IO.Network.Requests.Move;
 using SoulCore.IO.Network.Responses;
+using SoulCore.IO.Network.Responses.Gesture;
 using System.Linq;
 
 namespace SoulCore.IO.Network
@@ -70,11 +71,11 @@ namespace SoulCore.IO.Network
 
         #region Broadcast Gesture Packet
 
-        public void BroadcastDeferred(CharacterGestureDo value) =>
+        public void BroadcastDeferred(GestureShowResponse value) =>
             Channel.BroadcastDeferred(CategoryCommand.Gesture, GestureCommand.Show, (writer) =>
             {
-                writer.Write(value.Character);
-                writer.Write(value.Gesture);
+                writer.Write(value.CharacterId);
+                writer.Write(value.GestureId);
                 writer.Write(value.Position);
                 writer.Write(uint.MinValue);
                 writer.Write(value.Rotation);

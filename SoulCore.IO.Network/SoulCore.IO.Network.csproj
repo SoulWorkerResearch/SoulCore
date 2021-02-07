@@ -33,7 +33,6 @@
     <Folder Include="Requests\Event\" />
     <Folder Include="Requests\Exchange\" />
     <Folder Include="Requests\Force\" />
-    <Folder Include="Requests\Gesture\" />
     <Folder Include="Requests\GmAgent\" />
     <Folder Include="Requests\Helper\" />
     <Folder Include="Requests\InfiniteTower\" />
@@ -74,7 +73,6 @@
     <Folder Include="Responses\Exchange\" />
     <Folder Include="Responses\Force\" />
     <Folder Include="Responses\Friend\" />
-    <Folder Include="Responses\Gesture\" />
     <Folder Include="Responses\GmAgent\" />
     <Folder Include="Responses\Helper\" />
     <Folder Include="Responses\InfiniteTower\" />
