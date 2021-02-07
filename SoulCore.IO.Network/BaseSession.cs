@@ -251,8 +251,10 @@ namespace SoulCore.IO.Network
         public TSession SendDeferred(GestureSlotResponse value) =>
             SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotUpdate, (PacketWriter writer) =>
             {
-                foreach (uint id in value.Values)
-                    writer.Write(id);
+                foreach (uint gestureId in value.GestureIds)
+                {
+                    writer.Write(gestureId);
+                }
             });
 
         public TSession SendDeferred(GateEnterResponse value) =>

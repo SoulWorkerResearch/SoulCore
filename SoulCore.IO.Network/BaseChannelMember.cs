@@ -77,8 +77,8 @@ namespace SoulCore.IO.Network
                 writer.Write(value.CharacterId);
                 writer.Write(value.GestureId);
                 writer.Write(value.Position);
-                writer.Write(uint.MinValue);
-                writer.Write(value.Rotation);
+                writer.Write(value.Yaw);
+                writer.Write(value.Pitch);
             });
 
         #endregion Broadcast Gesture Packet
