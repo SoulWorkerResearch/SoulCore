@@ -23,7 +23,7 @@ namespace SoulCore.IO.Network
 
         internal void WriteChannelLoadStatus(ChannelLoadStatus value) => Write((byte)value);
 
-        internal void WriteCharacterStat(CharacterStat value) => Write((ushort)value);
+        internal void WriteCharacterStat(StatType value) => Write((ushort)value);
 
         internal void WriteDistrictLogOutStatus(DistrictLogOutStatus value) => Write((byte)value);
 

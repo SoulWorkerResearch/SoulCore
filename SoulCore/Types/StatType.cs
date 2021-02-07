@@ -1,6 +1,6 @@
 ﻿namespace SoulCore.Types
 {
-    public enum CharacterStat : ushort
+    public enum StatType : ushort
     {
         HealthPointCurrent = 0x1,
         SoulGaugeCurrent = 0x2,

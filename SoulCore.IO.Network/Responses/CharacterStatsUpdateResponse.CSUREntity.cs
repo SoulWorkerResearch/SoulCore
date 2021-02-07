@@ -6,7 +6,7 @@ namespace SoulCore.IO.Network.Responses
     {
         public sealed record CSUREntity
         {
-            public CharacterStat Id { get; init; }
+            public StatType Id { get; init; }
             public float Value { get; init; }
         }
     }

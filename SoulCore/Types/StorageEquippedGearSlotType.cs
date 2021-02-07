@@ -1,8 +1,7 @@
 ﻿namespace SoulCore.Types
 {
-    public enum StorageEquippedGearSlot : uint
+    public enum StorageEquippedGearSlotType : uint
     {
-        None = 0xFFFFFFFF,
         Weapon = 0,
         SubWeapon = 0,
         Earrings = 2,
