@@ -15,11 +15,6 @@ using System.Text;
 
 namespace SoulCore.IO.Network
 {
-    internal interface IBaseSession
-    {
-        void Disconnect();
-    }
-
     public abstract class BaseSession<TServer, TSession> : IBaseSession
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
