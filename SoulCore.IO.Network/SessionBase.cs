@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using NetCoreServer;
-using SoulCore.IO.Network.Commands;
+﻿using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.PacketSharedStructure;
 using SoulCore.IO.Network.Permissions;
 using SoulCore.IO.Network.Providers;
@@ -10,75 +8,22 @@ using SoulCore.IO.Network.Responses.Login;
 using SoulCore.IO.Network.Responses.Skill;
 using SoulCore.IO.Network.Utils;
 using SoulCore.Types;
-using SoulCore.Utils;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 
 namespace SoulCore.IO.Network
 {
-    internal sealed class InternalSession<TServer, TSession> : TcpSession
-        where TServer : ServerBase<TServer, TSession>
-        where TSession : SessionBase<TServer, TSession>
-    {
-        internal TSession Session { get; }
-
-        internal ILogger Logger { get; }
-
-        protected override void OnDisconnected()
-        {
-            Logger.LogDebug($"{Id} disconnected");
-            Session.OnDisconnected();
-        }
-
-        protected override void OnConnected() => Logger.LogDebug($"{Id} connected");
-
-        protected override void OnError(SocketError error) => Logger.LogError($"{error}");
-
-        protected override void OnReceived(byte[] buffer, long offset, long size)
-        {
-            using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
-            using BinaryReader br = new(ms);
-
-            try
-            {
-                do
-                {
-                    PacketHeader packet = new(br);
-                    PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + Defines.PacketHeaderSize));
-
-                    Session.ProcessPacket(br);
-                } while (br.BaseStream.Position < br.BaseStream.Length);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, "Shit happened");
-#if !DEBUG
-                Disconnect();
-#endif
-                return;
-            }
-        }
-
-        internal InternalSession(InternalServer<TServer, TSession> server, TSession session, ILogger logger) : base(server)
-        {
-            Session = session;
-            Logger = logger;
-        }
-    }
-
     public abstract class SessionBase<TServer, TSession>
         where TServer : ServerBase<TServer, TSession>
         where TSession : SessionBase<TServer, TSession>
     {
         private static readonly HandlerProvider<TServer, TSession> _handlers = new();
 
-        public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).BaseServer;
+        public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).Server;
 
-        internal InternalSession<TServer, TSession> InternalSession { get; }
+        internal readonly InternalSession<TServer, TSession> InternalSession;
 
         public void Disconnect() => InternalSession.Disconnect();
 
@@ -476,10 +421,7 @@ namespace SoulCore.IO.Network
 
         internal void ProcessPacket(BinaryReader br)
         {
-            ushort opcode = br.ReadUInt16();
-            DebugLogOpcode(opcode);
-
-            HandlerProvider<TServer, TSession>.Handler handler = _handlers[opcode];
+            HandlerProvider<TServer, TSession>.Handler handler = _handlers[br.ReadUInt16()];
             if (handler.Permission == Permission)
             {
                 handler.Method.Invoke((TSession)this, br);
@@ -490,7 +432,7 @@ namespace SoulCore.IO.Network
         {
         }
 
-        protected SessionBase(ServerBase<TServer, TSession> server, ILogger logger) => InternalSession = new(server.InternalServer, (TSession)this, logger);
+        protected SessionBase(ServerBase<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
 
         private TSession SendDeferred(PacketWriter writer)
         {
@@ -501,9 +443,6 @@ namespace SoulCore.IO.Network
 
             return (TSession)this;
         }
-
-        [Conditional("DEBUG")]
-        private void DebugLogOpcode(ushort opcode) => InternalSession.Logger.LogDebug($"@event [0x{ConvertUtils.LeToBeUInt16(opcode):X4}]");
     }
 }
 

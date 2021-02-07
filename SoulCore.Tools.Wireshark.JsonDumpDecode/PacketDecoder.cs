@@ -13,7 +13,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 {
     public sealed partial class PacketDecoder
     {
-        public static async Task DoIt(string[] args)
+        public static async Task DoItAsync(string[] args)
         {
             string inputFilePath = args[0];
             string outputFilePath = args[1];
@@ -32,13 +32,13 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
                 Messages.ExtracteOpcode(command, category);
 
-                await DumpRow(category, command, fs, packet, clientIp).ConfigureAwait(false);
+                await DumpRowAsync(category, command, fs, packet, clientIp).ConfigureAwait(false);
 
                 await fs.WriteAsync(Encoding.ASCII.GetBytes($"{BitConverter.ToString(packet.Body).Replace('-', ' ')}\n\n")).ConfigureAwait(false);
             }
         }
 
-        private static async Task DumpRow(byte category, byte command, FileStream fs, Packet packet, string clientIp)
+        private static async Task DumpRowAsync(byte category, byte command, FileStream fs, Packet packet, string clientIp)
         {
             (object, object) opcodes = DumpOpcode(category, command);
 
@@ -89,7 +89,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
                 {
                     await using MemoryStream ms = new(ushort.MaxValue);
 
-                    await HierarchyWrite(rawPacket, rawPackets, written, ms).ConfigureAwait(false);
+                    await HierarchyWriteAsync(rawPacket, rawPackets, written, ms).ConfigureAwait(false);
 
                     if (ms.Length <= 0)
                     {
@@ -118,7 +118,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
             return justPackets;
         }
 
-        private static async Task HierarchyWrite(RawPacket packet, IEnumerable<RawPacket> packets, HashSet<ulong> written, MemoryStream fs)
+        private static async Task HierarchyWriteAsync(RawPacket packet, IEnumerable<RawPacket> packets, HashSet<ulong> written, MemoryStream fs)
         {
             if (!written.Add(packet.Frame))
             {
@@ -126,7 +126,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
             }
 
             await fs.WriteAsync(packet.Payload).ConfigureAwait(false);
-            await HierarchyWrite(packets.First(s => s.StreamSeqId == packet.StreamNextSeqId), packets, written, fs).ConfigureAwait(false);
+            await HierarchyWriteAsync(packets.First(s => s.StreamSeqId == packet.StreamNextSeqId), packets, written, fs).ConfigureAwait(false);
         }
 
         private static readonly Dictionary<byte, Type> _commands = new()

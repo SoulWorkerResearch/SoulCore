@@ -64,7 +64,9 @@ namespace SoulCore.Data.Bin.Table.Entities
             IEnumerator<T4> e4 = fourth.GetEnumerator();
 
             while (e1.MoveNext() && e2.MoveNext() && e3.MoveNext() && e4.MoveNext())
+            {
                 yield return Tuple.Create(e1.Current, e2.Current, e3.Current, e4.Current);
+            }
         }
 
         private const byte ItemsCount = 8;

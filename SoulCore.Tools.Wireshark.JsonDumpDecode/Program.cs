@@ -38,7 +38,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
     {
         private static async Task Main(string[] args)
         {
-            await PacketDecoder.DoIt(args).ConfigureAwait(false);
+            await PacketDecoder.DoItAsync(args).ConfigureAwait(false);
 
             Console.WriteLine("Hello World!");
         }
