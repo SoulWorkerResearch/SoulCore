@@ -149,9 +149,9 @@ namespace SoulCore.IO.Network
         {
             Write(value.Hp);
             Write(value.Sg);
-            Write(value._1);
-            Write(value.Stamina);
-            Write(value._2);
+            Write(value.Sv);
+            Write(value.St);
+            Write(value.Fd);
             Write(value.AttackSpeed);
             Write(value.MoveSpeed);
         }

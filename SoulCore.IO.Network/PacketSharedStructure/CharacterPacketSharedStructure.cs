@@ -22,11 +22,31 @@ namespace SoulCore.IO.Network.PacketSharedStructure
                 }
             }
 
+            /// <summary>
+            /// Health Point
+            /// </summary>
             public StatInfo Hp { get; init; }
+
+            /// <summary>
+            /// Soul Gain
+            /// </summary>
             public StatInfo Sg { get; init; }
-            public StatInfo _1 { get; init; }
-            public StatInfo Stamina { get; init; }
-            public StatInfo _2 { get; init; }
+
+            /// <summary>
+            /// Soul Vapor
+            /// </summary>
+            public StatInfo Sv { get; init; }
+
+            /// <summary>
+            /// Stamina
+            /// </summary>
+            public StatInfo St { get; init; }
+
+            /// <summary>
+            /// IDK
+            /// </summary>
+            public StatInfo Fd { get; init; }
+
             public float AttackSpeed { get; init; }
             public float MoveSpeed { get; init; }
 
@@ -34,9 +54,9 @@ namespace SoulCore.IO.Network.PacketSharedStructure
             {
                 Hp = new(br);
                 Sg = new(br);
-                _1 = new(br);
-                Stamina = new(br);
-                _2 = new(br);
+                Sv = new(br);
+                St = new(br);
+                Fd = new(br);
                 AttackSpeed = br.ReadSingle();
                 MoveSpeed = br.ReadSingle();
             }
