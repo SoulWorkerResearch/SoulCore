@@ -179,13 +179,6 @@ namespace SoulCore.IO.Network
                 writer.Write((ushort)value.Values.Count());
             });
 
-        public TSession SendDeferred(GestureSlotResponse value) =>
-            SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotLoad, (PacketWriter writer) =>
-            {
-                foreach (uint gesture in value.Values)
-                    writer.Write(gesture);
-            });
-
         public TSession SendDeferred(ChatMessageResponse value) =>
             SendDeferred(CategoryCommand.Chat, ChatCommand.Normal, (PacketWriter writer) =>
             {
@@ -255,7 +248,7 @@ namespace SoulCore.IO.Network
                 writer.Write(value.Duration);
             });
 
-        public TSession SendDeferred(CharacterGestureUpdateSlotsResponse value) =>
+        public TSession SendDeferred(GestureSlotResponse value) =>
             SendDeferred(CategoryCommand.Gesture, GestureCommand.SlotUpdate, (PacketWriter writer) =>
             {
                 foreach (uint id in value.Values)
