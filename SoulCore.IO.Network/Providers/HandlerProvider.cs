@@ -1,5 +1,6 @@
 ﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Exceptions;
+using SoulCore.IO.Network.Permissions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,41 +19,60 @@ namespace SoulCore.IO.Network.Providers
         {
             internal delegate ValueTask MethodInfo(TSession session, BinaryReader br);
 
+            internal readonly HandlerPermission Permission;
             internal readonly MethodInfo Method;
 
-            internal Handler(MethodInfo method) => Method = method;
+            internal Handler(MethodInfo method, HandlerPermission permission)
+            {
+                Method = method;
+                Permission = permission;
+            }
         }
 
         internal HandlerProvider() : base(GetHandlers())
         {
         }
 
-        private static ValueTask Dummy(BaseSession<TServer, TSession> _1, BinaryReader _2)
+        private static ValueTask Dummy(TSession _1, BinaryReader _2)
         {
             return ValueTask.CompletedTask;
         }
 
+        private static ServiceTypeAttribute GetServiceTypeAttribute()
+        {
+            Type? type = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(assembly => assembly.GetTypes())
+                .FirstOrDefault(type => type.IsDefined(typeof(ServiceTypeAttribute)));
+
+            if (type is null)
+            {
+                throw new IONetworkException("Use ServiceTypeAttribute on service class");
+            }
+
+            return type.GetCustomAttribute<ServiceTypeAttribute>()!;
+        }
+
         private static IEnumerable<Handler> GetHandlers()
         {
+            ServiceTypeAttribute serviceAttribute = GetServiceTypeAttribute();
+
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance))
                 .Where(type => type.IsDefined(typeof(HandlerAttribute)));
 
-            Handler[] handlers = Enumerable.Repeat(new Handler(Dummy), GetMaxHandlersCount()).ToArray();
-
-            Dictionary<Type, object?> instances = new(methods.Count());
+            Handler[] handlers = Enumerable.Repeat(new Handler(Dummy, HandlerPermission.None), GetMaxHandlersCount()).ToArray();
 
             foreach (MethodInfo method in methods)
             {
-                HandlerAttribute? attribute = method.GetCustomAttribute<HandlerAttribute>();
-                if (attribute is null)
+                HandlerAttribute methodAttribute = method.GetCustomAttribute<HandlerAttribute>()!;
+                if (methodAttribute.Service != serviceAttribute.Type)
                 {
-                    throw new IONetworkException("Handler attribute not found");
+                    continue;
                 }
 
                 Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
-                handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(handlerMethod);
+                handlers[(byte)methodAttribute.Category + (methodAttribute.Command << 8)] = new(handlerMethod, methodAttribute.Permission);
             }
 
             return handlers;
