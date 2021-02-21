@@ -1,6 +1,5 @@
 ﻿using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.PacketSharedStructure;
-using SoulCore.IO.Network.Permissions;
 using SoulCore.IO.Network.Providers;
 using SoulCore.IO.Network.Requests;
 using SoulCore.IO.Network.Responses;
@@ -397,8 +396,6 @@ namespace SoulCore.IO.Network
                 writer.Write(value.IsDaylightSavingTime);
             });
 
-        public HandlerPermission Permission { get; set; } = HandlerPermission.Anonymous;
-
         public async ValueTask<TSession> SendDeferred(CategoryCommand category, object command, Action<PacketWriter> func)
         {
             await using PacketWriter writer = new(category, command);
@@ -418,11 +415,7 @@ namespace SoulCore.IO.Network
         internal void ProcessPacket(BinaryReader br)
         {
             HandlerProvider<TServer, TSession>.Handler handler = _handlers[br.ReadUInt16()];
-
-            if (handler.Permission == Permission)
-            {
-                handler.Method.Invoke((TSession)this, br);
-            }
+            handler.Method.Invoke((TSession)this, br);
         }
 
         protected internal virtual void OnDisconnected()

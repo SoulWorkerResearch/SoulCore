@@ -1,5 +1,4 @@
 ﻿using SoulCore.IO.Network.Commands;
-using SoulCore.IO.Network.Permissions;
 using System;
 
 namespace SoulCore.IO.Network.Attributes
@@ -7,215 +6,213 @@ namespace SoulCore.IO.Network.Attributes
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class HandlerAttribute : Attribute
     {
-        internal readonly HandlerPermission Permission;
         internal readonly CategoryCommand Category;
         internal readonly byte Command;
 
-        public HandlerAttribute(CategoryCommand category, SystemCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, SystemCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, LoginCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, LoginCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, CharacterCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, CharacterCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, WorldCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, WorldCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, MoveCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, MoveCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, SkillCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, SkillCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ChatCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ChatCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ItemCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ItemCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ShopCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ShopCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, TradeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, TradeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, MazeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, MazeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, PartyCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, PartyCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ItemUpgradeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ItemUpgradeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, DropCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, DropCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, QuestCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, QuestCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, OptionCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, OptionCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, MonsterCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, MonsterCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ItemSetupCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ItemSetupCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, FriendCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, FriendCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, PostCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, PostCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, SoulMetryCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, SoulMetryCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, LeagueCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, LeagueCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, GestureCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, GestureCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, DailyMissionCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, DailyMissionCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, VaccumCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, VaccumCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, MyRoomCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, MyRoomCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, HelperCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, HelperCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, InfiniteTowerCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, InfiniteTowerCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, BoosterCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, BoosterCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, EventCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, EventCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ExchangeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ExchangeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, RankingCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, RankingCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, SocialItemCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, SocialItemCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ForceCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ForceCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, WorldModeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, WorldModeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, WeeklyMissionCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, WeeklyMissionCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ModeMazeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ModeMazeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, RestartCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, RestartCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ToolCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ToolCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ChannelCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ChannelCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerUserCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerUserCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerPartyCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerPartyCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerFriendCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerFriendCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerLeagueCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerLeagueCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, MonitorCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, MonitorCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, GmAgentCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, GmAgentCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerForceCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerForceCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerWorldModeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerWorldModeCommand command) : this(category, (byte)command)
         {
         }
 
-        public HandlerAttribute(CategoryCommand category, ServerModeMazeCommand command, HandlerPermission permission = HandlerPermission.Authorized) : this(category, (byte)command, permission)
+        public HandlerAttribute(CategoryCommand category, ServerModeMazeCommand command) : this(category, (byte)command)
         {
         }
 
-        private HandlerAttribute(CategoryCommand category, byte command, HandlerPermission permission)
+        private HandlerAttribute(CategoryCommand category, byte command)
         {
             Category = category;
             Command = command;
-            Permission = permission;
         }
     }
 }

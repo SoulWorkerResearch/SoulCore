@@ -1,6 +1,5 @@
 ﻿using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Exceptions;
-using SoulCore.IO.Network.Permissions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,14 +17,9 @@ namespace SoulCore.IO.Network.Providers
         {
             internal delegate void MethodInfo(TSession session, BinaryReader br);
 
-            internal readonly HandlerPermission Permission;
             internal readonly MethodInfo Method;
 
-            internal Handler(HandlerPermission permission, MethodInfo method)
-            {
-                Permission = permission;
-                Method = method;
-            }
+            internal Handler(MethodInfo method) => Method = method;
         }
 
         internal HandlerProvider() : base(GetHandlers())
@@ -43,7 +37,7 @@ namespace SoulCore.IO.Network.Providers
                 .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance))
                 .Where(type => type.IsDefined(typeof(HandlerAttribute)));
 
-            Handler[] handlers = Enumerable.Repeat(new Handler(HandlerPermission.None, Dummy), GetMaxHandlersCount()).ToArray();
+            Handler[] handlers = Enumerable.Repeat(new Handler(Dummy), GetMaxHandlersCount()).ToArray();
 
             Dictionary<Type, object?> instances = new(methods.Count());
 
@@ -56,7 +50,7 @@ namespace SoulCore.IO.Network.Providers
                 }
 
                 Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
-                handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(attribute.Permission, handlerMethod);
+                handlers[(byte)attribute.Category + (attribute.Command << 8)] = new(handlerMethod);
             }
 
             return handlers;
