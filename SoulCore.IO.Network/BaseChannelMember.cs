@@ -18,8 +18,8 @@ namespace SoulCore.IO.Network
 
         #region Send Character Packet
 
-        public ValueTask<TSession> SendDeferred(CharacterSpecialOptionListUpdateResponse value) =>
-            Session.SendDeferred(CategoryCommand.Character, CharacterCommand.UpdateSpecialOptionList, (PacketWriter writer) =>
+        public ValueTask<TSession> SendAsync(CharacterSpecialOptionListUpdateResponse value) =>
+            Session.SendAsync(CategoryCommand.Character, CharacterCommand.UpdateSpecialOptionList, (PacketWriter writer) =>
             {
                 writer.Write(value.Character);
                 writer.Write((byte)value.Values.Count());
@@ -47,8 +47,8 @@ namespace SoulCore.IO.Network
 
         #region Broadcast World Packet
 
-        public ValueTask<TSession> SendDeferred(CharacterOthersResponse value) =>
-            Session.SendDeferred(CategoryCommand.World, WorldCommand.OtherInfosPc, (PacketWriter writer) =>
+        public ValueTask<TSession> SendAsync(CharacterOthersResponse value) =>
+            Session.SendAsync(CategoryCommand.World, WorldCommand.OtherInfosPc, (PacketWriter writer) =>
             {
                 writer.Write((short)value.Values.Count());
                 foreach (CharacterExPacketSharedStructure entity in value.Values)
