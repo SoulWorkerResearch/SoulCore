@@ -4,10 +4,10 @@ namespace SoulCore.IO.Network
 {
     public readonly struct PacketHeader
     {
-        public byte Magic0 { get; }
-        public byte Magic1 { get; }
-        public ushort Size { get; }
-        public byte UsTos { get; }
+        public readonly byte Magic0;
+        public readonly byte Magic1;
+        public readonly ushort Size;
+        public readonly byte UsTos;
 
         public PacketHeader(BinaryReader br)
         {

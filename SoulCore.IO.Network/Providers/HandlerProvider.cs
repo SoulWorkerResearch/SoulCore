@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace SoulCore.IO.Network.Providers
 {
@@ -15,7 +16,7 @@ namespace SoulCore.IO.Network.Providers
     {
         internal sealed record Handler
         {
-            internal delegate void MethodInfo(TSession session, BinaryReader br);
+            internal delegate ValueTask MethodInfo(TSession session, BinaryReader br);
 
             internal readonly MethodInfo Method;
 
@@ -26,8 +27,9 @@ namespace SoulCore.IO.Network.Providers
         {
         }
 
-        private static void Dummy(BaseSession<TServer, TSession> _1, BinaryReader _2)
+        private static ValueTask Dummy(BaseSession<TServer, TSession> _1, BinaryReader _2)
         {
+            return ValueTask.CompletedTask;
         }
 
         private static IEnumerable<Handler> GetHandlers()

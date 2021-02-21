@@ -412,10 +412,10 @@ namespace SoulCore.IO.Network
 
         #endregion Send
 
-        internal void ProcessPacket(BinaryReader br)
+        internal async ValueTask ProcessPacket(BinaryReader br)
         {
             HandlerProvider<TServer, TSession>.Handler handler = _handlers[br.ReadUInt16()];
-            handler.Method.Invoke((TSession)this, br);
+            await handler.Method.Invoke((TSession)this, br).ConfigureAwait(false);
         }
 
         protected internal virtual void OnDisconnected()

@@ -1,6 +1,7 @@
 ﻿using NetCoreServer;
 using SoulCore.IO.Network.Utils;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SoulCore.IO.Network
 {
@@ -14,25 +15,30 @@ namespace SoulCore.IO.Network
 
         protected override void OnReceived(byte[] buffer, long offset, long size)
         {
-            using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
-            using BinaryReader br = new(ms);
-
-            try
+            Task task = Task.Run(async () =>
             {
-                do
+                await using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
+                using BinaryReader br = new(ms);
+
+                try
                 {
-                    PacketHeader packet = new(br);
-                    PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + Defines.PacketHeaderSize));
+                    do
+                    {
+                        PacketHeader packet = new(br);
+                        PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + Defines.PacketHeaderSize));
 
-                    Session.ProcessPacket(br);
-                } while (br.BaseStream.Position < br.BaseStream.Length);
-            }
-            catch
-            {
+                        await Session.ProcessPacket(br).ConfigureAwait(false);
+                    } while (br.BaseStream.Position < br.BaseStream.Length);
+                }
+                catch
+                {
 #if !DEBUG
-                Disconnect();
+                    Disconnect();
 #endif
-            }
+                }
+            });
+
+            task.Wait();
         }
 
         internal InternalSession(InternalServer<TServer, TSession> server, TSession session) : base(server) => Session = session;
