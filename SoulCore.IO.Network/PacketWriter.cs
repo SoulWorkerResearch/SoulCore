@@ -263,7 +263,8 @@ namespace SoulCore.IO.Network
 
         internal void WriteProfileStatus(ProfileStatus value) => Write((byte)value);
 
-        public PacketWriter(CategoryCommand category, object command) : base(new MemoryStream(ushort.MaxValue), Encoding.ASCII, false)
+        public PacketWriter(CategoryCommand category, object command) :
+            base(new MemoryStream(ushort.MaxValue), Encoding.ASCII, false)
         {
             /// Write SoulWorker magic bytes
             Write(Defines.PacketHeaderMagic1);
@@ -279,7 +280,7 @@ namespace SoulCore.IO.Network
             Write((byte)command);
         }
 
-        public byte[] GetBuffer()
+        internal byte[] GetBuffer()
         {
             /// Skip SoulWorker magic bytes
             Seek(sizeof(ushort), SeekOrigin.Begin);

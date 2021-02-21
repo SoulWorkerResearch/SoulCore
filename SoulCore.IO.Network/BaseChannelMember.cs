@@ -4,6 +4,7 @@ using SoulCore.IO.Network.Requests.Move;
 using SoulCore.IO.Network.Responses;
 using SoulCore.IO.Network.Responses.Gesture;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SoulCore.IO.Network
 {
@@ -17,7 +18,7 @@ namespace SoulCore.IO.Network
 
         #region Send Character Packet
 
-        public void SendDeferred(CharacterSpecialOptionListUpdateResponse value) =>
+        public ValueTask<TSession> SendDeferred(CharacterSpecialOptionListUpdateResponse value) =>
             Session.SendDeferred(CategoryCommand.Character, CharacterCommand.UpdateSpecialOptionList, (PacketWriter writer) =>
             {
                 writer.Write(value.Character);
@@ -34,7 +35,7 @@ namespace SoulCore.IO.Network
 
         #region Broadcast Chat Packet
 
-        public void BroadcastDeferred(ChatMessageResponse value) =>
+        public ValueTask BroadcastDeferred(ChatMessageResponse value) =>
             Channel.BroadcastDeferred(CategoryCommand.Chat, ChatCommand.Normal, (writer) =>
             {
                 writer.Write(value.Character);
@@ -46,7 +47,7 @@ namespace SoulCore.IO.Network
 
         #region Broadcast World Packet
 
-        public void SendDeferred(CharacterOthersResponse value) =>
+        public ValueTask<TSession> SendDeferred(CharacterOthersResponse value) =>
             Session.SendDeferred(CategoryCommand.World, WorldCommand.OtherInfosPc, (PacketWriter writer) =>
             {
                 writer.Write((short)value.Values.Count());
@@ -60,7 +61,7 @@ namespace SoulCore.IO.Network
 
         #region Broadcast Character Packet
 
-        public void BroadcastDeferred(CharacterLevelSet value) =>
+        public ValueTask BroadcastDeferred(CharacterLevelSet value) =>
             Channel.BroadcastDeferred(CategoryCommand.Character, CharacterCommand.Level, (writer) =>
             {
                 writer.Write(value.Character);
@@ -71,7 +72,7 @@ namespace SoulCore.IO.Network
 
         #region Broadcast Gesture Packet
 
-        public void BroadcastDeferred(GestureShowResponse value) =>
+        public ValueTask BroadcastDeferred(GestureShowResponse value) =>
             Channel.BroadcastDeferred(CategoryCommand.Gesture, GestureCommand.Show, (writer) =>
             {
                 writer.Write(value.CharacterId);
@@ -122,7 +123,7 @@ namespace SoulCore.IO.Network
         //        writer.Write(request.Unknown1);
         //    });
 
-        public void BroadcastDeferred(MoveMoveRequest request) =>
+        public ValueTask BroadcastDeferred(MoveMoveRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.MoveBt, (writer) =>
             {
                 writer.Write(request.CharacterId);
@@ -136,7 +137,7 @@ namespace SoulCore.IO.Network
                 writer.Write(request.ShouldUpdatePos);
             });
 
-        public void BroadcastDeferred(MoveStopRequest request) =>
+        public ValueTask BroadcastDeferred(MoveStopRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.StopBt, (writer) =>
             {
                 writer.Write(request.CharacterId);
@@ -147,7 +148,7 @@ namespace SoulCore.IO.Network
                 writer.Write(request.CheckCanMove);
             });
 
-        public void BroadcastDeferred(MoveJumpRequest request) =>
+        public ValueTask BroadcastDeferred(MoveJumpRequest request) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.JumpBt, (writer) =>
             {
                 writer.Write(request.CharacterId);
@@ -160,7 +161,7 @@ namespace SoulCore.IO.Network
                 writer.Write(request.BonusJump);
             });
 
-        public void BroadcastDeferred(CharacterLoopMotionEndResponse value) =>
+        public ValueTask BroadcastDeferred(CharacterLoopMotionEndResponse value) =>
             Channel.BroadcastDeferred(CategoryCommand.Move, MoveCommand.LoopMotionEndBt, (writer) =>
                 writer.Write(value.Character));
 

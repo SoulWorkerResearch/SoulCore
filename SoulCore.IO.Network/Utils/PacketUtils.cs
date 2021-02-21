@@ -45,7 +45,7 @@ namespace SoulCore.IO.Network.Utils
         public static byte[] Pack(PacketWriter writer)
         {
             byte[] response = writer.GetBuffer();
-            PacketUtils.Exchange(ref response, Defines.PacketHeaderSize + Defines.PacketOpcodeSize, (int)writer.BaseStream.Length - (Defines.PacketHeaderSize + Defines.PacketOpcodeSize));
+            Exchange(ref response, Defines.PacketHeaderSize + Defines.PacketOpcodeSize, (int)writer.BaseStream.Length - (Defines.PacketHeaderSize + Defines.PacketOpcodeSize));
 
             return response;
         }
