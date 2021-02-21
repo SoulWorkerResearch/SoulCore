@@ -13,7 +13,8 @@
     <RepositoryType>github</RepositoryType>
     <Deterministic>False</Deterministic>
     <SignAssembly>false</SignAssembly>
-    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Requests\Character\old\**" />
