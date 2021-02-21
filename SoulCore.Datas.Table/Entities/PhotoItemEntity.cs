@@ -31,16 +31,16 @@ namespace SoulCore.Data.Bin.Table.Entities
             Id = br.ReadUInt32();
             Unknown1 = br.ReadUInt32();
             Unknown2 = br.ReadUInt16();
-            Unknown3 = br.ReadByteLengthUnicodeString();
-            Unknown4 = br.ReadByteLengthUnicodeString();
-            Unknown5 = br.ReadByteLengthUnicodeString();
-            Unknown6 = br.ReadByteLengthUnicodeString();
-            Unknown7 = br.ReadByteLengthUnicodeString();
-            Unknown8 = br.ReadByteLengthUnicodeString();
-            Unknown9 = br.ReadByteLengthUnicodeString();
-            Unknown10 = br.ReadByteLengthUnicodeString();
-            Unknown11 = br.ReadByteLengthUnicodeString();
-            Unknown12 = br.ReadByteLengthUnicodeString();
+            Unknown3 = br.ReadCharacterLengthUnicodeString();
+            Unknown4 = br.ReadCharacterLengthUnicodeString();
+            Unknown5 = br.ReadCharacterLengthUnicodeString();
+            Unknown6 = br.ReadCharacterLengthUnicodeString();
+            Unknown7 = br.ReadCharacterLengthUnicodeString();
+            Unknown8 = br.ReadCharacterLengthUnicodeString();
+            Unknown9 = br.ReadCharacterLengthUnicodeString();
+            Unknown10 = br.ReadCharacterLengthUnicodeString();
+            Unknown11 = br.ReadCharacterLengthUnicodeString();
+            Unknown12 = br.ReadCharacterLengthUnicodeString();
             Class = br.ReadClass();
             PromotionInfo = br.ReadByte();
         }

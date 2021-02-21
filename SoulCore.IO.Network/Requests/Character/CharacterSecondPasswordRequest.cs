@@ -14,7 +14,7 @@ namespace SoulCore.IO.Network.Requests.Character
         internal CharacterSecondPasswordRequest(BinaryReader br)
         {
             CheckType = br.ReadByte();
-            Password = br.ReadNumberLengthUtf8String();
+            Password = br.ReadByteLengthUtf8String();
         }
     }
 }

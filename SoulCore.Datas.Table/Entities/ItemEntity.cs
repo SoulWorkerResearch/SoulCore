@@ -103,7 +103,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             SubType = br.ReadByte();
             CostumeSetType = br.ReadByte();
             CostumeSet = br.ReadUInt32();
-            SlotDisable = br.ReadByteLengthUnicodeString();
+            SlotDisable = br.ReadCharacterLengthUnicodeString();
             Endurance = br.ReadByte();
             UseValue = br.ReadByte();
             AttackDamage = new(br.ReadUInt32(), br.ReadUInt32(), br.ReadUInt32());

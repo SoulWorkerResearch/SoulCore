@@ -8,7 +8,7 @@ namespace SoulCore.IO.Network.Utils
         internal static void DropNetwork(string? message = null)
         {
             Debug.Fail(message);
-            throw new NetworkException();
+            throw new IONetworkException();
         }
     }
 }

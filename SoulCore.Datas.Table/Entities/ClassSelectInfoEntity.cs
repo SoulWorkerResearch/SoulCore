@@ -39,8 +39,8 @@ namespace SoulCore.Data.Bin.Table.Entities
         public ClassSelectInfoEntity(BinaryReader br)
         {
             Id = br.ReadClass();
-            Unknown5 = br.ReadByteLengthUnicodeString();
-            Unknown6 = br.ReadByteLengthUnicodeString();
+            Unknown5 = br.ReadCharacterLengthUnicodeString();
+            Unknown6 = br.ReadCharacterLengthUnicodeString();
             Unknown7 = br.ReadUInt32();
             Unknown8 = br.ReadUInt32();
             Unknown9 = br.ReadUInt32();
@@ -58,12 +58,12 @@ namespace SoulCore.Data.Bin.Table.Entities
             Unknown21 = br.ReadUInt16();
             Unknown22 = br.ReadInt32();
             Unknown23 = br.ReadUInt16();
-            Unknown24 = br.ReadByteLengthUnicodeString();
-            Unknown25 = br.ReadByteLengthUnicodeString();
-            Unknown26 = br.ReadByteLengthUnicodeString();
-            Unknown27 = br.ReadByteLengthUnicodeString();
-            Unknown28 = br.ReadByteLengthUnicodeString();
-            Unknown29 = br.ReadByteLengthUnicodeString();
+            Unknown24 = br.ReadCharacterLengthUnicodeString();
+            Unknown25 = br.ReadCharacterLengthUnicodeString();
+            Unknown26 = br.ReadCharacterLengthUnicodeString();
+            Unknown27 = br.ReadCharacterLengthUnicodeString();
+            Unknown28 = br.ReadCharacterLengthUnicodeString();
+            Unknown29 = br.ReadCharacterLengthUnicodeString();
         }
     }
 }

@@ -10,6 +10,6 @@ namespace SoulCore.IO.Network.Requests.Friend
     {
         public readonly string CharacterName;
 
-        internal FriendBlocklistAddRequest(BinaryReader br) => CharacterName = br.ReadByteLengthUnicodeString();
+        internal FriendBlocklistAddRequest(BinaryReader br) => CharacterName = br.ReadCharacterLengthUnicodeString();
     }
 }

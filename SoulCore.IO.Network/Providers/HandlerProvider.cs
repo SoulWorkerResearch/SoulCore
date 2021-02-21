@@ -10,7 +10,7 @@ using System.Reflection;
 
 namespace SoulCore.IO.Network.Providers
 {
-    internal class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
+    internal sealed class HandlerProvider<TServer, TSession> : List<HandlerProvider<TServer, TSession>.Handler>
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {
@@ -52,7 +52,7 @@ namespace SoulCore.IO.Network.Providers
                 HandlerAttribute? attribute = method.GetCustomAttribute<HandlerAttribute>();
                 if (attribute is null)
                 {
-                    throw new NetworkException("Handler attribute not found");
+                    throw new IONetworkException("Handler attribute not found");
                 }
 
                 Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
@@ -67,16 +67,16 @@ namespace SoulCore.IO.Network.Providers
             ParameterExpression session = Expression.Parameter(typeof(TSession), "Session");
             ParameterExpression br = Expression.Parameter(typeof(BinaryReader), "BinaryReader");
 
-            Expression[] arguments = method.GetParameters().Select(param =>
+            IEnumerable<Expression> arguments = method.GetParameters().Select(param =>
             {
                 if (param.IsIn)
                 {
-                    throw new NetworkException("In arguments not supported");
+                    throw new IONetworkException(@"In\Out\In arguments not supported");
                 }
 
                 if (param.ParameterType is null)
                 {
-                    throw new NetworkException("ParameterType is null");
+                    throw new IONetworkException("ParameterType is null");
                 }
 
                 // Session typed parameter
@@ -91,16 +91,22 @@ namespace SoulCore.IO.Network.Providers
                     ConstructorInfo? constructor = param.ParameterType.GetConstructor(new[] { typeof(BinaryReader) });
                     if (constructor is null)
                     {
-                        throw new NetworkException("Constructor is null");
+                        throw new IONetworkException("Constructor is null");
+                    }
+
+                    PropertyInfo[] props = param.ParameterType.GetProperties();
+                    if (props.Length == 0)
+                    {
+                        throw new IONetworkException("This packet no have content. Don't use it");
                     }
 
                     return Expression.New(constructor, br);
                 }
 
-                throw new NetworkException("Bad argument type");
-            }).ToArray();
+                throw new IONetworkException("Bad argument type");
+            });
 
-            MethodCallExpression caller = Expression.Call(null, method, arguments);
+            MethodCallExpression caller = Expression.Call(null, method, arguments.ToArray());
             return Expression.Lambda<Handler.MethodInfo>(caller, session, br).Compile();
         }
 

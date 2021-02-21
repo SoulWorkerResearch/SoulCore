@@ -17,7 +17,7 @@ namespace SoulCore.IO.Network.Requests.Friend
         {
             CharacterId = br.ReadInt32();
             TargetCharacterId = br.ReadInt32();
-            TargetCharacterName = br.ReadByteLengthUnicodeString();
+            TargetCharacterName = br.ReadCharacterLengthUnicodeString();
             Accept = br.ReadBoolean();
         }
     }

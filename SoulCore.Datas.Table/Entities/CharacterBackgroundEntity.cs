@@ -21,7 +21,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             Unknown1 = br.ReadUInt16();
             Unknown2 = br.ReadUInt16();
             Unknown3 = br.ReadUInt16();
-            Unknown4 = br.ReadByteLengthUnicodeString();
+            Unknown4 = br.ReadCharacterLengthUnicodeString();
         }
     }
 }

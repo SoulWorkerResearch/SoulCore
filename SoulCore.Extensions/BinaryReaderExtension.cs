@@ -24,7 +24,7 @@ namespace SoulCore.Extensions
             Enumerable.Repeat(0, count).Select(_ => br.ReadByte());
 
         public static IEnumerable<string> ReadByteLengthUnicodeStringEnumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadByteLengthUnicodeString());
+            Enumerable.Repeat(0, count).Select(_ => br.ReadCharacterLengthUnicodeString());
 
         #endregion Enumerable
 
@@ -75,13 +75,13 @@ namespace SoulCore.Extensions
 
         #endregion Enums
 
-        public static string ReadNumberLengthUnicodeString(this BinaryReader br) =>
+        public static string ReadByteLengthUnicodeString(this BinaryReader br) =>
             Encoding.Unicode.GetString(br.ReadBytes(br.ReadUInt16()));
 
-        public static string ReadByteLengthUnicodeString(this BinaryReader br) =>
+        public static string ReadCharacterLengthUnicodeString(this BinaryReader br) =>
             Encoding.Unicode.GetString(br.ReadBytes(br.ReadUInt16() * 2));
 
-        public static string ReadNumberLengthUtf8String(this BinaryReader br) =>
+        public static string ReadByteLengthUtf8String(this BinaryReader br) =>
             Encoding.UTF8.GetString(br.ReadBytes(br.ReadUInt16()));
 
         public static Vector3 ReadVector3(this BinaryReader br) =>

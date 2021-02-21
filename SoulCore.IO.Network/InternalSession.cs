@@ -8,7 +8,7 @@ namespace SoulCore.IO.Network
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {
-        internal TSession Session { get; }
+        internal readonly TSession Session;
 
         protected override void OnDisconnected() => Session.OnDisconnected();
 

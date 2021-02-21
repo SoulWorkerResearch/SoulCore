@@ -17,8 +17,8 @@ namespace SoulCore.IO.Network.Requests.Party
 
         internal PartyInviteRequest(BinaryReader br)
         {
-            CharacterName = br.ReadNumberLengthUnicodeString();
-            MasterCharacterName = br.ReadNumberLengthUnicodeString();
+            CharacterName = br.ReadByteLengthUnicodeString();
+            MasterCharacterName = br.ReadByteLengthUnicodeString();
             CharacterId = br.ReadInt32();
             MasterId = br.ReadInt32();
             ServerId = br.ReadInt32();

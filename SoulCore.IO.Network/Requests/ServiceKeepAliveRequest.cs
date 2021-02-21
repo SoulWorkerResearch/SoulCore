@@ -21,7 +21,7 @@ namespace SoulCore.IO.Network.Requests
             Unknown2 = br.ReadUInt32();
             Unknown3 = br.ReadUInt32();
             TickCount = br.ReadUInt64();
-            Hash = br.ReadNumberLengthUtf8String();
+            Hash = br.ReadByteLengthUtf8String();
         }
     }
 }

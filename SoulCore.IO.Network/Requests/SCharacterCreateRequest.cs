@@ -116,7 +116,7 @@ namespace SoulCore.IO.Network.Requests
         public CharacterInfoSharedPacket(BinaryReader br)
         {
             Id = br.ReadInt32();
-            Name = br.ReadByteLengthUnicodeString();
+            Name = br.ReadCharacterLengthUnicodeString();
             Class = br.ReadClass();
             Advancement = br.ReadClassAdvancement();
             ProfilePhotoId = br.ReadUInt32();
@@ -216,7 +216,7 @@ namespace SoulCore.IO.Network.Requests
             public GuildInfo(BinaryReader br)
             {
                 Id = br.ReadUInt32();
-                Name = br.ReadNumberLengthUtf8String();
+                Name = br.ReadByteLengthUtf8String();
             }
         }
 
@@ -284,7 +284,7 @@ namespace SoulCore.IO.Network.Requests
             public MainInfo(BinaryReader br)
             {
                 Id = br.ReadInt32();
-                Name = br.ReadNumberLengthUnicodeString();
+                Name = br.ReadByteLengthUnicodeString();
                 Class = br.ReadClass();
                 Advancement = br.ReadClassAdvancement();
                 PhotoId = br.ReadUInt32();

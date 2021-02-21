@@ -32,16 +32,16 @@ namespace SoulCore.Data.Bin.Table.Entities
             Unknown5 = br.ReadUInt16();
             Unknown6 = br.ReadUInt16();
             Unknown7 = br.ReadUInt16();
-            Unknown8 = br.ReadByteLengthUnicodeString();
-            Batch = br.ReadByteLengthUnicodeString();
+            Unknown8 = br.ReadCharacterLengthUnicodeString();
+            Batch = br.ReadCharacterLengthUnicodeString();
             Unknown10 = br.ReadUInt16();
             Unknown11 = br.ReadUInt32();
             Unknown12 = br.ReadUInt32();
-            Bgm = br.ReadByteLengthUnicodeString();
-            Bg = br.ReadByteLengthUnicodeString();
+            Bgm = br.ReadCharacterLengthUnicodeString();
+            Bg = br.ReadCharacterLengthUnicodeString();
             Unknown15 = br.ReadByte();
             Unknown16 = br.ReadByte();
-            Map = br.ReadByteLengthUnicodeString();
+            Map = br.ReadCharacterLengthUnicodeString();
             Unknown18 = br.ReadByte();
             Unknown19 = br.ReadByte();
         }

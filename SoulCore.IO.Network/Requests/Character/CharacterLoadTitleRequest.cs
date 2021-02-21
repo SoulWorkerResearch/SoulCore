@@ -6,7 +6,6 @@ namespace SoulCore.IO.Network.Requests.Character
 {
     /// <summary>
     /// This packet no have content.
-    /// Use handler without packet.
     /// </summary>
     [Request(CategoryCommand.Character, CharacterCommand.LoadTitle)]
     public readonly struct CharacterLoadTitleRequest

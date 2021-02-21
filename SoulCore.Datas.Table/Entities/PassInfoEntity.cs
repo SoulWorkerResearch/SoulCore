@@ -26,11 +26,11 @@ namespace SoulCore.Data.Bin.Table.Entities
             v6 = br.ReadUInt32();
             v7 = br.ReadByte();
             v8 = br.ReadUInt32();
-            StartDate = br.ReadByteLengthUnicodeString();
-            EndDate = br.ReadByteLengthUnicodeString();
+            StartDate = br.ReadCharacterLengthUnicodeString();
+            EndDate = br.ReadCharacterLengthUnicodeString();
             v11 = br.ReadByte();
-            Cover = br.ReadByteLengthUnicodeString();
-            ItemIcon = br.ReadByteLengthUnicodeString();
+            Cover = br.ReadCharacterLengthUnicodeString();
+            ItemIcon = br.ReadCharacterLengthUnicodeString();
             v14 = br.ReadUInt32();
         }
     }

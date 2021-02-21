@@ -15,9 +15,9 @@ namespace SoulCore.IO.Network.Requests.Login
 
         public LoginRequest(BinaryReader br)
         {
-            Nickname = br.ReadNumberLengthUnicodeString();
-            Password = br.ReadNumberLengthUnicodeString();
-            Mac = br.ReadNumberLengthUnicodeString();
+            Nickname = br.ReadByteLengthUnicodeString();
+            Password = br.ReadByteLengthUnicodeString();
+            Mac = br.ReadByteLengthUnicodeString();
             Version = br.ReadInt32();
         }
     }

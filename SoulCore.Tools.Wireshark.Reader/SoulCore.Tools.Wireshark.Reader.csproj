@@ -1,18 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
     <Nullable>enable</Nullable>
-    <Authors>sawich</Authors>
-    <Company />
-    <PackageTags>soulworker</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression></PackageLicenseExpression>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageProjectUrl />
-    <RepositoryUrl>https://github.com/sawich/SoulCore/</RepositoryUrl>
-    <RepositoryType>github</RepositoryType>
-    <Deterministic>False</Deterministic>
-    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>

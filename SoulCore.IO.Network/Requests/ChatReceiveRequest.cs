@@ -11,6 +11,6 @@ namespace SoulCore.IO.Network.Requests
         public ChatType Type { get; }
         public string Message { get; }
 
-        public ChatReceiveRequest(BinaryReader br) => (Type, Message) = (br.ReadChatType(), br.ReadNumberLengthUnicodeString());
+        public ChatReceiveRequest(BinaryReader br) => (Type, Message) = (br.ReadChatType(), br.ReadByteLengthUnicodeString());
     }
 }

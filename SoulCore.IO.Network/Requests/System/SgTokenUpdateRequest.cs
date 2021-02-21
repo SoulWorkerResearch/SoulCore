@@ -14,8 +14,8 @@ namespace SoulCore.IO.Network.Requests.System
 
         internal SgTokenUpdateRequest(BinaryReader br)
         {
-            AccessToken = br.ReadNumberLengthUnicodeString();
-            RefreshToken = br.ReadNumberLengthUnicodeString();
+            AccessToken = br.ReadByteLengthUnicodeString();
+            RefreshToken = br.ReadByteLengthUnicodeString();
             Renew = br.ReadBoolean();
         }
     }

@@ -19,10 +19,10 @@ namespace SoulCore.Data.Bin.Table.Entities
 
             public ActionInfo(BinaryReader br)
             {
-                Move = br.ReadByteLengthUnicodeString();
-                Drop = br.ReadByteLengthUnicodeString();
-                Equip = br.ReadByteLengthUnicodeString();
-                Unequip = br.ReadByteLengthUnicodeString();
+                Move = br.ReadCharacterLengthUnicodeString();
+                Drop = br.ReadCharacterLengthUnicodeString();
+                Equip = br.ReadCharacterLengthUnicodeString();
+                Unequip = br.ReadCharacterLengthUnicodeString();
             }
         }
 

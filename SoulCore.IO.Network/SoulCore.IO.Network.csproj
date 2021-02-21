@@ -13,6 +13,7 @@
     <RepositoryType>github</RepositoryType>
     <Deterministic>False</Deterministic>
     <SignAssembly>false</SignAssembly>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Requests\Character\old\**" />
@@ -28,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Requests\Chat\" />
     <Folder Include="Requests\DailyMission\" />
     <Folder Include="Requests\Event\" />
     <Folder Include="Requests\Exchange\" />
@@ -66,7 +66,6 @@
     <Folder Include="Requests\WorldMode\" />
     <Folder Include="Requests\World\" />
     <Folder Include="Responses\Channel\" />
-    <Folder Include="Responses\Chat\" />
     <Folder Include="Responses\DailyMission\" />
     <Folder Include="Responses\Drop\" />
     <Folder Include="Responses\Event\" />

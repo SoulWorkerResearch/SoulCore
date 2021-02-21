@@ -24,11 +24,11 @@ namespace SoulCore.IO.Network.Requests.Party
         internal PartyRecruitAddRequest(BinaryReader br)
         {
             PartyId = br.ReadUInt32();
-            Message = br.ReadByteLengthUnicodeString();
+            Message = br.ReadCharacterLengthUnicodeString();
             MinLevel = br.ReadInt16();
             MaxLevel = br.ReadInt16();
             Purpose = br.ReadByte();
-            MasterCharacterName = br.ReadByteLengthUnicodeString();
+            MasterCharacterName = br.ReadCharacterLengthUnicodeString();
             UserCount = br.ReadByte();
             RemainTime = br.ReadInt32();
             PurposeMapId = br.ReadUInt32();

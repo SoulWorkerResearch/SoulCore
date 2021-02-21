@@ -173,7 +173,7 @@ namespace SoulCore.IO.Network.PacketSharedStructure
             internal LeagueInfo(BinaryReader br)
             {
                 Id = br.ReadInt32();
-                Name = br.ReadByteLengthUnicodeString();
+                Name = br.ReadCharacterLengthUnicodeString();
                 Card = new(br);
             }
         };
@@ -186,7 +186,7 @@ namespace SoulCore.IO.Network.PacketSharedStructure
             internal PrivateShopInfo(BinaryReader br)
             {
                 Type = br.ReadByte();
-                Title = br.ReadByteLengthUnicodeString();
+                Title = br.ReadCharacterLengthUnicodeString();
             }
         };
 
@@ -267,7 +267,7 @@ namespace SoulCore.IO.Network.PacketSharedStructure
         internal CharacterPacketSharedStructure(BinaryReader br)
         {
             Id = br.ReadInt32();
-            Name = br.ReadByteLengthUnicodeString();
+            Name = br.ReadCharacterLengthUnicodeString();
             Class = br.ReadClass();
             Advancement = br.ReadClassAdvancement();
             Photo = br.ReadUInt32();

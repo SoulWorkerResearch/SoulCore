@@ -6,7 +6,6 @@ namespace SoulCore.IO.Network.Requests.Channel
 {
     /// <summary>
     /// This packet no have content.
-    /// Use handler without packet.
     /// </summary>
     [Request(CategoryCommand.Channel, ChannelCommand.Info)]
     public readonly struct ChannelInfoRequest

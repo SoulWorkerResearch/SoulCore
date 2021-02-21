@@ -11,7 +11,6 @@ namespace SoulCore.IO.Network.Requests.Party
 {
     /// <summary>
     /// This packet no have content.
-    /// Use handler without packet.
     /// </summary>
     [Request(CategoryCommand.Party, PartyCommand.RecruitApply)]
     public readonly struct PartyRecruitApplyRequest
@@ -34,7 +33,7 @@ namespace SoulCore.IO.Network.Requests.Party
             internal PartyMember(BinaryReader br)
             {
                 MemberId = br.ReadInt32();
-                Name = br.ReadByteLengthUnicodeString();
+                Name = br.ReadCharacterLengthUnicodeString();
                 byLevel = br.ReadByte();
                 byClass = br.ReadClass();
                 Advancement = br.ReadClassAdvancement();

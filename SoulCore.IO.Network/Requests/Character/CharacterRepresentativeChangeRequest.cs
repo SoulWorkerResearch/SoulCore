@@ -24,7 +24,7 @@ namespace SoulCore.IO.Network.Requests.Character
             CharacterId = br.ReadInt32();
             Class = br.ReadClass();
             Level = br.ReadByte();
-            strName = br.ReadByteLengthUnicodeString();
+            strName = br.ReadCharacterLengthUnicodeString();
             ProfilePhotoId = br.ReadUInt32();
             RepresentativeDate = br.ReadInt64();
             Error = br.ReadInt32();

@@ -6,7 +6,6 @@ namespace SoulCore.IO.Network.Requests.Party
 {
     /// <summary>
     /// This packet no have content.
-    /// Use handler without packet.
     /// </summary>
     [Request(CategoryCommand.Party, PartyCommand.MatchingExit)]
     public readonly struct PartyMatchinExitRequest

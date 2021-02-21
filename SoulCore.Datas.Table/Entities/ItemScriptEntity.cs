@@ -27,19 +27,19 @@ namespace SoulCore.Data.Bin.Table.Entities
         public ItemScriptEntity(BinaryReader br)
         {
             Id = br.ReadUInt32();
-            Icon = br.ReadByteLengthUnicodeString();
-            Unknown6 = br.ReadByteLengthUnicodeString();
-            Unknown7 = br.ReadByteLengthUnicodeString();
-            Unknown8 = br.ReadByteLengthUnicodeString();
-            Unknown9 = br.ReadByteLengthUnicodeString();
-            Unknown10 = br.ReadByteLengthUnicodeString();
+            Icon = br.ReadCharacterLengthUnicodeString();
+            Unknown6 = br.ReadCharacterLengthUnicodeString();
+            Unknown7 = br.ReadCharacterLengthUnicodeString();
+            Unknown8 = br.ReadCharacterLengthUnicodeString();
+            Unknown9 = br.ReadCharacterLengthUnicodeString();
+            Unknown10 = br.ReadCharacterLengthUnicodeString();
             Unknown11 = br.ReadByte();
             Unknown12 = br.ReadByte();
             Unknown13 = br.ReadByte();
             Unknown14 = br.ReadByte();
             Unknown15 = br.ReadByte();
-            Name = br.ReadByteLengthUnicodeString();
-            Description = br.ReadByteLengthUnicodeString();
+            Name = br.ReadCharacterLengthUnicodeString();
+            Description = br.ReadCharacterLengthUnicodeString();
         }
     }
 }

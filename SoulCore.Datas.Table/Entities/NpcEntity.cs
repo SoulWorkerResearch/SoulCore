@@ -71,7 +71,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             Id = br.ReadUInt32();
             v6 = br.ReadUInt16();
             v7 = br.ReadByte();
-            v8 = br.ReadByteLengthUnicodeString();
+            v8 = br.ReadCharacterLengthUnicodeString();
             v9 = br.ReadUInt32();
             v10 = br.ReadUInt32();
             v11 = br.ReadUInt32();
@@ -98,11 +98,11 @@ namespace SoulCore.Data.Bin.Table.Entities
             v32 = br.ReadUInt16();
             v33 = br.ReadUInt16();
             v34 = br.ReadUInt16();
-            v35 = br.ReadByteLengthUnicodeString();
+            v35 = br.ReadCharacterLengthUnicodeString();
             v36 = br.ReadByte();
             v37 = br.ReadUInt32();
             v38 = br.ReadUInt32();
-            v39 = br.ReadByteLengthUnicodeString();
+            v39 = br.ReadCharacterLengthUnicodeString();
             v40 = br.ReadUInt16();
             v41 = br.ReadUInt16();
             v42 = br.ReadUInt16();
@@ -119,11 +119,11 @@ namespace SoulCore.Data.Bin.Table.Entities
             v53 = br.ReadUInt16();
             v54 = br.ReadUInt16();
             v55 = br.ReadUInt16();
-            v56 = br.ReadByteLengthUnicodeString();
-            v57 = br.ReadByteLengthUnicodeString();
-            v58 = br.ReadByteLengthUnicodeString();
-            v59 = br.ReadByteLengthUnicodeString();
-            v60 = br.ReadByteLengthUnicodeString();
+            v56 = br.ReadCharacterLengthUnicodeString();
+            v57 = br.ReadCharacterLengthUnicodeString();
+            v58 = br.ReadCharacterLengthUnicodeString();
+            v59 = br.ReadCharacterLengthUnicodeString();
+            v60 = br.ReadCharacterLengthUnicodeString();
         }
     }
 }

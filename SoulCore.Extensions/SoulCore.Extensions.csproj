@@ -13,6 +13,7 @@
     <RepositoryType>github</RepositoryType>
     <Deterministic>False</Deterministic>
     <SignAssembly>false</SignAssembly>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>

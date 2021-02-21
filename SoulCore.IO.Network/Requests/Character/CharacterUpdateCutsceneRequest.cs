@@ -16,7 +16,7 @@ namespace SoulCore.IO.Network.Requests.Character
         {
             CharacterId = br.ReadInt32();
             OnPlay = br.ReadBoolean();
-            Name = br.ReadNumberLengthUtf8String();
+            Name = br.ReadByteLengthUtf8String();
         }
     }
 }
