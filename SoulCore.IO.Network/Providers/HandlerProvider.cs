@@ -113,7 +113,7 @@ namespace SoulCore.IO.Network.Providers
                     PropertyInfo[] props = param.ParameterType.GetProperties();
                     if (props.Length == 0)
                     {
-                        throw new IONetworkException("This packet no have content. Don't use it");
+                        throw new IONetworkException("This packet no have content. Don't use request structure");
                     }
 
                     return Expression.New(constructor, br);
