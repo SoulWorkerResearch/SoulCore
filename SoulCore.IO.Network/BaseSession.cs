@@ -98,10 +98,7 @@ namespace SoulCore.IO.Network
             });
 
         public ValueTask<TSession> SendAsync(PartyDeleteResponse value) =>
-            SendAsync(CategoryCommand.Party, PartyCommand.Delete, (PacketWriter writer) =>
-            {
-                writer.Write(value.Id);
-            });
+            SendAsync(CategoryCommand.Party, PartyCommand.Delete, (PacketWriter writer) => writer.Write(value.Id));
 
         public ValueTask<TSession> SendCharacterDbLoadDeferred() =>
             SendAsync(CategoryCommand.Character, CharacterCommand.DbLoadSync);
@@ -199,10 +196,7 @@ namespace SoulCore.IO.Network
             });
 
         public ValueTask<TSession> SendAsync(ServiceHeartbeatRequest value) =>
-            SendAsync(CategoryCommand.System, SystemCommand.Ping, (PacketWriter writer) =>
-            {
-                writer.Write(value.Tick);
-            });
+            SendAsync(CategoryCommand.System, SystemCommand.Ping, (PacketWriter writer) => writer.Write(value.Tick));
 
         public ValueTask<TSession> SendAsync(DistrictLogOutResponse value) =>
             SendAsync(CategoryCommand.Character, CharacterCommand.GobackLobby, (PacketWriter writer) =>
@@ -235,10 +229,7 @@ namespace SoulCore.IO.Network
             });
 
         public ValueTask<TSession> SendAsync(BoosterRemoveResponse value) =>
-            SendAsync(CategoryCommand.Booster, BoosterCommand.Remove, (PacketWriter writer) =>
-            {
-                writer.Write(value.Id);
-            });
+            SendAsync(CategoryCommand.Booster, BoosterCommand.Remove, (PacketWriter writer) => writer.Write(value.Id));
 
         public ValueTask<TSession> SendAsync(BoosterAddResponse value) =>
             SendAsync(CategoryCommand.Booster, BoosterCommand.Add, (PacketWriter writer) =>
@@ -401,13 +392,13 @@ namespace SoulCore.IO.Network
             await using PacketWriter writer = new(category, command);
             func(writer);
 
-            return SendAsync(writer);
+            return Send(writer);
         }
 
         public async ValueTask<TSession> SendAsync(CategoryCommand category, object command)
         {
             await using PacketWriter writer = new(category, command);
-            return SendAsync(writer);
+            return Send(writer);
         }
 
         #endregion Send
@@ -424,7 +415,7 @@ namespace SoulCore.IO.Network
 
         protected BaseSession(BaseServer<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
 
-        private TSession SendAsync(PacketWriter writer)
+        private TSession Send(PacketWriter writer)
         {
             if (!InternalSession.SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
             {
