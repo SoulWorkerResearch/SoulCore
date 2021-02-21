@@ -1,5 +1,6 @@
 ﻿using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.PacketSharedStructure;
+using SoulCore.IO.Network.Permissions;
 using SoulCore.IO.Network.Providers;
 using SoulCore.IO.Network.Requests;
 using SoulCore.IO.Network.Responses;
@@ -21,6 +22,7 @@ namespace SoulCore.IO.Network
     {
         private static readonly HandlerProvider<TServer, TSession> _handlers = new();
 
+        public HandlerPermission Permission { get; set; } = HandlerPermission.Anonymous;
         public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).Server;
 
         internal readonly InternalSession<TServer, TSession> InternalSession;
