@@ -106,8 +106,8 @@ namespace SoulCore.IO.Network.Providers
                         throw new IONetworkException($"{param.ParameterType} Constructor is null");
                     }
 
-                    PropertyInfo[] props = param.ParameterType.GetProperties();
-                    if (props.Length == 0)
+                    FieldInfo[] fields = param.ParameterType.GetFields();
+                    if (fields.Length == 0)
                     {
                         throw new IONetworkException($"{param.ParameterType} This packet no have content. Don't use request structure");
                     }
