@@ -16,15 +16,15 @@ namespace SoulCore.IO.Network.Extensions
                 services.AddTransient(type);
             }
 
-            foreach (Type type in GetByAttribute<SyncSessionAttribute>())
+            foreach (Type type in FilterByAttribute<SyncSessionAttribute>())
             {
                 services.AddTransient(type);
             }
 
-            foreach (Type type in GetByAttribute<SyncServerAttribute>())
+            foreach (Type type in FilterByAttribute<SyncServerAttribute>())
             {
-                // skip if already registered
-                if (services.Any(s => s.ServiceType == type))
+                SyncServerAttribute? attribute = type.GetCustomAttribute<SyncServerAttribute>();
+                if (attribute is null || !attribute.Register)
                 {
                     continue;
                 }
@@ -35,7 +35,7 @@ namespace SoulCore.IO.Network.Extensions
             return services;
         }
 
-        private static IEnumerable<Type> GetByAttribute<T>() where T : Attribute => AppDomain.CurrentDomain.GetAssemblies()
+        private static IEnumerable<Type> FilterByAttribute<T>() where T : Attribute => AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(assembly => assembly.GetTypes())
             .Where(type => type.IsDefined(typeof(T)));
 
