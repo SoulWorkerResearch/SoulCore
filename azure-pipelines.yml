@@ -20,7 +20,7 @@ steps:
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
-    feedsToUse: 'select'
+    feedsToUse: 'config'
 
 - task: VSBuild@1
   inputs:
