@@ -18,6 +18,7 @@
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
+
   <ItemGroup>
     <Compile Remove="Requests\Character\old\**" />
     <EmbeddedResource Remove="Requests\Character\old\**" />
@@ -110,6 +111,7 @@
     <Folder Include="Responses\WeeklyMission\" />
     <Folder Include="Responses\WorldMode\" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0-preview2.21116.13">
       <PrivateAssets>all</PrivateAssets>
@@ -120,6 +122,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-preview.3.21121.4" />
     <PackageReference Include="NetCoreServer" Version="5.0.9" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\SoulCore.Extensions\SoulCore.Extensions.csproj" />
     <ProjectReference Include="..\SoulCore.Utils\SoulCore.Utils.csproj" />
