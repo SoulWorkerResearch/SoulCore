@@ -63,12 +63,11 @@ namespace SoulCore.IO.Network.Providers
                     continue;
                 }
 
-                Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
                 ushort opcode = (ushort)((byte)methodAttribute.Category + (methodAttribute.Command << 8));
-
-                handlers[opcode] = new(handlerMethod, methodAttribute.Permission);
-
                 logger.LogDebug($"Used SYNC EVENT 0x{opcode:X4}/{methodAttribute.Category}/{methodAttribute.Command} ({method.Name}) invoker on {method.DeclaringType?.FullName ?? ""}.");
+
+                Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
+                handlers[opcode] = new(handlerMethod, methodAttribute.Permission);
             }
 
             return handlers;
