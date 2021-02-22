@@ -38,23 +38,23 @@ namespace SoulCore.IO.Network.Providers
             return ValueTask.CompletedTask;
         }
 
-        private static ServiceTypeAttribute GetServiceTypeAttribute()
+        private static SyncServerAttribute GetServiceTypeAttribute()
         {
             Type? type = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
-                .FirstOrDefault(type => type.IsDefined(typeof(ServiceTypeAttribute)));
+                .FirstOrDefault(type => type.IsDefined(typeof(SyncServerAttribute)));
 
             if (type is null)
             {
                 throw new IONetworkException("Use ServiceTypeAttribute on service class");
             }
 
-            return type.GetCustomAttribute<ServiceTypeAttribute>()!;
+            return type.GetCustomAttribute<SyncServerAttribute>()!;
         }
 
         private static IEnumerable<Handler> GetHandlers()
         {
-            ServiceTypeAttribute serviceAttribute = GetServiceTypeAttribute();
+            SyncServerAttribute serviceAttribute = GetServiceTypeAttribute();
 
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())

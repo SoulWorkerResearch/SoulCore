@@ -1,6 +1,6 @@
 ﻿namespace SoulCore.IO.Network.Types
 {
-    public enum ServiceType
+    public enum SyncServerType
     {
         None,
         Auth,
