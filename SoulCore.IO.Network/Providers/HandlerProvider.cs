@@ -109,7 +109,7 @@ namespace SoulCore.IO.Network.Providers
                     FieldInfo[] fields = param.ParameterType.GetFields();
                     if (fields.Length == 0)
                     {
-                        throw new IONetworkException($"{param.ParameterType} This packet no have content. Don't use request structure");
+                        throw new IONetworkException($"{param.ParameterType} This packet no have content or not implemented");
                     }
 
                     return Expression.New(constructor, br);
