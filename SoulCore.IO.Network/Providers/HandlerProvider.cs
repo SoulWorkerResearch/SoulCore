@@ -99,22 +99,23 @@ namespace SoulCore.IO.Network.Providers
                 // Packet structure parameter
                 if (param.ParameterType.IsDefined(typeof(RequestAttribute)))
                 {
-                    ConstructorInfo? constructor = param.ParameterType.GetConstructor(new[] { typeof(BinaryReader) });
+                    const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+                    ConstructorInfo? constructor = param.ParameterType.GetConstructor(flags, null, new[] { typeof(BinaryReader) }, null);
                     if (constructor is null)
                     {
-                        throw new IONetworkException($"{nameof(param.ParameterType)} Constructor is null");
+                        throw new IONetworkException($"{param.ParameterType} Constructor is null");
                     }
 
                     PropertyInfo[] props = param.ParameterType.GetProperties();
                     if (props.Length == 0)
                     {
-                        throw new IONetworkException($"{nameof(param.ParameterType)} This packet no have content. Don't use request structure");
+                        throw new IONetworkException($"{param.ParameterType} This packet no have content. Don't use request structure");
                     }
 
                     return Expression.New(constructor, br);
                 }
 
-                throw new IONetworkException("Bad argument type");
+                throw new IONetworkException($"{param.ParameterType} Bad argument type");
             });
 
             MethodCallExpression caller = Expression.Call(null, method, arguments.ToArray());
