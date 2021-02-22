@@ -20,12 +20,12 @@ namespace SoulCore.IO.Network
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {
-        private static readonly HandlerProvider<TServer, TSession> _handlers = new();
-
         public HandlerPermission Permission { get; set; } = HandlerPermission.Anonymous;
         public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).Server;
 
         internal readonly InternalSession<TServer, TSession> InternalSession;
+
+        private readonly HandlerProvider<TServer, TSession> _handlers;
 
         public void Disconnect() => InternalSession.Disconnect();
 
@@ -415,7 +415,11 @@ namespace SoulCore.IO.Network
         {
         }
 
-        protected BaseSession(BaseServer<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
+        protected BaseSession(BaseServer<TServer, TSession> server)
+        {
+            InternalSession = new(server.InternalServer, (TSession)this);
+            _handlers = server.InternalServer.Handlers;
+        }
 
         private TSession Send(PacketWriter writer)
         {

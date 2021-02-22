@@ -14,6 +14,6 @@ namespace SoulCore.IO.Network
         public bool Stop() => InternalServer.Stop();
 
         protected BaseServer(IServiceProvider services, string ip, ushort port) =>
-            InternalServer = new((TServer)this, services, new(IPAddress.Parse(ip), port));
+            InternalServer = new(GetType(), (TServer)this, services, new(IPAddress.Parse(ip), port));
     }
 }

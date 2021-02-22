@@ -36,7 +36,7 @@ namespace SoulCore.IO.Network.Extensions
         private static IEnumerable<Type> GetSyncHandlers() => AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(assembly => assembly.GetTypes())
             .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Instance))
-            .Where(type => type.IsDefined(typeof(HandlerAttribute)))
+            .Where(type => type.IsDefined(typeof(SyncHandlerAttribute)))
             .Select(t => t.DeclaringType!)
             .Distinct();
     }

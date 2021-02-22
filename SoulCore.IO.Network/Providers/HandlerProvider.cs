@@ -1,4 +1,5 @@
-﻿using SoulCore.IO.Network.Attributes;
+﻿using Microsoft.Extensions.Logging;
+using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Exceptions;
 using SoulCore.IO.Network.Permissions;
 using System;
@@ -29,7 +30,7 @@ namespace SoulCore.IO.Network.Providers
             }
         }
 
-        internal HandlerProvider() : base(GetHandlers())
+        internal HandlerProvider(Type serverType, ILogger logger) : base(CreateHandlers(serverType, logger))
         {
         }
 
@@ -38,41 +39,36 @@ namespace SoulCore.IO.Network.Providers
             return ValueTask.CompletedTask;
         }
 
-        private static SyncServerAttribute GetServiceTypeAttribute()
+        private static IEnumerable<Handler> CreateHandlers(Type serverType, ILogger logger)
         {
-            Type? type = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(assembly => assembly.GetTypes())
-                .FirstOrDefault(type => type.IsDefined(typeof(SyncServerAttribute)));
+            SyncServerAttribute? serviceAttribute = serverType.GetCustomAttribute<SyncServerAttribute>();
 
-            if (type is null)
+            if (serviceAttribute is null)
             {
                 throw new IONetworkException("Use ServiceTypeAttribute on service class");
             }
 
-            return type.GetCustomAttribute<SyncServerAttribute>()!;
-        }
-
-        private static IEnumerable<Handler> GetHandlers()
-        {
-            SyncServerAttribute serviceAttribute = GetServiceTypeAttribute();
-
             IEnumerable<MethodInfo> methods = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly => assembly.GetTypes())
                 .SelectMany(type => type.GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance))
-                .Where(type => type.IsDefined(typeof(HandlerAttribute)));
+                .Where(type => type.IsDefined(typeof(SyncHandlerAttribute)));
 
             Handler[] handlers = Enumerable.Repeat(new Handler(Dummy, HandlerPermission.None), GetMaxHandlersCount()).ToArray();
 
             foreach (MethodInfo method in methods)
             {
-                HandlerAttribute methodAttribute = method.GetCustomAttribute<HandlerAttribute>()!;
-                if (methodAttribute.Service != serviceAttribute.Type)
+                SyncHandlerAttribute? methodAttribute = method.GetCustomAttribute<SyncHandlerAttribute>();
+                if (methodAttribute is null || methodAttribute.Service != serviceAttribute.Type || methodAttribute.ServerType != serverType)
                 {
                     continue;
                 }
 
                 Handler.MethodInfo handlerMethod = CreateHandlerMethod(method);
-                handlers[(byte)methodAttribute.Category + (methodAttribute.Command << 8)] = new(handlerMethod, methodAttribute.Permission);
+                ushort opcode = (ushort)((byte)methodAttribute.Category + (methodAttribute.Command << 8));
+
+                handlers[opcode] = new(handlerMethod, methodAttribute.Permission);
+
+                logger.LogDebug($"Used SYNC EVENT 0x{opcode:X4}/{methodAttribute.Category}/{methodAttribute.Command} ({method.Name}) invoker on {method.DeclaringType?.FullName ?? ""}.");
             }
 
             return handlers;
