@@ -7,12 +7,7 @@ namespace SoulCore.IO.Network.Attributes
     public sealed class SyncServerAttribute : Attribute
     {
         internal readonly SyncServerType Type;
-        internal readonly Type Attribute;
 
-        public SyncServerAttribute(SyncServerType type, Type attribute)
-        {
-            Type = type;
-            Attribute = attribute;
-        }
+        public SyncServerAttribute(SyncServerType type = SyncServerType.None) => Type = type;
     }
 }
