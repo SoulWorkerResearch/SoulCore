@@ -103,13 +103,13 @@ namespace SoulCore.IO.Network.Providers
                     ConstructorInfo? constructor = param.ParameterType.GetConstructor(new[] { typeof(BinaryReader) });
                     if (constructor is null)
                     {
-                        throw new IONetworkException("Constructor is null");
+                        throw new IONetworkException($"{nameof(param.ParameterType)} Constructor is null");
                     }
 
                     PropertyInfo[] props = param.ParameterType.GetProperties();
                     if (props.Length == 0)
                     {
-                        throw new IONetworkException("This packet no have content. Don't use request structure");
+                        throw new IONetworkException($"{nameof(param.ParameterType)} This packet no have content. Don't use request structure");
                     }
 
                     return Expression.New(constructor, br);
