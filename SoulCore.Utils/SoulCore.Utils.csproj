@@ -17,6 +17,7 @@
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -3,7 +3,7 @@ using System;
 
 namespace SoulCore.IO.Network.Attributes
 {
-    [AttributeUsage(AttributeTargets.Struct)]
+    [AttributeUsage(AttributeTargets.Struct, AllowMultiple = true)]
     public sealed class RequestAttribute : Attribute
     {
         public readonly CategoryCommand Category;

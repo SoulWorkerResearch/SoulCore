@@ -2,5 +2,7 @@
 {
     public enum EnterGateWay
     {
+        Auth,
+        Login
     }
 }

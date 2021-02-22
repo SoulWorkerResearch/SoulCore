@@ -26,6 +26,7 @@ namespace SoulCore
         public const byte EquipableGearStorageMaxCapacity = 10;
 
         public const byte PacketHeaderSize = 5;
+        public const byte OptionsCount = 64;
 
         public static Type PacketOpcodeType { get; } = typeof(ushort);
         public const byte PacketOpcodeSize = sizeof(ushort);

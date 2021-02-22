@@ -6,14 +6,14 @@ using System.IO;
 namespace SoulCore.IO.Network.Requests.Login
 {
     [Request(CategoryCommand.Login, LoginCommand.Req)]
-    public readonly struct LoginRequest
+    public readonly struct LoginUserLoginRequest
     {
         public readonly string Nickname;
         public readonly string Password;
         public readonly string Mac;
         public readonly int Version;
 
-        public LoginRequest(BinaryReader br)
+        internal LoginUserLoginRequest(BinaryReader br)
         {
             Nickname = br.ReadByteLengthUnicodeString();
             Password = br.ReadByteLengthUnicodeString();

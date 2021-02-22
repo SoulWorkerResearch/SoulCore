@@ -9,6 +9,6 @@ namespace SoulCore.IO.Network.Requests.Login
     {
         public readonly int AccountId;
 
-        public LoginServerListRequest(BinaryReader br) => AccountId = br.ReadInt32();
+        internal LoginServerListRequest(BinaryReader br) => AccountId = br.ReadInt32();
     }
 }
