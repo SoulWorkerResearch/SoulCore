@@ -23,6 +23,12 @@ namespace SoulCore.IO.Network.Extensions
 
             foreach (Type type in GetByAttribute<SyncServerAttribute>())
             {
+                // skip if already registered
+                if (services.Any(s => s.ServiceType == type))
+                {
+                    continue;
+                }
+
                 services.AddSingleton(type);
             }
 
