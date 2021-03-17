@@ -46,6 +46,7 @@ namespace SoulCore.Tools.Game.ExtractPasswords
                 {
                     value += str[offset];
                 }
+
                 passwords.Add(new(matches[q].Value, value));
 
                 for (; str[offset] == '\0'; ++offset) ;
@@ -58,7 +59,9 @@ namespace SoulCore.Tools.Game.ExtractPasswords
         {
             await using FileStream file = File.Open("dumpedPasswords.txt", FileMode.Create);
             await using BinaryWriter bw = new(file);
+
             IEnumerable<Pair> pairs = await GetPairs(args[0]).ConfigureAwait(false);
+
             foreach (Pair pair in pairs)
             {
                 bw.Write(pair.ToString());

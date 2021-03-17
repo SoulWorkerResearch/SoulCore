@@ -11,7 +11,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Customize_Eyes")]
     public sealed class CustomizeEyesEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public List<uint> Unknown1 { get; set; }
         public List<string> Icons { get; set; }
         public List<uint> Color { get; set; }

@@ -101,7 +101,7 @@ namespace SoulCore.Tools.Wireshark.JsonDumpDecode
 
                     PacketHeader packet = new(br);
 
-                    byte[] buffer = br.ReadBytes(packet.Size - Defines.PacketHeaderSize);
+                    byte[] buffer = br.ReadBytes(packet.Size - CommonDefines.PacketHeaderSize);
                     PacketUtils.Exchange(ref buffer);
 
                     justPackets.Add(new()

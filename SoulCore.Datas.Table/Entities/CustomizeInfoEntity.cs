@@ -11,7 +11,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Customize_Info")]
     public sealed class CustomizeInfoEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public byte Unknown1 { get; set; }
         public List<byte> Unknown2 { get; set; }
         public List<byte> Unknown3 { get; set; }

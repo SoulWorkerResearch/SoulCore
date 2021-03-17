@@ -10,7 +10,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Photo_Item")]
     public sealed class PhotoItemEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public uint Unknown1 { get; set; }
         public ushort Unknown2 { get; set; }
         public string Unknown3 { get; set; }

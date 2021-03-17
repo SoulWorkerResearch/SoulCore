@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Npc")]
     public sealed class NpcEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public ushort v6 { get; set; }
         public byte v7 { get; set; }
         public string v8 { get; set; }

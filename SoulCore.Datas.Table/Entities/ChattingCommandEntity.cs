@@ -10,7 +10,7 @@ namespace SoulCore.Data.Bin.Table.Entities
 
     public sealed class ChattingCommandEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public byte PermissionLevel { get; set; }
         public List<string> Command { get; set; }
         public uint ActionType { get; set; }

@@ -125,8 +125,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SoulCore.Extensions\SoulCore.Extensions.csproj" />
-    <ProjectReference Include="..\SoulCore.Utils\SoulCore.Utils.csproj" />
     <ProjectReference Include="..\SoulCore\SoulCore.csproj" />
   </ItemGroup>
 </Project>

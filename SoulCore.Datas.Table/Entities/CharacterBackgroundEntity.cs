@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Character_Background")]
     public sealed class CharacterBackgroundEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public ushort Unknown1 { get; set; }
         public ushort Unknown2 { get; set; }
         public ushort Unknown3 { get; set; }

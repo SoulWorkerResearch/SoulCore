@@ -30,7 +30,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             public Specification(uint min, uint max, uint magic) => (Min, Max, Magic) = (min, max, magic);
         }
 
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public uint ClassifyId { get; set; }
         public byte Unknown7 { get; set; }
         public byte MaxSlots { get; set; }

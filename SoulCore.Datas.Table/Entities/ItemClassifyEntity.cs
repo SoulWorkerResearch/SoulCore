@@ -26,7 +26,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             }
         }
 
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public byte Group { get; set; }
         public ushort Unknown6 { get; set; }
         public byte SubGroup { get; set; }

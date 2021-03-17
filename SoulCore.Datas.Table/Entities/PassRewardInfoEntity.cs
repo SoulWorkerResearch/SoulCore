@@ -24,7 +24,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             public ItemsInfo(BinaryReader br) => (Slave, Premium) = (new(br), new(br));
         }
 
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public uint PassInfo { get; set; }
         public byte SequenceId { get; set; }
         public uint PointRequired { get; set; }

@@ -29,12 +29,92 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="IO\Network\Requests\DailyMission\" />
+    <Folder Include="IO\Network\Requests\Event\" />
+    <Folder Include="IO\Network\Requests\Exchange\" />
+    <Folder Include="IO\Network\Requests\Force\" />
+    <Folder Include="IO\Network\Requests\GmAgent\" />
+    <Folder Include="IO\Network\Requests\Helper\" />
+    <Folder Include="IO\Network\Requests\InfiniteTower\" />
+    <Folder Include="IO\Network\Requests\ItemSetup\" />
+    <Folder Include="IO\Network\Requests\ItemUpgrade\" />
+    <Folder Include="IO\Network\Requests\Maze\" />
+    <Folder Include="IO\Network\Requests\ModeMaze\" />
+    <Folder Include="IO\Network\Requests\Monitor\" />
+    <Folder Include="IO\Network\Requests\Monster\" />
+    <Folder Include="IO\Network\Requests\MyRoom\" />
+    <Folder Include="IO\Network\Requests\Post\" />
+    <Folder Include="IO\Network\Requests\Quest\" />
+    <Folder Include="IO\Network\Requests\Ranking\" />
+    <Folder Include="IO\Network\Requests\Restart\" />
+    <Folder Include="IO\Network\Requests\ServerForce\" />
+    <Folder Include="IO\Network\Requests\ServerFriend\" />
+    <Folder Include="IO\Network\Requests\ServerLeague\" />
+    <Folder Include="IO\Network\Requests\ServerModeMaze\" />
+    <Folder Include="IO\Network\Requests\ServerParty\" />
+    <Folder Include="IO\Network\Requests\ServerUser\" />
+    <Folder Include="IO\Network\Requests\ServerWorldMode\" />
+    <Folder Include="IO\Network\Requests\Server\" />
+    <Folder Include="IO\Network\Requests\Shop\" />
+    <Folder Include="IO\Network\Requests\Skill\" />
+    <Folder Include="IO\Network\Requests\SocialItem\" />
+    <Folder Include="IO\Network\Requests\SoulMetry\" />
+    <Folder Include="IO\Network\Requests\Tool\" />
+    <Folder Include="IO\Network\Requests\Trade\" />
+    <Folder Include="IO\Network\Requests\Vaccum\" />
+    <Folder Include="IO\Network\Requests\WeeklyMission\" />
+    <Folder Include="IO\Network\Requests\WorldMode\" />
+    <Folder Include="IO\Network\Requests\World\" />
+    <Folder Include="IO\Network\Responses\Channel\" />
+    <Folder Include="IO\Network\Responses\DailyMission\" />
+    <Folder Include="IO\Network\Responses\Drop\" />
+    <Folder Include="IO\Network\Responses\Event\" />
+    <Folder Include="IO\Network\Responses\Exchange\" />
+    <Folder Include="IO\Network\Responses\Force\" />
+    <Folder Include="IO\Network\Responses\Friend\" />
+    <Folder Include="IO\Network\Responses\GmAgent\" />
+    <Folder Include="IO\Network\Responses\Helper\" />
+    <Folder Include="IO\Network\Responses\InfiniteTower\" />
+    <Folder Include="IO\Network\Responses\ItemSetup\" />
+    <Folder Include="IO\Network\Responses\ItemUpgrade\" />
+    <Folder Include="IO\Network\Responses\Item\" />
+    <Folder Include="IO\Network\Responses\League\" />
+    <Folder Include="IO\Network\Responses\Maze\" />
+    <Folder Include="IO\Network\Responses\Monitor\" />
+    <Folder Include="IO\Network\Responses\Monster\" />
+    <Folder Include="IO\Network\Responses\Move\" />
+    <Folder Include="IO\Network\Responses\MyRoom\" />
+    <Folder Include="IO\Network\Responses\Party\" />
+    <Folder Include="IO\Network\Responses\Post\" />
+    <Folder Include="IO\Network\Responses\Quest\" />
+    <Folder Include="IO\Network\Responses\Ranking\" />
+    <Folder Include="IO\Network\Responses\Restart\" />
+    <Folder Include="IO\Network\Responses\ServerForce\" />
+    <Folder Include="IO\Network\Responses\ServerFriend\" />
+    <Folder Include="IO\Network\Responses\ServerLeague\" />
+    <Folder Include="IO\Network\Responses\ServerModeMaze\" />
+    <Folder Include="IO\Network\Responses\ServerParty\" />
+    <Folder Include="IO\Network\Responses\ServerUser\" />
+    <Folder Include="IO\Network\Responses\ServerWorldMode\" />
+    <Folder Include="IO\Network\Responses\Server\" />
+    <Folder Include="IO\Network\Responses\Shop\" />
+    <Folder Include="IO\Network\Responses\SocialItem\" />
+    <Folder Include="IO\Network\Responses\SoulMetry\" />
+    <Folder Include="IO\Network\Responses\System\" />
+    <Folder Include="IO\Network\Responses\Tool\" />
+    <Folder Include="IO\Network\Responses\Trade\" />
+    <Folder Include="IO\Network\Responses\Vaccum\" />
+    <Folder Include="IO\Network\Responses\WeeklyMission\" />
+    <Folder Include="IO\Network\Responses\WorldMode\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0-preview2.21116.13">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0-preview3.21165.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0-preview.3.21167.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0-preview.3.21167.1" />
+    <PackageReference Include="NetCoreServer" Version="5.0.15" />
   </ItemGroup>
 </Project>

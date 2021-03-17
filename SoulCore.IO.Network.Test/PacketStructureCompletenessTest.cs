@@ -2,11 +2,13 @@ using ow.Framework.Tests;
 using SoulCore.IO.Network.Attributes;
 using SoulCore.IO.Network.Commands;
 using SoulCore.IO.Network.Utils;
+using SoulCore.Misc.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using Xunit;
 using Xunit.Sdk;
 
@@ -14,58 +16,43 @@ namespace SoulCore.IO.Network.Test
 {
     public sealed class PacketStructureCompletenessTest : IClassFixture<Startup>
     {
-        private readonly IReadOnlyDictionary<ushort, Type> _requests = RegisterRequests();
-        private readonly IReadOnlyDictionary<ushort, Type> _responses = RegisterResponses();
+        [Fact]
+        public ValueTask RequestStructureTest() => PacketsTest<RequestAttribute>(@"data\requests.bin");
 
         [Fact]
-        public void RequestStructureTest()
+        public ValueTask ResponseStructureTest() => PacketsTest<ResponseAttribute>(@"data\responses.bin");
+
+        private async ValueTask PacketsTest<TAttribute>(string path)
+            where TAttribute : BasePacketAttribute
         {
-            using FileStream fs = File.OpenRead(@"data\requests.bin");
+            await using FileStream fs = File.OpenRead(path);
             using BinaryReader br = new(fs);
+
+            IReadOnlyDictionary<ushort, Type> packets = RegisterPackets<TAttribute>();
 
             while (fs.Position != fs.Length)
             {
                 PacketHeader packet = new(br);
 
                 // SoulWorker Magic
-                Assert.Equal(Defines.PacketHeaderMagic1, packet.Magic0);
-                Assert.Equal(Defines.PacketHeaderMagic2, packet.Magic1);
+                Assert.Equal(CommonDefines.PacketHeaderMagic1, packet.Magic0);
+                Assert.Equal(CommonDefines.PacketHeaderMagic2, packet.Magic1);
 
                 Assert.True(packet.UsTos == 1 || packet.UsTos == 2);
 
-                RequestTest(br.ReadBytes(packet.Size - Defines.PacketHeaderSize));
+                await PacketTest(br.ReadBytes(packet.Size - CommonDefines.PacketHeaderSize), packets).ConfigureAwait(false);
             }
         }
 
-        [Fact]
-        public void ResponseStructureTest()
-        {
-            using FileStream fs = File.OpenRead(@"data\responses.bin");
-            using BinaryReader br = new(fs);
-
-            while (fs.Position != fs.Length)
-            {
-                PacketHeader packet = new(br);
-
-                // SoulWorker Magic
-                Assert.Equal(Defines.PacketHeaderMagic1, packet.Magic0);
-                Assert.Equal(Defines.PacketHeaderMagic2, packet.Magic1);
-
-                Assert.True(packet.UsTos == 1 || packet.UsTos == 2);
-
-                ResponseTest(br.ReadBytes(packet.Size - Defines.PacketHeaderSize));
-            }
-        }
-
-        private void ResponseTest(byte[] raw)
+        private static async ValueTask PacketTest(byte[] raw, IReadOnlyDictionary<ushort, Type> packets)
         {
             PacketUtils.Exchange(ref raw);
 
-            using MemoryStream ms = new(raw, false);
+            await using MemoryStream ms = new(raw, false);
             using BinaryReader br = new(ms);
 
             ushort command = br.ReadUInt16();
-            if (_responses.TryGetValue(command, out Type request))
+            if (packets.TryGetValue(command, out Type? request))
             {
                 const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
                 _ = Activator.CreateInstance(request, flags, null, new object[] { br }, null, null);
@@ -74,105 +61,47 @@ namespace SoulCore.IO.Network.Test
             }
         }
 
-        private void RequestTest(byte[] raw)
+        private static bool CompareRequest<TAttribute>(Type t, CategoryCommand categoryValue, byte commandValue)
+            where TAttribute : BasePacketAttribute
         {
-            PacketUtils.Exchange(ref raw);
-
-            using MemoryStream ms = new(raw, false);
-            using BinaryReader br = new(ms);
-
-            ushort command = br.ReadUInt16();
-            if (_requests.TryGetValue(command, out Type request))
-            {
-                const BindingFlags flags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
-                _ = Activator.CreateInstance(request, flags, null, new object[] { br }, null, null);
-
-                Assert.Equal(ms.Length, ms.Position);
-            }
+            BasePacketAttribute attribute = t.GetCustomAttribute<TAttribute>() ?? throw new XunitException();
+            return attribute.Category == categoryValue && attribute.Command == commandValue;
         }
 
-        private static IReadOnlyDictionary<ushort, Type> RegisterResponses()
+        private static IReadOnlyDictionary<ushort, Type> RegisterPackets<TAttribute>()
+            where TAttribute : BasePacketAttribute
         {
-            Dictionary<ushort, Type> response = new();
-
             Dictionary<CategoryCommand, Type> categoryTypes = GetTypesByAttribute<CategoryCommandAttribute>().ToDictionary(k => k.GetCustomAttribute<CategoryCommandAttribute>()!.Category, v => v);
 
-            Type[] requests = GetTypesByAttribute<ResponseAttribute>().ToArray();
+            Type[] requests = GetTypesByAttribute<TAttribute>().ToArray();
 
-            foreach (CategoryCommand categoryValue in Enum.GetValues<CategoryCommand>())
+            return new Dictionary<ushort, Type>(Enum.GetValues<CategoryCommand>().SelectMany(categoryValue =>
             {
-                if (categoryTypes.TryGetValue(categoryValue, out Type category))
-                {
-                    foreach (object commandValue in Enum.GetValues(category))
-                    {
-                        Type request = Array.Find(requests, t =>
-                        {
-                            RequestAttribute a = t.GetCustomAttribute<RequestAttribute>()!;
-                            return a.Category == categoryValue && a.Command == (byte)commandValue;
-                        });
+                Dictionary<ushort, Type> packets = new();
 
-                        if (request is not null)
+                if (categoryTypes.TryGetValue(categoryValue, out Type? categoryType))
+                {
+                    foreach (object commandValue in Enum.GetValues(categoryType))
+                    {
+                        if (Array.Find(requests, type => CompareRequest<TAttribute>(type, categoryValue, (byte)commandValue)) is Type request)
                         {
-                            // category = 0x04
-                            // command = 0x01
-                            // index = 0x0401
-                            ushort index = (ushort)((byte)categoryValue + (((byte)commandValue) << 8));
-                            response[index] = request;
+                            packets[CommonHelper.MakeWord((byte)categoryValue, (byte)commandValue)] = request;
                         }
                     }
                 }
                 else
                 {
-                    throw new XunitException("Category not found");
+                    throw new XunitException("Unknown packet category");
                 }
-            }
 
-            return response;
+                return packets;
+            }));
         }
 
-        private static IReadOnlyDictionary<ushort, Type> RegisterRequests()
-        {
-            Dictionary<ushort, Type> response = new();
-
-            Dictionary<CategoryCommand, Type> categoryTypes = GetTypesByAttribute<CategoryCommandAttribute>().ToDictionary(k => k.GetCustomAttribute<CategoryCommandAttribute>()!.Category, v => v);
-
-            Type[] requests = GetTypesByAttribute<RequestAttribute>().ToArray();
-
-            foreach (CategoryCommand categoryValue in Enum.GetValues<CategoryCommand>())
-            {
-                if (categoryTypes.TryGetValue(categoryValue, out Type category))
-                {
-                    foreach (object commandValue in Enum.GetValues(category))
-                    {
-                        Type request = Array.Find(requests, t =>
-                        {
-                            RequestAttribute a = t.GetCustomAttribute<RequestAttribute>()!;
-                            return a.Category == categoryValue && a.Command == (byte)commandValue;
-                        });
-
-                        if (request is not null)
-                        {
-                            // category = 0x04
-                            // command = 0x01
-                            // index = 0x0401
-                            ushort index = (ushort)((byte)categoryValue + (((byte)commandValue) << 8));
-                            response[index] = request;
-                        }
-                    }
-                }
-                else
-                {
-                    throw new XunitException("Category not found");
-                }
-            }
-
-            return response;
-        }
-
-        private static IEnumerable<Type> GetTypesByAttribute<T>() where T : Attribute => AppDomain.CurrentDomain
+        private static IEnumerable<Type> GetTypesByAttribute<TAttribute>() where TAttribute : Attribute => AppDomain.CurrentDomain
             .GetAssemblies()
-            .Where(a => a.FullName.Contains("SoulCore"))
+            .Where(a => a.FullName?.Contains("SoulCore") ?? throw new XunitException("SoulCore namespace not found"))
             .SelectMany(a => a.GetTypes())
-            .Where(t => t.GetCustomAttribute<T>() is not null);
+            .Where(t => t.GetCustomAttribute<TAttribute>() is not null);
     }
 }

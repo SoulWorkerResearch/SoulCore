@@ -11,7 +11,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Character_Info")]
     public sealed class CharacterInfoEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public ushort Unknown0 { get; set; }
         public byte Unknown1 { get; set; }
         public string Unknown2 { get; set; }

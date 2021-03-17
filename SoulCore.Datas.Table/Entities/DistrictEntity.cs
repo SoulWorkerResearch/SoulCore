@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_district")]
     public sealed class DistrictEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public ushort Unknown5 { get; set; }
         public ushort Unknown6 { get; set; }
         public ushort Unknown7 { get; set; }

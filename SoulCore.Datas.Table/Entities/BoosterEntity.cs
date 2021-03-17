@@ -11,7 +11,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Booster")]
     public sealed class BoosterEntity : ITableEntity<KeyType>
     {
-        public sealed class Effect
+        public sealed record Effect
         {
             public byte EffectType { get; set; }
             public byte ApplyType { get; set; }
@@ -27,7 +27,7 @@ namespace SoulCore.Data.Bin.Table.Entities
             }
         }
 
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public ushort Group { get; set; }
         public List<Effect> Effects { get; set; }
         public ushort Info { get; set; }

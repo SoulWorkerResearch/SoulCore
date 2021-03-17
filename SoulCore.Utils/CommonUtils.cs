@@ -5,6 +5,8 @@ namespace SoulCore.Utils
 {
     public static class CommonUtils
     {
+        public static ushort MakeWord(byte left, byte right) => (ushort)(left + ((right) << 8));
+
         public static void PrintEnvironment(ILogger logger)
         {
             logger.LogDebug("Environment:");

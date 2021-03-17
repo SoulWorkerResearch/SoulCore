@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Maze_Info")]
     public sealed class MazeInfoEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public byte Type { get; set; }
         public ushort Unknown7 { get; set; }
         public byte Unknown8 { get; set; }

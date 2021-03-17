@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SoulCore.IO.Network\SoulCore.IO.Network.csproj" />
     <ProjectReference Include="..\SoulCore.Tools.Wireshark.Reader\SoulCore.Tools.Wireshark.Reader.csproj" />
+    <ProjectReference Include="..\SoulCore\SoulCore.csproj" />
   </ItemGroup>
 </Project>

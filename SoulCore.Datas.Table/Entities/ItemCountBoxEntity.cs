@@ -10,7 +10,7 @@ namespace SoulCore.Data.Bin.Table.Entities
 
     public sealed class ItemCountBoxEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public byte UsageCount { get; set; }
         public List<ushort> UsageGroup { get; set; }
 

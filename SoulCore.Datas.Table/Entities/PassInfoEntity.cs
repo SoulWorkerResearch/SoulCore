@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Pass_Info")]
     public sealed class PassInfoEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public uint v6 { get; set; }
         public byte v7 { get; set; }
         public uint v8 { get; set; }

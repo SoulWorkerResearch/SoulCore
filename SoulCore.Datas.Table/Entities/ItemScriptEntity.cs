@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_item_script")]
     public sealed class ItemScriptEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public string Icon { get; set; }
         public string Unknown6 { get; set; }
         public string Unknown7 { get; set; }

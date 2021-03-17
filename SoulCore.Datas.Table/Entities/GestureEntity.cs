@@ -10,7 +10,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_Gesture")]
     public sealed class GestureEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public Class Class { get; set; }
         public byte MinLevel { get; set; }
         public byte InitialGesture { get; set; }

@@ -2,9 +2,9 @@
 {
     public enum PasswordCheckType : byte
     {
-        Create = 0x1,
-        Check = 0x2,
-        Continue = 0x3,
-        StateCheck = 0x4,
+        Create = 1,
+        Check = 2,
+        Continue = 3,
+        StateCheck = 4,
     };
 }

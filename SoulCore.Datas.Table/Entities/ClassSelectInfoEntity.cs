@@ -9,7 +9,7 @@ namespace SoulCore.Data.Bin.Table.Entities
     [Table("tb_ClassSelect_Info")]
     public sealed class ClassSelectInfoEntity : ITableEntity<KeyType>
     {
-        public KeyType Id { get; }
+        public KeyType Id { get; set; }
         public string Unknown5 { get; set; }
         public string Unknown6 { get; set; }
         public uint Unknown7 { get; set; }
