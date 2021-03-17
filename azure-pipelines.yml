@@ -31,13 +31,15 @@ steps:
     msbuildArchitecture: 'x64'
     msbuildArgs: '/p:PackageVersion=$(Build.BuildNumber) /p:AssemblyFileVersion=$(Build.BuildNumber) /p:ContinuousIntegrationBuild=true'
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
+    nobuild: true
+    includesymbols: true
+    includesource: true
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'BUILD_BUILDNUMBER'
-    includeSymbols: true
 
 - task: NuGetCommand@2
   inputs:
