@@ -1,0 +1,23 @@
+name: .NET
+
+on:
+  pull_request:
+    types: [published, created, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check
+      uses: actions/checkout@main
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@main
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
