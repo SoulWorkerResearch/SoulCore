@@ -24,6 +24,6 @@ namespace SoulWorkerResearch.SoulCore.IO.Network.Extensions
 
         private static IEnumerable<Type> GetByAttribute<T>() => AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(assembly => assembly.GetTypes())
-            .Where(type => type.IsAssignableTo(typeof(T)) && type.IsAbstract);
+            .Where(type => type.IsAssignableTo(typeof(T)) && !type.IsAbstract && type.GetConstructors().Length > 0);
     }
 }
