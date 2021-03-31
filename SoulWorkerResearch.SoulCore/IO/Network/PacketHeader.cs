@@ -12,14 +12,14 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
     {
         public readonly byte Magic0;
         public readonly byte Magic1;
-        public readonly ushort Size;
+        public readonly ushort BodySize;
         public readonly UsTos UsTos;
 
         public PacketHeader(BinaryReader br)
         {
             Magic0 = br.ReadByte();
             Magic1 = br.ReadByte();
-            Size = br.ReadUInt16();
+            BodySize = br.ReadUInt16();
             UsTos = (UsTos)br.ReadByte();
         }
     }

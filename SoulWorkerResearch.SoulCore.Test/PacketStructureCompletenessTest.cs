@@ -96,7 +96,7 @@ namespace SoulWorkerResearch.SoulCore.Test
                 // Check SoulWorker ...? value
                 Assert.True(Enum.IsDefined(packet.UsTos));
 
-                PacketTest(br.ReadBytes(packet.Size - CommonDefines.PacketHeaderSize), packets);
+                PacketTest(br.ReadBytes(packet.BodySize - CommonDefines.PacketHeaderSize), packets);
             }
         }
 
