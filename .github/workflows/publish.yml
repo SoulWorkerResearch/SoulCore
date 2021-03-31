@@ -3,34 +3,37 @@ name: Nuget Publish
 on:
   push:
     branches: [ main ]
-    
+
 env:
   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:      
+    steps:
     - name: Set current date as env variable
       run: echo "NOW=$(date +'%Y.%m%d.%H.%M%S')" >> $GITHUB_ENV
-      
+
     - name: Echo current date
       run: echo $NOW
-      
+
     - name: Check
       uses: actions/checkout@main
-    
+
     - name: Setup .NET
       uses: actions/setup-dotnet@main
       with:
         dotnet-version: 5.0.x
-        
+
     - name: Restore dependencies
       run: dotnet restore
-        
+
     - name: Build
       run: dotnet build --no-restore --configuration Release -p:Version=${{ env.NOW }}
-      
+
+    - name: Pack
+      run: dotnet pack --no-restore --no-build --include-symbols --include-source
+
     - name: Push to NuGet Feed
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key $NUGET_API_KEY
