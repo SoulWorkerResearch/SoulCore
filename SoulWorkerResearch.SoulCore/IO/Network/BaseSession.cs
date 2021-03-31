@@ -38,7 +38,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         //        writer.Write(byte.MinValue);
         //    });
 
-        #region Send
+        #region SendAsync
 
         public ValueTask<TSession> SendAsync(BattlePassLoadResponse value) =>
             SendAsync(CategoryCommand.Event, EventCommand.BattlePassLoad, (PacketWriter writer) =>
@@ -400,16 +400,13 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
             return Send(writer);
         }
 
-        #endregion Send
+        #endregion SendAsync
 
         protected internal virtual void OnDisconnected()
         {
         }
 
-        protected BaseSession(BaseServer<TServer, TSession> server)
-        {
-            InternalSession = new(server.InternalServer, (TSession)this);
-        }
+        protected BaseSession(BaseServer<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
 
         private TSession Send(PacketWriter writer)
         {
