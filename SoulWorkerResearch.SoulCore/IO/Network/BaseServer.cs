@@ -3,7 +3,7 @@ using System.Net;
 
 namespace SoulWorkerResearch.SoulCore.IO.Network
 {
-    public abstract class BaseServer<TServer, TSession>
+    public abstract class BaseServer<TServer, TSession> : IBaseServer
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {
@@ -14,6 +14,6 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         public bool Stop() => InternalServer.Stop();
 
         protected BaseServer(IServiceProvider services, string ip, ushort port) =>
-            InternalServer = new(GetType(), (TServer)this, services, new(IPAddress.Parse(ip), port));
+            InternalServer = new((TServer)this, services, new(IPAddress.Parse(ip), port));
     }
 }

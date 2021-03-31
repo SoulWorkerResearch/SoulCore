@@ -1,6 +1,8 @@
 ﻿using NetCoreServer;
 using SoulWorkerResearch.SoulCore.IO.Network.Utils;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace SoulWorkerResearch.SoulCore.IO.Network
@@ -17,17 +19,28 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         {
             Task task = Task.Run(async () =>
             {
-                await using MemoryStream ms = new(buffer, (int)offset, (int)size, false);
-                using BinaryReader br = new(ms);
+                using BinaryReader br = new(new MemoryStream(buffer, (int)offset, (int)size, false), Encoding.ASCII, false);
 
                 try
                 {
                     do
                     {
-                        PacketHeader packet = new(br);
-                        PacketUtils.Exchange(ms.GetBuffer(), (int)ms.Position, (int)ms.Position - (packet.Size + CommonDefines.PacketHeaderSize));
+                        PacketHeader header = new(br);
 
-                        await Session.ProcessPacket(br).ConfigureAwait(false);
+                        // Begin packet body position
+                        int startPosition = (int)br.BaseStream.Position;
+
+                        // End packet body position
+                        int endPosition = (int)(br.BaseStream.Position - (header.BodySize + CommonDefines.PacketHeaderSize));
+
+                        // Check if end position beyond end of stream
+                        Debug.Assert(((MemoryStream)br.BaseStream).GetBuffer().Length > endPosition);
+
+                        // Decode packet body
+                        PacketUtils.Exchange(((MemoryStream)br.BaseStream).GetBuffer(), startPosition, endPosition);
+
+                        // Call sesion packet handler
+                        await Session.OnPacketReceived(header, br).ConfigureAwait(false);
                     } while (br.BaseStream.Position < br.BaseStream.Length);
                 }
                 catch

@@ -1,7 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Network.Commands;
 using SoulWorkerResearch.SoulCore.IO.Network.PacketSharedStructure;
-using SoulWorkerResearch.SoulCore.IO.Network.Permissions;
-using SoulWorkerResearch.SoulCore.IO.Network.Providers;
 using SoulWorkerResearch.SoulCore.IO.Network.Requests;
 using SoulWorkerResearch.SoulCore.IO.Network.Responses;
 using SoulWorkerResearch.SoulCore.IO.Network.Responses.Login;
@@ -20,14 +18,13 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {
-        public HandlerPermission Permission { get; set; } = HandlerPermission.Anonymous;
         public TServer Server => ((InternalServer<TServer, TSession>)InternalSession.Server).Server;
 
         internal readonly InternalSession<TServer, TSession> InternalSession;
 
-        private readonly HandlerProvider<TServer, TSession> _handlers;
-
         public void Disconnect() => InternalSession.Disconnect();
+
+        protected internal abstract ValueTask OnPacketReceived(PacketHeader header, BinaryReader body);
 
         //public SSessionBase SendAsync(BattlePassLoadResponse value) =>
         //    SendAsync(SCCategory.InfiniteTower, SCInfiniteTower.LoadInfo, (SPacketWriter writer) =>
@@ -405,12 +402,6 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
 
         #endregion Send
 
-        internal async ValueTask ProcessPacket(BinaryReader br)
-        {
-            HandlerProvider<TServer, TSession>.Handler handler = _handlers[br.ReadUInt16()];
-            await handler.Method.Invoke((TSession)this, br).ConfigureAwait(false);
-        }
-
         protected internal virtual void OnDisconnected()
         {
         }
@@ -418,7 +409,6 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         protected BaseSession(BaseServer<TServer, TSession> server)
         {
             InternalSession = new(server.InternalServer, (TSession)this);
-            _handlers = server.InternalServer.Handlers;
         }
 
         private TSession Send(PacketWriter writer)

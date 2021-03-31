@@ -1,8 +1,7 @@
 ﻿namespace SoulWorkerResearch.SoulCore.IO.Network
 {
-    public interface IBaseSession
+    public interface IBaseServer
     {
-        void Disconnect();
     }
 }
 
