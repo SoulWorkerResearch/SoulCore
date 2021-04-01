@@ -25,7 +25,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
 
             Task task = Task.Run(async () =>
             {
-                using BinaryReader br = new(new MemoryStream(buffer, (int)offset, (int)size, false), Encoding.ASCII, false);
+                using BinaryReader br = new(new MemoryStream(buffer, (int)offset, (int)size, false, true), Encoding.ASCII, false);
 
                 try
                 {

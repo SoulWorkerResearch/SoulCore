@@ -408,7 +408,8 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         {
         }
 
-        protected BaseSession(BaseServer<TServer, TSession> server, IServiceProvider provider) => InternalSession = new(server.InternalServer, (TSession)this, provider.GetRequiredService<ILogger<InternalSession<TServer, TSession>>>());
+        protected BaseSession(BaseServer<TServer, TSession> server, IServiceProvider provider) =>
+            InternalSession = new(server.InternalServer, (TSession)this, provider.GetRequiredService<ILogger<InternalSession<TServer, TSession>>>());
 
         private TSession Send(PacketWriter writer)
         {
