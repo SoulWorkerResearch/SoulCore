@@ -1,4 +1,6 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Network.Commands;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using SoulWorkerResearch.SoulCore.IO.Network.Commands;
 using SoulWorkerResearch.SoulCore.IO.Network.PacketSharedStructure;
 using SoulWorkerResearch.SoulCore.IO.Network.Requests;
 using SoulWorkerResearch.SoulCore.IO.Network.Responses;
@@ -406,7 +408,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         {
         }
 
-        protected BaseSession(BaseServer<TServer, TSession> server) => InternalSession = new(server.InternalServer, (TSession)this);
+        protected BaseSession(BaseServer<TServer, TSession> server, IServiceProvider provider) => InternalSession = new(server.InternalServer, (TSession)this, provider.GetRequiredService<ILogger<InternalSession<TServer, TSession>>>());
 
         private TSession Send(PacketWriter writer)
         {

@@ -1,5 +1,7 @@
-﻿using NetCoreServer;
+﻿using Microsoft.Extensions.Logging;
+using NetCoreServer;
 using SoulWorkerResearch.SoulCore.IO.Network.Utils;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
@@ -13,10 +15,14 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
     {
         internal readonly TSession Session;
 
+        private readonly ILogger<InternalSession<TServer, TSession>> _logger;
+
         protected override void OnDisconnected() => Session.OnDisconnected();
 
         protected override void OnReceived(byte[] buffer, long offset, long size)
         {
+            _logger.LogDebug("Recv packet");
+
             Task task = Task.Run(async () =>
             {
                 using BinaryReader br = new(new MemoryStream(buffer, (int)offset, (int)size, false), Encoding.ASCII, false);
@@ -43,8 +49,9 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
                         await Session.OnPacketReceived(header, br).ConfigureAwait(false);
                     } while (br.BaseStream.Position < br.BaseStream.Length);
                 }
-                catch
+                catch (Exception e)
                 {
+                    _logger.LogError(e, "Session disconnect");
 #if !DEBUG
                     Disconnect();
 #endif
@@ -54,7 +61,12 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
             task.Wait();
         }
 
-        internal InternalSession(InternalServer<TServer, TSession> server, TSession session) : base(server) => Session = session;
+        internal InternalSession(InternalServer<TServer, TSession> server, TSession session, ILogger<InternalSession<TServer, TSession>> logger) :
+            base(server)
+        {
+            Session = session;
+            _logger = logger;
+        }
     }
 }
 
