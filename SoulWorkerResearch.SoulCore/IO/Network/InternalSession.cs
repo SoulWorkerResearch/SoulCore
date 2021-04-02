@@ -29,6 +29,8 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
 
                 try
                 {
+                    await Session.OnRawPacketReceived(br).ConfigureAwait(false);
+
                     do
                     {
                         PacketHeader header = new(br);
@@ -51,7 +53,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError(e, "Session disconnect");
+                    _logger.LogError(e, "Session exception happened");
 #if !DEBUG
                     Disconnect();
 #endif

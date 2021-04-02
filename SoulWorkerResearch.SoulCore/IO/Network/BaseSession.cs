@@ -26,7 +26,9 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
 
         public void Disconnect() => InternalSession.Disconnect();
 
-        protected internal abstract ValueTask OnPacketReceived(PacketHeader header, BinaryReader body);
+        protected internal virtual ValueTask OnRawPacketReceived(BinaryReader packet) => ValueTask.CompletedTask;
+
+        protected internal virtual ValueTask OnPacketReceived(PacketHeader header, BinaryReader body) => ValueTask.CompletedTask;
 
         //public SSessionBase SendAsync(BattlePassLoadResponse value) =>
         //    SendAsync(SCCategory.InfiniteTower, SCInfiniteTower.LoadInfo, (SPacketWriter writer) =>
