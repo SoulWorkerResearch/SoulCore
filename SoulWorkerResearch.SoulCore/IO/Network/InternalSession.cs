@@ -39,7 +39,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
                         int startPosition = (int)br.BaseStream.Position;
 
                         // End packet body position
-                        int endPosition = (int)(br.BaseStream.Position - (header.BodySize + CommonDefines.PacketHeaderSize));
+                        int endPosition = startPosition + header.BodySize + CommonDefines.PacketHeaderSize;
 
                         // Check if end position beyond end of stream
                         Debug.Assert(((MemoryStream)br.BaseStream).GetBuffer().Length > endPosition);
