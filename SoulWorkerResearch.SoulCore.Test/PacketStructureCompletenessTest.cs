@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SoulWorkerResearch.SoulCore.IO.Network;
 using SoulWorkerResearch.SoulCore.IO.Network.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Network.Commands;
-using SoulWorkerResearch.SoulCore.IO.Network.Utils;
 using SoulWorkerResearch.SoulCore.Misc.Helpers;
 using SoulWorkerResearch.Wireshark.PacketReader;
 using System;
@@ -17,6 +17,20 @@ using Xunit.Sdk;
 
 namespace SoulWorkerResearch.SoulCore.Test
 {
+    internal sealed class TestServer : BaseServer<TestServer, TestSession>
+    {
+        public TestServer() : base(new ServiceCollection().BuildServiceProvider(), "", 0)
+        {
+        }
+    }
+
+    internal sealed class TestSession : BaseSession<TestServer, TestSession>
+    {
+        public TestSession(TestServer server, IServiceProvider provider) : base(server, provider)
+        {
+        }
+    }
+
     public sealed class PacketStructureCompletenessTest : IClassFixture<Startup>
     {
         [Fact]
@@ -102,7 +116,9 @@ namespace SoulWorkerResearch.SoulCore.Test
 
         private static void PacketTest(byte[] raw, IReadOnlyDictionary<ushort, Type> packets)
         {
-            PacketUtils.Exchange(ref raw);
+            var testServer = new TestServer();
+            testServer.OnPacketExchange(raw.AsSpan());
+            // PacketUtils.Exchange(ref raw);
 
             using BinaryReader br = new(new MemoryStream(raw, false), Encoding.ASCII, false);
 

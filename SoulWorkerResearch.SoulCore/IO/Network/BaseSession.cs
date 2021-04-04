@@ -415,7 +415,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
 
         private TSession Send(PacketWriter writer)
         {
-            if (!InternalSession.SendAsync(PacketUtils.Pack(writer), 0, writer.BaseStream.Length))
+            if (!InternalSession.SendAsync(Server.GetPackedPacket(writer), 0, writer.BaseStream.Length))
             {
                 NetworkUtils.DropNetwork("Can't send");
             }

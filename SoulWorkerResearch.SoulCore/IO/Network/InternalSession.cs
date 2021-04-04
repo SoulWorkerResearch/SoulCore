@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using NetCoreServer;
-using SoulWorkerResearch.SoulCore.IO.Network.Utils;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -45,7 +44,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
                         Debug.Assert(((MemoryStream)br.BaseStream).GetBuffer().Length > endPosition);
 
                         // Decode packet body
-                        PacketUtils.Exchange(((MemoryStream)br.BaseStream).GetBuffer(), startPosition, endPosition);
+                        Session.Server.OnPacketExchange(((MemoryStream)br.BaseStream).GetBuffer().AsSpan(startPosition, endPosition));
 
                         // Call sesion packet handler
                         await Session.OnPacketReceived(header, br).ConfigureAwait(false);
