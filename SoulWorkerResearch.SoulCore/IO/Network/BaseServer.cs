@@ -4,7 +4,7 @@ using System.Net;
 
 namespace SoulWorkerResearch.SoulCore.IO.Network
 {
-    public abstract class BaseServer<TServer, TSession> : IBaseServer
+    public abstract class BaseServer<TServer, TSession>
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {

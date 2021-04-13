@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace SoulWorkerResearch.SoulCore.IO.Network
 {
-    public abstract class BaseSession<TServer, TSession> : IBaseSession
+    public abstract class BaseSession<TServer, TSession>
         where TServer : BaseServer<TServer, TSession>
         where TSession : BaseSession<TServer, TSession>
     {

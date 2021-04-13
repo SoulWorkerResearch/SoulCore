@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="IO\Network\Extensions\" />
     <Folder Include="IO\Network\Requests\DailyMission\" />
     <Folder Include="IO\Network\Requests\Event\" />
     <Folder Include="IO\Network\Requests\Exchange\" />
