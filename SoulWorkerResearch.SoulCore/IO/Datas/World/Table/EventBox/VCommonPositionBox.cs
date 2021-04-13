@@ -1,6 +1,6 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -20,6 +20,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         ///
         /// </summary>
         public uint Group { get; set; }
+
+        public VCommonPositionBox()
+        {
+        }
 
         internal VCommonPositionBox(XmlNode xml) : base(xml)
         {

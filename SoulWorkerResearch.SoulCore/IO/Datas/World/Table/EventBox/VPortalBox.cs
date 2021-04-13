@@ -1,9 +1,9 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -42,12 +42,12 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// Output of the non-active state VFX resource path
         /// </summary>
-        public string DisableEffect { get; set; }
+        public string DisableEffect { get; set; } = string.Empty;
 
         /// <summary>
         /// Output of the active state VFX resource path
         /// </summary>
-        public string EnableEffect { get; set; }
+        public string EnableEffect { get; set; } = string.Empty;
 
         /// <summary>
         /// UI String
@@ -82,12 +82,12 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// ClearSector Id
         /// </summary>
-        public List<uint> ClearSectors { get; set; }
+        public List<uint> ClearSectors { get; set; } = new();
 
         /// <summary>
         /// ClearSector Chance
         /// </summary>
-        public List<float> ClearSectorChances { get; set; }
+        public List<float> ClearSectorChances { get; set; } = new();
 
         /// <summary>
         /// MaxUserCount
@@ -98,6 +98,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// MaxTimeCount
         /// </summary>
         public uint MaxTimeCount { get; set; }
+
+        public VPortalBox()
+        {
+        }
 
         internal VPortalBox(XmlNode xml) : base(xml)
         {

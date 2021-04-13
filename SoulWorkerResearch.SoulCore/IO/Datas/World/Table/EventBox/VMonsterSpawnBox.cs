@@ -1,8 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -11,7 +11,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         ///
         /// </summary>
-        public List<VMonster> Monsters { get; set; }
+        public List<VMonster> Monsters { get; set; } = new();
 
         /// <summary>
         /// Creation Position Type.
@@ -31,7 +31,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// EffectFile.
         /// </summary>
-        public string CreationEffectFile { get; set; }
+        public string CreationEffectFile { get; set; } = string.Empty;
 
         /// <summary>
         /// If Condition of Creation is 'WaitSignal', Determine whether the signal being generated in a few seconds.
@@ -91,7 +91,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// ObjectKey
         /// </summary>
-        public string ObjectKey { get; set; }
+        public string ObjectKey { get; set; } = string.Empty;
 
         /// <summary>
         /// Scene script call type.
@@ -101,7 +101,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// if Scene script call type is HP, the event box being run. HP(100 = 100%).
         /// </summary>
-        public List<byte> CheckScriptHps { get; set; }
+        public List<byte> CheckScriptHps { get; set; } = new();
 
         /// <summary>
         /// ID of the associated sectors(auto editable)
@@ -111,7 +111,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// Enter the name you used when creating the spawn action.
         /// </summary>
-        public string ChangeSpawnAction { get; set; }
+        public string ChangeSpawnAction { get; set; } = string.Empty;
 
         /// <summary>
         /// Specifies the ID of the destination specified by the box spawn protected.
@@ -142,6 +142,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// GroupID
         /// </summary>
         public uint GroupId { get; set; }
+
+        public VMonsterSpawnBox()
+        {
+        }
 
         internal VMonsterSpawnBox(XmlNode xml) : base(xml)
         {

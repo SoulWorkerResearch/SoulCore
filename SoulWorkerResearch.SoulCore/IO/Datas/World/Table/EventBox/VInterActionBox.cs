@@ -13,7 +13,11 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// Interactive ObjectKey
         /// </summary>
-        public string ObjectKey { get; set; }
+        public string ObjectKey { get; set; } = string.Empty;
+
+        public VInterActionBox()
+        {
+        }
 
         internal VInterActionBox(XmlNode xml) : base(xml)
         {

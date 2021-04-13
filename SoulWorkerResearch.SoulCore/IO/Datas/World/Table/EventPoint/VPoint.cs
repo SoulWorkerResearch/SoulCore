@@ -1,8 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
 {
@@ -26,12 +26,12 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         /// <summary>
         ///
         /// </summary>
-        public List<uint> NextPoints { get; set; }
+        public List<uint> NextPoints { get; set; } = new();
 
         /// <summary>
         ///
         /// </summary>
-        public string IdleAction { get; set; }
+        public string IdleAction { get; set; } = string.Empty;
 
         /// <summary>
         ///
@@ -47,6 +47,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         ///
         /// </summary>
         public byte RepeatCount { get; set; }
+
+        protected VPoint()
+        {
+        }
 
         protected VPoint(XmlNode xml) : base(xml)
         {

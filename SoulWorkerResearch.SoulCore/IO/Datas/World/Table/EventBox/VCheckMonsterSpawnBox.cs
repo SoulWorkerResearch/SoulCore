@@ -1,8 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -26,7 +26,11 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         ///
         /// </summary>
-        public List<uint> CheckBoxes { get; set; }
+        public List<uint> CheckBoxes { get; set; } = new();
+
+        public VCheckMonsterSpawnBox()
+        {
+        }
 
         internal VCheckMonsterSpawnBox(XmlNode xml) : base(xml)
         {

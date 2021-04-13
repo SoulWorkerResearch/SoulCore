@@ -1,8 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -16,7 +16,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         ///
         /// </summary>
-        public string EnterLua { get; set; }
+        public string EnterLua { get; set; } = string.Empty;
 
         /// <summary>
         ///
@@ -31,7 +31,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         ///
         /// </summary>
-        public string ClearLua { get; set; }
+        public string ClearLua { get; set; } = string.Empty;
 
         /// <summary>
         /// Title to be displayed on the screen when entering the sector
@@ -56,7 +56,11 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// Sectors within the monster kill ratio step
         /// </summary>
-        public List<byte> ConditionKillRatioSteps { get; set; }
+        public List<byte> ConditionKillRatioSteps { get; set; } = new();
+
+        public VSectorBox()
+        {
+        }
 
         internal VSectorBox(XmlNode xml) : base(xml)
         {

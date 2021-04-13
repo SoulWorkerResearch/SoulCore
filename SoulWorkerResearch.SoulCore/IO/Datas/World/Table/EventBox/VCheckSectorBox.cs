@@ -13,12 +13,16 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         ///
         /// </summary>
-        public string Lua { get; set; }
+        public string Lua { get; set; } = string.Empty;
 
         /// <summary>
         ///
         /// </summary>
         public uint CheckGate { get; set; }
+
+        public VCheckSectorBox()
+        {
+        }
 
         internal VCheckSectorBox(XmlNode xml) : base(xml)
         {

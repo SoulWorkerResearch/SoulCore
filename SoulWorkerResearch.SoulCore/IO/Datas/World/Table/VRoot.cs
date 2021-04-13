@@ -9,19 +9,17 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table
     {
         public readonly static VRoot Empty = new();
 
-        public readonly VEventBox EventBox;
-        public readonly VEventPoint EventPoint;
+        public readonly VEventBox EventBox = VEventBox.Empty;
+        public readonly VEventPoint EventPoint = VEventPoint.Empty;
+
+        public VRoot()
+        {
+        }
 
         internal VRoot(XmlNode xml)
         {
             EventBox = new(xml.SelectSingleNode("Batchs [@eventtype='EventBox']") ?? throw new ApplicationException());
             EventPoint = new(xml.SelectSingleNode("Batchs [@eventtype='EventPoint']") ?? throw new ApplicationException());
-        }
-
-        private VRoot()
-        {
-            EventBox = VEventBox.Empty;
-            EventPoint = VEventPoint.Empty;
         }
     }
 }

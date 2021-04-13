@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 
@@ -9,24 +8,28 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
     {
         public static readonly VEventBox Empty = new();
 
-        public readonly List<VSectorBox> Sectors;
-        public readonly List<VMonsterSpawnBox> MonsterSpawns;
-        public readonly List<VStartEventBox> StartEvents;
-        public readonly List<VPortalExitBox> PortalExits;
-        public readonly List<VPortalBox> Portals;
-        public readonly List<VMazeEscapeBox> MazeEscapes;
-        public readonly List<VSectorStartBox> SectorStarts;
-        public readonly List<VSocialItemExcludeBox> SocialItemExcludes;
-        public readonly List<VLuaFunctionBox> LuaFunctions;
-        public readonly List<VSafeAreaBox> SafeAreas;
-        public readonly List<VPersonalShopAreaBox> PersonalShopAreas;
-        public readonly List<VInterActionBox> InterActions;
-        public readonly List<VCheckMonsterSpawnBox> CheckMonsterSpawns;
-        public readonly List<VCommonPositionBox> CommonPositions;
-        public readonly List<VCheckSectorBox> CheckSectors;
-        public readonly List<VServerGateBox> ServerGates;
-        public readonly List<VQuestMoveCheckBox> QuestMoveChecks;
-        public readonly List<VCheckEventSpawnBox> CheckEventSpawns;
+        public List<VSectorBox> Sectors { get; set; } = new();
+        public List<VMonsterSpawnBox> MonsterSpawns { get; set; } = new();
+        public List<VStartEventBox> StartEvents { get; set; } = new();
+        public List<VPortalExitBox> PortalExits { get; set; } = new();
+        public List<VPortalBox> Portals { get; set; } = new();
+        public List<VMazeEscapeBox> MazeEscapes { get; set; } = new();
+        public List<VSectorStartBox> SectorStarts { get; set; } = new();
+        public List<VSocialItemExcludeBox> SocialItemExcludes { get; set; } = new();
+        public List<VLuaFunctionBox> LuaFunctions { get; set; } = new();
+        public List<VSafeAreaBox> SafeAreas { get; set; } = new();
+        public List<VPersonalShopAreaBox> PersonalShopAreas { get; set; } = new();
+        public List<VInterActionBox> InterActions { get; set; } = new();
+        public List<VCheckMonsterSpawnBox> CheckMonsterSpawns { get; set; } = new();
+        public List<VCommonPositionBox> CommonPositions { get; set; } = new();
+        public List<VCheckSectorBox> CheckSectors { get; set; } = new();
+        public List<VServerGateBox> ServerGates { get; set; } = new();
+        public List<VQuestMoveCheckBox> QuestMoveChecks { get; set; } = new();
+        public List<VCheckEventSpawnBox> CheckEventSpawns { get; set; } = new();
+
+        public VEventBox()
+        {
+        }
 
         internal VEventBox(XmlNode xml)
         {
@@ -48,28 +51,6 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
             ServerGates = xml.SelectNodes("VServerGateBox")?.Cast<XmlNode>().Select(v => new VServerGateBox(v)).ToList() ?? new();
             QuestMoveChecks = xml.SelectNodes("VQuestMoveCheckBox")?.Cast<XmlNode>().Select(v => new VQuestMoveCheckBox(v)).ToList() ?? new();
             CheckEventSpawns = xml.SelectNodes("VCheckEventSpawnBox")?.Cast<XmlNode>().Select(v => new VCheckEventSpawnBox(v)).ToList() ?? new();
-        }
-
-        private VEventBox()
-        {
-            Sectors = new();
-            MonsterSpawns = new();
-            StartEvents = new();
-            PortalExits = new();
-            Portals = new();
-            MazeEscapes = new();
-            SectorStarts = new();
-            SocialItemExcludes = new();
-            LuaFunctions = new();
-            SafeAreas = new();
-            PersonalShopAreas = new();
-            InterActions = new();
-            CheckMonsterSpawns = new();
-            CommonPositions = new();
-            CheckSectors = new();
-            ServerGates = new();
-            QuestMoveChecks = new();
-            CheckEventSpawns = new();
         }
     }
 }

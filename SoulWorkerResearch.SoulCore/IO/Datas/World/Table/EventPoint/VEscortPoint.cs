@@ -8,17 +8,21 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         /// <summary>
         ///
         /// </summary>
-        public string Function { get; set; }
+        public string Function { get; set; } = string.Empty;
 
         /// <summary>
         ///
         /// </summary>
-        public string EnableEffectPath { get; set; }
+        public string EnableEffectPath { get; set; } = string.Empty;
 
         /// <summary>
         ///
         /// </summary>
-        public string DisableEffectPath { get; set; }
+        public string DisableEffectPath { get; set; } = string.Empty;
+
+        public VEscortPoint()
+        {
+        }
 
         internal VEscortPoint(XmlNode xml) : base(xml)
         {

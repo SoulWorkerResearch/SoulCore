@@ -10,6 +10,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// </summary>
         public uint EpisodeCondition { get; set; }
 
+        public VQuestMoveCheckBox()
+        {
+        }
+
         internal VQuestMoveCheckBox(XmlNode xml) : base(xml) =>
             EpisodeCondition = xml.GetUInt32("m_uiEpisodeCondition");
     }

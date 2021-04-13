@@ -36,7 +36,11 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// Spawn Box ID
         /// </summary>
-        public List<uint> SpawnBoxes { get; set; }
+        public List<uint> SpawnBoxes { get; set; } = new();
+
+        public VCheckEventSpawnBox()
+        {
+        }
 
         internal VCheckEventSpawnBox(XmlNode xml) : base(xml)
         {

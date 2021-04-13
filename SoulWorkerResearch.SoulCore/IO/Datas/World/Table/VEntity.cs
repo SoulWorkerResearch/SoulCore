@@ -1,8 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Drawing;
 using System.Numerics;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table
 {
@@ -55,6 +55,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table
         /// Color of event object
         /// </summary>
         public Color Color { get; set; }
+
+        protected VEntity()
+        {
+        }
 
         protected VEntity(XmlNode xml)
         {

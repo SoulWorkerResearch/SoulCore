@@ -10,6 +10,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// </summary>
         public uint ParentPortal { get; set; }
 
+        public VPortalExitBox()
+        {
+        }
+
         internal VPortalExitBox(XmlNode xml) : base(xml) =>
             ParentPortal = xml.GetUInt32("m_iParentPortalBoxID");
     }

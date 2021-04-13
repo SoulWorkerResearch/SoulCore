@@ -1,6 +1,6 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
+﻿using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Types;
 using System.Xml;
-using SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
 {
@@ -14,12 +14,16 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         /// <summary>
         /// LuaFunction
         /// </summary>
-        public string Function { get; set; }
+        public string Function { get; set; } = string.Empty;
 
         /// <summary>
         /// ID of Monster or NPC for check.
         /// </summary>
         public uint CheckId { get; set; }
+
+        public VLuaFunctionBox()
+        {
+        }
 
         internal VLuaFunctionBox(XmlNode xml) : base(xml)
         {
