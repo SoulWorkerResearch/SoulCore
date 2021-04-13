@@ -32,7 +32,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VCheckMonsterSpawnBox(XmlNode xml) : base(xml)
+        public VCheckMonsterSpawnBox(XmlNode xml) : base(xml)
         {
             Type = xml.GetEnum<MonsterType>("m_eType");
             LoopCount = xml.GetUInt32("m_iLoopCount");

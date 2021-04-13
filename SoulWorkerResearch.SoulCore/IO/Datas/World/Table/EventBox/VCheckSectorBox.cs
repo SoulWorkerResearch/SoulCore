@@ -24,7 +24,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VCheckSectorBox(XmlNode xml) : base(xml)
+        public VCheckSectorBox(XmlNode xml) : base(xml)
         {
             CheckSector = xml.GetUInt32("m_iCheckSector");
             Lua = xml.GetString("m_szLua");

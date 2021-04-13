@@ -8,7 +8,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         {
         }
 
-        internal VWayPoint(XmlNode xml) : base(xml)
+        public VWayPoint(XmlNode xml) : base(xml)
         {
         }
     }

@@ -15,7 +15,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VStartEventBox(XmlNode xml) : base(xml) =>
+        public VStartEventBox(XmlNode xml) : base(xml) =>
             SpawnType = xml.GetEnum<SpawnType>("m_eSpawnType");
     }
 }

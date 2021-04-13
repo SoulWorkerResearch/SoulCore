@@ -42,7 +42,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VCheckEventSpawnBox(XmlNode xml) : base(xml)
+        public VCheckEventSpawnBox(XmlNode xml) : base(xml)
         {
             EventType = xml.GetEnum<EventType>("m_eEvent_Type");
             EventRate = xml.GetSingle("m_fEvent_Rate");

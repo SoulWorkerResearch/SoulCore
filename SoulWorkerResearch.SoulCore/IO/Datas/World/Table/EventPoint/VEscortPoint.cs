@@ -24,7 +24,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         {
         }
 
-        internal VEscortPoint(XmlNode xml) : base(xml)
+        public VEscortPoint(XmlNode xml) : base(xml)
         {
             Function = xml.GetString("m_szFunction");
             EnableEffectPath = xml.GetString("m_sEnableEffectPath");

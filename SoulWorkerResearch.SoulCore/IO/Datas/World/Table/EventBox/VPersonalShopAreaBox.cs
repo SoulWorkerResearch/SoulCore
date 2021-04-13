@@ -8,7 +8,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VPersonalShopAreaBox(XmlNode xml) : base(xml)
+        public VPersonalShopAreaBox(XmlNode xml) : base(xml)
         {
         }
     }

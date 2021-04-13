@@ -147,7 +147,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VMonsterSpawnBox(XmlNode xml) : base(xml)
+        public VMonsterSpawnBox(XmlNode xml) : base(xml)
         {
             Monsters = Enumerable
                 .Range(1, 10)

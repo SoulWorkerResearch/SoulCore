@@ -16,7 +16,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table
         {
         }
 
-        internal VRoot(XmlNode xml)
+        public VRoot(XmlNode xml)
         {
             EventBox = new(xml.SelectSingleNode("Batchs [@eventtype='EventBox']") ?? throw new ApplicationException());
             EventPoint = new(xml.SelectSingleNode("Batchs [@eventtype='EventPoint']") ?? throw new ApplicationException());

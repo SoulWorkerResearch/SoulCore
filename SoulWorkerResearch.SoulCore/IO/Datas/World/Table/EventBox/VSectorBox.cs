@@ -62,7 +62,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VSectorBox(XmlNode xml) : base(xml)
+        public VSectorBox(XmlNode xml) : base(xml)
         {
             Type = xml.GetEnum<SectorType>("m_eType");
             EnterLua = xml.GetString("m_szEnterLua");

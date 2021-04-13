@@ -15,7 +15,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventPoint
         {
         }
 
-        internal VEventPoint(XmlNode xml)
+        public VEventPoint(XmlNode xml)
         {
             WayPoints = xml.SelectNodes("VWayPoint")?.Cast<XmlNode>().Select(v => new VWayPoint(v)).ToList() ?? new();
             EscortPoints = xml.SelectNodes("VEscortPoint")?.Cast<XmlNode>().Select(v => new VEscortPoint(v)).ToList() ?? new();

@@ -8,7 +8,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VSafeAreaBox(XmlNode xml) : base(xml)
+        public VSafeAreaBox(XmlNode xml) : base(xml)
         {
         }
     }

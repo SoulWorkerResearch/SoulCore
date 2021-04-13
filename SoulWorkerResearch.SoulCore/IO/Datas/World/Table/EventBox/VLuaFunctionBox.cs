@@ -25,7 +25,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VLuaFunctionBox(XmlNode xml) : base(xml)
+        public VLuaFunctionBox(XmlNode xml) : base(xml)
         {
             Type = xml.GetEnum<LuaFunctionType>("m_eType");
             Function = xml.GetString("m_szFunction");

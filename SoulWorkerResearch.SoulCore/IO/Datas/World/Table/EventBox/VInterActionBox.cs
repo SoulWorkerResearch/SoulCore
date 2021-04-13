@@ -19,7 +19,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VInterActionBox(XmlNode xml) : base(xml)
+        public VInterActionBox(XmlNode xml) : base(xml)
         {
             Interaction = xml.GetUInt32("m_iInteractionID");
             ObjectKey = xml.GetString("m_sObjectKey");

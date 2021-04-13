@@ -8,7 +8,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VSocialItemExcludeBox(XmlNode xml) : base(xml)
+        public VSocialItemExcludeBox(XmlNode xml) : base(xml)
         {
         }
     }

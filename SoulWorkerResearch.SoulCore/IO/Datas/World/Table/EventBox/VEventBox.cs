@@ -31,7 +31,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VEventBox(XmlNode xml)
+        public VEventBox(XmlNode xml)
         {
             Sectors = xml.SelectNodes("VSectorBox")?.Cast<XmlNode>().Select(v => new VSectorBox(v)).ToList() ?? new();
             MonsterSpawns = xml.SelectNodes("VMonsterSpawnBox")?.Cast<XmlNode>().Select(v => new VMonsterSpawnBox(v)).ToList() ?? new();

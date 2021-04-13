@@ -25,7 +25,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VServerGateBox(XmlNode xml) : base(xml)
+        public VServerGateBox(XmlNode xml) : base(xml)
         {
             Type = xml.GetEnum<GateType>("m_eType");
             NextSector = xml.GetUInt32("m_iNextSectorID");

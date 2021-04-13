@@ -26,7 +26,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VMonster(uint id, MonsterSpawnType type, uint chance) =>
+        public VMonster(uint id, MonsterSpawnType type, uint chance) =>
             (Id, Type, Chance) = (id, type, chance);
     }
 }

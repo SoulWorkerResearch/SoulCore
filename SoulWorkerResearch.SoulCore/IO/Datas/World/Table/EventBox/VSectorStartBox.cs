@@ -14,7 +14,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VSectorStartBox(XmlNode xml) : base(xml) =>
+        public VSectorStartBox(XmlNode xml) : base(xml) =>
             Sector = xml.GetUInt32("m_nSectorID");
     }
 }

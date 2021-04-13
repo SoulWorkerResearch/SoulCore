@@ -19,7 +19,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VMazeEscapeBox(XmlNode xml) : base(xml)
+        public VMazeEscapeBox(XmlNode xml) : base(xml)
         {
             Field = xml.GetUInt32("m_iField");
             EventObject = xml.GetUInt32("m_iEventObject");

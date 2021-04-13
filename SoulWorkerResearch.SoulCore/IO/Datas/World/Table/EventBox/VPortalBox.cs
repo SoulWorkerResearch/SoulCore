@@ -103,7 +103,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VPortalBox(XmlNode xml) : base(xml)
+        public VPortalBox(XmlNode xml) : base(xml)
         {
             ShowGui = xml.GetBool("m_bShowGUI");
             Gui = xml.GetUInt32("m_iGUI");

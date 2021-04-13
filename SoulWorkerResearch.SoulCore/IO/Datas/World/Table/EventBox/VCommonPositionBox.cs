@@ -25,7 +25,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.EventBox
         {
         }
 
-        internal VCommonPositionBox(XmlNode xml) : base(xml)
+        public VCommonPositionBox(XmlNode xml) : base(xml)
         {
             EntityType = xml.GetEnum<EntityType>("m_eEntityType");
             Entity = xml.GetUInt32("m_iEntityID");
