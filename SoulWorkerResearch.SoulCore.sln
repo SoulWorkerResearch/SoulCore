@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulWorkerResearch.SoulCore
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulWorkerResearch.SoulCore", "SoulWorkerResearch.SoulCore\SoulWorkerResearch.SoulCore.csproj", "{2CF02B69-8C1D-44A3-AC2E-DCDEDEBC2CC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulWorkerResearch.SoulCore.Korean", "SoulWorkerResearch.SoulCore.Korean\SoulWorkerResearch.SoulCore.Korean.csproj", "{D2CAD501-CDF3-4F40-BD35-36F81F403210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoulWorkerResearch.SoulCore.Korean.Test", "SoulWorkerResearch.SoulCore.Korean.Test\SoulWorkerResearch.SoulCore.Korean.Test.csproj", "{2BF01898-D7E0-4322-A473-9510FFAC121B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2CF02B69-8C1D-44A3-AC2E-DCDEDEBC2CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CF02B69-8C1D-44A3-AC2E-DCDEDEBC2CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CF02B69-8C1D-44A3-AC2E-DCDEDEBC2CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2CAD501-CDF3-4F40-BD35-36F81F403210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2CAD501-CDF3-4F40-BD35-36F81F403210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2CAD501-CDF3-4F40-BD35-36F81F403210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2CAD501-CDF3-4F40-BD35-36F81F403210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF01898-D7E0-4322-A473-9510FFAC121B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF01898-D7E0-4322-A473-9510FFAC121B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF01898-D7E0-4322-A473-9510FFAC121B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF01898-D7E0-4322-A473-9510FFAC121B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

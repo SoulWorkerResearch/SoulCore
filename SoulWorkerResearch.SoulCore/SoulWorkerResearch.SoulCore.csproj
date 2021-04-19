@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -16,7 +17,6 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <AnalysisLevel>preview</AnalysisLevel>
     <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <LangVersion>preview</LangVersion>
     <AssemblyName>SoulWorkerResearch.SoulCore</AssemblyName>
     <RootNamespace>SoulWorkerResearch.SoulCore</RootNamespace>

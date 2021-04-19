@@ -1,5 +1,4 @@
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using SoulWorkerResearch.SoulCore.IO.Network;
 using SoulWorkerResearch.SoulCore.IO.Network.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Network.Commands;
@@ -12,25 +11,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 using Xunit.Sdk;
 
 namespace SoulWorkerResearch.SoulCore.Test
 {
-    internal sealed class TestServer : BaseServer<TestServer, TestSession>
-    {
-        public TestServer() : base(new ServiceCollection().BuildServiceProvider(), "", 0)
-        {
-        }
-    }
-
-    internal sealed class TestSession : BaseSession<TestServer, TestSession>
-    {
-        public TestSession(TestServer server, IServiceProvider provider) : base(server, provider)
-        {
-        }
-    }
-
     public sealed class PacketStructureCompletenessTest : IClassFixture<Startup>
     {
         [Fact]
@@ -39,13 +25,15 @@ namespace SoulWorkerResearch.SoulCore.Test
         [Fact]
         public void ResponseStructureTest() => PacketsTest<ResponseAttribute>(_responsesPath);
 
-        public PacketStructureCompletenessTest(IConfiguration configuration)
+        public PacketStructureCompletenessTest(Startup startup)
         {
-            string? path = configuration["Wireshark:JsonDump"];
-            Assert.Null(path);
+            var configuration = startup.ServiceProvider.GetRequiredService<IConfiguration>();
+            
+            var path = configuration["Wireshark:JsonDumpPath"];
+            Assert.NotNull(path);
 
-            string? ip = configuration["Wireshark:ClientIp"];
-            Assert.Null(path);
+            var ip = configuration["Wireshark:ClientIp"];
+            Assert.NotNull(path);
 
             IEnumerable<IEnumerable<IReadOnlyRawPacket>> packets = JsonFile.ReadAsync(path).GetAwaiter().GetResult();
 
