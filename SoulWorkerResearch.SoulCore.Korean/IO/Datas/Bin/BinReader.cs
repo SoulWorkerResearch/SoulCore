@@ -77,7 +77,7 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
             _file = new ZipArchive(path, password, xor);
         }
 
-        public BinReader(ZipArchive file)
+        public BinReader(ZipFile file)
         {
             _file = file;
         }
@@ -108,6 +108,6 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
             }
         }
 
-        private readonly ZipArchive _file;
+        private readonly ZipFile _file;
     }
 }
