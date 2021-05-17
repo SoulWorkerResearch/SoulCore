@@ -93,7 +93,7 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
-                    break;
+                    yield break;
                 }
 
                 yield return (TItem)CreateInstance(br, type);
@@ -111,7 +111,7 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
             {
                 if (cancellationToken.IsCancellationRequested)
                 {
-                    break;
+                    yield break;
                 }
                 
                 yield return br;
