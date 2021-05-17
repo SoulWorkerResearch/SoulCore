@@ -34,13 +34,13 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions
         internal static Vector3 GetVector3(this XmlNode xml, string xpath)
         {
             float[] values = xml.GetSplitted(xpath, float.Parse);
-            return new(values[0], values[1], values[2]);
+            return new Vector3(values[0], values[1], values[2]);
         }
 
         internal static Color GetColor(this XmlNode xml, string xpath)
         {
             byte[] values = xml.GetSplitted(xpath, byte.Parse);
-            return Color.FromArgb(values[0], values[1], values[2], values[3]);
+            return Color.FromArgb(red: values[0], green: values[1], blue: values[2], alpha: values[3]);
         }
 
         internal static T GetEnum<T>(this XmlNode xml, string xpath)
@@ -49,7 +49,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Datas.World.Table.Extensions
 
             string enumName = xml.GetString(xpath);
 
-            if (Enum.TryParse(type, enumName, false, out object? result))
+            if (Enum.TryParse(type, enumName, false, out var result))
                 return (T)result!;
 
             enumName = type.GetFields().First(f => f.GetCustomAttribute<XmlEnumAttribute>()?.Name == enumName).Name;

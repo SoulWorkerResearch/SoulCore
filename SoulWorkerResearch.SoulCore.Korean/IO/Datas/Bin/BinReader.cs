@@ -13,58 +13,58 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
 {
     public sealed class BinReader : IDisposable
     {
-        public IDictionary<Class, ClassSelectInfoEntity> ReadClassSelectInfoTable() =>
+        public IEnumerable<ClassSelectInfoEntity> ReadClassSelectInfoTable() =>
             Read<Class, ClassSelectInfoEntity>(_file);
 
-        public IDictionary<Class, CustomizeSkinEntity> ReadCustomizeSkinTable() =>
+        public IEnumerable<CustomizeSkinEntity> ReadCustomizeSkinTable() =>
             Read<Class, CustomizeSkinEntity>(_file);
 
-        public IDictionary<Class, CustomizeEyesEntity> ReadCustomizeEyesTable() =>
+        public IEnumerable<CustomizeEyesEntity> ReadCustomizeEyesTable() =>
             Read<Class, CustomizeEyesEntity>(_file);
 
-        public IDictionary<Class, CustomizeHairEntity> ReadCustomizeHairTable() =>
+        public IEnumerable<CustomizeHairEntity> ReadCustomizeHairTable() =>
             Read<Class, CustomizeHairEntity>(_file);
 
-        public IDictionary<Class, CustomizeInfoEntity> ReadCustomizeInfoTable() =>
+        public IEnumerable<CustomizeInfoEntity> ReadCustomizeInfoTable() =>
             Read<Class, CustomizeInfoEntity>(_file);
 
-        public IDictionary<uint, CharacterBackgroundEntity> ReadCharacterBackgroundTable() =>
+        public IEnumerable<CharacterBackgroundEntity> ReadCharacterBackgroundTable() =>
             Read<uint, CharacterBackgroundEntity>(_file);
 
-        public IDictionary<ushort, DistrictEntity> ReadDistrictTable() =>
+        public IEnumerable<DistrictEntity> ReadDistrictTable() =>
             Read<ushort, DistrictEntity>(_file);
 
-        public IDictionary<uint, ItemEntity> ReadItemTable() =>
+        public IEnumerable<ItemEntity> ReadItemTable() =>
             Read<uint, ItemEntity>(_file);
 
-        public IDictionary<uint, ItemClassifyEntity> ReadItemClassifyTable() =>
+        public IEnumerable<ItemClassifyEntity> ReadItemClassifyTable() =>
             Read<uint, ItemClassifyEntity>(_file);
 
-        public IDictionary<uint, ItemScriptEntity> ReadItemScriptTable() =>
+        public IEnumerable<ItemScriptEntity> ReadItemScriptTable() =>
             Read<uint, ItemScriptEntity>(_file);
 
-        public IDictionary<ushort, CharacterInfoEntity> ReadCharacterInfoTable() =>
+        public IEnumerable<CharacterInfoEntity> ReadCharacterInfoTable() =>
             Read<ushort, CharacterInfoEntity>(_file);
 
-        public IDictionary<uint, PhotoItemEntity> ReadPhotoItemTable() =>
+        public IEnumerable<PhotoItemEntity> ReadPhotoItemTable() =>
             Read<uint, PhotoItemEntity>(_file);
 
-        public IDictionary<ushort, GestureEntity> ReadGestureTable() =>
+        public IEnumerable<GestureEntity> ReadGestureTable() =>
             Read<ushort, GestureEntity>(_file);
 
-        public IDictionary<ushort, MazeInfoEntity> ReadMazeInfoTable() =>
+        public IEnumerable<MazeInfoEntity> ReadMazeInfoTable() =>
             Read<ushort, MazeInfoEntity>(_file);
 
-        public IDictionary<ushort, BoosterEntity> ReadBoosterTable() =>
+        public IEnumerable<BoosterEntity> ReadBoosterTable() =>
             Read<ushort, BoosterEntity>(_file);
 
-        public IDictionary<uint, NpcEntity> ReadNpcTable() =>
+        public IEnumerable<NpcEntity> ReadNpcTable() =>
             Read<uint, NpcEntity>(_file);
 
-        public IDictionary<uint, PassInfoEntity> ReadPassInfoTable() =>
+        public IEnumerable<PassInfoEntity> ReadPassInfoTable() =>
             Read<uint, PassInfoEntity>(_file);
 
-        public IDictionary<uint, PassRewardInfoEntity> ReadPassRewardInfoTable() =>
+        public IEnumerable<PassRewardInfoEntity> ReadPassRewardInfoTable() =>
             Read<uint, PassRewardInfoEntity>(_file);
 
         public void Dispose()
@@ -82,7 +82,7 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
             _file = file;
         }
 
-        private static IDictionary<TId, TItem> Read<TId, TItem>(ZipFile data)
+        private static IEnumerable<TItem> Read<TId, TItem>(ZipFile data)
             where TId : struct
             where TItem : ITableEntity<TId>
         {
@@ -91,8 +91,8 @@ namespace SoulWorkerResearch.SoulCore.Korean.IO.Datas.Bin
 
             var entries = GetEntries(data, name);
             var instances = entries.Select(br => (TItem) CreateInstance(br, type));
-            
-            return instances.ToDictionary(key => key.Id, value => value);
+
+            return instances;
         }
 
         private static object CreateInstance(BinaryReader br, Type type) =>

@@ -350,10 +350,10 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         public ValueTask<TSession> SendAsync(ContentsInfoResponse value) =>
             SendAsync(CategoryCommand.Login, LoginCommand.OptionLoad, (PacketWriter writer) =>
             {
-                writer.Write(value.OptionBit);
-                writer.Write(value.Content);
+                writer.Write(value.OptionBit.ToArray());
+                writer.Write(value.Content.ToArray());
                 writer.Write(value.AccountId);
-                writer.Write(value.KeyOption);
+                writer.Write(value.KeyOption.ToArray());
             });
 
         public ValueTask<TSession> SendAsync(SAuthLoginResponse value) =>
@@ -411,7 +411,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Network
         }
 
         protected BaseSession(BaseServer<TServer, TSession> server, IServiceProvider provider) =>
-            InternalSession = new(server.InternalServer, (TSession)this, provider.GetRequiredService<ILogger<InternalSession<TServer, TSession>>>());
+            InternalSession = new InternalSession<TServer, TSession>(server.InternalServer, (TSession)this, provider.GetRequiredService<ILogger<InternalSession<TServer, TSession>>>());
 
         private TSession Send(PacketWriter writer)
         {

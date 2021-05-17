@@ -1,5 +1,6 @@
 ﻿using SoulWorkerResearch.SoulCore.Types;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -83,11 +84,17 @@ namespace SoulWorkerResearch.SoulCore.Extensions
 
         public static string ReadByteLengthUtf8String(this BinaryReader br) =>
             Encoding.UTF8.GetString(br.ReadBytes(br.ReadUInt16()));
+        
+        public static string ReadVisionByteLengthUtf8String(this BinaryReader br) =>
+            Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
 
         public static Vector3 ReadVector3(this BinaryReader br) =>
             new(br.ReadSingle(), br.ReadSingle(), br.ReadSingle());
 
         public static Vector2 ReadVector2(this BinaryReader br) =>
             new(br.ReadSingle(), br.ReadSingle());
+        
+        public static Color ReadColor(this BinaryReader br) =>
+            Color.FromArgb(red: br.ReadByte(), green: br.ReadByte(), blue: br.ReadByte(), alpha: br.ReadByte());
     }
 }
