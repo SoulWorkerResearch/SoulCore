@@ -16,5 +16,6 @@
         ItemExchange,
         WaitSystem,
         OperationMaze,
+        Max
     }
 }
