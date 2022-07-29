@@ -1,100 +1,119 @@
-﻿using SoulWorkerResearch.SoulCore.Types;
-using System.Collections.Generic;
+﻿using SoulWorkerResearch.SoulCore.Defines;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Numerics;
 using System.Text;
 
-namespace SoulWorkerResearch.SoulCore.Extensions
+namespace SoulWorkerResearch.SoulCore.Extensions;
+
+public static class BinaryReaderExtension
 {
-    public static class BinaryReaderExtension
-    {
-        #region Enumerable
+    #region Enumerable
 
-        public static IEnumerable<uint> ReadUInt32Enumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadUInt32());
+    public static IEnumerable<uint> ReadUInt32AsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadUInt32());
 
-        public static IEnumerable<int> ReadInt32Enumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadInt32());
+    public static IEnumerable<int> ReadInt32AsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadInt32());
 
-        public static IEnumerable<ushort> ReadUInt16Enumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadUInt16());
+    public static IEnumerable<ushort> ReadUInt16AsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadUInt16());
 
-        public static IEnumerable<byte> ReadByteEnumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadByte());
+    public static IEnumerable<byte> ReadByteAsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadByte());
 
-        public static IEnumerable<string> ReadByteLengthUnicodeStringEnumerable(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadCharacterLengthUnicodeString());
+    public static IEnumerable<BoosterEffectType> ReadBoosterEffectTypeAsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => (BoosterEffectType)reader.ReadByte());
 
-        #endregion Enumerable
+    public static IEnumerable<string> ReadByteLengthUnicodeStringAsEnumerable(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadUTF16UnicodeString());
 
-        #region Arrays
+    #endregion Enumerable
 
-        public static uint[] ReadUInt32Array(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadUInt32()).ToArray();
+    #region Arrays
 
-        public static int[] ReadInt32Array(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadInt32()).ToArray();
+    public static uint[] ReadUInt32AsArray(this BinaryReader reader, byte count) =>
+        reader.ReadUInt32AsEnumerable(count).ToArray();
 
-        public static ushort[] ReadUInt16Array(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadUInt16()).ToArray();
+    public static int[] ReadInt32AsArray(this BinaryReader reader, byte count) =>
+        reader.ReadInt32AsEnumerable(count).ToArray();
 
-        public static float[] ReadSingleArray(this BinaryReader br, byte count) =>
-            Enumerable.Repeat(0, count).Select(_ => br.ReadSingle()).ToArray();
+    public static ushort[] ReadUInt16AsArray(this BinaryReader reader, byte count) =>
+        reader.ReadUInt16AsEnumerable(count).ToArray();
 
-        #endregion Arrays
+    public static byte[] ReadByteAsArray(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadByte()).ToArray();
 
-        #region Enums
+    public static float[] ReadSingleAsArray(this BinaryReader reader, byte count) =>
+        Enumerable.Repeat(0, count).Select(_ => reader.ReadSingle()).ToArray();
 
-        public static Class ReadClass(this BinaryReader br) =>
-            (Class)br.ReadByte();
+    public static string[] ReadByteLengthUnicodeStringAsArray(this BinaryReader reader, byte count) =>
+        reader.ReadByteLengthUnicodeStringAsEnumerable(count).ToArray();
 
-        public static ChatType ReadChatType(this BinaryReader br) =>
-            (ChatType)br.ReadByte();
+    #endregion Arrays
 
-        public static DistrictLogOutWay ReadLogoutWayType(this BinaryReader br) =>
-            (DistrictLogOutWay)br.ReadByte();
+    #region Enums
 
-        public static StorageType ReadStorageType(this BinaryReader br) =>
-            (StorageType)br.ReadByte();
+    public static BoosterDecreaseTime ReadBoosterDecreaseTime(this BinaryReader reader) =>
+        (BoosterDecreaseTime)reader.ReadByte();
 
-        public static ClassAdvancement ReadClassAdvancement(this BinaryReader br) =>
-            (ClassAdvancement)br.ReadByte();
+    public static Class ReadClass(this BinaryReader reader) =>
+        (Class)reader.ReadByte();
 
-        public static GroupRole ReadGroupRoleType(this BinaryReader br) =>
-            (GroupRole)br.ReadByte();
+    public static ChatType ReadChatType(this BinaryReader reader) =>
+        (ChatType)reader.ReadByte();
 
-        public static EnterGateWay ReadEnterGateWayType(this BinaryReader br) =>
-            (EnterGateWay)br.ReadByte();
+    public static DistrictLogOutWay ReadLogoutWayType(this BinaryReader reader) =>
+        (DistrictLogOutWay)reader.ReadByte();
 
-        public static ItemClassifySlotType ReadItemClassifySlotType(this BinaryReader br) =>
-            (ItemClassifySlotType)br.ReadByte();
+    public static StorageType ReadStorageType(this BinaryReader reader) =>
+        (StorageType)reader.ReadByte();
 
-        public static ItemClassifyInventoryType ReadItemClassifyInventoryType(this BinaryReader br) =>
-            (ItemClassifyInventoryType)br.ReadByte();
+    public static ClassAdvancement ReadClassAdvancement(this BinaryReader reader) =>
+        (ClassAdvancement)reader.ReadByte();
 
-        #endregion Enums
+    public static Permisson ReadPermission(this BinaryReader reader) =>
+        (Permisson)reader.ReadByte();
 
-        public static string ReadByteLengthUnicodeString(this BinaryReader br) =>
-            Encoding.Unicode.GetString(br.ReadBytes(br.ReadUInt16()));
+    public static GroupRole ReadGroupRoleType(this BinaryReader reader) =>
+        (GroupRole)reader.ReadByte();
 
-        public static string ReadCharacterLengthUnicodeString(this BinaryReader br) =>
-            Encoding.Unicode.GetString(br.ReadBytes(br.ReadUInt16() * 2));
+    public static EnterGateWay ReadEnterGateWayType(this BinaryReader reader) =>
+        (EnterGateWay)reader.ReadByte();
 
-        public static string ReadByteLengthUtf8String(this BinaryReader br) =>
-            Encoding.UTF8.GetString(br.ReadBytes(br.ReadUInt16()));
-        
-        public static string ReadVisionByteLengthUtf8String(this BinaryReader br) =>
-            Encoding.UTF8.GetString(br.ReadBytes(br.ReadInt32()));
+    public static ItemClassifySlotType ReadItemClassifySlotType(this BinaryReader reader) =>
+        (ItemClassifySlotType)reader.ReadByte();
 
-        public static Vector3 ReadVector3(this BinaryReader br) =>
-            new(br.ReadSingle(), br.ReadSingle(), br.ReadSingle());
+    public static ItemClassifyInventoryType ReadItemClassifyInventoryType(this BinaryReader reader) =>
+        (ItemClassifyInventoryType)reader.ReadByte();
 
-        public static Vector2 ReadVector2(this BinaryReader br) =>
-            new(br.ReadSingle(), br.ReadSingle());
-        
-        public static Color ReadColor(this BinaryReader br) =>
-            Color.FromArgb(red: br.ReadByte(), green: br.ReadByte(), blue: br.ReadByte(), alpha: br.ReadByte());
-    }
+    public static AuthType ReadAuthType(this BinaryReader reader) =>
+        (AuthType)reader.ReadByte();
+
+    #endregion Enums
+
+    #region Strings
+
+    public static string ReadUTF8UnicodeString(this BinaryReader reader) =>
+        Encoding.Unicode.GetString(reader.ReadBytes(reader.ReadUInt16()));
+
+    public static string ReadUTF16UnicodeString(this BinaryReader reader) =>
+        Encoding.Unicode.GetString(reader.ReadBytes(reader.ReadUInt16() * 2));
+
+    public static string ReadVisionByteLengthUtf8String(this BinaryReader reader) =>
+        Encoding.UTF8.GetString(reader.ReadBytes(reader.ReadInt32()));
+
+    #endregion Strings
+
+    #region Structs
+
+    public static Vector3 ReadVector3(this BinaryReader reader) =>
+        new(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
+
+    public static Vector2 ReadVector2(this BinaryReader reader) =>
+        new(reader.ReadSingle(), reader.ReadSingle());
+
+    public static Color ReadColor(this BinaryReader reader) =>
+        Color.FromArgb(red: reader.ReadByte(), green: reader.ReadByte(), blue: reader.ReadByte(), alpha: reader.ReadByte());
+
+    #endregion Structs
 }

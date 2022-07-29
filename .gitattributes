@@ -1,0 +1,4 @@
+*.vbatch     text diff=xml
+
+# Binary files
+*.hkt        filter=lfs diff=lfs merge=lfs binary

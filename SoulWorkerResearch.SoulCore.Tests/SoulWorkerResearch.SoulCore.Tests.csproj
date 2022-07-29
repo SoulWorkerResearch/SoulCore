@@ -1,0 +1,1206 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Datas\World\Navmesh\B03_BATTLECOURT.hkt" />
+    <None Remove="Datas\World\Table\AR01_THEPRIMAL_EV.vbatch" />
+    <None Remove="Datas\World\Table\AR01_THEPRIMAL.vbatch" />
+    <None Remove="Datas\World\Table\B03_BATTLECOURT.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_BLUE.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_DARK.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_GREEN.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_LIGHT.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_RED.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL_WHITE.vbatch" />
+    <None Remove="Datas\World\Table\C01_LASTCARNIVAL.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_BLUE.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_DARK.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_GREEN.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_LIGHT.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_RED.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE_WHITE.vbatch" />
+    <None Remove="Datas\World\Table\C02_JUNKHIVE.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_BLUE.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_DARK.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_GREEN.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_LIGHT.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_RED.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY_WHITE.vbatch" />
+    <None Remove="Datas\World\Table\C03_BANDITSHIGHWAY.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_BLUE.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_DARK.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_GREEN.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_LIGHT.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_RED.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE_WHITE.vbatch" />
+    <None Remove="Datas\World\Table\C04_IRONCASTLE.vbatch" />
+    <None Remove="Datas\World\Table\C05_ALTAROFVOID_RANK.vbatch" />
+    <None Remove="Datas\World\Table\C05_ALTAROFVOID.vbatch" />
+    <None Remove="Datas\World\Table\C06_HIDDENHIDEOUT_RANK.vbatch" />
+    <None Remove="Datas\World\Table\C06_HIDDENHIDEOUT.vbatch" />
+    <None Remove="Datas\World\Table\C07_LUNARFALL_HERO.vbatch" />
+    <None Remove="Datas\World\Table\C07_LUNARFALL.vbatch" />
+    <None Remove="Datas\World\Table\C08_VIOLENTSUN_R.vbatch" />
+    <None Remove="Datas\World\Table\C08_VIOLENTSUN.vbatch" />
+    <None Remove="Datas\World\Table\C09_BROKENSAVIOR_H.vbatch" />
+    <None Remove="Datas\World\Table\C09_BROKENSAVIOR_HARD.vbatch" />
+    <None Remove="Datas\World\Table\C09_BROKENSAVIOR.vbatch" />
+    <None Remove="Datas\World\Table\D01_DISTRICT6_THETHING.vbatch" />
+    <None Remove="Datas\World\Table\D01_DISTRICT6.vbatch" />
+    <None Remove="Datas\World\Table\DF01_GOLDENCITADEL.vbatch" />
+    <None Remove="Datas\World\Table\DR01_GOLDENCITADEL_ATTRIBUTE.vbatch" />
+    <None Remove="Datas\World\Table\DR01_GOLDENCITADEL.vbatch" />
+    <None Remove="Datas\World\Table\E01_GLUTONWORLD_SUMMER.vbatch" />
+    <None Remove="Datas\World\Table\E01_GLUTONWORLD.vbatch" />
+    <None Remove="Datas\World\Table\E02_LONELYCHRISTMAS.vbatch" />
+    <None Remove="Datas\World\Table\E03_SKYCLOCKPALACE.vbatch" />
+    <None Remove="Datas\World\Table\E04_MEMORIALHALL_NEW.vbatch" />
+    <None Remove="Datas\World\Table\E04_MEMORIALHALL.vbatch" />
+    <None Remove="Datas\World\Table\E05_RUMBLEVACATION_NIGHT.vbatch" />
+    <None Remove="Datas\World\Table\E05_RUMBLEVACATION.vbatch" />
+    <None Remove="Datas\World\Table\E06_REVENGERS.vbatch" />
+    <None Remove="Datas\World\Table\E07_SOULJUMPER_H.vbatch" />
+    <None Remove="Datas\World\Table\E07_SOULJUMPER_N.vbatch" />
+    <None Remove="Datas\World\Table\E08_MOONLIGHTPARTY.vbatch" />
+    <None Remove="Datas\World\Table\E09_LATESUMMERHOLIDAY_A.vbatch" />
+    <None Remove="Datas\World\Table\E09_LATESUMMERHOLIDAY_N.vbatch" />
+    <None Remove="Datas\World\Table\F001_TESTFIELD.vbatch" />
+    <None Remove="Datas\World\Table\F021_CANDUSCITY.vbatch" />
+    <None Remove="Datas\World\Table\F031_ROCCOTOWN.vbatch" />
+    <None Remove="Datas\World\Table\F041_GRACECITY.vbatch" />
+    <None Remove="Datas\World\Table\F051_RUINFORTRESS.vbatch" />
+    <None Remove="Datas\World\Table\F061_GRASSCOVERCAMP.vbatch" />
+    <None Remove="Datas\World\Table\F071_DIPLUCEHORIZON.vbatch" />
+    <None Remove="Datas\World\Table\F081_TOWEROFLORD.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_01.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_02.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_03.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_04.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_05.vbatch" />
+    <None Remove="Datas\World\Table\L01_BREAKINGILLUSION_06.vbatch" />
+    <None Remove="Datas\World\Table\LR01_LEGIONINVADER.vbatch" />
+    <None Remove="Datas\World\Table\M01_DIMENTIONSHUTER.vbatch" />
+    <None Remove="Datas\World\Table\M03_CONTROLZONE43_EP01.vbatch" />
+    <None Remove="Datas\World\Table\M03_CONTROLZONE43_EP02.vbatch" />
+    <None Remove="Datas\World\Table\M03_CONTROLZONE43_EP03.vbatch" />
+    <None Remove="Datas\World\Table\M03_CONTROLZONE43_EP04.vbatch" />
+    <None Remove="Datas\World\Table\M03_CONTROLZONE43_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M04_RSQUARE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M04_RSQUARE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M04_RSQUARE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M04_RSQUARE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M04_RSQUARE_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M05_BESTSHOWTIME_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M05_BESTSHOWTIME_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M05_BESTSHOWTIME_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M05_BESTSHOWTIME_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M05_BESTSHOWTIME_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M06_TOWEROFGREED_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M06_TOWEROFGREED_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M06_TOWEROFGREED_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M06_TOWEROFGREED_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M06_TOWEROFGREED_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M07_CONCRETEJUNGLE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M07_CONCRETEJUNGLE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M07_CONCRETEJUNGLE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M07_CONCRETEJUNGLE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M08_JUNKPOOL_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M08_JUNKPOOL_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M08_JUNKPOOL_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M08_JUNKPOOL_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M09_THEBIGMOUTH_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M09_THEBIGMOUTH_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M09_THEBIGMOUTH_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M09_THEBIGMOUTH_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M10_N102SHELTER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M10_N102SHELTER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M10_N102SHELTER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M10_N102SHELTER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M11_BREAKOUT_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M11_BREAKOUT_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M11_BREAKOUT_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M11_BREAKOUT_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M12_FRONTLINE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M12_FRONTLINE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M12_FRONTLINE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M12_FRONTLINE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M13_NEDCOMPANY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M13_NEDCOMPANY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M13_NEDCOMPANY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M13_NEDCOMPANY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M14_WOLFCRY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M14_WOLFCRY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M14_WOLFCRY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M14_WOLFCRY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M15_COLDRAIN_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M15_COLDRAIN_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M15_COLDRAIN_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M15_COLDRAIN_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M16_FLAMEBREAKER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M16_FLAMEBREAKER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M16_FLAMEBREAKER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M16_FLAMEBREAKER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M17_AREA9_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M17_AREA9_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M17_AREA9_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M17_AREA9_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M18_CONTROLBASE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M18_CONTROLBASE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M18_CONTROLBASE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M18_CONTROLBASE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M19_BUSTERCORE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M19_BUSTERCORE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M19_BUSTERCORE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M19_BUSTERCORE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M20_COLDREVENGE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M20_COLDREVENGE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M20_COLDREVENGE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M20_COLDREVENGE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M21_FORGOTTENARMORY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M21_FORGOTTENARMORY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M21_FORGOTTENARMORY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M21_FORGOTTENARMORY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M21_FORGOTTENARMORY_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M22_DEEPCORE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M22_DEEPCORE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M22_DEEPCORE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M22_DEEPCORE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M22_DEEPCORE_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M23_ACHERON_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M23_ACHERON_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M23_ACHERON_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M23_ACHERON_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M23_ACHERON_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M24_ARKSHIP_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M24_ARKSHIP_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M24_ARKSHIP_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M24_ARKSHIP_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M24_ARKSHIP_HERO.vbatch" />
+    <None Remove="Datas\World\Table\M25_DREADFULECHO_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M25_DREADFULECHO_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M25_DREADFULECHO_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M25_DREADFULECHO_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M26_PERFORATEDSTREET_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M26_PERFORATEDSTREET_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M26_PERFORATEDSTREET_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M26_PERFORATEDSTREET_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M27_MANEATERGARDEN_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M27_MANEATERGARDEN_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M27_MANEATERGARDEN_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M27_MANEATERGARDEN_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M28_DEADMEATFACTORY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M28_DEADMEATFACTORY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M28_DEADMEATFACTORY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M28_DEADMEATFACTORY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_05.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_06.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_07.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_08.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_09.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_10.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_11.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_12.vbatch" />
+    <None Remove="Datas\World\Table\M29_CORRUPTEDRECORD_EP_13.vbatch" />
+    <None Remove="Datas\World\Table\M32_SKYWALKER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M32_SKYWALKER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M32_SKYWALKER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M32_SKYWALKER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M33_TRANSPORTFLEET_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M33_TRANSPORTFLEET_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M33_TRANSPORTFLEET_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M33_TRANSPORTFLEET_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M34_BETRAYERSARMY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M34_BETRAYERSARMY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M34_BETRAYERSARMY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M34_BETRAYERSARMY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M35_HOLYGROUND_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M35_HOLYGROUND_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M35_HOLYGROUND_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M35_HOLYGROUND_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M36_S303SHELTER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M36_S303SHELTER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M36_S303SHELTER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M36_S303SHELTER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M38_DAWNOFFATE_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M38_DAWNOFFATE_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M38_DAWNOFFATE_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M38_DAWNOFFATE_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M39_WHITEOUT_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M39_WHITEOUT_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M39_WHITEOUT_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M39_WHITEOUT_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M40_BindedRoom.vbatch" />
+    <None Remove="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M42_HELLCITY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M42_HELLCITY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M42_HELLCITY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M42_HELLCITY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M43_CLOUDBORDER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M43_CLOUDBORDER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M43_CLOUDBORDER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M43_CLOUDBORDER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M44_BROKENWAY_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M44_BROKENWAY_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M44_BROKENWAY_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M44_BROKENWAY_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M45_BLOOMINGROAD_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M45_BLOOMINGROAD_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M45_BLOOMINGROAD_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M45_BLOOMINGROAD_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M46_DAYDREAMER_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M46_DAYDREAMER_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M46_DAYDREAMER_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M46_DAYDREAMER_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M47_EMERGENCYCALL_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M47_EMERGENCYCALL_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M47_EMERGENCYCALL_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M47_EMERGENCYCALL_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\M48_DOOMOFWEST_EP_01.vbatch" />
+    <None Remove="Datas\World\Table\M48_DOOMOFWEST_EP_02.vbatch" />
+    <None Remove="Datas\World\Table\M48_DOOMOFWEST_EP_03.vbatch" />
+    <None Remove="Datas\World\Table\M48_DOOMOFWEST_EP_04.vbatch" />
+    <None Remove="Datas\World\Table\P01_TOURNAMENTSECTOR.vbatch" />
+    <None Remove="Datas\World\Table\Q01_ABANDONEDGRAVE_DW.vbatch" />
+    <None Remove="Datas\World\Table\Q01_ABANDONEDGRAVE.vbatch" />
+    <None Remove="Datas\World\Table\Q02_BATTLEOFVOID.vbatch" />
+    <None Remove="Datas\World\Table\Q03_BROKENSAVIOR.vbatch" />
+    <None Remove="Datas\World\Table\Q04_EPILOGUE.vbatch" />
+    <None Remove="Datas\World\Table\R01_MYROOM.vbatch" />
+    <None Remove="Datas\World\Table\S01_STEELGRAVE.vbatch" />
+    <None Remove="Datas\World\Table\S02_STEELGRAVE.vbatch" />
+    <None Remove="Datas\World\Table\S03_STEELGRAVE.vbatch" />
+    <None Remove="Datas\World\Table\SM01_INNOCENTDAYDREAM_HARD.vbatch" />
+    <None Remove="Datas\World\Table\SM01_INNOCENTDAYDREAM_THIRD.vbatch" />
+    <None Remove="Datas\World\Table\SM01_INNOCENTDAYDREAM.vbatch" />
+    <None Remove="Datas\World\Table\SM02_ABYSSLOUNGE.vbatch" />
+    <None Remove="Datas\World\Table\SM03_CLOUDYWEDDINGHALL.vbatch" />
+    <None Remove="Datas\World\Table\SM04_SERENUSSPICA.vbatch" />
+    <None Remove="Datas\World\Table\T01_TUTORIAL.vbatch" />
+    <None Remove="Datas\World\Table\T02_TUTORIAL.vbatch" />
+    <None Remove="Datas\World\Table\T03_TUTORIAL_EFN.vbatch" />
+    <None Remove="Datas\World\Table\T03_TUTORIAL.vbatch" />
+    <None Remove="Datas\World\Table\T04_TRAININGCENTER.vbatch" />
+    <None Remove="Datas\World\Table\T05_RESTROOM.vbatch" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Datas\World\Navmesh\B03_BATTLECOURT.hkt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\AR01_THEPRIMAL_EV.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\AR01_THEPRIMAL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\B03_BATTLECOURT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_BLUE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_DARK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_GREEN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_LIGHT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_RED.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL_WHITE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C01_LASTCARNIVAL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_BLUE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_DARK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_GREEN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_LIGHT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_RED.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE_WHITE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C02_JUNKHIVE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_BLUE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_DARK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_GREEN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_LIGHT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_RED.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY_WHITE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C03_BANDITSHIGHWAY.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_BLUE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_DARK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_GREEN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_LIGHT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_RED.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE_WHITE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C04_IRONCASTLE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C05_ALTAROFVOID_RANK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C05_ALTAROFVOID.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C06_HIDDENHIDEOUT_RANK.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C06_HIDDENHIDEOUT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C07_LUNARFALL_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C07_LUNARFALL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C08_VIOLENTSUN_R.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C08_VIOLENTSUN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C09_BROKENSAVIOR_H.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C09_BROKENSAVIOR_HARD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\C09_BROKENSAVIOR.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\D01_DISTRICT6_THETHING.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\D01_DISTRICT6.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\DF01_GOLDENCITADEL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\DR01_GOLDENCITADEL_ATTRIBUTE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\DR01_GOLDENCITADEL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E01_GLUTONWORLD_SUMMER.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E01_GLUTONWORLD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E02_LONELYCHRISTMAS.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E03_SKYCLOCKPALACE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E04_MEMORIALHALL_NEW.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E04_MEMORIALHALL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E05_RUMBLEVACATION_NIGHT.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E05_RUMBLEVACATION.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E06_REVENGERS.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E07_SOULJUMPER_H.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E07_SOULJUMPER_N.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E08_MOONLIGHTPARTY.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E09_LATESUMMERHOLIDAY_A.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\E09_LATESUMMERHOLIDAY_N.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F001_TESTFIELD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F021_CANDUSCITY.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F031_ROCCOTOWN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F041_GRACECITY.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F051_RUINFORTRESS.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F061_GRASSCOVERCAMP.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F071_DIPLUCEHORIZON.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\F081_TOWEROFLORD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_05.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\L01_BREAKINGILLUSION_06.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\LR01_LEGIONINVADER.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M01_DIMENTIONSHUTER.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M03_CONTROLZONE43_EP01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M03_CONTROLZONE43_EP02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M03_CONTROLZONE43_EP03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M03_CONTROLZONE43_EP04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M03_CONTROLZONE43_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M04_RSQUARE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M04_RSQUARE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M04_RSQUARE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M04_RSQUARE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M04_RSQUARE_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M05_BESTSHOWTIME_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M05_BESTSHOWTIME_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M05_BESTSHOWTIME_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M05_BESTSHOWTIME_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M05_BESTSHOWTIME_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M06_TOWEROFGREED_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M06_TOWEROFGREED_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M06_TOWEROFGREED_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M06_TOWEROFGREED_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M06_TOWEROFGREED_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M07_CONCRETEJUNGLE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M07_CONCRETEJUNGLE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M07_CONCRETEJUNGLE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M07_CONCRETEJUNGLE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M08_JUNKPOOL_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M08_JUNKPOOL_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M08_JUNKPOOL_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M08_JUNKPOOL_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M09_THEBIGMOUTH_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M09_THEBIGMOUTH_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M09_THEBIGMOUTH_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M09_THEBIGMOUTH_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M10_N102SHELTER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M10_N102SHELTER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M10_N102SHELTER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M10_N102SHELTER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M11_BREAKOUT_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M11_BREAKOUT_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M11_BREAKOUT_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M11_BREAKOUT_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M12_FRONTLINE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M12_FRONTLINE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M12_FRONTLINE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M12_FRONTLINE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M13_NEDCOMPANY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M13_NEDCOMPANY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M13_NEDCOMPANY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M13_NEDCOMPANY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M14_WOLFCRY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M14_WOLFCRY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M14_WOLFCRY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M14_WOLFCRY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M15_COLDRAIN_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M15_COLDRAIN_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M15_COLDRAIN_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M15_COLDRAIN_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M16_FLAMEBREAKER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M16_FLAMEBREAKER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M16_FLAMEBREAKER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M16_FLAMEBREAKER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M17_AREA9_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M17_AREA9_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M17_AREA9_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M17_AREA9_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M18_CONTROLBASE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M18_CONTROLBASE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M18_CONTROLBASE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M18_CONTROLBASE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M19_BUSTERCORE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M19_BUSTERCORE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M19_BUSTERCORE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M19_BUSTERCORE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M20_COLDREVENGE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M20_COLDREVENGE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M20_COLDREVENGE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M20_COLDREVENGE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M21_FORGOTTENARMORY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M21_FORGOTTENARMORY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M21_FORGOTTENARMORY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M21_FORGOTTENARMORY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M21_FORGOTTENARMORY_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M22_DEEPCORE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M22_DEEPCORE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M22_DEEPCORE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M22_DEEPCORE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M22_DEEPCORE_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M23_ACHERON_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M23_ACHERON_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M23_ACHERON_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M23_ACHERON_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M23_ACHERON_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M24_ARKSHIP_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M24_ARKSHIP_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M24_ARKSHIP_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M24_ARKSHIP_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M24_ARKSHIP_HERO.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M25_DREADFULECHO_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M25_DREADFULECHO_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M25_DREADFULECHO_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M25_DREADFULECHO_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M26_PERFORATEDSTREET_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M26_PERFORATEDSTREET_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M26_PERFORATEDSTREET_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M26_PERFORATEDSTREET_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M27_MANEATERGARDEN_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M27_MANEATERGARDEN_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M27_MANEATERGARDEN_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M27_MANEATERGARDEN_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M28_DEADMEATFACTORY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M28_DEADMEATFACTORY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M28_DEADMEATFACTORY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M28_DEADMEATFACTORY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_05.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_06.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_07.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_08.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_09.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_10.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_11.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_12.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M29_CORRUPTEDRECORD_EP_13.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M32_SKYWALKER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M32_SKYWALKER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M32_SKYWALKER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M32_SKYWALKER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M33_TRANSPORTFLEET_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M33_TRANSPORTFLEET_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M33_TRANSPORTFLEET_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M33_TRANSPORTFLEET_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M34_BETRAYERSARMY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M34_BETRAYERSARMY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M34_BETRAYERSARMY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M34_BETRAYERSARMY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M35_HOLYGROUND_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M35_HOLYGROUND_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M35_HOLYGROUND_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M35_HOLYGROUND_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M36_S303SHELTER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M36_S303SHELTER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M36_S303SHELTER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M36_S303SHELTER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M37_UNHOLYSANATORIUM_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M38_DAWNOFFATE_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M38_DAWNOFFATE_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M38_DAWNOFFATE_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M38_DAWNOFFATE_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M39_WHITEOUT_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M39_WHITEOUT_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M39_WHITEOUT_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M39_WHITEOUT_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M40_BindedRoom.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M40_RESURRECTIONPROJECT_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M41_UNTOUCHABLEPASS_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M42_HELLCITY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M42_HELLCITY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M42_HELLCITY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M42_HELLCITY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M43_CLOUDBORDER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M43_CLOUDBORDER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M43_CLOUDBORDER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M43_CLOUDBORDER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M44_BROKENWAY_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M44_BROKENWAY_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M44_BROKENWAY_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M44_BROKENWAY_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M45_BLOOMINGROAD_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M45_BLOOMINGROAD_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M45_BLOOMINGROAD_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M45_BLOOMINGROAD_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M46_DAYDREAMER_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M46_DAYDREAMER_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M46_DAYDREAMER_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M46_DAYDREAMER_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M47_EMERGENCYCALL_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M47_EMERGENCYCALL_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M47_EMERGENCYCALL_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M47_EMERGENCYCALL_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M48_DOOMOFWEST_EP_01.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M48_DOOMOFWEST_EP_02.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M48_DOOMOFWEST_EP_03.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\M48_DOOMOFWEST_EP_04.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\P01_TOURNAMENTSECTOR.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\Q01_ABANDONEDGRAVE_DW.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\Q01_ABANDONEDGRAVE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\Q02_BATTLEOFVOID.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\Q03_BROKENSAVIOR.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\Q04_EPILOGUE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\R01_MYROOM.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\S01_STEELGRAVE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\S02_STEELGRAVE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\S03_STEELGRAVE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM01_INNOCENTDAYDREAM_HARD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM01_INNOCENTDAYDREAM_THIRD.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM01_INNOCENTDAYDREAM.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM02_ABYSSLOUNGE.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM03_CLOUDYWEDDINGHALL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\SM04_SERENUSSPICA.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T01_TUTORIAL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T02_TUTORIAL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T03_TUTORIAL_EFN.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T03_TUTORIAL.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T04_TRAININGCENTER.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datas\World\Table\T05_RESTROOM.vbatch">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.0-preview-20220707-01" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
+    <PackageReference Include="coverlet.collector" Version="3.1.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SoulWorkerResearch.SoulCore\SoulWorkerResearch.SoulCore.csproj" />
+  </ItemGroup>
+
+</Project>

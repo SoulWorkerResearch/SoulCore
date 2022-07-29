@@ -1,0 +1,205 @@
+<root>
+    <Batchs eventtype="EventBox" eventcount="8">
+        <VSectorStartBox boxtype="eEventBoxType_SectorStart">
+            <m_ID type="0" value="11" />
+            <m_iGenerateID type="0" value="11" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="75846.250,50056.199,33200.949" />
+            <m_vPosBottomRight type="7" value="75946.250,50156.199,33300.949" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_nSectorID type="0" value="10001" />
+        </VSectorStartBox>
+        <VSectorBox boxtype="eEventBoxType_Sector">
+            <m_ID type="0" value="10001" />
+            <m_iGenerateID type="0" value="10001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="73364.344,48564.090,32603.744" />
+            <m_vPosBottomRight type="7" value="78364.344,53564.090,35103.742" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="5000.000,5000.000,2500.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Boss" />
+            <m_szEnterLua type="12" value="" />
+            <m_eClearType type="4" value="Kill_Perpect" />
+            <m_iClearKillRatio type="0" value="100" />
+            <m_szClearLua type="12" value="" />
+            <m_iSectorTitle type="0" value="0" />
+            <m_iSectorExitType type="4" value="Portal" />
+            <m_iSectorExitID type="0" value="30001" />
+            <m_iRelativeSectorID type="0" value="0" />
+            <m_iConditionKillRatio_1Step type="0" value="0" />
+            <m_iConditionKillRatio_2Step type="0" value="0" />
+            <m_iConditionKillRatio_3Step type="0" value="0" />
+            <m_iConditionKillRatio_4Step type="0" value="0" />
+            <m_iConditionKillRatio_5Step type="0" value="0" />
+        </VSectorBox>
+        <VMazeEscapeBox boxtype="eEventBoxType_MazeEscape">
+            <m_ID type="0" value="1001" />
+            <m_iGenerateID type="0" value="1001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="75552.289,50056.199,33200.949" />
+            <m_vPosBottomRight type="7" value="75652.289,50156.199,33300.949" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iField type="0" value="10041" />
+            <m_iEventObject type="0" value="1004108" />
+        </VMazeEscapeBox>
+        <VStartEventBox boxtype="eEventBoxType_Start">
+            <m_ID type="0" value="2474101" />
+            <m_iGenerateID type="0" value="2474101" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="75687.609,50056.199,33200.949" />
+            <m_vPosBottomRight type="7" value="75787.609,50156.199,33300.949" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eSpawnType type="4" value="Center" />
+        </VStartEventBox>
+        <VPortalBox boxtype="eEventBoxType_Portal">
+            <m_ID type="0" value="30001" />
+            <m_iGenerateID type="0" value="30001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="76316.477,49211.609,33200.949" />
+            <m_vPosBottomRight type="7" value="76616.477,49311.609,33500.949" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="300.000,100.000,300.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_bShowGUI type="5" value="TRUE" />
+            <m_iGUI type="0" value="0" />
+            <m_eJumpType type="4" value="Field" />
+            <m_iJumpMap type="0" value="10041" />
+            <m_iJump type="0" value="1004108" />
+            <m_eEffectType type="4" value="Disable" />
+            <m_szDisableEffect type="12" value="" />
+            <m_szEnableEffect type="12" value="FXs\World\FX_GATE01_01.xml" />
+            <m_iUIString type="0" value="0" />
+            <m_iNextSectorID type="0" value="0" />
+            <m_bCallScript type="5" value="FALSE" />
+            <m_uiOpenEpisode type="0" value="0" />
+            <m_uiCompleteEpisode type="0" value="0" />
+            <m_fStringOffsetX type="2" value="0.0000" />
+            <m_fStringOffsetY type="2" value="0.0000" />
+            <m_fStringOffsetZ type="2" value="0.0000" />
+            <m_iClearSectorID1 type="0" value="0" />
+            <m_iClearSectorID2 type="0" value="0" />
+            <m_iClearSectorID3 type="0" value="0" />
+            <m_iClearSectorID4 type="0" value="0" />
+            <m_iClearSectorID5 type="0" value="0" />
+            <m_fClearSectorChance1 type="2" value="0.0000" />
+            <m_fClearSectorChance2 type="2" value="0.0000" />
+            <m_fClearSectorChance3 type="2" value="0.0000" />
+            <m_fClearSectorChance4 type="2" value="0.0000" />
+            <m_fClearSectorChance5 type="2" value="0.0000" />
+            <m_iMaxUserCount type="0" value="0" />
+            <m_iMaxTimeCount type="0" value="0" />
+        </VPortalBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90101" />
+            <m_iGenerateID type="0" value="90101" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="73722.188,50247.867,33158.801" />
+            <m_vPosBottomRight type="7" value="77722.188,50747.867,33858.801" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="4000.000,500.000,700.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="BossCutScene" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VCommonPositionBox boxtype="eEventBoxType_CommonPosition">
+            <m_ID type="0" value="1" />
+            <m_iGenerateID type="0" value="100001" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="75659.734,50835.953,33197.723" />
+            <m_vPosBottomRight type="7" value="75759.734,50935.953,33297.723" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eEntityType type="4" value="Monster" />
+            <m_iEntityID type="0" value="34401415" />
+            <m_iGroup type="0" value="0" />
+        </VCommonPositionBox>
+        <VMonsterSpawnBox boxtype="eEventBoxType_MonsterSpawn">
+            <m_ID type="0" value="40101" />
+            <m_iGenerateID type="0" value="140101" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="75660.938,51896.379,33204.410" />
+            <m_vPosBottomRight type="7" value="75760.938,51996.379,33304.410" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType1 type="4" value="Monster" />
+            <m_iMonsterID1 type="0" value="34401415" />
+            <m_iChance1 type="0" value="10000" />
+            <m_eType2 type="4" value="Monster" />
+            <m_iMonsterID2 type="0" value="0" />
+            <m_iChance2 type="0" value="10000" />
+            <m_eType3 type="4" value="Monster" />
+            <m_iMonsterID3 type="0" value="0" />
+            <m_iChance3 type="0" value="10000" />
+            <m_eType4 type="4" value="Monster" />
+            <m_iMonsterID4 type="0" value="0" />
+            <m_iChance4 type="0" value="0" />
+            <m_eType5 type="4" value="Monster" />
+            <m_iMonsterID5 type="0" value="0" />
+            <m_iChance5 type="0" value="0" />
+            <m_eType6 type="4" value="Monster" />
+            <m_iMonsterID6 type="0" value="0" />
+            <m_iChance6 type="0" value="0" />
+            <m_eType7 type="4" value="Monster" />
+            <m_iMonsterID7 type="0" value="0" />
+            <m_iChance7 type="0" value="10000" />
+            <m_eType8 type="4" value="Monster" />
+            <m_iMonsterID8 type="0" value="0" />
+            <m_iChance8 type="0" value="0" />
+            <m_eType9 type="4" value="Monster" />
+            <m_iMonsterID9 type="0" value="0" />
+            <m_iChance9 type="0" value="0" />
+            <m_eType10 type="4" value="Monster" />
+            <m_iMonsterID10 type="0" value="0" />
+            <m_iChance10 type="0" value="10000" />
+            <m_eCreationPositionType type="4" value="Center" />
+            <m_eMoveType type="4" value="Static" />
+            <m_eCreationCondition type="4" value="WaitSignal" />
+            <m_CreationEffectFile type="12" value="" />
+            <m_fWaitCreationDelayTime type="2" value="0.0000" />
+            <m_fWaitCreationSequenceTime type="2" value="0.0000" />
+            <m_iWaitCreationMaxWave type="0" value="0" />
+            <m_iMaxEntityCount type="0" value="1" />
+            <m_eWaitCreationSequenceType type="4" value="All" />
+            <m_iWaypoint type="0" value="0" />
+            <m_iAggroGroupID type="0" value="0" />
+            <m_iAggroDistance type="0" value="0" />
+            <m_iAggroMaxCount type="0" value="0" />
+            <m_fLookRatio type="2" value="20.0000" />
+            <m_bShowSight type="5" value="FALSE" />
+            <m_szObjectKey type="12" value="" />
+            <m_eScriptType type="4" value="None" />
+            <m_iCheckScriptHP1 type="0" value="0" />
+            <m_iCheckScriptHP2 type="0" value="0" />
+            <m_iCheckScriptHP3 type="0" value="0" />
+            <m_iCheckScriptHP4 type="0" value="0" />
+            <m_iCheckScriptHP5 type="0" value="0" />
+            <m_iSectorID type="0" value="10001" />
+            <m_ChangeSpawnAction type="12" value="N_Stand" />
+            <m_ProtectionTarget type="0" value="0" />
+            <m_RespawnTime type="2" value="0.0000" />
+            <m_iStep type="0" value="1" />
+            <m_eRespawnType type="4" value="None" />
+            <m_iRespawnCondition type="0" value="0" />
+            <m_iGroupID type="0" value="0" />
+        </VMonsterSpawnBox>
+    </Batchs>
+    <Batchs eventtype="EventPoint" eventcount="0" />
+</root>

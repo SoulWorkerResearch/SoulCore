@@ -1,0 +1,67 @@
+<root>
+    <Batchs eventtype="EventBox" eventcount="4">
+        <VSectorBox boxtype="eEventBoxType_Sector">
+            <m_ID type="0" value="10001" />
+            <m_iGenerateID type="0" value="10001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="4017.201,3213.364,1848.419" />
+            <m_vPosBottomRight type="7" value="16017.201,15213.364,9848.419" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="12000.000,12000.000,8000.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="General" />
+            <m_szEnterLua type="12" value="" />
+            <m_eClearType type="4" value="Kill" />
+            <m_iClearKillRatio type="0" value="100" />
+            <m_szClearLua type="12" value="" />
+            <m_iSectorTitle type="0" value="0" />
+            <m_iSectorExitType type="4" value="Portal" />
+            <m_iSectorExitID type="0" value="30001" />
+            <m_iRelativeSectorID type="0" value="0" />
+            <m_iConditionKillRatio_1Step type="0" value="0" />
+            <m_iConditionKillRatio_2Step type="0" value="0" />
+            <m_iConditionKillRatio_3Step type="0" value="0" />
+            <m_iConditionKillRatio_4Step type="0" value="0" />
+            <m_iConditionKillRatio_5Step type="0" value="0" />
+        </VSectorBox>
+        <VStartEventBox boxtype="eEventBoxType_Start">
+            <m_ID type="0" value="2100101" />
+            <m_iGenerateID type="0" value="2100101" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="9094.386,6584.809,2525.728" />
+            <m_vPosBottomRight type="7" value="10294.386,7184.809,2825.728" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="1200.000,600.000,300.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eSpawnType type="4" value="Random" />
+        </VStartEventBox>
+        <VStartEventBox boxtype="eEventBoxType_Start">
+            <m_ID type="0" value="2100102" />
+            <m_iGenerateID type="0" value="2100102" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="9094.386,11718.231,2525.728" />
+            <m_vPosBottomRight type="7" value="10294.386,12318.231,2825.728" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="1200.000,600.000,300.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eSpawnType type="4" value="Random" />
+        </VStartEventBox>
+        <VMazeEscapeBox boxtype="eEventBoxType_MazeEscape">
+            <m_ID type="0" value="1001" />
+            <m_iGenerateID type="0" value="1001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="9554.219,7430.251,2525.728" />
+            <m_vPosBottomRight type="7" value="9654.219,7530.251,2625.728" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iField type="0" value="10003" />
+            <m_iEventObject type="0" value="1000351" />
+        </VMazeEscapeBox>
+    </Batchs>
+    <Batchs eventtype="EventPoint" eventcount="0" />
+</root>

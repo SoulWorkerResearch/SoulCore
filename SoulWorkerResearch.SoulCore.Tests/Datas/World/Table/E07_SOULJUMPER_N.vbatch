@@ -1,0 +1,1171 @@
+<root>
+    <Batchs eventtype="EventBox" eventcount="65">
+        <VSectorBox boxtype="eEventBoxType_Sector">
+            <m_ID type="0" value="10001" />
+            <m_iGenerateID type="0" value="10001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="10709.340,7540.247,0.000" />
+            <m_vPosBottomRight type="7" value="25709.340,24540.246,17000.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="15000.000,17000.000,17000.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Boss" />
+            <m_szEnterLua type="12" value="" />
+            <m_eClearType type="4" value="Kill_Perpect" />
+            <m_iClearKillRatio type="0" value="100" />
+            <m_szClearLua type="12" value="" />
+            <m_iSectorTitle type="0" value="0" />
+            <m_iSectorExitType type="4" value="Portal" />
+            <m_iSectorExitID type="0" value="30001" />
+            <m_iRelativeSectorID type="0" value="0" />
+            <m_iConditionKillRatio_1Step type="0" value="0" />
+            <m_iConditionKillRatio_2Step type="0" value="0" />
+            <m_iConditionKillRatio_3Step type="0" value="0" />
+            <m_iConditionKillRatio_4Step type="0" value="0" />
+            <m_iConditionKillRatio_5Step type="0" value="0" />
+        </VSectorBox>
+        <VStartEventBox boxtype="eEventBoxType_Start">
+            <m_ID type="0" value="2118101" />
+            <m_iGenerateID type="0" value="2118101" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="12781.993,14973.408,6358.340" />
+            <m_vPosBottomRight type="7" value="12881.993,15073.408,6458.340" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eSpawnType type="4" value="Center" />
+        </VStartEventBox>
+        <VMazeEscapeBox boxtype="eEventBoxType_MazeEscape">
+            <m_ID type="0" value="1001" />
+            <m_iGenerateID type="0" value="1001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="12485.741,15286.568,6358.340" />
+            <m_vPosBottomRight type="7" value="12585.741,15386.568,6458.340" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iField type="0" value="0" />
+            <m_iEventObject type="0" value="0" />
+        </VMazeEscapeBox>
+        <VPortalBox boxtype="eEventBoxType_Portal">
+            <m_ID type="0" value="30001" />
+            <m_iGenerateID type="0" value="30001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="18884.467,22948.922,3302.226" />
+            <m_vPosBottomRight type="7" value="19284.467,23048.922,3702.226" />
+            <m_fRotation type="2" value="-90.0000" />
+            <m_vSize type="7" value="400.000,100.000,400.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_bShowGUI type="5" value="FALSE" />
+            <m_iGUI type="0" value="0" />
+            <m_eJumpType type="4" value="Field" />
+            <m_iJumpMap type="0" value="0" />
+            <m_iJump type="0" value="0" />
+            <m_eEffectType type="4" value="Disable" />
+            <m_szDisableEffect type="12" value="FXs\World\FX_GATE01_02.xml" />
+            <m_szEnableEffect type="12" value="FXs\World\FX_GATE01_01.xml" />
+            <m_iUIString type="0" value="0" />
+            <m_iNextSectorID type="0" value="0" />
+            <m_bCallScript type="5" value="FALSE" />
+            <m_uiOpenEpisode type="0" value="0" />
+            <m_uiCompleteEpisode type="0" value="0" />
+            <m_fStringOffsetX type="2" value="0.0000" />
+            <m_fStringOffsetY type="2" value="0.0000" />
+            <m_fStringOffsetZ type="2" value="0.0000" />
+            <m_iClearSectorID1 type="0" value="0" />
+            <m_iClearSectorID2 type="0" value="0" />
+            <m_iClearSectorID3 type="0" value="0" />
+            <m_iClearSectorID4 type="0" value="0" />
+            <m_iClearSectorID5 type="0" value="0" />
+            <m_fClearSectorChance1 type="2" value="0.0000" />
+            <m_fClearSectorChance2 type="2" value="0.0000" />
+            <m_fClearSectorChance3 type="2" value="0.0000" />
+            <m_fClearSectorChance4 type="2" value="0.0000" />
+            <m_fClearSectorChance5 type="2" value="0.0000" />
+            <m_iMaxUserCount type="0" value="0" />
+            <m_iMaxTimeCount type="0" value="0" />
+        </VPortalBox>
+        <VSectorStartBox boxtype="eEventBoxType_SectorStart">
+            <m_ID type="0" value="11" />
+            <m_iGenerateID type="0" value="11" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="12534.402,14616.221,6358.340" />
+            <m_vPosBottomRight type="7" value="12634.402,14716.221,6458.340" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_nSectorID type="0" value="10001" />
+        </VSectorStartBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90901" />
+            <m_iGenerateID type="0" value="90901" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="11728.252,9450.290,3000.000" />
+            <m_vPosBottomRight type="7" value="23228.252,19950.289,4000.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="11500.000,10500.000,1000.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="PCWarp" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VCommonPositionBox boxtype="eEventBoxType_CommonPosition">
+            <m_ID type="0" value="90001" />
+            <m_iGenerateID type="0" value="90001" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="12400.053,14941.694,6358.340" />
+            <m_vPosBottomRight type="7" value="12500.053,15041.694,6458.340" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eEntityType type="4" value="PC" />
+            <m_iEntityID type="0" value="0" />
+            <m_iGroup type="0" value="0" />
+        </VCommonPositionBox>
+        <VCommonPositionBox boxtype="eEventBoxType_CommonPosition">
+            <m_ID type="0" value="90002" />
+            <m_iGenerateID type="0" value="90002" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16982.602,22862.957,3302.226" />
+            <m_vPosBottomRight type="7" value="17082.602,22962.957,3402.226" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eEntityType type="4" value="PC" />
+            <m_iEntityID type="0" value="0" />
+            <m_iGroup type="0" value="0" />
+        </VCommonPositionBox>
+        <VCommonPositionBox boxtype="eEventBoxType_CommonPosition">
+            <m_ID type="0" value="90003" />
+            <m_iGenerateID type="0" value="90003" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15316.064,10971.292,5500.000" />
+            <m_vPosBottomRight type="7" value="15416.064,11071.292,5600.000" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eEntityType type="4" value="PC" />
+            <m_iEntityID type="0" value="0" />
+            <m_iGroup type="0" value="0" />
+        </VCommonPositionBox>
+        <VCommonPositionBox boxtype="eEventBoxType_CommonPosition">
+            <m_ID type="0" value="90004" />
+            <m_iGenerateID type="0" value="90004" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="21184.072,12190.438,9500.000" />
+            <m_vPosBottomRight type="7" value="21284.072,12290.438,9600.000" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,100.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eEntityType type="4" value="PC" />
+            <m_iEntityID type="0" value="0" />
+            <m_iGroup type="0" value="0" />
+        </VCommonPositionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90902" />
+            <m_iGenerateID type="0" value="90902" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15786.946,12628.474,5800.000" />
+            <m_vPosBottomRight type="7" value="16186.946,13028.474,5850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="400.000,400.000,50.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Save" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90903" />
+            <m_iGenerateID type="0" value="90903" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="20603.115,11369.449,9500.000" />
+            <m_vPosBottomRight type="7" value="21903.115,13119.449,9550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="1300.000,1750.000,50.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Save" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90904" />
+            <m_iGenerateID type="0" value="90904" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14020.748,10560.801,5500.000" />
+            <m_vPosBottomRight type="7" value="15620.748,11360.801,5550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="1600.000,800.000,50.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Save" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90911" />
+            <m_iGenerateID type="0" value="90911" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15600.000,12213.330,5700.000" />
+            <m_vPosBottomRight type="7" value="15800.000,12413.330,5900.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90912" />
+            <m_iGenerateID type="0" value="90912" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16500.000,12730.000,5950.000" />
+            <m_vPosBottomRight type="7" value="16700.000,12930.000,6150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90913" />
+            <m_iGenerateID type="0" value="90913" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="17378.604,12199.572,6250.000" />
+            <m_vPosBottomRight type="7" value="17578.604,12399.572,6450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90914" />
+            <m_iGenerateID type="0" value="90914" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="18739.455,11054.752,6650.000" />
+            <m_vPosBottomRight type="7" value="18939.455,11254.752,6850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90915" />
+            <m_iGenerateID type="0" value="90915" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19860.000,10700.000,6650.000" />
+            <m_vPosBottomRight type="7" value="20060.000,10900.000,6850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90916" />
+            <m_iGenerateID type="0" value="90916" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="20800.000,10545.000,6950.000" />
+            <m_vPosBottomRight type="7" value="21000.000,10745.000,7150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90917" />
+            <m_iGenerateID type="0" value="90917" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="21801.596,10650.000,7250.000" />
+            <m_vPosBottomRight type="7" value="22001.596,10850.000,7450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90946" />
+            <m_iGenerateID type="0" value="90946" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="17678.184,11600.000,6400.000" />
+            <m_vPosBottomRight type="7" value="17878.184,11800.000,6600.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90948" />
+            <m_iGenerateID type="0" value="90948" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22575.000,12400.000,7950.000" />
+            <m_vPosBottomRight type="7" value="22775.000,12600.000,8150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90949" />
+            <m_iGenerateID type="0" value="90949" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22500.000,11400.000,7550.000" />
+            <m_vPosBottomRight type="7" value="22700.000,11600.000,7750.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90918" />
+            <m_iGenerateID type="0" value="90918" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19907.854,13934.890,8100.000" />
+            <m_vPosBottomRight type="7" value="20107.854,14134.890,8300.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90919" />
+            <m_iGenerateID type="0" value="90919" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="21700.000,14370.000,9550.000" />
+            <m_vPosBottomRight type="7" value="21900.000,14570.000,9750.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90920" />
+            <m_iGenerateID type="0" value="90920" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22550.000,16459.928,9650.000" />
+            <m_vPosBottomRight type="7" value="22750.000,16659.928,9850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90921" />
+            <m_iGenerateID type="0" value="90921" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22772.848,18139.736,9650.000" />
+            <m_vPosBottomRight type="7" value="22972.848,18339.736,9850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90922" />
+            <m_iGenerateID type="0" value="90922" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19597.941,17112.602,9950.000" />
+            <m_vPosBottomRight type="7" value="19797.941,17312.602,10150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90923" />
+            <m_iGenerateID type="0" value="90923" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19383.951,16106.865,9950.000" />
+            <m_vPosBottomRight type="7" value="19583.951,16306.865,10150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90924" />
+            <m_iGenerateID type="0" value="90924" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19383.951,15443.467,10250.000" />
+            <m_vPosBottomRight type="7" value="19583.951,15643.467,10450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90925" />
+            <m_iGenerateID type="0" value="90925" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22789.271,18465.969,9500.000" />
+            <m_vPosBottomRight type="7" value="22989.271,18665.969,9700.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90926" />
+            <m_iGenerateID type="0" value="90926" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16227.643,13812.949,10550.000" />
+            <m_vPosBottomRight type="7" value="16427.643,14012.949,10750.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90927" />
+            <m_iGenerateID type="0" value="90927" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15100.000,17281.672,11650.000" />
+            <m_vPosBottomRight type="7" value="15300.000,17481.672,11850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90928" />
+            <m_iGenerateID type="0" value="90928" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15367.474,17706.014,11800.000" />
+            <m_vPosBottomRight type="7" value="15567.474,17906.014,12000.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90929" />
+            <m_iGenerateID type="0" value="90929" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15725.909,17945.193,11950.000" />
+            <m_vPosBottomRight type="7" value="15925.909,18145.193,12150.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90943" />
+            <m_iGenerateID type="0" value="90943" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="18760.840,12687.437,7250.000" />
+            <m_vPosBottomRight type="7" value="18960.840,12887.437,7450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90944" />
+            <m_iGenerateID type="0" value="90944" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19049.727,13693.325,7700.000" />
+            <m_vPosBottomRight type="7" value="19249.727,13893.325,7900.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90941" />
+            <m_iGenerateID type="0" value="90941" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="17024.689,11900.000,6250.000" />
+            <m_vPosBottomRight type="7" value="17224.689,12100.000,6450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90942" />
+            <m_iGenerateID type="0" value="90942" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="19112.725,11569.255,6700.000" />
+            <m_vPosBottomRight type="7" value="19312.725,11769.255,6900.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90945" />
+            <m_iGenerateID type="0" value="90945" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="20335.074,13614.618,8350.000" />
+            <m_vPosBottomRight type="7" value="20535.074,13814.618,8550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90947" />
+            <m_iGenerateID type="0" value="90947" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="22575.000,13400.000,8350.000" />
+            <m_vPosBottomRight type="7" value="22775.000,13600.000,8550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90950" />
+            <m_iGenerateID type="0" value="90950" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15192.518,13862.239,10750.000" />
+            <m_vPosBottomRight type="7" value="15392.518,14062.239,10950.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90951" />
+            <m_iGenerateID type="0" value="90951" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15128.321,14825.180,11050.000" />
+            <m_vPosBottomRight type="7" value="15328.321,15025.180,11250.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90952" />
+            <m_iGenerateID type="0" value="90952" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14860.781,15806.746,11350.000" />
+            <m_vPosBottomRight type="7" value="15060.781,16006.746,11550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90953" />
+            <m_iGenerateID type="0" value="90953" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16024.829,18376.320,12250.000" />
+            <m_vPosBottomRight type="7" value="16224.829,18576.320,12450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_High" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90981" />
+            <m_iGenerateID type="0" value="90981" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="20774.793,13293.006,8700.000" />
+            <m_vPosBottomRight type="7" value="20974.793,13493.006,8900.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Super" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90982" />
+            <m_iGenerateID type="0" value="90982" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16254.326,18714.000,12500.000" />
+            <m_vPosBottomRight type="7" value="16454.326,18914.000,12700.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Super" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90930" />
+            <m_iGenerateID type="0" value="90930" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16140.969,19396.020,13100.000" />
+            <m_vPosBottomRight type="7" value="16340.969,19596.020,13300.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Normal" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90991" />
+            <m_iGenerateID type="0" value="90991" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15667.740,13491.120,10300.000" />
+            <m_vPosBottomRight type="7" value="15867.740,13691.120,10500.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90992" />
+            <m_iGenerateID type="0" value="90992" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14794.675,14325.668,10600.000" />
+            <m_vPosBottomRight type="7" value="14994.675,14525.668,10800.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90993" />
+            <m_iGenerateID type="0" value="90993" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14283.654,16239.809,11200.000" />
+            <m_vPosBottomRight type="7" value="14483.654,16439.809,11400.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90994" />
+            <m_iGenerateID type="0" value="90994" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15100.000,17281.672,11350.000" />
+            <m_vPosBottomRight type="7" value="15300.000,17481.672,11550.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90995" />
+            <m_iGenerateID type="0" value="90995" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15367.474,17706.014,11500.000" />
+            <m_vPosBottomRight type="7" value="15567.474,17906.014,11700.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90996" />
+            <m_iGenerateID type="0" value="90996" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="15725.909,17945.193,11650.000" />
+            <m_vPosBottomRight type="7" value="15925.909,18145.193,11850.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90997" />
+            <m_iGenerateID type="0" value="90997" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16174.664,18680.154,12250.000" />
+            <m_vPosBottomRight type="7" value="16374.664,18880.154,12450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90998" />
+            <m_iGenerateID type="0" value="90998" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16210.582,19048.838,13250.000" />
+            <m_vPosBottomRight type="7" value="16410.582,19248.838,13450.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="90999" />
+            <m_iGenerateID type="0" value="90999" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="16372.020,18849.803,12500.000" />
+            <m_vPosBottomRight type="7" value="16572.020,19049.803,12700.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VLuaFunctionBox boxtype="eEventBoxType_LuaFunction">
+            <m_ID type="0" value="91000" />
+            <m_iGenerateID type="0" value="91000" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="18740.000,15115.000,10300.000" />
+            <m_vPosBottomRight type="7" value="18940.000,15315.000,10500.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType type="4" value="Party" />
+            <m_szFunction type="12" value="Jump_Drop" />
+            <m_iCheckID type="0" value="0" />
+        </VLuaFunctionBox>
+        <VInterActionBox boxtype="eEventBoxType_InteractionObjectBox">
+            <m_ID type="0" value="701" />
+            <m_iGenerateID type="0" value="701" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14818.728,10797.117,5500.000" />
+            <m_vPosBottomRight type="7" value="14918.728,10897.117,5650.000" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,150.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iInteractionID type="0" value="40101" />
+            <m_sObjectKey type="12" value="Obj_Easy_01" />
+        </VInterActionBox>
+        <VInterActionBox boxtype="eEventBoxType_InteractionObjectBox">
+            <m_ID type="0" value="702" />
+            <m_iGenerateID type="0" value="702" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="21200.000,11550.000,9500.000" />
+            <m_vPosBottomRight type="7" value="21300.000,11650.000,9650.000" />
+            <m_fRotation type="2" value="-180.0000" />
+            <m_vSize type="7" value="100.000,100.000,150.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iInteractionID type="0" value="40102" />
+            <m_sObjectKey type="12" value="Obj_Normal_01" />
+        </VInterActionBox>
+        <VInterActionBox boxtype="eEventBoxType_InteractionObjectBox">
+            <m_ID type="0" value="703" />
+            <m_iGenerateID type="0" value="703" />
+            <iLayerBitmask type="4" value="Common" />
+            <m_vPosTopLeft type="7" value="14577.748,18900.035,13700.000" />
+            <m_vPosBottomRight type="7" value="14677.748,19000.035,13850.000" />
+            <m_fRotation type="2" value="90.0000" />
+            <m_vSize type="7" value="100.000,100.000,150.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_iInteractionID type="0" value="40103" />
+            <m_sObjectKey type="12" value="Obj_Hard_01" />
+        </VInterActionBox>
+        <VMonsterSpawnBox boxtype="eEventBoxType_MonsterSpawn">
+            <m_ID type="0" value="40100" />
+            <m_iGenerateID type="0" value="140100" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="17643.975,9802.892,0.000" />
+            <m_vPosBottomRight type="7" value="17843.975,10002.892,200.000" />
+            <m_fRotation type="2" value="0.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType1 type="4" value="Monster" />
+            <m_iMonsterID1 type="0" value="611" />
+            <m_iChance1 type="0" value="10000" />
+            <m_eType2 type="4" value="Monster" />
+            <m_iMonsterID2 type="0" value="0" />
+            <m_iChance2 type="0" value="10000" />
+            <m_eType3 type="4" value="Monster" />
+            <m_iMonsterID3 type="0" value="0" />
+            <m_iChance3 type="0" value="0" />
+            <m_eType4 type="4" value="Monster" />
+            <m_iMonsterID4 type="0" value="0" />
+            <m_iChance4 type="0" value="10000" />
+            <m_eType5 type="4" value="Monster" />
+            <m_iMonsterID5 type="0" value="0" />
+            <m_iChance5 type="0" value="0" />
+            <m_eType6 type="4" value="Monster" />
+            <m_iMonsterID6 type="0" value="0" />
+            <m_iChance6 type="0" value="0" />
+            <m_eType7 type="4" value="Monster" />
+            <m_iMonsterID7 type="0" value="0" />
+            <m_iChance7 type="0" value="10000" />
+            <m_eType8 type="4" value="Monster" />
+            <m_iMonsterID8 type="0" value="0" />
+            <m_iChance8 type="0" value="0" />
+            <m_eType9 type="4" value="Monster" />
+            <m_iMonsterID9 type="0" value="0" />
+            <m_iChance9 type="0" value="0" />
+            <m_eType10 type="4" value="Monster" />
+            <m_iMonsterID10 type="0" value="0" />
+            <m_iChance10 type="0" value="10000" />
+            <m_eCreationPositionType type="4" value="Center" />
+            <m_eMoveType type="4" value="Static" />
+            <m_eCreationCondition type="4" value="WaitSignal" />
+            <m_CreationEffectFile type="12" value="" />
+            <m_fWaitCreationDelayTime type="2" value="0.0000" />
+            <m_fWaitCreationSequenceTime type="2" value="0.0000" />
+            <m_iWaitCreationMaxWave type="0" value="0" />
+            <m_iMaxEntityCount type="0" value="1" />
+            <m_eWaitCreationSequenceType type="4" value="All" />
+            <m_iWaypoint type="0" value="0" />
+            <m_iAggroGroupID type="0" value="0" />
+            <m_iAggroDistance type="0" value="50000" />
+            <m_iAggroMaxCount type="0" value="100" />
+            <m_fLookRatio type="2" value="5.0000" />
+            <m_bShowSight type="5" value="FALSE" />
+            <m_szObjectKey type="12" value="" />
+            <m_eScriptType type="4" value="None" />
+            <m_iCheckScriptHP1 type="0" value="0" />
+            <m_iCheckScriptHP2 type="0" value="0" />
+            <m_iCheckScriptHP3 type="0" value="0" />
+            <m_iCheckScriptHP4 type="0" value="0" />
+            <m_iCheckScriptHP5 type="0" value="0" />
+            <m_iSectorID type="0" value="10001" />
+            <m_ChangeSpawnAction type="12" value="N_Stand" />
+            <m_ProtectionTarget type="0" value="0" />
+            <m_RespawnTime type="2" value="0.0000" />
+            <m_iStep type="0" value="1" />
+            <m_eRespawnType type="4" value="None" />
+            <m_iRespawnCondition type="0" value="0" />
+            <m_iGroupID type="0" value="0" />
+        </VMonsterSpawnBox>
+        <VMonsterSpawnBox boxtype="eEventBoxType_MonsterSpawn">
+            <m_ID type="0" value="40201" />
+            <m_iGenerateID type="0" value="140201" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="18150.371,23477.797,3302.226" />
+            <m_vPosBottomRight type="7" value="18350.371,23677.797,3502.226" />
+            <m_fRotation type="2" value="-60.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType1 type="4" value="Monster" />
+            <m_iMonsterID1 type="0" value="612" />
+            <m_iChance1 type="0" value="10000" />
+            <m_eType2 type="4" value="Monster" />
+            <m_iMonsterID2 type="0" value="0" />
+            <m_iChance2 type="0" value="10000" />
+            <m_eType3 type="4" value="Monster" />
+            <m_iMonsterID3 type="0" value="0" />
+            <m_iChance3 type="0" value="0" />
+            <m_eType4 type="4" value="Monster" />
+            <m_iMonsterID4 type="0" value="0" />
+            <m_iChance4 type="0" value="10000" />
+            <m_eType5 type="4" value="Monster" />
+            <m_iMonsterID5 type="0" value="0" />
+            <m_iChance5 type="0" value="0" />
+            <m_eType6 type="4" value="Monster" />
+            <m_iMonsterID6 type="0" value="0" />
+            <m_iChance6 type="0" value="0" />
+            <m_eType7 type="4" value="Monster" />
+            <m_iMonsterID7 type="0" value="0" />
+            <m_iChance7 type="0" value="10000" />
+            <m_eType8 type="4" value="Monster" />
+            <m_iMonsterID8 type="0" value="0" />
+            <m_iChance8 type="0" value="0" />
+            <m_eType9 type="4" value="Monster" />
+            <m_iMonsterID9 type="0" value="0" />
+            <m_iChance9 type="0" value="0" />
+            <m_eType10 type="4" value="Monster" />
+            <m_iMonsterID10 type="0" value="0" />
+            <m_iChance10 type="0" value="10000" />
+            <m_eCreationPositionType type="4" value="Center" />
+            <m_eMoveType type="4" value="Static" />
+            <m_eCreationCondition type="4" value="WaitSignal" />
+            <m_CreationEffectFile type="12" value="" />
+            <m_fWaitCreationDelayTime type="2" value="0.5000" />
+            <m_fWaitCreationSequenceTime type="2" value="0.0000" />
+            <m_iWaitCreationMaxWave type="0" value="0" />
+            <m_iMaxEntityCount type="0" value="1" />
+            <m_eWaitCreationSequenceType type="4" value="All" />
+            <m_iWaypoint type="0" value="0" />
+            <m_iAggroGroupID type="0" value="409" />
+            <m_iAggroDistance type="0" value="50000" />
+            <m_iAggroMaxCount type="0" value="100" />
+            <m_fLookRatio type="2" value="5.0000" />
+            <m_bShowSight type="5" value="FALSE" />
+            <m_szObjectKey type="12" value="" />
+            <m_eScriptType type="4" value="None" />
+            <m_iCheckScriptHP1 type="0" value="0" />
+            <m_iCheckScriptHP2 type="0" value="0" />
+            <m_iCheckScriptHP3 type="0" value="0" />
+            <m_iCheckScriptHP4 type="0" value="0" />
+            <m_iCheckScriptHP5 type="0" value="0" />
+            <m_iSectorID type="0" value="10001" />
+            <m_ChangeSpawnAction type="12" value="N_Stand" />
+            <m_ProtectionTarget type="0" value="0" />
+            <m_RespawnTime type="2" value="0.0000" />
+            <m_iStep type="0" value="1" />
+            <m_eRespawnType type="4" value="None" />
+            <m_iRespawnCondition type="0" value="0" />
+            <m_iGroupID type="0" value="501" />
+        </VMonsterSpawnBox>
+        <VMonsterSpawnBox boxtype="eEventBoxType_MonsterSpawn">
+            <m_ID type="0" value="40202" />
+            <m_iGenerateID type="0" value="140202" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="18177.920,22930.430,3302.226" />
+            <m_vPosBottomRight type="7" value="18377.920,23130.430,3502.226" />
+            <m_fRotation type="2" value="-90.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType1 type="4" value="Monster" />
+            <m_iMonsterID1 type="0" value="613" />
+            <m_iChance1 type="0" value="10000" />
+            <m_eType2 type="4" value="Monster" />
+            <m_iMonsterID2 type="0" value="0" />
+            <m_iChance2 type="0" value="10000" />
+            <m_eType3 type="4" value="Monster" />
+            <m_iMonsterID3 type="0" value="0" />
+            <m_iChance3 type="0" value="0" />
+            <m_eType4 type="4" value="Monster" />
+            <m_iMonsterID4 type="0" value="0" />
+            <m_iChance4 type="0" value="10000" />
+            <m_eType5 type="4" value="Monster" />
+            <m_iMonsterID5 type="0" value="0" />
+            <m_iChance5 type="0" value="0" />
+            <m_eType6 type="4" value="Monster" />
+            <m_iMonsterID6 type="0" value="0" />
+            <m_iChance6 type="0" value="0" />
+            <m_eType7 type="4" value="Monster" />
+            <m_iMonsterID7 type="0" value="0" />
+            <m_iChance7 type="0" value="10000" />
+            <m_eType8 type="4" value="Monster" />
+            <m_iMonsterID8 type="0" value="0" />
+            <m_iChance8 type="0" value="0" />
+            <m_eType9 type="4" value="Monster" />
+            <m_iMonsterID9 type="0" value="0" />
+            <m_iChance9 type="0" value="0" />
+            <m_eType10 type="4" value="Monster" />
+            <m_iMonsterID10 type="0" value="0" />
+            <m_iChance10 type="0" value="10000" />
+            <m_eCreationPositionType type="4" value="Center" />
+            <m_eMoveType type="4" value="Static" />
+            <m_eCreationCondition type="4" value="WaitSignal" />
+            <m_CreationEffectFile type="12" value="" />
+            <m_fWaitCreationDelayTime type="2" value="0.5000" />
+            <m_fWaitCreationSequenceTime type="2" value="0.0000" />
+            <m_iWaitCreationMaxWave type="0" value="0" />
+            <m_iMaxEntityCount type="0" value="1" />
+            <m_eWaitCreationSequenceType type="4" value="All" />
+            <m_iWaypoint type="0" value="0" />
+            <m_iAggroGroupID type="0" value="409" />
+            <m_iAggroDistance type="0" value="50000" />
+            <m_iAggroMaxCount type="0" value="100" />
+            <m_fLookRatio type="2" value="5.0000" />
+            <m_bShowSight type="5" value="FALSE" />
+            <m_szObjectKey type="12" value="" />
+            <m_eScriptType type="4" value="None" />
+            <m_iCheckScriptHP1 type="0" value="0" />
+            <m_iCheckScriptHP2 type="0" value="0" />
+            <m_iCheckScriptHP3 type="0" value="0" />
+            <m_iCheckScriptHP4 type="0" value="0" />
+            <m_iCheckScriptHP5 type="0" value="0" />
+            <m_iSectorID type="0" value="10001" />
+            <m_ChangeSpawnAction type="12" value="N_Stand" />
+            <m_ProtectionTarget type="0" value="0" />
+            <m_RespawnTime type="2" value="0.0000" />
+            <m_iStep type="0" value="1" />
+            <m_eRespawnType type="4" value="None" />
+            <m_iRespawnCondition type="0" value="0" />
+            <m_iGroupID type="0" value="501" />
+        </VMonsterSpawnBox>
+        <VMonsterSpawnBox boxtype="eEventBoxType_MonsterSpawn">
+            <m_ID type="0" value="40203" />
+            <m_iGenerateID type="0" value="140203" />
+            <iLayerBitmask type="4" value="Normal" />
+            <m_vPosTopLeft type="7" value="17989.436,22342.193,3302.226" />
+            <m_vPosBottomRight type="7" value="18189.436,22542.193,3502.226" />
+            <m_fRotation type="2" value="-120.0000" />
+            <m_vSize type="7" value="200.000,200.000,200.000" />
+            <m_bShowCustomEntity type="5" value="TRUE" />
+            <m_ColorLDR type="132" value="0,0,0,255" />
+            <m_eType1 type="4" value="Monster" />
+            <m_iMonsterID1 type="0" value="614" />
+            <m_iChance1 type="0" value="10000" />
+            <m_eType2 type="4" value="Monster" />
+            <m_iMonsterID2 type="0" value="0" />
+            <m_iChance2 type="0" value="10000" />
+            <m_eType3 type="4" value="Monster" />
+            <m_iMonsterID3 type="0" value="0" />
+            <m_iChance3 type="0" value="0" />
+            <m_eType4 type="4" value="Monster" />
+            <m_iMonsterID4 type="0" value="0" />
+            <m_iChance4 type="0" value="10000" />
+            <m_eType5 type="4" value="Monster" />
+            <m_iMonsterID5 type="0" value="0" />
+            <m_iChance5 type="0" value="0" />
+            <m_eType6 type="4" value="Monster" />
+            <m_iMonsterID6 type="0" value="0" />
+            <m_iChance6 type="0" value="0" />
+            <m_eType7 type="4" value="Monster" />
+            <m_iMonsterID7 type="0" value="0" />
+            <m_iChance7 type="0" value="10000" />
+            <m_eType8 type="4" value="Monster" />
+            <m_iMonsterID8 type="0" value="0" />
+            <m_iChance8 type="0" value="0" />
+            <m_eType9 type="4" value="Monster" />
+            <m_iMonsterID9 type="0" value="0" />
+            <m_iChance9 type="0" value="0" />
+            <m_eType10 type="4" value="Monster" />
+            <m_iMonsterID10 type="0" value="0" />
+            <m_iChance10 type="0" value="10000" />
+            <m_eCreationPositionType type="4" value="Center" />
+            <m_eMoveType type="4" value="Static" />
+            <m_eCreationCondition type="4" value="WaitSignal" />
+            <m_CreationEffectFile type="12" value="" />
+            <m_fWaitCreationDelayTime type="2" value="0.5000" />
+            <m_fWaitCreationSequenceTime type="2" value="0.0000" />
+            <m_iWaitCreationMaxWave type="0" value="0" />
+            <m_iMaxEntityCount type="0" value="1" />
+            <m_eWaitCreationSequenceType type="4" value="All" />
+            <m_iWaypoint type="0" value="0" />
+            <m_iAggroGroupID type="0" value="409" />
+            <m_iAggroDistance type="0" value="50000" />
+            <m_iAggroMaxCount type="0" value="100" />
+            <m_fLookRatio type="2" value="5.0000" />
+            <m_bShowSight type="5" value="FALSE" />
+            <m_szObjectKey type="12" value="" />
+            <m_eScriptType type="4" value="None" />
+            <m_iCheckScriptHP1 type="0" value="0" />
+            <m_iCheckScriptHP2 type="0" value="0" />
+            <m_iCheckScriptHP3 type="0" value="0" />
+            <m_iCheckScriptHP4 type="0" value="0" />
+            <m_iCheckScriptHP5 type="0" value="0" />
+            <m_iSectorID type="0" value="10001" />
+            <m_ChangeSpawnAction type="12" value="N_Stand" />
+            <m_ProtectionTarget type="0" value="0" />
+            <m_RespawnTime type="2" value="0.0000" />
+            <m_iStep type="0" value="1" />
+            <m_eRespawnType type="4" value="None" />
+            <m_iRespawnCondition type="0" value="0" />
+            <m_iGroupID type="0" value="501" />
+        </VMonsterSpawnBox>
+    </Batchs>
+    <Batchs eventtype="EventPoint" eventcount="0" />
+</root>
