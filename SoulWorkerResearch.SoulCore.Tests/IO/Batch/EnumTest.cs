@@ -10,7 +10,7 @@ public sealed class EnumTest
     [TestMethod]
     public async Task MonsterSpawnTypeTest()
     {
-        var files = Directory.GetFiles(@"Datas\World\Table", "*.vbatch");
+        var files = Directory.GetFiles(Path.Combine(@"Datas", "World", "Table"), "*.vbatch");
 
         await Parallel.ForEachAsync(files, async (path, cancellationToken) =>
         {
