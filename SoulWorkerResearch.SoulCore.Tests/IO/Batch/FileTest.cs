@@ -1,11 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SoulWorkerResearch.SoulCore.IO.Batch;
 using SoulWorkerResearch.SoulCore.IO.Batch.EventBox;
 using SoulWorkerResearch.SoulCore.IO.Batch.Types;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 
+using BatchFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
 using SysFile = System.IO.File;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Batch;
@@ -120,9 +121,9 @@ public sealed class FileTest
 
     public FileTest()
     {
-        using var fs = SysFile.OpenRead(@"Datas\World\Table\M24_ARKSHIP_HERO.vbatch");
-        _m24ArkShipHero = File.FromStream(fs).AsTask().GetAwaiter().GetResult();
+        using var fs = SysFile.OpenRead(Path.Combine("Datas", "World", "Table", "M24_ARKSHIP_HERO.vbatch"));
+        _m24ArkShipHero = BatchFile.FromStream(fs).AsTask().GetAwaiter().GetResult();
     }
 
-    private readonly File _m24ArkShipHero;
+    private readonly BatchFile _m24ArkShipHero;
 }
