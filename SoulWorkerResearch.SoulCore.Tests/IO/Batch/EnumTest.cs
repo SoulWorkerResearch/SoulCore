@@ -2,6 +2,8 @@
 using System.IO;
 using System.Threading.Tasks;
 
+using BatchFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
+
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Batch;
 
 [TestClass]
@@ -14,9 +16,9 @@ public sealed class EnumTest
 
         await Parallel.ForEachAsync(files, async (path, cancellationToken) =>
         {
-            await using var fs = System.IO.File.OpenRead(path);
+            await using var fs = File.OpenRead(path);
 
-            var root = SoulCore.IO.Batch.File.FromStream(fs, cancellationToken);
+            var root = BatchFile.FromStream(fs, cancellationToken);
         });
     }
 }
