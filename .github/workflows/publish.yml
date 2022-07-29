@@ -26,13 +26,13 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --no-restore --configuration Release -p:Version=${{ env.NOW }}
+      run: dotnet build --no-restore --configuration Release -p:Version=${{ env.VERSION }}
 
     - name: Run Tests
       run: dotnet test --no-restore --no-build
 
     - name: Pack
-      run: dotnet pack --no-restore --no-build --configuration Release --include-symbols --include-source -p:Version=${{ env.NOW }}
+      run: dotnet pack --no-restore --no-build --configuration Release --include-symbols --include-source -p:Version=${{ env.VERSION }}
 
     - name: Push to NuGet Feed
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key $NUGET_API_KEY
