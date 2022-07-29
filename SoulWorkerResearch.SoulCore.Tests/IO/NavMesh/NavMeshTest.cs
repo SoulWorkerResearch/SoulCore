@@ -11,7 +11,7 @@ public sealed class NavMeshTest
     [TestMethod]
     public async Task BinarySerealizerTest()
     {
-        await using var stream = File.OpenRead(Path.GetFullPath(@"Datas\World\Navmesh\B03_BATTLECOURT.hkt"));
+        await using var stream = File.OpenRead(Path.Combine(@"Datas", "World", "Navmesh", "B03_BATTLECOURT.hkt"));
         var reader = new BinarySerealizer(stream);
     }
 }
