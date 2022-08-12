@@ -2,9 +2,9 @@
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public sealed class Options : List<bool>
+public sealed class OptionList : List<bool>
 {
-    public static Options Empty { get; } = new();
+    public static OptionList Empty { get; } = new();
 
     public bool IsAttendanceEnabled => this[Option.Attendance];
     public bool IsSecondPasswordEnabled => this[Option.SecondPassword];
@@ -23,5 +23,5 @@ public sealed class Options : List<bool>
 
     public bool this[Option index] => this[(int)index];
 
-    public Options() : base(Enumerable.Range(0, (byte)Option.Max).Select(_ => false)) { }
+    public OptionList() : base(Enumerable.Range(0, (byte)Option.Max).Select(_ => false)) { }
 }
