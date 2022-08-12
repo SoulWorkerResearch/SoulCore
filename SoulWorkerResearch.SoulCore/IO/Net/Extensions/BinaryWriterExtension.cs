@@ -156,15 +156,18 @@ public static class BinaryWriterExtension
         writer.Write(value.Color);
     }
 
-    public static void Write(this BinaryWriter writer, AppearanceValue value)
+    public static void Write(this BinaryWriter writer, AppearanceEntryValue value)
     {
-        writer.Write((ushort)0);
         writer.Write(value.Hair);
         writer.Write(value.EyeColor);
         writer.Write(value.SkinColor);
-        writer.Write(value.EquippedHair);
-        writer.Write(value.EquippedEyeColor);
-        writer.Write(value.EquippedSkinColor);
+    }
+
+    public static void Write(this BinaryWriter writer, AppearanceValue value)
+    {
+        writer.Write(value.Face);
+        writer.Write(value.Shape);
+        writer.Write(value.Look);
     }
 
     public static void Write(this BinaryWriter writer, GearValue value)
