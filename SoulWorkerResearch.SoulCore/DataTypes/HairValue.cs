@@ -11,11 +11,9 @@ public readonly struct HairValue : IHairValue
     [FieldOffset(0)]
     internal readonly uint Value;
 
-    [FieldOffset(0)]
-    public readonly ushort Style;
+    public ushort Style { get => _style; init => _style = value; }
 
-    [FieldOffset(2)]
-    public readonly ushort Color;
+    public ushort Color { get => _color; init => _color = value; }
 
     #region IHairValue
 
@@ -30,4 +28,11 @@ public readonly struct HairValue : IHairValue
         Color = 0;
         Value = reader.ReadUInt32();
     }
+
+
+    [FieldOffset(0)]
+    public readonly ushort _style;
+
+    [FieldOffset(2)]
+    public readonly ushort _color;
 }
