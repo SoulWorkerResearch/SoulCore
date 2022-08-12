@@ -42,7 +42,7 @@ public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryMessa
         public Class Class { get; init; }
         public byte Level { get; init; }
         public string Name { get; init; }
-        public int PhotoId { get; init; }
+        public uint PhotoId { get; init; }
 
         #endregion Body
 
