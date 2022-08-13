@@ -61,7 +61,7 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -84,5 +84,5 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
         writer.Write((byte)Brith.Day);
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

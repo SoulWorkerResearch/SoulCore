@@ -37,7 +37,7 @@ public readonly struct WorldCurrentDateClientMessage : IBinaryOutcomingMessage
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -51,5 +51,5 @@ public readonly struct WorldCurrentDateClientMessage : IBinaryOutcomingMessage
         writer.Write(Convert.ToUInt16(Value.IsDaylightSavingTime()));
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

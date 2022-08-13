@@ -70,7 +70,7 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryO
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -91,5 +91,5 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryO
         }
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

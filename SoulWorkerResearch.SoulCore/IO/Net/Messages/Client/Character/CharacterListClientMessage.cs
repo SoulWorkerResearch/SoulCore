@@ -38,17 +38,17 @@ public readonly struct CharacterListClientMessage : IBinaryOutcomingMessage
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write((byte)Values.Count);
 
-        foreach (var item in Values.Cast<IBinaryOutcomingMessage>())
+        foreach (var item in Values.Cast<IBinaryConvertibleMessage>())
         {
             item.ToBinary(writer);
         }
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

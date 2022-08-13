@@ -55,7 +55,7 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -65,5 +65,5 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
         writer.Write(KeyOption);
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

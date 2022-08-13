@@ -34,7 +34,7 @@ public readonly struct LoginResponseEnterServerClientMessage : IBinaryOutcomingM
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -42,5 +42,5 @@ public readonly struct LoginResponseEnterServerClientMessage : IBinaryOutcomingM
         writer.Write(AccountId);
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

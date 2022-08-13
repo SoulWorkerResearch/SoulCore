@@ -2,10 +2,11 @@
 using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public readonly struct CharacterValue : ICharacterValue
+public readonly struct CharacterValue : ICharacterValue, IBinaryConvertibleMessage
 {
     public static CharacterValue Empty { get; } = new();
 
@@ -96,7 +97,7 @@ public readonly struct CharacterValue : ICharacterValue
 
     #endregion ICharacterValue
 
-    #region IBinarySerializable
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -131,5 +132,5 @@ public readonly struct CharacterValue : ICharacterValue
         writer.Write(_3);
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryConvertibleMessage
 }

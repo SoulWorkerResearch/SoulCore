@@ -33,7 +33,7 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcoming
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -42,5 +42,5 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcoming
         writer.Write(_1);
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }

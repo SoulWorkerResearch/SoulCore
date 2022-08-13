@@ -1,6 +1,5 @@
 ﻿namespace SoulWorkerResearch.SoulCore.IO.Net.Messages;
 
-public interface IBinaryOutcomingMessage : IBinaryMessage
+public interface IBinaryOutcomingMessage : IBinaryConvertibleMessage, IBinaryMessage
 {
-    void ToBinary(BinaryWriter writer);
 }

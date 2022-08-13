@@ -80,7 +80,7 @@ public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryOutco
 
     #endregion IBinaryMessage
 
-    #region IBinaryOutcomingMessage
+    #region IBinaryConvertibleMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -94,5 +94,5 @@ public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryOutco
         writer.Write(Result);
     }
 
-    #endregion IBinaryOutcomingMessage
+    #endregion IBinaryConvertibleMessage
 }
