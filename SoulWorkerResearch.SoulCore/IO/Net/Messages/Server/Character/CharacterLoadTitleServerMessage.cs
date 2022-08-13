@@ -7,7 +7,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
 /// This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
-public readonly struct CharacterLoadTitleServerMessage
+public readonly struct CharacterLoadTitleServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -21,4 +21,18 @@ public readonly struct CharacterLoadTitleServerMessage
     public static implicit operator Opcode(CharacterLoadTitleServerMessage _) => new(Group, Command);
 
     #endregion Operators
+
+    #region Constructors
+
+    internal CharacterLoadTitleServerMessage(BinaryReader reader)
+    {
+    }
+
+    #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

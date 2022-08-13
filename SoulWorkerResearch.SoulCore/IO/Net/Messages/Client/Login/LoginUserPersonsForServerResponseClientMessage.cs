@@ -8,7 +8,7 @@ using System.Net;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryMessage
+public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -70,7 +70,7 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryM
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -91,5 +91,5 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryM
         }
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

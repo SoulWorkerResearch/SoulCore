@@ -2,11 +2,10 @@
 using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
-using SoulWorkerResearch.SoulCore.IO.Net.Messages;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public readonly struct CharacterValue : ICharacterValue, IBinarySerializable
+public readonly struct CharacterValue : ICharacterValue
 {
     public static CharacterValue Empty { get; } = new();
 

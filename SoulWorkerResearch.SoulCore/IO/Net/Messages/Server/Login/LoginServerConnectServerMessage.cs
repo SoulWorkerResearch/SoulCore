@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginServerConnectServerMessage
+public readonly struct LoginServerConnectServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -30,4 +30,10 @@ public readonly struct LoginServerConnectServerMessage
     public LoginServerConnectServerMessage(BinaryReader reader) => GateId = reader.ReadUInt16();
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

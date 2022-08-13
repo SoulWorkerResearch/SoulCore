@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
 
 [ServerMessage(Group, Command)]
-public readonly struct PartyRecruitAddServerMessage
+public readonly struct PartyRecruitAddServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -56,6 +56,12 @@ public readonly struct PartyRecruitAddServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 
     #region Types
 

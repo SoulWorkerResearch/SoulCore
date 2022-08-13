@@ -7,7 +7,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 /// This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
-public readonly struct FriendRecommandListServerMessage
+public readonly struct FriendRecommandListServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -33,4 +33,10 @@ public readonly struct FriendRecommandListServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

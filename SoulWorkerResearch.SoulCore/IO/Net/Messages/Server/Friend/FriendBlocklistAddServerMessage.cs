@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 
 [ServerMessage(Group, Command)]
-public readonly struct FriendBlocklistAddServerMessage
+public readonly struct FriendBlocklistAddServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -31,4 +31,10 @@ public readonly struct FriendBlocklistAddServerMessage
     internal FriendBlocklistAddServerMessage(BinaryReader reader) => CharacterName = reader.ReadUTF16UnicodeString();
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

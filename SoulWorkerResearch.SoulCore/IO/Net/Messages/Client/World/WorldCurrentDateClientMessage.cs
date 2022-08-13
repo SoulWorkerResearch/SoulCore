@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.World;
 
 [ClientMessage(Group, Command)]
-public readonly struct WorldCurrentDateClientMessage : IBinaryMessage
+public readonly struct WorldCurrentDateClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -37,7 +37,7 @@ public readonly struct WorldCurrentDateClientMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -51,5 +51,5 @@ public readonly struct WorldCurrentDateClientMessage : IBinaryMessage
         writer.Write(Convert.ToUInt16(Value.IsDaylightSavingTime()));
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

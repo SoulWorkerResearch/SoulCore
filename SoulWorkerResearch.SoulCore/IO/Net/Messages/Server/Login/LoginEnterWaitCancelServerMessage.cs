@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginEnterWaitCancelServerMessage
+public readonly struct LoginEnterWaitCancelServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -30,4 +30,10 @@ public readonly struct LoginEnterWaitCancelServerMessage
     public LoginEnterWaitCancelServerMessage(BinaryReader reader) => Values = reader.ReadBytes(Config.OptionsCount);
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

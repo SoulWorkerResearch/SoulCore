@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 
 [ServerMessage(Group, Command)]
-public readonly struct FriendDeleteServerMessage
+public readonly struct FriendDeleteServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -35,4 +35,10 @@ public readonly struct FriendDeleteServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

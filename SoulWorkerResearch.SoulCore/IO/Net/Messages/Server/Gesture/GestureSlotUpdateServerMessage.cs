@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Gesture;
 
 [ServerMessage(Group, Command)]
-public readonly struct GestureSlotUpdateServerMessage
+public readonly struct GestureSlotUpdateServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -33,4 +33,10 @@ public readonly struct GestureSlotUpdateServerMessage
         .ToArray();
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

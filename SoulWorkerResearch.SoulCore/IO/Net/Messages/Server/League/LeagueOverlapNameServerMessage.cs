@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.League;
 
 [ServerMessage(Group, Command)]
-public readonly struct LeagueOverlapNameServerMessage
+public readonly struct LeagueOverlapNameServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -31,4 +31,10 @@ public readonly struct LeagueOverlapNameServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

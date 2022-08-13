@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Character;
 
 [ClientMessage(Group, Command)]
-public readonly struct CharacterBackgroundChangeClientMessage : IBinaryMessage
+public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -33,7 +33,7 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -42,5 +42,5 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryMessage
         writer.Write(_1);
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

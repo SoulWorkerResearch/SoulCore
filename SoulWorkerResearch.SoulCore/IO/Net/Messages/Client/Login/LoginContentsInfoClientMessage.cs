@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginContentsInfoClientMessage : IBinaryMessage
+public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -55,7 +55,7 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
@@ -65,5 +65,5 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryMessage
         writer.Write(KeyOption);
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

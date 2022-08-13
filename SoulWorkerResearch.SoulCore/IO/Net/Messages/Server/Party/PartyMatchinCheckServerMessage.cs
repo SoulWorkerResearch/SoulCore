@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
 
 [ServerMessage(Group, Command)]
-public readonly struct PartyMatchinCheckServerMessage
+public readonly struct PartyMatchinCheckServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -31,4 +31,10 @@ public readonly struct PartyMatchinCheckServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

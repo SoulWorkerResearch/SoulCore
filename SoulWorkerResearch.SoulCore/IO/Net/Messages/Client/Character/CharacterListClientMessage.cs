@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Character;
 
 [ClientMessage(Group, Command)]
-public readonly struct CharacterListClientMessage : IBinaryMessage
+public readonly struct CharacterListClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -38,17 +38,17 @@ public readonly struct CharacterListClientMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write((byte)Values.Count);
 
-        foreach (var item in Values.Cast<IBinarySerializable>())
+        foreach (var item in Values.Cast<IBinaryOutcomingMessage>())
         {
             item.ToBinary(writer);
         }
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

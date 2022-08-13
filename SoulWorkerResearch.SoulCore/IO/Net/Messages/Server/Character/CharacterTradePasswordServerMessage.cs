@@ -6,7 +6,7 @@ using System.Diagnostics;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
 
 [ServerMessage(Group, Command)]
-public readonly struct CharacterTradePasswordServerMessage
+public readonly struct CharacterTradePasswordServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -39,4 +39,10 @@ public readonly struct CharacterTradePasswordServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

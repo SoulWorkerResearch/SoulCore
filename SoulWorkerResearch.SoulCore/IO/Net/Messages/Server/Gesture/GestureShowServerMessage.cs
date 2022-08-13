@@ -6,7 +6,7 @@ using System.Numerics;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Gesture;
 
 [ServerMessage(Group, Command)]
-public readonly struct GestureShowServerMessage
+public readonly struct GestureShowServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -37,6 +37,12 @@ public readonly struct GestureShowServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 
     #region Types
 

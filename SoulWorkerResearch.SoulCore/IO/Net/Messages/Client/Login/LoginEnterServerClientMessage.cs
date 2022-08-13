@@ -6,7 +6,7 @@ using System.Net;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginEnterServerClientMessage : IBinaryMessage
+public readonly struct LoginEnterServerClientMessage : IBinaryOutcomingMessage
 {
     #region Opcode
 
@@ -39,12 +39,12 @@ public readonly struct LoginEnterServerClientMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region IBinarySerializable
+    #region IBinaryOutcomingMessage
 
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write(Endpoint);
     }
 
-    #endregion IBinarySerializable
+    #endregion IBinaryOutcomingMessage
 }

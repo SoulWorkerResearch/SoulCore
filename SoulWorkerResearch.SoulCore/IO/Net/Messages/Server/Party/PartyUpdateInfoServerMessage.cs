@@ -7,7 +7,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
 /// This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
-public readonly struct PartyUpdateInfoServerMessage
+public readonly struct PartyUpdateInfoServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -33,4 +33,10 @@ public readonly struct PartyUpdateInfoServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

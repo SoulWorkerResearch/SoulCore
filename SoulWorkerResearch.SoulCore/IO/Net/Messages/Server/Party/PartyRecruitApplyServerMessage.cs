@@ -6,11 +6,8 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
 
-/// <summary>
-/// This packet no have content.
-/// </summary>
 [ServerMessage(Group, Command)]
-public readonly struct PartyRecruitApplyServerMessage
+public readonly struct PartyRecruitApplyServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -51,6 +48,12 @@ public readonly struct PartyRecruitApplyServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 
     #region Types
 

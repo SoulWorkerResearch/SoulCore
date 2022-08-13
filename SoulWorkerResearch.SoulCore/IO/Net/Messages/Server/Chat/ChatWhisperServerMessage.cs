@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Chat;
 
 [ServerMessage(Group, Command)]
-public readonly struct ChatWhisperServerMessage
+public readonly struct ChatWhisperServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -42,4 +42,10 @@ public readonly struct ChatWhisperServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

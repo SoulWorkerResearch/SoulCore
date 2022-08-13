@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.System;
 
 [ServerMessage(Group, Command)]
-public readonly struct SgTokenUpdateServerMessage
+public readonly struct SgTokenUpdateServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -38,4 +38,10 @@ public readonly struct SgTokenUpdateServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

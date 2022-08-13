@@ -1,6 +1,6 @@
 ﻿namespace SoulWorkerResearch.SoulCore.IO.Net.Messages;
 
-public interface IBinaryMessage : IBinarySerializable
+public interface IBinaryMessage
 {
     Opcode GetOpcode();
 }

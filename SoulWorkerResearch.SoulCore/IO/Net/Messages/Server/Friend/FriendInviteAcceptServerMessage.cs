@@ -5,7 +5,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 
 [ServerMessage(Group, Command)]
-public readonly struct FriendInviteAcceptServerMessage
+public readonly struct FriendInviteAcceptServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -40,4 +40,10 @@ public readonly struct FriendInviteAcceptServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

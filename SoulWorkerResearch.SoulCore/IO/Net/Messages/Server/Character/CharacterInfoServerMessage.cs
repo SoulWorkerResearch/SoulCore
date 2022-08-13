@@ -4,7 +4,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
 
 [ServerMessage(Group, Command)]
-public readonly struct CharacterInfoServerMessage
+public readonly struct CharacterInfoServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -35,4 +35,10 @@ public readonly struct CharacterInfoServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

@@ -8,7 +8,7 @@ using System.Numerics;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Move;
 
 [ServerMessage(Group, Command)]
-public readonly struct MoveJumpServerMessage
+public readonly struct MoveJumpServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -51,4 +51,10 @@ public readonly struct MoveJumpServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }

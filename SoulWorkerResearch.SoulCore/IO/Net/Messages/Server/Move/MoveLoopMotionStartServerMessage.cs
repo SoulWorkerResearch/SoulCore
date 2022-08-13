@@ -6,7 +6,7 @@ using System.Numerics;
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Move;
 
 [ServerMessage(Group, Command)]
-public readonly struct MoveLoopMotionStartServerMessage
+public readonly struct MoveLoopMotionStartServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -39,6 +39,12 @@ public readonly struct MoveLoopMotionStartServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 
     #region Types
 

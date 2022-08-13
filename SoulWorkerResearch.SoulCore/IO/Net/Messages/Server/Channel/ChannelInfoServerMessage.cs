@@ -7,7 +7,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Channel;
 /// This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
-public readonly struct ChannelInfoServerMessage
+public readonly struct ChannelInfoServerMessage : IBinaryMessage
 {
     #region Opcode
 
@@ -33,4 +33,10 @@ public readonly struct ChannelInfoServerMessage
     }
 
     #endregion Constructors
+
+    #region IBinaryMessage
+
+    public Opcode GetOpcode() => this;
+
+    #endregion IBinaryMessage
 }
