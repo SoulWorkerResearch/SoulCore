@@ -9,8 +9,43 @@ namespace SoulWorkerResearch.SoulCore.Tests.IO.Net;
 [TestClass]
 public sealed class PacketTest
 {
+    #region Methods
+
     [TestMethod]
-    public void HeaderTest()
+    public void HeaderMagic0Test()
+    {
+        Assert.AreEqual(Config.PacketHeaderMagic0, _header.Magick.Left, "Bad first magick");
+    }
+
+    [TestMethod]
+    public void HeaderMagic1Test()
+    {
+        Assert.AreEqual(Config.PacketHeaderMagic1, _header.Magick.Right, "Bad second magick");
+    }
+
+    [TestMethod]
+    public void HeaderSizeTest()
+    {
+        Assert.AreEqual(Config.PacketHeaderSize, _header.Size, "Bad packet size");
+    }
+
+    [TestMethod]
+    public void HeaderProtocolTest()
+    {
+        Assert.AreEqual(PacketProtocol.ServerClient, _header.Protocol, "Bad protocol value");
+    }
+
+    [TestMethod]
+    public void HeaderKeyTest()
+    {
+        Assert.AreEqual(_keyValue, _header.Key, "Bad key value");
+    }
+
+    #endregion Methods
+
+    #region Static Constructors
+    
+    static PacketTest()
     {
         using var stream = new MemoryStream();
         using var writer = new BinaryWriter(stream);
@@ -20,14 +55,13 @@ public sealed class PacketTest
         stream.Position = 0;
 
         using var reader = new BinaryReader(stream);
-        var header = new PacketHeader(reader);
-
-        Assert.AreEqual(Config.PacketHeaderMagic0, header.Magick.Left, "Bad first magick");
-        Assert.AreEqual(Config.PacketHeaderMagic1, header.Magick.Right, "Bad second magick");
-        Assert.AreEqual(Config.PacketHeaderSize, header.Size, "Bad packet size");
-        Assert.AreEqual(PacketProtocol.ServerClient, header.Protocol, "Bad protocol value");
-        Assert.AreEqual(_keyValue, header.Key, "Bad key value");
+        _header = new PacketHeader(reader);
     }
+
+
+    #endregion Static Constructors
+
+    #region Private Static Methods
 
     private static PacketHeader MakePacket() => new()
     {
@@ -37,5 +71,12 @@ public sealed class PacketTest
         Key = _keyValue,
     };
 
+    #endregion Private Static Methods
+
+    #region Private Static Fields
+
+    private static readonly PacketHeader _header;
     private static readonly byte _keyValue = 7;
+
+    #endregion Private Static Fields
 }
