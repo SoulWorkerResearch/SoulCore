@@ -2,7 +2,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Packet;
-using System.Drawing;
 using System.IO;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Net;
@@ -27,7 +26,7 @@ public sealed class PacketTest
         Assert.AreEqual(Config.PacketHeaderMagic1, header.Magick.Right, "Bad second magick");
         Assert.AreEqual(Config.PacketHeaderSize, header.Size, "Bad packet size");
         Assert.AreEqual(PacketProtocol.ServerClient, header.Protocol, "Bad protocol value");
-        Assert.AreEqual(7, header.Key, "Bad key value");
+        Assert.AreEqual(_keyValue, header.Key, "Bad key value");
     }
 
     private static PacketHeader MakePacket() => new()
@@ -35,6 +34,8 @@ public sealed class PacketTest
         Magick = new PacketMagick(null, null),
         Size = Config.PacketHeaderSize,
         Protocol = PacketProtocol.ServerClient,
-        Key = 7,
+        Key = _keyValue,
     };
+
+    private static readonly byte _keyValue = 7;
 }
