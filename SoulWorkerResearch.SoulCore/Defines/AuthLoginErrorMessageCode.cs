@@ -1,6 +1,6 @@
 ﻿namespace SoulWorkerResearch.SoulCore.Defines;
 
-public enum AuthLoginErrorMessageCode
+public enum AuthLoginErrorMessageCode : uint
 {
     None = 0,
     WrongUsernameOrPassword = 1,

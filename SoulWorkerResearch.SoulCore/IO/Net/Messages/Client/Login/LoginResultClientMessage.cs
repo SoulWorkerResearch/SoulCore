@@ -66,6 +66,8 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write(AccountId);
+        writer.Write(byte.MinValue);
+
         writer.Write(IsClearTutorial);
         writer.Write(Encoding.ASCII.GetBytes(Mac));
 
@@ -74,6 +76,8 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
 
         writer.Write(byte.MinValue);
         writer.Write(LoginType);
+        writer.Write(byte.MinValue);
+
         writer.WriteUTF16UnicodeString(AuthId);
         writer.Write(SessionKey);
 
@@ -82,6 +86,8 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
         writer.Write((ushort)Brith.Year);
         writer.Write((byte)Brith.Month);
         writer.Write((byte)Brith.Day);
+
+        writer.Write(uint.MinValue);
     }
 
     #endregion IBinaryConvertibleMessage

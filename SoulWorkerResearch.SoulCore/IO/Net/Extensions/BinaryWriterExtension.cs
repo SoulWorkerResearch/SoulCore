@@ -63,7 +63,7 @@ public static class BinaryWriterExtension
         writer.Write((byte)value);
 
     public static void Write(this BinaryWriter writer, AuthLoginErrorMessageCode value) =>
-        writer.Write((int)value);
+        writer.Write((uint)value);
 
     public static void Write(this BinaryWriter writer, SpecialOption value) =>
         writer.Write((byte)value);
