@@ -3,7 +3,7 @@ using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Packet;
 
-public readonly struct PacketHeader : IPacketHeader
+public readonly struct PacketHeader
 {
     #region Contants
 
@@ -13,12 +13,10 @@ public readonly struct PacketHeader : IPacketHeader
 
     #region IPacketHeader
 
-    public IPacketMagick Magick { get; }
-
-    public ushort Size { get; }
-
-    public PacketProtocol Protocol { get; }
-    public byte Key { get; }
+    public PacketMagick Magick { get; init; }
+    public ushort Size { get; init; }
+    public PacketProtocol Protocol { get; init; }
+    public byte Key { get; init; }
 
     #endregion IPacketHeader
 

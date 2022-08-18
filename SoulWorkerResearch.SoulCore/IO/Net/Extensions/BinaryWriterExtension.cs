@@ -1,5 +1,6 @@
 ﻿using SoulWorkerResearch.SoulCore.DataTypes;
 using SoulWorkerResearch.SoulCore.Defines;
+using SoulWorkerResearch.SoulCore.IO.Net.Packet;
 using System.Net;
 using System.Text;
 
@@ -79,11 +80,22 @@ public static class BinaryWriterExtension
     public static void Write(this BinaryWriter writer, ProfileStatus value) =>
         writer.Write((byte)value);
 
+    public static void Write(this BinaryWriter writer, PacketMagick value) =>
+        writer.Write(value.Value);
+
     public static void Write(this BinaryWriter writer, PacketProtocol value) =>
         writer.Write((byte)value);
 
     public static void Write(this BinaryWriter writer, Opcode value) =>
         writer.Write(value.Value);
+
+    public static void Write(this BinaryWriter writer, PacketHeader value)
+    {
+        writer.Write(value.Magick);
+        writer.Write(value.Size);
+        writer.Write(value.Protocol);
+        writer.Write(value.Key);
+    }
 
     #endregion Enums
 

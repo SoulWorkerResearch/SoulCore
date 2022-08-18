@@ -28,7 +28,7 @@ public static class Config
     public const byte EquipableFashionStorageMaxCapacity = 14;
     public const byte EquipableGearStorageMaxCapacity = 10;
 
-    public const byte PacketHeaderSize = 5;
+    public const byte PacketHeaderSize = 6;
     public const byte OptionsCount = 64;
 
     public const byte PacketOpcodeSize = sizeof(ushort);

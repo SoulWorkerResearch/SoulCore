@@ -3,7 +3,7 @@
 namespace SoulWorkerResearch.SoulCore.IO.Net.Packet;
 
 [StructLayout(LayoutKind.Explicit)]
-public readonly struct PacketMagick : IPacketMagick
+public struct PacketMagick
 {
     #region Contants
 
@@ -13,20 +13,26 @@ public readonly struct PacketMagick : IPacketMagick
 
     #region Properties
 
-    public ushort Value => _value;
+    public byte Left => _left;
+    public byte Right => _right;
 
     #endregion Properties
 
-    #region IPacketMagick
+    #region Internal Properties
 
-    byte IPacketMagick.Left => _left;
-    byte IPacketMagick.Right => _right;
+    internal ushort Value => _value;
 
-    #endregion IPacketMagick
+    #endregion Internal Properties
 
     #region Constructors
 
     public PacketMagick(BinaryReader reader) => _value = reader.ReadUInt16();
+
+    public PacketMagick(byte? left = null, byte? right = null)
+    {
+        _left = left ?? Config.PacketHeaderMagic0;
+        _right = right ?? Config.PacketHeaderMagic1;
+    }
 
     #endregion Constructors
 

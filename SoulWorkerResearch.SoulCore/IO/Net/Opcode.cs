@@ -8,13 +8,18 @@ public readonly struct Opcode
 {
     public static readonly Opcode Empty = new();
 
-    #region Body
+    #region Properties
 
-    public ushort Value => _value;
     public byte Group => _group;
     public byte Command => _command;
 
-    #endregion Body
+    #endregion Properties
+
+    #region Internal Properties
+
+    internal ushort Value => _value;
+
+    #endregion Internal Properties
 
     #region Operators
 
