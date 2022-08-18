@@ -7,4 +7,5 @@ public interface IPacketHeader
     IPacketMagick Magick { get; }
     ushort Size { get; }
     PacketProtocol Protocol { get; }
+    byte Key { get; }
 }

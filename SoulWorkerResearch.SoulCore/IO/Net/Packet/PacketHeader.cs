@@ -18,6 +18,7 @@ public readonly struct PacketHeader : IPacketHeader
     public ushort Size { get; }
 
     public PacketProtocol Protocol { get; }
+    public byte Key { get; }
 
     #endregion IPacketHeader
 
@@ -28,6 +29,7 @@ public readonly struct PacketHeader : IPacketHeader
         Magick = new PacketMagick(reader);
         Size = reader.ReadUInt16();
         Protocol = reader.ReadPacketProtocol();
+        Key = reader.ReadByte();
     }
 
     #endregion Constructors
