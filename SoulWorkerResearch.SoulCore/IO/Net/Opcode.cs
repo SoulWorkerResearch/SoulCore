@@ -25,6 +25,8 @@ public readonly struct Opcode
 
     public static implicit operator ushort(Opcode value) => value._value;
 
+    public static implicit operator Index(Opcode value) => value._value;
+
     public static implicit operator GroupOpcode(Opcode value) => (GroupOpcode)value._group;
     public static implicit operator SystemOpcode(Opcode value) => (SystemOpcode)value._command;
     public static implicit operator LoginOpcode(Opcode value) => (LoginOpcode)value._command;
