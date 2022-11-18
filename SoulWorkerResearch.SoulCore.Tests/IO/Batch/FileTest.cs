@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Numerics;
 
-using BatchFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
+using BatFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
 using SysFile = System.IO.File;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Batch;
@@ -122,8 +122,8 @@ public sealed class FileTest
     public FileTest()
     {
         using var fs = SysFile.OpenRead(Path.Combine("Datas", "World", "Table", "M24_ARKSHIP_HERO.vbatch"));
-        _m24ArkShipHero = BatchFile.FromStream(fs).AsTask().GetAwaiter().GetResult();
+        _m24ArkShipHero = BatFile.FromStream(fs).AsTask().GetAwaiter().GetResult();
     }
 
-    private readonly BatchFile _m24ArkShipHero;
+    private readonly BatFile _m24ArkShipHero;
 }
