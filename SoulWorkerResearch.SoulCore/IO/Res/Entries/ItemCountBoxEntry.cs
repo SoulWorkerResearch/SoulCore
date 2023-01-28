@@ -1,6 +1,7 @@
 ﻿global using ItemCountBoxKeyType = System.UInt32;
+
 using SoulWorkerResearch.SoulCore.Extensions;
-using System.ComponentModel.DataAnnotations.Schema;
+using SoulWorkerResearch.SoulCore.IO.Res.Attributes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Res.Entries;
 

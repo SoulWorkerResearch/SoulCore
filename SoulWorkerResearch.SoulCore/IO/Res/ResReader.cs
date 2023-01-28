@@ -66,8 +66,8 @@ public sealed class ResReader : IDisposable
     public IAsyncEnumerable<PassInfoEntry> ReadPassInfoTableAsync(CancellationToken ct = default) =>
         CreateEntriesAsync<PassInfoKeyType, PassInfoEntry>(PassInfoEntry.TableName, ct);
 
-    public IAsyncEnumerable<PassRewardInfoEntry> ReadPassRewardInfoTableAsync(CancellationToken ct = default) =>
-        CreateEntriesAsync<PassRewardInfoKeyType, PassRewardInfoEntry>(PassRewardInfoEntry.TableName, ct);
+    public IAsyncEnumerable<PassRewardEntry> ReadPassRewardInfoTableAsync(CancellationToken ct = default) =>
+        CreateEntriesAsync<PassRewardKeyType, PassRewardEntry>(PassRewardEntry.TableName, ct);
 
     #endregion Methods
 

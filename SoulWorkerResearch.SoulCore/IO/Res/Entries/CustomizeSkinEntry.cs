@@ -1,4 +1,5 @@
 ﻿global using CustomizeSkinKeyType = SoulWorkerResearch.SoulCore.Defines.Class;
+
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Res.Attributes;
 using SoulWorkerResearch.SoulCore.Utils;
