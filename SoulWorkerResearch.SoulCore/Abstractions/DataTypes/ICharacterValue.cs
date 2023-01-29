@@ -6,7 +6,7 @@ public interface ICharacterValue
 {
     int Id { get; }
     string Name { get; }
-    CustomizeEyesKeyType Class { get; }
+    Class Class { get; }
     ClassAdvancement Advancement { get; }
     uint Photo { get; }
     IAppearanceValue Appearance { get; }
