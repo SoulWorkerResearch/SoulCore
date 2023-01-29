@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>SoulWorkerResearch.SoulCore.Tools.Generators.IO.Res</RootNamespace>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+	<IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
