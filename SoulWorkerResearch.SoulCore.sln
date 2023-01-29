@@ -16,15 +16,20 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulWorkerResearch.SoulCore.Tests", "SoulWorkerResearch.SoulCore.Tests\SoulWorkerResearch.SoulCore.Tests.csproj", "{C0BC7938-4ADF-4EB2-8318-D878EAC3A3EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{AB9D8ADC-6E25-4ACC-997A-C29C95D27CB6}"
+	ProjectSection(SolutionItems) = preProject
+		.github\FUNDING.yml = .github\FUNDING.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{98C8C0FF-B764-4414-9D5A-136B1D05D57D}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\publish.yml = .github\workflows\publish.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\deploy-beta.yml = .github\workflows\deploy-beta.yml
+		.github\workflows\deploy.yml = .github\workflows\deploy.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C5533DBD-49FE-449E-92C6-0024999745EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Res", "Tools\Generators\IO\Res\Res.csproj", "{C7B0BDC4-4965-4E5E-AC1B-BB0E0EC498AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Res", "Tools\Generators\IO\Res\Res.csproj", "{C7B0BDC4-4965-4E5E-AC1B-BB0E0EC498AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
