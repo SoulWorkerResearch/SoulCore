@@ -19,7 +19,7 @@ await Parallel.ForEachAsync(structures, async (table, ct) =>
 
     var shortClassName = StringHelper.NormalizeName(filename);
 
-    await File.WriteAllTextAsync(Path.Join(entriesDir, $"{shortClassName}.cs"), await ClassHelper.BodyFrom(shortClassName, filename, types), ct);
+    await File.WriteAllTextAsync(Path.Join(entriesDir, $"{shortClassName}Entry.cs"), await ClassHelper.BodyFrom(shortClassName, filename, types), ct);
 });
 
 await ReaderHelper.GenerateReaders(Path.Join(entriesDir, ".."), structures.Select((table) =>
