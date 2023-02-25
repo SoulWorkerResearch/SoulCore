@@ -1,11 +1,12 @@
-name: "Nuget Publish"
+name: "Dev Deploy"
 
 on:
   push:
     branches: [ "dev" ]
 
 env:
-  VERSION: 7.0.200.${{ github.run_number }}-beta
+  DOTNET_MAJOR_VERSION: 8
+  VERSION: 1.0.0.0
   NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
 
 jobs:
@@ -16,16 +17,22 @@ jobs:
     - name: Check
       uses: actions/checkout@main
       with:
-        lfs: 'true'
-        submodules: 'recursive'
-
+        lfs: "true"
+        submodules: "recursive"
+        
     - name: Setup .NET
       uses: actions/setup-dotnet@main
       with:
-        dotnet-version: 7.x.x
+        dotnet-version: ${{ env.DOTNET_MAJOR_VERSION }}.x.x
 
     - name: Restore dependencies
       run: dotnet restore
+
+    - name: Setup Version
+      shell: pwsh
+      run: |
+        $date = Get-Date -format "yyyy.MMdd.HHmm"
+        echo "VERSION=${{ env.DOTNET_MAJOR_VERSION }}.$date-beta" >> $env:GITHUB_ENV
 
     - name: Build
       run: dotnet build --no-restore --configuration Release -p:Version=${{ env.VERSION }}

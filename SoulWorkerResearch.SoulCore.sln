@@ -8,9 +8,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{AD342C91-B8E8-4544-9471-76AA5815DC83}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		global.json = global.json
 		LICENSE = LICENSE
 		NuGet.config = NuGet.config
+		README.md = README.md
+		SECURITY.md = SECURITY.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulWorkerResearch.SoulCore.Tests", "SoulWorkerResearch.SoulCore.Tests\SoulWorkerResearch.SoulCore.Tests.csproj", "{C0BC7938-4ADF-4EB2-8318-D878EAC3A3EC}"
@@ -23,8 +27,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{98C8C0FF-B764-4414-9D5A-136B1D05D57D}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
-		.github\workflows\deploy-beta.yml = .github\workflows\deploy-beta.yml
-		.github\workflows\deploy.yml = .github\workflows\deploy.yml
+		.github\workflows\release-deploy.yml = .github\workflows\release-deploy.yml
+		.github\workflows\dev-deploy.yml = .github\workflows\dev-deploy.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{C5533DBD-49FE-449E-92C6-0024999745EA}"

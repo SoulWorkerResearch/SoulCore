@@ -1,4 +1,4 @@
-name: "Nuget Publish"
+name: "Release Deploy"
 
 on:
   push:
@@ -16,13 +16,13 @@ jobs:
     - name: Check
       uses: actions/checkout@main
       with:
-        lfs: 'true'
-        submodules: 'recursive'
+        lfs: "true"
+        submodules: "recursive"
 
     - name: Setup .NET
       uses: actions/setup-dotnet@main
       with:
-        dotnet-version: 7.x.x
+        dotnet-version: 8.x.x
 
     - name: Restore dependencies
       run: dotnet restore
