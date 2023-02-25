@@ -14,35 +14,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check
+    - name: Checkout
       uses: actions/checkout@main
       with:
-        lfs: "true"
+        lfs: true
         submodules: "recursive"
-        
-    - name: Setup .NET
-      uses: actions/setup-dotnet@main
-      with:
-        dotnet-version: ${{ env.DOTNET_MAJOR_VERSION }}.x.x
-        dotnet-quality: 'preview'
-
-    - name: Restore dependencies
-      run: dotnet restore
 
     - name: Setup Version
       shell: pwsh
       run: |
         $date = Get-Date -format "yyyy.MMdd.HHmm"
         echo "VERSION=${{ env.DOTNET_MAJOR_VERSION }}.$date-beta" >> $env:GITHUB_ENV
+        
+    - name: Restore dependencies
+      shell: pwsh
+      run: dotnet restore
 
     - name: Build
+      shell: pwsh
       run: dotnet build --no-restore --configuration Release -p:Version=${{ env.VERSION }}
 
     - name: Run Tests
+      shell: pwsh
       run: dotnet test --no-restore --no-build --configuration Release
 
     - name: Pack
+      shell: pwsh
       run: dotnet pack --no-restore --no-build --configuration Release --include-symbols --include-source -p:Version=${{ env.VERSION }}
 
     - name: Push to NuGet Feed
+      shell: pwsh
       run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{ env.NUGET_API_KEY }}
