@@ -18,7 +18,7 @@ public class ArchiveReader
         await using var stream = _zip.GetInputStream(entry);
         using var reader = new BinaryReader(stream);
 
-        for (uint q = 0, count = reader.ReadUInt32(); q < count && ct.IsCancellationRequested; ++q)
+        for (uint q = 0, count = reader.ReadUInt32(); q < count || ct.IsCancellationRequested; ++q)
         {
             yield return reader;
         }
