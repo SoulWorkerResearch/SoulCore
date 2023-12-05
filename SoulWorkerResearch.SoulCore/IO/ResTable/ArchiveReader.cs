@@ -4,7 +4,7 @@ using ICSharpCode.SharpZipLib.Zip;
 
 namespace SoulWorkerResearch.SoulCore.IO.ResTable;
 
-public abstract class ArchiveReader
+public class ArchiveReader
 {
     private readonly ZipFile _zip;
 
@@ -24,7 +24,7 @@ public abstract class ArchiveReader
         }
     }
 
-    protected async IAsyncEnumerable<TValue> ReadEntriesAsync<TValue>([EnumeratorCancellation] CancellationToken ct)
+    public async IAsyncEnumerable<TValue> ReadEntriesAsync<TValue>([EnumeratorCancellation] CancellationToken ct)
         where TValue : class, IEntry<TValue>
     {
         await foreach (var reader in ReadAllAsync(TValue.TableName, ct))
@@ -38,5 +38,5 @@ public abstract class ArchiveReader
         }
     }
 
-    protected ArchiveReader(ZipFile zip) => _zip = zip;
+    public ArchiveReader(ZipFile zip) => _zip = zip;
 }
