@@ -8,6 +8,7 @@ public enum MonsterSpawnType : byte
     DestructionObject,
     TreasureBox,
     Unit,
+    SocialObject,
 
     [XmlEnum("NPC")] Npc
 }
