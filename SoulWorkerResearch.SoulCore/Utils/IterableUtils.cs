@@ -1,8 +1,8 @@
 ﻿namespace SoulWorkerResearch.SoulCore.Utils;
 
-internal static class IterableUtils
+public static class IterableUtils
 {
-    internal static IEnumerable<Tuple<T1, T2, T3>> Iterate<T1, T2, T3>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third)
+    public static IEnumerable<Tuple<T1, T2, T3>> Iterate<T1, T2, T3>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third)
     {
         using var e1 = first.GetEnumerator();
         using var e2 = second.GetEnumerator();
@@ -14,7 +14,7 @@ internal static class IterableUtils
         }
     }
 
-    internal static IEnumerable<Tuple<T1, T2, T3, T4>> Iterate<T1, T2, T3, T4>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third, IEnumerable<T4> fourth)
+    public static IEnumerable<Tuple<T1, T2, T3, T4>> Iterate<T1, T2, T3, T4>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third, IEnumerable<T4> fourth)
     {
         using var e1 = first.GetEnumerator();
         using var e2 = second.GetEnumerator();
@@ -27,7 +27,7 @@ internal static class IterableUtils
         }
     }
 
-    internal static IEnumerable<Tuple<T1, T2, T3, T4, T5>> Zip<T1, T2, T3, T4, T5>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third, IEnumerable<T4> fourth, IEnumerable<T5> five)
+    public static IEnumerable<Tuple<T1, T2, T3, T4, T5>> Zip<T1, T2, T3, T4, T5>(IEnumerable<T1> first, IEnumerable<T2> second, IEnumerable<T3> third, IEnumerable<T4> fourth, IEnumerable<T5> five)
     {
         using var e1 = first.GetEnumerator();
         using var e2 = second.GetEnumerator();
