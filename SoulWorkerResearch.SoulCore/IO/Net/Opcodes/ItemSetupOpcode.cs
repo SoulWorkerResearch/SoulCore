@@ -42,5 +42,5 @@ public enum ItemSetupOpcode : byte
     Dye = 0x36,
     TitleChange = 0x37,
     RenovateComplete = 0x38,
-    BroachRemoveEx = 0x39,
+    BroachRemoveEx = 0x39
 }

@@ -1,12 +1,13 @@
-﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+﻿using System.Net;
+using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
-using System.Net;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginEnterServerClientMessage : IBinaryOutcomingMessage
+public readonly struct LoginEnterServerClientMessage(IPEndPoint Endpoint) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -21,18 +22,6 @@ public readonly struct LoginEnterServerClientMessage : IBinaryOutcomingMessage
 
     #endregion Operators
 
-    #region Body
-
-    public DnsEndPoint Endpoint { get; init; }
-
-    #endregion Body
-
-    #region Constructors
-
-    public LoginEnterServerClientMessage() => Endpoint = new DnsEndPoint(string.Empty, 0);
-
-    #endregion Constructors
-
     #region IBinaryMessage
 
     public Opcode GetOpcode() => this;
@@ -41,10 +30,7 @@ public readonly struct LoginEnterServerClientMessage : IBinaryOutcomingMessage
 
     #region IBinaryConvertibleMessage
 
-    public void ToBinary(BinaryWriter writer)
-    {
-        writer.Write(Endpoint);
-    }
+    public void ToBinary(BinaryWriter writer) => writer.Write(Endpoint);
 
     #endregion IBinaryConvertibleMessage
 }

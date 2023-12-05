@@ -1,46 +1,25 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
-using System.Runtime.InteropServices;
+﻿using System.Net;
+using SoulWorkerResearch.SoulCore.DataTypes.Entities;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-[StructLayout(LayoutKind.Explicit)]
-public readonly struct MapValue : IMapValue
+public readonly struct MapValue
 {
-    public static MapValue Empty { get; } = new();
+    public int Account { get; init; }
+    public int Person { get; init; }
+    public int Server { get; init; }
+    public int Jump { get; init; }
+    public int Portal { get; init; }
+    public MapEntity Map { get; init; }
+    public MapEntity ParentMap { get; init; }
+    public IPEndPoint EndPoint { get; init; }
+    public LocationValue Location { get; init; }
+    public byte Direction { get; init; }
 
-    [FieldOffset(0)]
-    internal readonly ulong Value;
-
-    [FieldOffset(3)]
-    public readonly byte ChannelId;
-
-    [FieldOffset(4)]
-    public readonly ushort MapId;
-
-    [FieldOffset(6)]
-    public readonly ushort ServerId;
-
-    #region IMapValue
-
-    byte IMapValue.ChannelId => ChannelId;
-    ushort IMapValue.MapId => MapId;
-    ushort IMapValue.ServerId => ServerId;
-
-    #endregion IMapValue
-
-    internal MapValue(byte channelId, ushort mapId, ushort serverId)
-    {
-        Value = 0;
-        ChannelId = channelId;
-        MapId = mapId;
-        ServerId = serverId;
-    }
+    public MapValue() => EndPoint = new(IPAddress.None, IPEndPoint.MinPort);
 
     internal MapValue(BinaryReader reader)
     {
-        ChannelId = 0;
-        MapId = 0;
-        ServerId = 0;
-        Value = reader.ReadUInt64();
+        throw new NotImplementedException();
     }
 }

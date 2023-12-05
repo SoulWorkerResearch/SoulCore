@@ -37,5 +37,5 @@ public enum PartyOpcode : byte
     RecruitInfo = 0x3F,
     RecruitApplyDel = 0x40,
     RecruitApplyInfo = 0x41,
-    RecuritApplyNotice = 0x42,
+    RecuritApplyNotice = 0x42
 }

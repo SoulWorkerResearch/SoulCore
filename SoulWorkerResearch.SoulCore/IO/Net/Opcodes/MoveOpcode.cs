@@ -38,5 +38,5 @@ public enum MoveOpcode : byte
     AttacedEndBt = 0x35,
     AttacedEnd = 0x36,
     GroundStatus = 0x40,
-    JumpQuickDown = 0x50,
+    JumpQuickDown = 0x50
 }

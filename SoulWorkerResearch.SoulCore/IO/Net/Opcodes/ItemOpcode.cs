@@ -57,5 +57,5 @@ public enum ItemOpcode : byte
     UseWarpRes = 0x70,
     ResealPackage = 0x71,
     ResealPackageInfo = 0x72,
-    DeckPageOpen = 0x73,
+    DeckPageOpen = 0x73
 }

@@ -2,6 +2,6 @@
 
 public enum DistrictConnectResult
 {
-    No = 0,
-    Yes = 1,
+    Failure,
+    Success
 }

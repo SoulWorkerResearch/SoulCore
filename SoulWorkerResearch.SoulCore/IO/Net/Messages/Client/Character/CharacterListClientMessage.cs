@@ -1,11 +1,12 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Character;
 
 [ClientMessage(Group, Command)]
-public readonly struct CharacterListClientMessage : IBinaryOutcomingMessage
+public readonly record struct CharacterListClientMessage(IReadOnlyList<CharacterValue> Values) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -19,18 +20,6 @@ public readonly struct CharacterListClientMessage : IBinaryOutcomingMessage
     public static implicit operator Opcode(CharacterListClientMessage _) => new(Group, Command);
 
     #endregion Operators
-
-    #region Body
-
-    public IReadOnlyList<ICharacterValue> Values { get; init; }
-
-    #endregion Body
-
-    #region Constructors
-
-    public CharacterListClientMessage() => Values = Array.Empty<ICharacterValue>();
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

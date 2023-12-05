@@ -1,12 +1,14 @@
 ﻿using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginResponseEnterServerClientMessage : IBinaryOutcomingMessage
+public readonly struct LoginResponseEnterServerClientMessage(GateEnterResult Result, int Account) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -21,13 +23,6 @@ public readonly struct LoginResponseEnterServerClientMessage : IBinaryOutcomingM
 
     #endregion Operators
 
-    #region Body
-
-    public GateEnterResult Result { get; init; }
-    public int AccountId { get; init; }
-
-    #endregion Body
-
     #region IBinaryMessage
 
     public Opcode GetOpcode() => this;
@@ -39,7 +34,7 @@ public readonly struct LoginResponseEnterServerClientMessage : IBinaryOutcomingM
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write(Result);
-        writer.Write(AccountId);
+        writer.Write(Account);
     }
 
     #endregion IBinaryConvertibleMessage

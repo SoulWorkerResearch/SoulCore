@@ -1,11 +1,12 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginUserLoginServerMessage : IBinaryMessage
+public readonly struct LoginUserLoginServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -22,24 +23,12 @@ public readonly struct LoginUserLoginServerMessage : IBinaryMessage
 
     #region Body
 
-    public string Nickname { get; }
-    public string Password { get; }
-    public string Mac { get; }
-    public int Version { get; }
+    public string Nickname { get; } = reader.ReadUTF8UnicodeString();
+    public string Password { get; } = reader.ReadUTF8UnicodeString();
+    public string Mac { get; } = reader.ReadUTF8UnicodeString();
+    public int Version { get; } = reader.ReadInt32();
 
     #endregion Body
-
-    #region Constructors
-
-    public LoginUserLoginServerMessage(BinaryReader reader)
-    {
-        Nickname = reader.ReadUTF8UnicodeString();
-        Password = reader.ReadUTF8UnicodeString();
-        Mac = reader.ReadUTF8UnicodeString();
-        Version = reader.ReadInt32();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

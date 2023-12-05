@@ -14,6 +14,7 @@ public enum SocialItemOpcode : byte
     Out = 0x7,
     PlayStart = 0x8,
     PlayGame = 0x9,
-    PlayUserInfo = 0x10,
+
+    PlayUserInfo = 0x10
     //
 }

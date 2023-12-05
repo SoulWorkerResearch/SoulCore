@@ -9,5 +9,5 @@ public enum DailyMissionOpcode : byte
     Accept = 0x2,
     Update = 0x3,
     Helper = 0x4,
-    InitAll = 0x5,
+    InitAll = 0x5
 }

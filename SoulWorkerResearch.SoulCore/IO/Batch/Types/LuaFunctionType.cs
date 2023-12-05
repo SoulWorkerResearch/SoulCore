@@ -9,6 +9,5 @@ public enum LuaFunctionType : byte
     Monster,
     Warp,
 
-    [XmlEnum("NPC")]
-    Npc
+    [XmlEnum("NPC")] Npc
 }

@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -27,7 +28,10 @@ public readonly struct CharacterListServerMessage : IBinaryMessage
 
     #region Constructors
 
-    internal CharacterListServerMessage(BinaryReader reader) => SessionKey = reader.ReadInt64();
+    internal CharacterListServerMessage(BinaryReader reader)
+    {
+        SessionKey = reader.ReadInt64();
+    }
 
     #endregion Constructors
 

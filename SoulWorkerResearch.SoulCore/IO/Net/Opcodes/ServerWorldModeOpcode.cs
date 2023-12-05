@@ -13,5 +13,5 @@ public enum ServerWorldModeOpcode : byte
     Command = 0x6,
     Complete = 0x7,
     Fail = 0x8,
-    Enter = 0x9,
+    Enter = 0x9
 }

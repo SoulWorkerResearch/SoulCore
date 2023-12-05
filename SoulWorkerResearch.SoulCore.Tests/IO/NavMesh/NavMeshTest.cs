@@ -1,7 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SoulWorkerResearch.SoulCore.IO.NavMesh;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.NavMesh;
 

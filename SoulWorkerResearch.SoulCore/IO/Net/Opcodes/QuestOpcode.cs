@@ -17,5 +17,5 @@ public enum QuestOpcode
     Reset = 0x10,
     Fail = 0x11,
     EpisodeReset = 0x12,
-    RepeatReset = 0x13,
+    RepeatReset = 0x13
 }

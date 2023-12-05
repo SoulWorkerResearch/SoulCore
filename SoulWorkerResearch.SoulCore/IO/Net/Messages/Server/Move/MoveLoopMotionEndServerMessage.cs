@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Move;
 
 [ServerMessage(Group, Command)]
-public readonly struct MoveLoopMotionEndServerMessage : IBinaryMessage
+public readonly struct MoveLoopMotionEndServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -21,15 +22,9 @@ public readonly struct MoveLoopMotionEndServerMessage : IBinaryMessage
 
     #region Body
 
-    public int CharacterId { get; }
+    public int Person { get; } = reader.ReadInt32();
 
     #endregion Body
-
-    #region Constructors
-
-    internal MoveLoopMotionEndServerMessage(BinaryReader reader) => CharacterId = reader.ReadInt32();
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

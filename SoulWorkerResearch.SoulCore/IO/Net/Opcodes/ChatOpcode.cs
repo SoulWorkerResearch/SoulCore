@@ -16,5 +16,5 @@ public enum ChatOpcode : byte
     Memory = 0x7,
 
     // NoticeEx = 0x8,
-    GmCommand = 0xA,
+    GmCommand = 0xA
 }

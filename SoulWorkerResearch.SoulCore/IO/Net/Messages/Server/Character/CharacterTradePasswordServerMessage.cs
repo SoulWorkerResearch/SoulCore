@@ -1,7 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.Defines;
+﻿using System.Diagnostics;
+using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
-using System.Diagnostics;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
 

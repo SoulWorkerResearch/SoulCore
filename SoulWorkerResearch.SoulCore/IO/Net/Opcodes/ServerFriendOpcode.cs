@@ -31,5 +31,5 @@ public enum ServerFriendOpcode : byte
     HelperSupportEquip = 0x31,
     HelperSupportEquipReward = 0x32,
     HelperEquip = 0x33,
-    ServerLoad = 0x34,
+    ServerLoad = 0x34
 }

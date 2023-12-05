@@ -2,6 +2,6 @@
 
 public enum EnterGateWay
 {
-    Auth,
-    Login
+    FromAuth,
+    FromWorld
 }

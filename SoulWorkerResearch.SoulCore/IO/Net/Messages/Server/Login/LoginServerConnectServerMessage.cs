@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginServerConnectServerMessage : IBinaryMessage
+public readonly struct LoginServerConnectServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -21,15 +22,9 @@ public readonly struct LoginServerConnectServerMessage : IBinaryMessage
 
     #region Body
 
-    public ushort GateId { get; }
+    public ushort Gate { get; } = reader.ReadUInt16();
 
     #endregion Body
-
-    #region Constructors
-
-    public LoginServerConnectServerMessage(BinaryReader reader) => GateId = reader.ReadUInt16();
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

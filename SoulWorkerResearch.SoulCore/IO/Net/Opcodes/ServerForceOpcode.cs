@@ -27,5 +27,5 @@ public enum ServerForceOpcode : byte
     MazeClear = 0x19,
     Info = 0x1A,
     NameChange = 0x20,
-    ChangeMazeOpenCheck = 0x21,
+    ChangeMazeOpenCheck = 0x21
 }

@@ -10,5 +10,5 @@ public enum SoulMetryOpcode : byte
     Add = 0x3,
     Update = 0x4,
     Complete = 0x5,
-    Reset = 0x6,
+    Reset = 0x6
 }

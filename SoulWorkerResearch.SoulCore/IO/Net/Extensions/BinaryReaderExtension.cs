@@ -1,5 +1,5 @@
-﻿using SoulWorkerResearch.SoulCore.Defines;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using SoulWorkerResearch.SoulCore.Defines;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Extensions;
 

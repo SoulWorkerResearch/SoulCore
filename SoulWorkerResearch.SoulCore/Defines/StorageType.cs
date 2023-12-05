@@ -31,5 +31,5 @@ public enum StorageType
 
     Cube = 0x0B,
 
-    InventoryExtra = 0x0D,
+    InventoryExtra = 0x0D
 }

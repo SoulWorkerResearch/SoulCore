@@ -6,5 +6,5 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 public enum RestartOpcode : byte
 {
     Update = 0x1,
-    Start = 0x2,
+    Start = 0x2
 }

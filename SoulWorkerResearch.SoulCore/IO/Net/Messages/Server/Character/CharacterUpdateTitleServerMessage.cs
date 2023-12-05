@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -50,8 +51,8 @@ public readonly struct CharacterUpdateTitleServerMessage : IBinaryMessage
 
     internal CharacterUpdateTitleServerMessage(BinaryReader reader)
     {
-        Battle = new(reader);
-        Preview = new(reader);
+        Battle = new Title(reader);
+        Preview = new Title(reader);
     }
 
     #endregion Constructors

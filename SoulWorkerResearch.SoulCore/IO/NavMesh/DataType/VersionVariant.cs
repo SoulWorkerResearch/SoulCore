@@ -6,5 +6,5 @@ internal enum VersionVariant : byte
     _1 = 2,
     _2 = 4,
     _3 = 6,
-    _4 = 8,
+    _4 = 8
 }

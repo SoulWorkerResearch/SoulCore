@@ -23,5 +23,5 @@ public enum MonsterOpcode : byte
     ControlMonsterAttackReq = 0x52,
     SuperArmorGage = 0x53,
     PartsHp = 0x54,
-    WrongPos = 0x55,
+    WrongPos = 0x55
 }

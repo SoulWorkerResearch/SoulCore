@@ -1,12 +1,13 @@
-﻿using SoulWorkerResearch.SoulCore.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes.Entities;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginForSteamServerMessage : IBinaryMessage
+public readonly struct LoginForSteamServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -23,40 +24,22 @@ public readonly struct LoginForSteamServerMessage : IBinaryMessage
 
     #region Body
 
-    private readonly byte[] _1;
-    public string Mac { get; }
-    public uint PacketVersion { get; }
-    private readonly byte[] _2;
-    public string SteamUserName { get; }
-    private readonly ushort _3;
-    public SteamId SteamId { get; }
-    private readonly uint _4;
-    private readonly byte[] _5;
-    private readonly byte[] _6;
-    public string ClientVersion { get; }
-    public IReadOnlyList<Hash> Hashes { get; }
-    private readonly uint[] _8;
+    private readonly byte[] _1 = reader.ReadByteAsArray(3);
+    public string Mac { get; } = reader.ReadUTF8UnicodeString();
+    public uint PacketVersion { get; } = reader.ReadUInt32();
+    private readonly byte[] _2 = reader.ReadByteAsArray(7);
+    public string SteamUserName { get; } = reader.ReadUTF8UnicodeString();
+    private readonly ushort _3 = reader.ReadUInt16();
+    public SteamEntity SteamId { get; } = new SteamEntity(reader);
+    private readonly uint _4 = reader.ReadUInt32();
+    private readonly byte[] _5 = reader.ReadByteAsArray(230);
+    private readonly byte[] _6 = reader.ReadByteAsArray(790);
+    public string ClientVersion { get; } = reader.ReadUTF8UnicodeString();
+    public IReadOnlyList<HashValue> Hashes { get; } = Enumerable.Repeat(0, 30).Select(_ => new HashValue(reader)).ToArray();
+    private readonly uint[] _8 = reader.ReadUInt32AsArray(3);
 
     #endregion Body
-
     #region Constructors
-
-    public LoginForSteamServerMessage(BinaryReader reader)
-    {
-        _1 = reader.ReadByteAsArray(3);
-        Mac = reader.ReadUTF8UnicodeString();
-        PacketVersion = reader.ReadUInt32();
-        _2 = reader.ReadByteAsArray(7);
-        SteamUserName = reader.ReadUTF8UnicodeString();
-        _3 = reader.ReadUInt16();
-        SteamId = new SteamId(reader);
-        _4 = reader.ReadUInt32();
-        _5 = reader.ReadByteAsArray(230);
-        _6 = reader.ReadByteAsArray(790);
-        ClientVersion = reader.ReadUTF8UnicodeString();
-        Hashes = Enumerable.Repeat(0, 30).Select(_ => new Hash(reader)).ToArray();
-        _8 = reader.ReadUInt32AsArray(3);
-    }
 
     #endregion Constructors
 
@@ -66,27 +49,13 @@ public readonly struct LoginForSteamServerMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region Types
+    #region DataTypes
 
-    public readonly struct Hash
+    public readonly struct HashValue(BinaryReader reader)
     {
-        #region Properties
-
-        public uint Id { get; }
-        public string Value { get; }
-
-        #endregion Properties
-
-        #region Constructors
-
-        public Hash(BinaryReader reader)
-        {
-            Id = reader.ReadUInt32();
-            Value = reader.ReadUTF8UnicodeString();
-        }
-
-        #endregion Constructors
+        public uint Id { get; } = reader.ReadUInt32();
+        public string Value { get; } = reader.ReadUTF8UnicodeString();
     }
 
-    #endregion Types
+    #endregion DataTypes
 }

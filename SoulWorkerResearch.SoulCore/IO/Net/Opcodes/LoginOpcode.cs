@@ -21,10 +21,10 @@ public enum LoginOpcode : byte
     ForTwn = 0x19,
     ForWm = 0x20,
     ForChn = 0x21,
-    ForSteam= 0x22,
+    ForSteam = 0x22,
     OptionLoad = 0x31,
     OptionUpdate = 0x32,
     MobileAuth = 0x33,
     EnterWaitCheck = 0x34,
-    EnterWaitCancel = 0x35,
+    EnterWaitCancel = 0x35
 }

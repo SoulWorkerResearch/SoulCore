@@ -1,22 +1,23 @@
-﻿using System.Xml.Linq;
+﻿using SoulWorkerResearch.SoulCore.IO.Batch.Entities;
+using System.Xml.Linq;
 using System.Xml.XPath;
 
 namespace SoulWorkerResearch.SoulCore.IO.Batch;
 
 public sealed record File
 {
-    public EventBox.EventBox EventBox { get; }
-    public EventPoint.EventPoint EventPoint { get; }
-
-    public static async ValueTask<File> FromStream(Stream stream, CancellationToken cancellationToken = default)
+    private File(XNode document)
     {
-        var x = await XDocument.LoadAsync(stream, LoadOptions.None, cancellationToken);
-        return new File(x);
+        EventBox = new EventBox(document.XPathSelectElement("root/Batchs [@eventtype='EventBox']") ?? throw new ApplicationException());
+        EventPoint = new EventPoint(document.XPathSelectElement("root/Batchs [@eventtype='EventPoint']") ?? throw new ApplicationException());
     }
 
-    private File(XDocument x)
+    public EventBox EventBox { get; }
+    public EventPoint EventPoint { get; }
+
+    public static async ValueTask<File> FromStream(Stream stream, CancellationToken ct = default)
     {
-        EventBox = new(x.XPathSelectElement("root/Batchs [@eventtype='EventBox']") ?? throw new ApplicationException());
-        EventPoint = new(x.XPathSelectElement("root/Batchs [@eventtype='EventPoint']") ?? throw new ApplicationException());
+        var document = await XDocument.LoadAsync(stream, LoadOptions.None, ct);
+        return new File(document);
     }
 }

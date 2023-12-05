@@ -6,5 +6,5 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 public enum RankingOpcode : byte
 {
     List = 0x1,
-    Reward = 0x2,
+    Reward = 0x2
 }

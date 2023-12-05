@@ -51,5 +51,5 @@ public enum GroupOpcode : byte
     GmAgent = 0xF8,
     ServerForce = 0xFA,
     ServerWorldMode = 0xFB,
-    ServerModeMaze = 0xFD,
+    ServerModeMaze = 0xFD
 }

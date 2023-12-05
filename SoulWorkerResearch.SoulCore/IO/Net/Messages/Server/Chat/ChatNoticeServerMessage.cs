@@ -1,11 +1,12 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Chat;
 
 [ServerMessage(Group, Command)]
-public readonly struct ChatNoticeServerMessage : IBinaryMessage
+public readonly struct ChatNoticeServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -22,24 +23,12 @@ public readonly struct ChatNoticeServerMessage : IBinaryMessage
 
     #region Body
 
-    public byte Type { get; }
-    public string Message { get; }
-    public string Color { get; }
-    public int MessageCode { get; }
+    public byte Type { get; } = reader.ReadByte();
+    public string Message { get; } = reader.ReadUTF16UnicodeString();
+    public string Color { get; } = reader.ReadUTF8UnicodeString();
+    public int MessageCode { get; } = reader.ReadInt32();
 
     #endregion Body
-
-    #region Constructors
-
-    public ChatNoticeServerMessage(BinaryReader br)
-    {
-        Type = br.ReadByte();
-        Message = br.ReadUTF16UnicodeString();
-        Color = br.ReadUTF8UnicodeString();
-        MessageCode = br.ReadInt32();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

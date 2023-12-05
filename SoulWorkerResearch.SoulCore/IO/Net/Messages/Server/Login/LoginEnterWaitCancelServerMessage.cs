@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginEnterWaitCancelServerMessage : IBinaryMessage
+public readonly struct LoginEnterWaitCancelServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -21,15 +22,9 @@ public readonly struct LoginEnterWaitCancelServerMessage : IBinaryMessage
 
     #region Body
 
-    public IReadOnlyList<byte> Values { get; }
+    public IReadOnlyCollection<byte> Values { get; } = reader.ReadBytes(GameConfig.OptionsCount);
 
     #endregion Body
-
-    #region Constructors
-
-    public LoginEnterWaitCancelServerMessage(BinaryReader reader) => Values = reader.ReadBytes(Config.OptionsCount);
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

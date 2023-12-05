@@ -9,5 +9,5 @@ public enum BoosterType : byte
     NetCafe = 4,
     DayEvent = 5,
     NetCafeStoveGamesEvent = 6,
-    Max = 7,
+    Max = 7
 }

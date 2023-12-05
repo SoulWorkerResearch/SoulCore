@@ -1,26 +1,17 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes.Entities;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public readonly struct AppearanceValue : IAppearanceValue
+public readonly struct AppearanceValue(BinaryReader reader)
 {
-    public static AppearanceValue Empty { get; } = new();
+    public ushort Face { get; init; } = reader.ReadUInt16();
+    public EntityValue Shape { get; init; } = new EntityValue(reader);
+    public EntityValue Look { get; init; } = new EntityValue(reader);
 
-    public ushort Face { get; init; }
-    public AppearanceEntryValue Shape { get; init; }
-    public AppearanceEntryValue Look { get; init; }
-
-    #region IAppearanceValue
-
-    IAppearanceEntryValue IAppearanceValue.Shape => Shape;
-    IAppearanceEntryValue IAppearanceValue.Look => Look;
-
-    #endregion IAppearanceValue
-
-    internal AppearanceValue(BinaryReader reader)
+    public readonly struct EntityValue(BinaryReader reader)
     {
-        Face = reader.ReadUInt16();
-        Shape = new(reader);
-        Look = new(reader);
+        public HairEntity Hair { get; init; } = new HairEntity(reader);
+        public ushort EyeColor { get; init; } = reader.ReadUInt16();
+        public ushort SkinColor { get; init; } = reader.ReadUInt16();
     }
 }

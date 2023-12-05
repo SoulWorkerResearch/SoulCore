@@ -30,5 +30,5 @@ public enum ShopOpcode : byte
     CashBuyCountUpdate = 0x31,
     GetUrl = 0x32,
     CashClose = 0x33,
-    AccountItemUpdate = 0x34,
+    AccountItemUpdate = 0x34
 }

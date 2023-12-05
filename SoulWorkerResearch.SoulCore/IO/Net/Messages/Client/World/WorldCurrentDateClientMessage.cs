@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.World;
 
 [ClientMessage(Group, Command)]
-public readonly struct WorldCurrentDateClientMessage : IBinaryOutcomingMessage
+public readonly struct WorldCurrentDateClientMessage() : IBinaryOutMessage
 {
     #region Opcode
 
@@ -21,15 +22,9 @@ public readonly struct WorldCurrentDateClientMessage : IBinaryOutcomingMessage
 
     #region Body
 
-    public DateTime Value { get; init; }
+    public DateTime Value { get; init; } = DateTime.Now;
 
     #endregion Body
-
-    #region Constructors
-
-    public WorldCurrentDateClientMessage() => Value = DateTime.Now;
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

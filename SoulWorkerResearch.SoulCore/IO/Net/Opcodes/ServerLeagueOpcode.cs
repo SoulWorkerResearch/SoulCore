@@ -58,5 +58,5 @@ public enum ServerLeagueOpcode : byte
     Sync = 0x58,
     SyncLoad = 0x59,
     InventoryInfo = 0x60,
-    InventoryMove = 0x61,
+    InventoryMove = 0x61
 }

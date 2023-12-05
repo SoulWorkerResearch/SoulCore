@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -34,16 +35,16 @@ public readonly struct CharacterChangeSlotServerMessage : IBinaryMessage
     {
         AccountId = reader.ReadInt32();
 
-        int srcCharacterId = reader.ReadInt32();
-        int dstCharacterId = reader.ReadInt32();
+        var srcCharacterId = reader.ReadInt32();
+        var dstCharacterId = reader.ReadInt32();
 
         ErrorCode = reader.ReadInt32();
 
-        byte srcSlotId = reader.ReadByte();
-        byte dstSlotId = reader.ReadByte();
+        var srcSlotId = reader.ReadByte();
+        var dstSlotId = reader.ReadByte();
 
-        Src = new(srcCharacterId, srcSlotId);
-        Dst = new(dstCharacterId, dstSlotId);
+        Src = new Entry(srcCharacterId, srcSlotId);
+        Dst = new Entry(dstCharacterId, dstSlotId);
     }
 
     #endregion Constructors
@@ -54,7 +55,7 @@ public readonly struct CharacterChangeSlotServerMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region Types
+    #region DataTypes
 
     public readonly struct Entry
     {
@@ -68,5 +69,5 @@ public readonly struct CharacterChangeSlotServerMessage : IBinaryMessage
         }
     }
 
-    #endregion Types
+    #endregion DataTypes
 }

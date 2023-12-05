@@ -72,5 +72,5 @@ public enum MazeOpcode : byte
     SwitchNpcStatus = 0x7B,
     SwitchNpcClickReq = 0x7C,
     LuaFunctionReq = 0x7E,
-    LuaFunctionRes = 0x7F,
+    LuaFunctionRes = 0x7F
 }

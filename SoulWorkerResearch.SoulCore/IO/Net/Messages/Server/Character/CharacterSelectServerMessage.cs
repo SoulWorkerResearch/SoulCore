@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -21,10 +22,10 @@ public readonly struct CharacterSelectServerMessage : IBinaryMessage
 
     #region Body
 
-    public int CharacterId { get; }
-    public int AccountId { get; }
+    public int Character { get; }
+    public int Account { get; }
     public bool ClearTutorial { get; }
-    public int PreviousMapId { get; }
+    public int PreviousMap { get; }
     public int PreviousRevivePoint { get; }
 
     #endregion Body
@@ -33,10 +34,10 @@ public readonly struct CharacterSelectServerMessage : IBinaryMessage
 
     internal CharacterSelectServerMessage(BinaryReader reader)
     {
-        CharacterId = reader.ReadInt32();
-        AccountId = reader.ReadInt32();
+        Character = reader.ReadInt32();
+        Account = reader.ReadInt32();
         ClearTutorial = reader.ReadBoolean();
-        PreviousMapId = reader.ReadInt32();
+        PreviousMap = reader.ReadInt32();
         PreviousRevivePoint = reader.ReadInt32();
     }
 

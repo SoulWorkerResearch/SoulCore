@@ -6,5 +6,5 @@ public enum BoosterDecreaseTime : byte
     District = 0x1,
     Maze = 0x2,
     AllArea = 0x3,
-    Infinite = 0x4,
+    Infinite = 0x4
 }

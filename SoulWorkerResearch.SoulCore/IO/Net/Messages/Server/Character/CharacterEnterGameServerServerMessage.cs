@@ -1,6 +1,6 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
-using SoulWorkerResearch.SoulCore.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -23,9 +23,9 @@ public readonly struct CharacterEnterGameServerServerMessage : IBinaryMessage
 
     #region Body
 
-    public int AccountId { get; }
-    public int CharacterId { get; }
-    public IMapValue MapId { get; }
+    public int Account { get; }
+    public int Character { get; }
+    public MapValue Map { get; }
     public byte FirstConnect { get; }
     public ulong SessionKey { get; }
 
@@ -35,9 +35,9 @@ public readonly struct CharacterEnterGameServerServerMessage : IBinaryMessage
 
     internal CharacterEnterGameServerServerMessage(BinaryReader reader)
     {
-        AccountId = reader.ReadInt32();
-        CharacterId = reader.ReadInt32();
-        MapId = new MapValue(reader);
+        Account = reader.ReadInt32();
+        Character = reader.ReadInt32();
+        Map = new MapValue(reader);
         FirstConnect = reader.ReadByte();
         SessionKey = reader.ReadUInt64();
     }

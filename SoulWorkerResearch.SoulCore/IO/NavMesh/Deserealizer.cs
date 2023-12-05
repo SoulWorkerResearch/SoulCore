@@ -1,7 +1,7 @@
-﻿using SoulWorkerResearch.SoulCore.IO.NavMesh.DataType;
+﻿using System.Diagnostics;
+using SoulWorkerResearch.SoulCore.IO.NavMesh.DataType;
 using SoulWorkerResearch.SoulCore.IO.NavMesh.Extensions;
 using SoulWorkerResearch.SoulCore.IO.NavMesh.MetaInfo;
-using System.Diagnostics;
 
 namespace SoulWorkerResearch.SoulCore.IO.NavMesh;
 
@@ -26,12 +26,13 @@ namespace SoulWorkerResearch.SoulCore.IO.NavMesh;
 
 public sealed class BinarySerealizer
 {
-    #region Static Properties
+    #region Constructors
 
-    public static BinaryTagHeader Header { get; }
-    public static string Version => "hk_2012.2.0-r1";
+    public BinarySerealizer(Stream stream)
+    {
+    }
 
-    #endregion Static Properties
+    #endregion Constructors
 
     #region Static Methods
 
@@ -43,7 +44,7 @@ public sealed class BinarySerealizer
         var version = ReadVersion(reader);
         Debug.Assert(version == Version);
 
-        for (int i = 0; i < 2; i++)
+        for (var i = 0; i < 2; i++)
         {
             var valueType = reader.ReadSerializedType();
             switch (valueType)
@@ -60,18 +61,15 @@ public sealed class BinarySerealizer
 
     #endregion Static Methods
 
-    #region Constructors
-
-    public BinarySerealizer(Stream stream) { }
-
-    #endregion Constructors
-
     #region Private Static Methods
 
     private static string ReadVersion(BinaryReader reader)
     {
         var type = reader.ReadSerializedType();
-        if (type != SerializedType.Version) throw new ApplicationException();
+        if (type != SerializedType.Version)
+        {
+            throw new ApplicationException();
+        }
 
         var versionType = reader.ReadVersionVariant();
         switch (versionType)
@@ -92,4 +90,11 @@ public sealed class BinarySerealizer
     }
 
     #endregion Private Static Methods
+
+    #region Static Properties
+
+    public static BinaryTagHeader Header { get; }
+    public static string Version => "hk_2012.2.0-r1";
+
+    #endregion Static Properties
 }

@@ -1,14 +1,16 @@
-﻿using SoulWorkerResearch.SoulCore.Defines;
+﻿using System.Diagnostics;
+using System.Net;
+using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
-using System.Diagnostics;
-using System.Net;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryOutcomingMessage
+public readonly record struct LoginUserPersonsForServerResponseClientMessage(byte LastSelectedId, IReadOnlyCollection<LoginUserPersonsForServerResponseClientMessage.Entry> Values) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -23,46 +25,11 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryO
 
     #endregion Operators
 
-    #region Body
+    #region DataTypes
 
-    public byte LastSelectedId { get; init; }
-    public IReadOnlyCollection<Entry> Values { get; init; }
+    public readonly record struct Entry(ushort Id, string Name, GateStatus Status, IPEndPoint Endpoint, int Online, byte Person);
 
-    #endregion Body
-
-    #region Types
-
-    public readonly struct Entry
-    {
-        public ushort Id { get; init; }
-        public string Name { get; init; }
-        public GateStatus Status { get; init; }
-        public DnsEndPoint Endpoint { get; init; }
-        public uint PlayersCount { get; init; }
-        public byte PersonsCount { get; init; }
-
-        public Entry()
-        {
-            Id = 0;
-            Name = string.Empty;
-            Status = 0;
-            Endpoint = new DnsEndPoint(string.Empty, 0);
-            PlayersCount = 0;
-            PersonsCount = 0;
-        }
-    }
-
-    #endregion Types
-
-    #region Constructors
-
-    public LoginUserPersonsForServerResponseClientMessage()
-    {
-        LastSelectedId = 0;
-        Values = Array.Empty<Entry>();
-    }
-
-    #endregion Constructors
+    #endregion DataTypes
 
     #region IBinaryMessage
 
@@ -86,8 +53,8 @@ public readonly struct LoginUserPersonsForServerResponseClientMessage : IBinaryO
             writer.WriteUTF8UnicodeString(gate.Name);
             writer.WriteUTF8UnicodeString(gate.Endpoint.ToString());
             writer.Write(gate.Status);
-            writer.Write(gate.PlayersCount);
-            writer.Write(gate.PersonsCount);
+            writer.Write(gate.Online);
+            writer.Write(gate.Person);
         }
     }
 

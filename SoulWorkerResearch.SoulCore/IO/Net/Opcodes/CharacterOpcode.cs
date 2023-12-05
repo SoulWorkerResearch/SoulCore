@@ -88,5 +88,5 @@ public enum CharacterOpcode : byte
     LeagueWithdrawPenalty = 0x78,
     LeagueDeletePenalty = 0x79,
     EqualizerUpdate = 0x7A,
-    CashMileageInfo = 0x7B,
+    CashMileageInfo = 0x7B
 }

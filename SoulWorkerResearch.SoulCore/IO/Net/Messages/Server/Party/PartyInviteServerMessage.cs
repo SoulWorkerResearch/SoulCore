@@ -1,5 +1,6 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
@@ -38,8 +39,8 @@ public readonly struct PartyInviteServerMessage : IBinaryMessage
         var memberCharacterId = reader.ReadInt32();
         var masterId = reader.ReadInt32();
 
-        Member = new(memberCharacterId, memberCharacterName);
-        Master = new(masterId, masterCharacterName);
+        Member = new Character(memberCharacterId, memberCharacterName);
+        Master = new Character(masterId, masterCharacterName);
         ServerId = reader.ReadInt32();
         Result = reader.ReadInt32();
     }
@@ -52,7 +53,7 @@ public readonly struct PartyInviteServerMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region Types
+    #region DataTypes
 
     public readonly struct Character
     {
@@ -66,5 +67,5 @@ public readonly struct PartyInviteServerMessage : IBinaryMessage
         }
     }
 
-    #endregion Types
+    #endregion DataTypes
 }

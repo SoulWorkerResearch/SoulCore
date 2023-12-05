@@ -1,11 +1,12 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 
 [ServerMessage(Group, Command)]
-public readonly struct FriendInviteAcceptServerMessage : IBinaryMessage
+public readonly struct FriendInviteAcceptServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -22,24 +23,12 @@ public readonly struct FriendInviteAcceptServerMessage : IBinaryMessage
 
     #region Body
 
-    public int CharacterId { get; }
-    public int TargetCharacterId { get; }
-    public string TargetCharacterName { get; }
-    public bool Accept { get; }
+    public int CharacterId { get; } = reader.ReadInt32();
+    public int TargetCharacterId { get; } = reader.ReadInt32();
+    public string TargetCharacterName { get; } = reader.ReadUTF16UnicodeString();
+    public bool Accept { get; } = reader.ReadBoolean();
 
     #endregion Body
-
-    #region Constructors
-
-    internal FriendInviteAcceptServerMessage(BinaryReader reader)
-    {
-        CharacterId = reader.ReadInt32();
-        TargetCharacterId = reader.ReadInt32();
-        TargetCharacterName = reader.ReadUTF16UnicodeString();
-        Accept = reader.ReadBoolean();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

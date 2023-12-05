@@ -46,5 +46,5 @@ public enum WorldOpcode : byte
     EnterMapPc = 0x51,
     ExitMapPc = 0x52,
     ChangePacketOptimization = 0x60,
-    SkipInTutorial02Req = 0x61,
+    SkipInTutorial02Req = 0x61
 }

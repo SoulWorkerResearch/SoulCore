@@ -3,5 +3,5 @@
 internal enum SerializedType : byte
 {
     Version = 2,
-    TopLevel = 4,
+    TopLevel = 4
 }

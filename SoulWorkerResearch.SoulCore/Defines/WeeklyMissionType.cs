@@ -15,5 +15,5 @@ public enum WeeklyMissionType
     PvpPoint = 0xB,
     TheThing = 0xC,
     ItemRefine = 0xD,
-    MyRoomHelp = 0xE,
+    MyRoomHelp = 0xE
 }

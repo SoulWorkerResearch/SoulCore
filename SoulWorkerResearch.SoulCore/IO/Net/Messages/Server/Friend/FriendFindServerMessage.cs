@@ -1,11 +1,12 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Friend;
 
 [ServerMessage(Group, Command)]
-public readonly struct FriendFindServerMessage : IBinaryMessage
+public readonly struct FriendFindServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -22,15 +23,9 @@ public readonly struct FriendFindServerMessage : IBinaryMessage
 
     #region Body
 
-    public string CharacterName { get; }
+    public string CharacterName { get; } = reader.ReadUTF16UnicodeString();
 
     #endregion Body
-
-    #region Constructors
-
-    internal FriendFindServerMessage(BinaryReader reader) => CharacterName = reader.ReadUTF16UnicodeString();
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

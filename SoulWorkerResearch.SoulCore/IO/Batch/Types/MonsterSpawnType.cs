@@ -9,6 +9,5 @@ public enum MonsterSpawnType : byte
     TreasureBox,
     Unit,
 
-    [XmlEnum("NPC")]
-    Npc
+    [XmlEnum("NPC")] Npc
 }

@@ -1,6 +1,7 @@
 ﻿using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -35,7 +36,7 @@ public readonly struct CharacterRepresentativeChangeServerMessage : IBinaryMessa
     public CharacterRepresentativeChangeServerMessage(BinaryReader reader)
     {
         AccountId = reader.ReadInt32();
-        Person = new(reader);
+        Person = new Entry(reader);
         DateTime = new DateTime(reader.ReadInt64());
         Result = reader.ReadInt32();
     }
@@ -48,12 +49,12 @@ public readonly struct CharacterRepresentativeChangeServerMessage : IBinaryMessa
 
     #endregion IBinaryMessage
 
-    #region Types
+    #region DataTypes
 
     public readonly struct Entry
     {
         public int Id { get; }
-        public Class Class { get; }
+        public Defines.Character Class { get; }
         public byte Level { get; }
         public string Name { get; }
         public int PhotoId { get; }
@@ -68,5 +69,5 @@ public readonly struct CharacterRepresentativeChangeServerMessage : IBinaryMessa
         }
     }
 
-    #endregion Types
+    #endregion DataTypes
 }

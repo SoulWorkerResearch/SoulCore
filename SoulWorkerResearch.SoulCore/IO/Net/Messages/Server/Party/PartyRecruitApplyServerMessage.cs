@@ -1,7 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes.Entities;
 using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
@@ -55,7 +56,7 @@ public readonly struct PartyRecruitApplyServerMessage : IBinaryMessage
 
     #endregion IBinaryMessage
 
-    #region Types
+    #region DataTypes
 
     public readonly struct PartyMember
     {
@@ -64,15 +65,15 @@ public readonly struct PartyRecruitApplyServerMessage : IBinaryMessage
         public int MemberId { get; }
         public string Name { get; }
         public byte Level { get; }
-        public Class Class { get; }
-        public ClassAdvancement Advancement { get; }
+        public Defines.Character Class { get; }
+        public Advancement Advancement { get; }
         public uint ProfilePhotoId { get; }
         public int LocationId { get; }
         public int Channel { get; }
         public int MaxHp { get; }
         public int Hp { get; }
         public bool Login { get; }
-        public MapValue MapId { get; }
+        public MapEntity MapId { get; }
 
         #endregion Body
 
@@ -91,11 +92,11 @@ public readonly struct PartyRecruitApplyServerMessage : IBinaryMessage
             MaxHp = reader.ReadInt32();
             Hp = reader.ReadInt32();
             Login = reader.ReadBoolean();
-            MapId = new(reader);
+            MapId = new MapEntity(reader);
         }
 
         #endregion Constructors
     }
 
-    #endregion Types
+    #endregion DataTypes
 }

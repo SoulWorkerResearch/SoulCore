@@ -1,11 +1,12 @@
 ﻿using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Chat;
 
 [ServerMessage(Group, Command)]
-public readonly struct ChatMegaphoneServerMessage : IBinaryMessage
+public readonly struct ChatMegaphoneServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -22,26 +23,13 @@ public readonly struct ChatMegaphoneServerMessage : IBinaryMessage
 
     #region Body
 
-    public byte InventoryType { get; }
-    public short Slot { get; }
-    public int CharacterId { get; }
-    public string CharacterName { get; }
-    public string Message { get; }
+    public byte InventoryType { get; } = reader.ReadByte();
+    public short Slot { get; } = reader.ReadInt16();
+    public int CharacterId { get; } = reader.ReadInt32();
+    public string CharacterName { get; } = reader.ReadUTF16UnicodeString();
+    public string Message { get; } = reader.ReadUTF16UnicodeString();
 
     #endregion Body
-
-    #region Constructors
-
-    public ChatMegaphoneServerMessage(BinaryReader br)
-    {
-        InventoryType = br.ReadByte();
-        Slot = br.ReadInt16();
-        CharacterId = br.ReadInt32();
-        CharacterName = br.ReadUTF16UnicodeString();
-        Message = br.ReadUTF16UnicodeString();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

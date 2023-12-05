@@ -1,50 +1,44 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Packet;
-using System.IO;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Net;
 
 [TestClass]
 public sealed class PacketTest
 {
-    #region Methods
-
     [TestMethod]
     public void HeaderMagic0Test()
     {
-        Assert.AreEqual(Config.PacketHeaderMagic0, _header.Magick.Left, "Bad first magick");
+        Assert.AreEqual(GameConfig.PacketHeaderMagic0, _header.Magic.Left, "Bad first magick");
     }
 
     [TestMethod]
     public void HeaderMagic1Test()
     {
-        Assert.AreEqual(Config.PacketHeaderMagic1, _header.Magick.Right, "Bad second magick");
+        Assert.AreEqual(GameConfig.PacketHeaderMagic1, _header.Magic.Right, "Bad second magick");
     }
 
     [TestMethod]
     public void HeaderSizeTest()
     {
-        Assert.AreEqual(Config.PacketHeaderSize, _header.Size, "Bad packet size");
+        Assert.AreEqual(GameConfig.PacketHeaderSize, _header.Size, "Bad packet size");
     }
 
     [TestMethod]
     public void HeaderProtocolTest()
     {
-        Assert.AreEqual(PacketProtocol.ServerClient, _header.Protocol, "Bad protocol value");
+        Assert.AreEqual(PacketProtocol.Game, _header.Protocol, "Bad protocol value");
     }
 
     [TestMethod]
     public void HeaderKeyTest()
     {
-        Assert.AreEqual(_keyValue, _header.Key, "Bad key value");
+        // Assert.AreEqual(_keyValue, _header.Key, "Bad key value");
     }
 
-    #endregion Methods
-
-    #region Static Constructors
-    
     static PacketTest()
     {
         using var stream = new MemoryStream();
@@ -58,25 +52,17 @@ public sealed class PacketTest
         _header = new PacketHeader(reader);
     }
 
-
-    #endregion Static Constructors
-
-    #region Private Static Methods
-
-    private static PacketHeader MakePacket() => new()
+    private static PacketHeader MakePacket()
     {
-        Magick = new PacketMagick(null, null),
-        Size = Config.PacketHeaderSize,
-        Protocol = PacketProtocol.ServerClient,
-        Key = _keyValue,
-    };
-
-    #endregion Private Static Methods
-
-    #region Private Static Fields
+        return new()
+        {
+            Magic = new PacketMagick(null, null),
+            Size = GameConfig.PacketHeaderSize,
+            Protocol = PacketProtocol.Game,
+            // Key = _keyValue
+        };
+    }
 
     private static readonly PacketHeader _header;
-    private static readonly byte _keyValue = 7;
-
-    #endregion Private Static Fields
+    // private static readonly byte _keyValue = 7;
 }

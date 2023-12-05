@@ -56,5 +56,5 @@ public enum LeagueOpcode : byte
     InventoryMove = 0x54,
     InventoryInfo = 0x56,
     InventoryMoveCast = 0x57,
-    NameChangeRes = 0x58,
+    NameChangeRes = 0x58
 }

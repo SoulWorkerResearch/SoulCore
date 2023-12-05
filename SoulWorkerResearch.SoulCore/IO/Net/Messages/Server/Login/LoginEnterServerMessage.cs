@@ -1,12 +1,13 @@
 ﻿using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.Extensions;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Login;
 
 [ServerMessage(Group, Command)]
-public readonly struct LoginEnterServerMessage : IBinaryMessage
+public readonly struct LoginEnterServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -23,24 +24,12 @@ public readonly struct LoginEnterServerMessage : IBinaryMessage
 
     #region Body
 
-    public int AccountId { get; }
-    public ushort LastWorldId { get; }
-    public ulong SessionKey { get; }
-    public EnterGateWay Way { get; }
+    public int Account { get; } = reader.ReadInt32();
+    public ushort LastGate { get; } = reader.ReadUInt16();
+    public long Key { get; } = reader.ReadInt64();
+    public EnterGateWay Way { get; } = reader.ReadEnterGateWayType();
 
     #endregion Body
-
-    #region Constructors
-
-    public LoginEnterServerMessage(BinaryReader reader)
-    {
-        AccountId = reader.ReadInt32();
-        LastWorldId = reader.ReadUInt16();
-        SessionKey = reader.ReadUInt64();
-        Way = reader.ReadEnterGateWayType();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

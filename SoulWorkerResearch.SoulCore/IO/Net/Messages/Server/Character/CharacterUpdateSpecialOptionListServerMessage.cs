@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -27,7 +28,10 @@ public readonly struct CharacterUpdateSpecialOptionListServerMessage : IBinaryMe
 
     #region Constructors
 
-    internal CharacterUpdateSpecialOptionListServerMessage(BinaryReader reader) => Character = reader.ReadInt32();
+    internal CharacterUpdateSpecialOptionListServerMessage(BinaryReader reader)
+    {
+        Character = reader.ReadInt32();
+    }
 
     #endregion Constructors
 

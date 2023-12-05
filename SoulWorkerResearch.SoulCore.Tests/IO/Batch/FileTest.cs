@@ -1,11 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SoulWorkerResearch.SoulCore.IO.Batch.EventBox;
-using SoulWorkerResearch.SoulCore.IO.Batch.Types;
-using System.Drawing;
-using System.IO;
-using System.Linq;
+﻿using System.Drawing;
 using System.Numerics;
-
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SoulWorkerResearch.SoulCore.IO.Batch.Entities;
+using SoulWorkerResearch.SoulCore.IO.Batch.Types;
 using BatFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
 using SysFile = System.IO.File;
 
@@ -14,13 +11,21 @@ namespace SoulWorkerResearch.SoulCore.Tests.IO.Batch;
 [TestClass]
 public sealed class FileTest
 {
+    private readonly BatFile _m24ArkShipHero;
+
+    public FileTest()
+    {
+        using var fs = SysFile.OpenRead(Path.Combine("Datas", "World", "Table", "M24_ARKSHIP_HERO.vbatch"));
+        _m24ArkShipHero = BatFile.FromStream(fs).AsTask().GetAwaiter().GetResult();
+    }
+
     [TestMethod]
     public void VMonsterSpawnBox()
     {
         Assert.AreEqual(_m24ArkShipHero.EventBox.MonsterSpawns.Count, 1);
         var value = _m24ArkShipHero.EventBox.MonsterSpawns[0];
 
-        var monsters = new Monster[]
+        var monsters = new[]
         {
             new Monster(34401415, MonsterSpawnType.Monster, 10000),
             new Monster(0, MonsterSpawnType.Monster, 10000),
@@ -118,12 +123,4 @@ public sealed class FileTest
 
         Assert.AreEqual(value.Sector, 10001u);
     }
-
-    public FileTest()
-    {
-        using var fs = SysFile.OpenRead(Path.Combine("Datas", "World", "Table", "M24_ARKSHIP_HERO.vbatch"));
-        _m24ArkShipHero = BatFile.FromStream(fs).AsTask().GetAwaiter().GetResult();
-    }
-
-    private readonly BatFile _m24ArkShipHero;
 }

@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Channel;
 
 /// <summary>
-/// This packet no have content.
+///     This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
 public readonly struct ChannelInfoServerMessage : IBinaryMessage
@@ -21,18 +22,6 @@ public readonly struct ChannelInfoServerMessage : IBinaryMessage
     public static implicit operator Opcode(ChannelInfoServerMessage _) => new(Group, Command);
 
     #endregion Operators
-
-    #region Body
-
-    #endregion Body
-
-    #region Constructors
-
-    internal ChannelInfoServerMessage(BinaryReader reader)
-    {
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

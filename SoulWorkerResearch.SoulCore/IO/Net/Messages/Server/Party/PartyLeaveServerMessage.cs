@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
 
 /// <summary>
-/// This packet no have content.
+///     This packet no have content.
 /// </summary>
 [ServerMessage(Group, Command)]
 public readonly struct PartyLeaveServerMessage : IBinaryMessage

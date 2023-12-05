@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Character;
 
 [ClientMessage(Group, Command)]
-public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcomingMessage
+public readonly struct CharacterBackgroundChangeClientMessage(int Account, int Background, int _1 = 0) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -19,14 +20,6 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcoming
 
     #endregion Operators
 
-    #region Body
-
-    public int AccountId { get; init; }
-    public int BackgroundId { get; init; }
-    public int _1 { get; init; }
-
-    #endregion Body
-
     #region IBinaryMessage
 
     public Opcode GetOpcode() => this;
@@ -37,8 +30,8 @@ public readonly struct CharacterBackgroundChangeClientMessage : IBinaryOutcoming
 
     public void ToBinary(BinaryWriter writer)
     {
-        writer.Write(AccountId);
-        writer.Write(BackgroundId);
+        writer.Write(Account);
+        writer.Write(Background);
         writer.Write(_1);
     }
 

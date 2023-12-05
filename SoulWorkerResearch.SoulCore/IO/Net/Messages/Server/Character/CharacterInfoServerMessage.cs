@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Character;
@@ -21,7 +22,7 @@ public readonly struct CharacterInfoServerMessage : IBinaryMessage
 
     #region Body
 
-    public int CharacterId { get; }
+    public int Character { get; }
     public byte _1 { get; }
 
     #endregion Body
@@ -30,7 +31,7 @@ public readonly struct CharacterInfoServerMessage : IBinaryMessage
 
     internal CharacterInfoServerMessage(BinaryReader reader)
     {
-        CharacterId = reader.ReadInt32();
+        Character = reader.ReadInt32();
         _1 = reader.ReadByte();
     }
 

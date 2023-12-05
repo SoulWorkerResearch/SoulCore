@@ -8,6 +8,5 @@ public enum MonsterType : byte
     Monster,
     DestructionObject,
 
-    [XmlEnum("PC")]
-    Pc,
+    [XmlEnum("PC")] Pc
 }

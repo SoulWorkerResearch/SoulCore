@@ -9,5 +9,5 @@ public enum ChatType : uint
     Whisper = 0x5,
     Yell = 0x6,
     Notice = 0x7,
-    Megaphone = 0xD,
+    Megaphone = 0xD
 }

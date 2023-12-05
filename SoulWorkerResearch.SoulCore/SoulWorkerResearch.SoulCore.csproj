@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <Authors>sawich</Authors>
-    <PackageTags>soulworker</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <RepositoryUrl>https://github.com/SoulWorkerResearch/SoulCore/</RepositoryUrl>
-    <RepositoryType>github</RepositoryType>
-	<LangVersion>preview</LangVersion>
-	<ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <Authors>sawich</Authors>
+        <PackageTags>soulworker</PackageTags>
+		<Description>A heart of SoulWorker game</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <!--<PackageLicenseFile>LICENSE</PackageLicenseFile>-->
+        <RepositoryUrl>https://github.com/SoulWorkerResearch/SoulCore/</RepositoryUrl>
+        <RepositoryType>github</RepositoryType>
+        <LangVersion>preview</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn>1701;1702;NU5104</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <NoWarn>1701;1702;NU5104</NoWarn>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <NoWarn>1701;1702;NU5104</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <NoWarn>1701;1702;NU5104</NoWarn>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="../LICENSE" Pack="true" PackagePath="" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0-preview.1.23110.8" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-preview.1.23110.8" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0-preview.1.23110.8" />
-    <PackageReference Include="SharpZipLib" Version="1.4.2" />
-    <PackageReference Include="System.Linq.Async" Version="6.1.0-preview.1" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0-rc.1.23419.4" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0-rc.1.23419.4" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0-rc.1.23419.4" />
+        <PackageReference Include="SharpZipLib" Version="1.4.2" />
+        <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IO\Net\Messages\Shared\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="IO\Net\Messages\Client\Item\" />
+        <Folder Include="IO\Net\Messages\Client\Move\" />
+        <Folder Include="IO\Net\Messages\Shared\" />
+    </ItemGroup>
+
 </Project>

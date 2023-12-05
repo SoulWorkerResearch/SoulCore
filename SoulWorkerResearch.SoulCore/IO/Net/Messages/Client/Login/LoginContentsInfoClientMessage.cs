@@ -1,11 +1,13 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
+public readonly record struct LoginContentsInfoClientMessage(int Account) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -22,24 +24,11 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
 
     #region Body
 
-    public int AccountId { get; init; }
-    public IReadOnlyCollection<byte> OptionBit { get; init; }
-    public IReadOnlyCollection<bool> Content { get; init; }
-    public IReadOnlyCollection<byte> KeyOption { get; init; }
+    public IReadOnlyCollection<byte> OptionBit { get; init; } = OptionBitEmpty;
+    public IReadOnlyCollection<bool> Content { get; init; } = ContentEmpty;
+    public IReadOnlyCollection<byte> KeyOption { get; init; } = KeyOptionEmpty;
 
     #endregion Body
-
-    #region Constructors
-
-    public LoginContentsInfoClientMessage()
-    {
-        AccountId = 0;
-        OptionBit = OptionBitEmpty;
-        Content = ContentEmpty;
-        KeyOption = KeyOptionEmpty;
-    }
-
-    #endregion Constructors
 
     #region Constants
 
@@ -61,7 +50,7 @@ public readonly struct LoginContentsInfoClientMessage : IBinaryOutcomingMessage
     {
         writer.Write(OptionBit);
         writer.Write(Content);
-        writer.Write(AccountId);
+        writer.Write(Account);
         writer.Write(KeyOption);
     }
 

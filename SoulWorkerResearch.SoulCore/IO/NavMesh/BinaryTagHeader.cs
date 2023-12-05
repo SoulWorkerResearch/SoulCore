@@ -1,8 +1,6 @@
 ﻿namespace SoulWorkerResearch.SoulCore.IO.NavMesh;
 
-public readonly struct BinaryTagHeader
+public readonly struct BinaryTagHeader(BinaryReader reader)
 {
-    public BinaryTagMagick Magick { get; init; }
-
-    public BinaryTagHeader(BinaryReader reader) => Magick = new(reader);
+    public BinaryTagMagic Magic { get; } = new BinaryTagMagic(reader);
 }

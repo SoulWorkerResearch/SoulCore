@@ -9,6 +9,5 @@ public enum ClearType : byte
     Always,
     ModeClear,
 
-    [XmlEnum("Kill_Perpect")]
-    KillPerpect,
+    [XmlEnum("Kill_Perpect")] KillPerpect
 }

@@ -1,13 +1,15 @@
-﻿using SoulWorkerResearch.SoulCore.Defines;
+﻿using System.Text;
+using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
-using System.Text;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Login;
 
 [ClientMessage(Group, Command)]
-public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
+public readonly struct LoginResultClientMessage : IBinaryOutMessage
 {
     #region Opcode
 
@@ -31,7 +33,7 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
     public AuthLoginErrorMessageCode ErrorCode { get; init; }
     public byte LoginType { get; init; }
     public string AuthId { get; init; } = string.Empty;
-    public ulong SessionKey { get; init; }
+    public long SessionKey { get; init; }
     public Permisson GameMaster { get; init; }
     public DateOnly Brith { get; init; }
 
@@ -66,7 +68,7 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
     public void ToBinary(BinaryWriter writer)
     {
         writer.Write(AccountId);
-        writer.Write(byte.MinValue);
+        // writer.Write(byte.MinValue);
 
         writer.Write(IsClearTutorial);
         writer.Write(Encoding.ASCII.GetBytes(Mac));
@@ -74,9 +76,9 @@ public readonly struct LoginResultClientMessage : IBinaryOutcomingMessage
         writer.WriteUTF16UnicodeString(ErrorMessage);
         writer.Write(ErrorCode);
 
-        writer.Write(byte.MinValue);
+        // writer.Write(byte.MinValue);
         writer.Write(LoginType);
-        writer.Write(byte.MinValue);
+        // writer.Write(byte.MinValue);
 
         writer.WriteUTF16UnicodeString(AuthId);
         writer.Write(SessionKey);

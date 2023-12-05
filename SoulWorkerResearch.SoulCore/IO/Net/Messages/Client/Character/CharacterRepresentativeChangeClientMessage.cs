@@ -1,12 +1,14 @@
 ﻿using SoulWorkerResearch.SoulCore.Defines;
 using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
 using SoulWorkerResearch.SoulCore.IO.Net.Extensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Extensions.BinaryWriterExtensions;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Client.Character;
 
 [ClientMessage(Group, Command)]
-public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryOutcomingMessage
+public readonly record struct CharacterRepresentativeChangeClientMessage(int Account, CharacterRepresentativeChangeClientMessage.Entry Person, int Result) : IBinaryOutMessage
 {
     #region Opcode
 
@@ -23,56 +25,15 @@ public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryOutco
 
     #region Body
 
-    public int AccountId { get; init; }
-    public Entry Person { get; init; }
-    public DateTime DateTime { get; init; }
-    public int Result { get; init; }
+    public DateTime DateTime { get; init; } = DateTime.UtcNow;
 
     #endregion Body
 
-    #region Types
+    #region DataTypes
 
-    public readonly struct Entry
-    {
-        public static Entry Empty { get; } = new Entry();
+    public readonly record struct Entry(int Id, Defines.Character Class, byte Level, string Name, int Photo) { }
 
-        #region Body
-
-        public int Id { get; init; }
-        public Class Class { get; init; }
-        public byte Level { get; init; }
-        public string Name { get; init; }
-        public uint PhotoId { get; init; }
-
-        #endregion Body
-
-        #region Constructors
-
-        public Entry()
-        {
-            Id = 0;
-            Class = Class.None;
-            Level = 0;
-            Name = string.Empty;
-            PhotoId = 0;
-        }
-
-        #endregion Constructors
-    }
-
-    #endregion Types
-
-    #region Constructors
-
-    public CharacterRepresentativeChangeClientMessage()
-    {
-        AccountId = 0;
-        Person = Entry.Empty;
-        DateTime = DateTime.UtcNow;
-        Result = 0;
-    }
-
-    #endregion Constructors
+    #endregion DataTypes
 
     #region IBinaryMessage
 
@@ -84,12 +45,12 @@ public readonly struct CharacterRepresentativeChangeClientMessage : IBinaryOutco
 
     public void ToBinary(BinaryWriter writer)
     {
-        writer.Write(AccountId);
+        writer.Write(Account);
         writer.Write(Person.Id);
         writer.Write(Person.Class);
         writer.Write(Person.Level);
         writer.WriteUTF16UnicodeString(Person.Name);
-        writer.Write(Person.PhotoId);
+        writer.Write(Person.Photo);
         writer.Write(DateTime.Ticks);
         writer.Write(Result);
     }

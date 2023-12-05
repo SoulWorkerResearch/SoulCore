@@ -3,6 +3,6 @@
 public enum PacketProtocol : byte
 {
     None,
-    ServerClient,
-    ServerRelay
+    Game,
+    Relay
 }

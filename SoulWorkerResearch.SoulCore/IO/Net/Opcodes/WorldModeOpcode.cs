@@ -9,5 +9,5 @@ public enum WorldModeOpcode : byte
     Update = 0x2,
     Finish = 0x3,
     Rank = 0x4,
-    Info = 0x5,
+    Info = 0x5
 }

@@ -49,5 +49,5 @@ public enum ItemClassifySlotType : byte
     AppearanceHair = 251,
     AppearanceHairColor = 252,
     AppearanceEyeColor = 253,
-    AppearanceBodyColor = 254,
+    AppearanceBodyColor = 254
 }

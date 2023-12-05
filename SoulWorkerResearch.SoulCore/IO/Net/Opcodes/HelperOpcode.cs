@@ -19,5 +19,5 @@ public enum HelperOpcode : byte
     ChangeOrder = 0x12,
     SyncPos = 0x13,
     AllRelease = 0x14,
-    AutoSummon = 0x15,
+    AutoSummon = 0x15
 }

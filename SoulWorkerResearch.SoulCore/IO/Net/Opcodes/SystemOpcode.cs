@@ -18,5 +18,5 @@ public enum SystemOpcode : byte
     SgTokenUpdate = 0x11,
     GameGuardAuth = 0x12,
     GameGuardError = 0x13,
-    TickLog = 0x21,
+    TickLog = 0x21
 }

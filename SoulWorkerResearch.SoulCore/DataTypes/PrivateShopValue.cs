@@ -1,9 +1,8 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
-using SoulWorkerResearch.SoulCore.Extensions;
+﻿using SoulWorkerResearch.SoulCore.Extensions;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public readonly struct PrivateShopValue : IPrivateShopValue
+public readonly struct PrivateShopValue 
 {
     public static PrivateShopValue Empty { get; } = new();
 

@@ -24,5 +24,5 @@ public enum FriendOpcode : byte
     RecommandList = 0x51,
     Message = 0x61,
     Clear = 0x62,
-    ClearBlocklist = 0x63,
+    ClearBlocklist = 0x63
 }

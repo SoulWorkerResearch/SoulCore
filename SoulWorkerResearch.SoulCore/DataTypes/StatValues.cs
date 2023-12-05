@@ -1,57 +1,30 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
+﻿using SoulWorkerResearch.SoulCore.DataTypes.Entities;
 
 namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-public readonly struct StatValues : IStatValues
+public readonly struct StatValues
 {
-    public static StatValues Empty { get; } = new();
+    public StatEntity Health { get; init; }
+    public StatEntity SoulGain { get; init; }
+    public StatEntity SoulVapor { get; init; }
+    public StatEntity Stamina { get; init; }
 
     /// <summary>
-    /// Health Point
+    ///     IDK
     /// </summary>
-    public StatValue Hp { get; init; }
+    public StatEntity Fd { get; init; }
 
-    /// <summary>
-    /// Soul Gain
-    /// </summary>
-    public StatValue Sg { get; init; }
-
-    /// <summary>
-    /// Soul Vapor
-    /// </summary>
-    public StatValue Sv { get; init; }
-
-    /// <summary>
-    /// Stamina
-    /// </summary>
-    public StatValue St { get; init; }
-
-    /// <summary>
-    /// IDK
-    /// </summary>
-    public StatValue Fd { get; init; }
-
-    public float As { get; init; }
-    public float Ms { get; init; }
-
-    #region IStatValues
-
-    IStatValue IStatValues.Hp => Hp;
-    IStatValue IStatValues.Sg => Sg;
-    IStatValue IStatValues.Sv => Sv;
-    IStatValue IStatValues.St => St;
-    IStatValue IStatValues.Fd => Fd;
-
-    #endregion IStatValues
+    public float AttackSpeed { get; init; }
+    public float MoveSpeed { get; init; }
 
     internal StatValues(BinaryReader reader)
     {
-        Hp = new(reader);
-        Sg = new(reader);
-        Sv = new(reader);
-        St = new(reader);
-        Fd = new(reader);
-        As = reader.ReadSingle();
-        Ms = reader.ReadSingle();
+        Health = new StatEntity(reader);
+        SoulGain = new StatEntity(reader);
+        SoulVapor = new StatEntity(reader);
+        Stamina = new StatEntity(reader);
+        Fd = new StatEntity(reader);
+        AttackSpeed = reader.ReadSingle();
+        MoveSpeed = reader.ReadSingle();
     }
 }

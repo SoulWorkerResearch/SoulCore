@@ -1,4 +1,5 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Party;
@@ -27,7 +28,10 @@ public readonly struct PartyChangeMasterServerMessage : IBinaryMessage
 
     #region Constructors
 
-    internal PartyChangeMasterServerMessage(BinaryReader reader) => CharacterId = reader.ReadInt32();
+    internal PartyChangeMasterServerMessage(BinaryReader reader)
+    {
+        CharacterId = reader.ReadInt32();
+    }
 
     #endregion Constructors
 

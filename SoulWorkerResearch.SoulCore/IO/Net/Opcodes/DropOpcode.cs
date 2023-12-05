@@ -7,5 +7,5 @@ public enum DropOpcode : byte
 {
     Infos = 0x1,
     PickUp = 0x2,
-    Delete = 0x3,
+    Delete = 0x3
 }

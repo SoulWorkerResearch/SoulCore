@@ -8,5 +8,5 @@ public enum AuthLoginErrorMessageCode : uint
     BlockAccountId = 3,
     BlockMac = 5,
     WrongMac = 6,
-    CheckSystem = 7,
+    CheckSystem = 7
 }

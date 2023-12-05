@@ -11,5 +11,5 @@ public enum GmAgentOpcode : byte
     TimeEvent = 0x4,
     ValueEvent = 0x5,
     ServerOption = 0x6,
-    CashShopBanner = 0x7,
+    CashShopBanner = 0x7
 }

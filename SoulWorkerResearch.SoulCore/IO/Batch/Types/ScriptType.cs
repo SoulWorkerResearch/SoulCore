@@ -7,6 +7,5 @@ public enum ScriptType : byte
     None,
     Spawn,
 
-    [XmlEnum("HP")]
-    Hp
+    [XmlEnum("HP")] Hp
 }

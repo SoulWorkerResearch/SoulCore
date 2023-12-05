@@ -7,8 +7,7 @@
 
 ## [Well cum 👌 to discord](http://discord.gg/SequFJP)
 
-[![Discord](https://img.shields.io/discord/606442027873206292?style=flat-square)](http://discord.gg/SequFJP)
-
+[![Discord](https://img.shields.io/discord/606442027873206292?style=for-the-badge)](http://discord.gg/SequFJP)
 
 ## Contributors ❤️
 

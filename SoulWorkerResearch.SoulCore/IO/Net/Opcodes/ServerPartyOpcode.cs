@@ -40,5 +40,5 @@ public enum ServerPartyOpcode : byte
     Info = 0x40,
     Name_change = 0x41,
     Matching_maze = 0x42,
-    Maze_clear = 0x43,
+    Maze_clear = 0x43
 }

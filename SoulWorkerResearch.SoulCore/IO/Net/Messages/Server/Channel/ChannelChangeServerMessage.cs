@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Channel;
 
 [ServerMessage(Group, Command)]
-public readonly struct ChannelChangeServerMessage : IBinaryMessage
+public readonly struct ChannelChangeServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -21,15 +22,9 @@ public readonly struct ChannelChangeServerMessage : IBinaryMessage
 
     #region Body
 
-    public ushort ChannelId { get; }
+    public ushort Channel { get; } = reader.ReadUInt16();
 
     #endregion Body
-
-    #region Constructors
-
-    internal ChannelChangeServerMessage(BinaryReader reader) => ChannelId = reader.ReadUInt16();
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

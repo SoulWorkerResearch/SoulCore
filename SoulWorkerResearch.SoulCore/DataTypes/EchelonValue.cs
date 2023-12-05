@@ -1,11 +1,7 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
+﻿namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-namespace SoulWorkerResearch.SoulCore.DataTypes;
-
-public readonly struct EchelonValue : IEchelonValue
+public readonly struct EchelonValue 
 {
-    public static EchelonValue Empty { get; } = new();
-
     public byte Level { get; init; }
     public int Exp { get; init; }
 

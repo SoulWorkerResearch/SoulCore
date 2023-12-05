@@ -1,10 +1,11 @@
 ﻿using SoulWorkerResearch.SoulCore.IO.Net.Attributes;
+using SoulWorkerResearch.SoulCore.IO.Net.Messages.Abstractions;
 using SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 
 namespace SoulWorkerResearch.SoulCore.IO.Net.Messages.Server.Drop;
 
 [ServerMessage(Group, Command)]
-public readonly struct DropPickUpServerMessage : IBinaryMessage
+public readonly struct DropPickUpServerMessage(BinaryReader reader) : IBinaryMessage
 {
     #region Opcode
 
@@ -21,20 +22,10 @@ public readonly struct DropPickUpServerMessage : IBinaryMessage
 
     #region Body
 
-    public int ItemGroup { get; }
-    public long ItemSerial { get; }
+    public int ItemGroup { get; } = reader.ReadInt32();
+    public long ItemSerial { get; } = reader.ReadInt64();
 
     #endregion Body
-
-    #region Constructors
-
-    internal DropPickUpServerMessage(BinaryReader reader)
-    {
-        ItemGroup = reader.ReadInt32();
-        ItemSerial = reader.ReadInt64();
-    }
-
-    #endregion Constructors
 
     #region IBinaryMessage
 

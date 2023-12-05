@@ -19,5 +19,5 @@ public enum TradeOpcode : byte
     PrivateShopBuy = 0xC,
     PrivateShopSell = 0xD,
     PrivateShopSelect = 0xE,
-    PrivateShopName = 0xF,
+    PrivateShopName = 0xF
 }

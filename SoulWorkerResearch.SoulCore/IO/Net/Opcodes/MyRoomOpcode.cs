@@ -39,5 +39,5 @@ public enum MyRoomOpcode : byte
     BoardList = 0x44,
     RankInfo = 0x46,
     FavoriteInfo = 0x47,
-    RankReward = 0x48,
+    RankReward = 0x48
 }

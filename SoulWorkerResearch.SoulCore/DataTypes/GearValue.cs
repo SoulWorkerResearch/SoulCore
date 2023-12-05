@@ -1,11 +1,7 @@
-﻿using SoulWorkerResearch.SoulCore.Abstractions.DataTypes;
+﻿namespace SoulWorkerResearch.SoulCore.DataTypes;
 
-namespace SoulWorkerResearch.SoulCore.DataTypes;
-
-public readonly struct GearValue : IGearValue
+public readonly struct GearValue
 {
-    public static GearValue Empty { get; } = new();
-
     public byte UpgradeLevel { get; init; }
     public int PrototypeId { get; init; } = -1;
 

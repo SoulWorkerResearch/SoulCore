@@ -1,7 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Threading.Tasks;
-
 using BatchFile = SoulWorkerResearch.SoulCore.IO.Batch.File;
 
 namespace SoulWorkerResearch.SoulCore.Tests.IO.Batch;
@@ -18,7 +15,7 @@ public sealed class EnumTest
         {
             await using var fs = File.OpenRead(path);
 
-            var root = BatchFile.FromStream(fs, cancellationToken);
+            _ = await BatchFile.FromStream(fs, cancellationToken);
         });
     }
 }

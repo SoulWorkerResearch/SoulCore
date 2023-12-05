@@ -4,8 +4,7 @@ namespace SoulWorkerResearch.SoulCore.IO.Batch.Types;
 
 public enum EntityType : byte
 {
-    [XmlEnum("PC")]
-    Pc,
+    [XmlEnum("PC")] Pc,
 
     Npc,
     Monster,

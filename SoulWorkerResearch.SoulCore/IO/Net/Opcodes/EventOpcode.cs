@@ -26,5 +26,5 @@ public enum EventOpcode : byte
     BattlePassLoad = 0x30,
     BattlePassUpdate = 0x31,
     BattlePassReward = 0x32,
-    BattlePassUpgrade = 0x33,
+    BattlePassUpgrade = 0x33
 }

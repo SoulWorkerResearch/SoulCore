@@ -10,5 +10,5 @@ public enum VaccumOpcode : byte
     ClickComplete = 0x3,
     In = 0x11,
     Out = 0x12,
-    Infos = 0x13,
+    Infos = 0x13
 }

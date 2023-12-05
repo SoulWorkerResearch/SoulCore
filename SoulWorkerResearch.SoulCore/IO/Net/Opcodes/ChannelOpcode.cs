@@ -6,5 +6,5 @@ namespace SoulWorkerResearch.SoulCore.IO.Net.Opcodes;
 public enum ChannelOpcode : byte
 {
     Info = 0x1,
-    Change = 0x2,
+    Change = 0x2
 }

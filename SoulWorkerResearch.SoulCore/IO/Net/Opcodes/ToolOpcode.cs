@@ -14,5 +14,5 @@ public enum ToolOpcode : byte
     KeepAlive = 0x7,
     ClearReward = 0x8,
     Disassemble = 0x9,
-    Soulstone = 0x10,
+    Soulstone = 0x10
 }

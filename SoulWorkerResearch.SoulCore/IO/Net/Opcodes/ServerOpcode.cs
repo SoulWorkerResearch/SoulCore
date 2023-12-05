@@ -65,5 +65,5 @@ public enum ServerOpcode
     CreateModeMazeRes = 0x73,
     RouletteEvent = 0x74,
     RouletteEventUpdate = 0x75,
-    ReenterMap = 0x77,
+    ReenterMap = 0x77
 }

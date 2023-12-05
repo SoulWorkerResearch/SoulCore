@@ -153,5 +153,5 @@ public enum ItemStatId : byte
     EffectSpecial_CITADEL_DAMAGED_DOWN_RAT = 0x98,
     EffectSpecial_PRIMAL_DAMAGE_ADD_RAT = 0x99,
     EffectSpecial_PRIMAL_DAMAGED_DOWN_RAT = 0x9A,
-    EffectSpecial_END = 0x9B,
+    EffectSpecial_END = 0x9B
 }

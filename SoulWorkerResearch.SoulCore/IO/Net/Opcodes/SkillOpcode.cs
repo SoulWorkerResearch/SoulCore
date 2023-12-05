@@ -77,5 +77,5 @@ public enum SkillOpcode : byte
     SkillSummonAkashic = 0x7B,
     SkillCooltimeReduce = 0x7C,
     SkillDefenceType = 0x7D,
-    PassiveSkillCooltime = 0x7E,
+    PassiveSkillCooltime = 0x7E
 }

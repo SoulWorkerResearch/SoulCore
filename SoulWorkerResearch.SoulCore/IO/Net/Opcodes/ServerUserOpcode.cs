@@ -34,5 +34,5 @@ public enum ServerUserOpcode : byte
     UpdateAuthType = 0x35,
     UpdateAwaken = 0x36,
     GfBillingPostReload = 0x37,
-    ProfilePhotoUpdate = 0x38,
+    ProfilePhotoUpdate = 0x38
 }
